@@ -55,8 +55,8 @@ public class MainController extends HttpServlet {
     /**
      * Detect GET or POST command
      *
-     * @param request
-     * @return
+     * @param request http request
+     * @return {GET|POST}:{URL}
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
