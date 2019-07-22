@@ -1,0 +1,102 @@
+package ua.training.admission.model.dao.jdbc;
+
+import ua.training.admission.controller.exception.AppException;
+import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entities.User;
+import ua.training.admission.view.Errors;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * JdbcUserDao
+ */
+public class JdbcUserDao implements UserDao {
+
+    /* SQL */
+    private static final String SELECT_STAFF_BY_LOGIN = "SELECT * FROM staff WHERE lower(email) = ?";
+    private static final String SELECT_STAFF_BY_ID = "SELECT * FROM staff WHERE id = ?";
+
+    /* Fields */
+    private static final String ID = "id";
+    private static final String LASTNAME = "lastname";
+    private static final String FIRSTNAME = "firstname";
+    private static final String SURNAME = "surname";
+    private static final String ROLE = "role";
+    private static final String EMAIL = "email";
+    private static final String PASSWORD = "password";
+
+    private Connection connection;
+
+    JdbcUserDao(Connection connection) {
+        this.connection = connection;
+    }
+
+    @Override
+    public Optional<User> findById(int id) {
+        Optional<User> result = Optional.empty();
+        try (PreparedStatement query = connection.prepareStatement(SELECT_STAFF_BY_ID)) {
+            query.setString(1, String.valueOf(id));
+            ResultSet resultSet = query.executeQuery();
+            if (resultSet.next()) {
+                User user = getEntityFromResultSet(resultSet);
+                result = Optional.of(user);
+            }
+        } catch (SQLException ex) {
+            throw new AppException(Errors.SQL_ERROR, ex);
+        }
+        return result;
+    }
+
+    @Override
+    public List<User> findAll() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void create(User user) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void update(User user) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void delete(int id) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Optional<User> getUserByUsername(String username) {
+        Optional<User> result = Optional.empty();
+        try (PreparedStatement query = connection.prepareStatement(SELECT_STAFF_BY_LOGIN)) {
+            query.setString(1, username.toLowerCase());
+            ResultSet resultSet = query.executeQuery();
+            if (resultSet.next()) {
+                User user = getEntityFromResultSet(resultSet);
+                result = Optional.of(user);
+            }
+        } catch (SQLException ex) {
+            throw new AppException(Errors.SQL_ERROR, ex);
+        }
+        return result;
+    }
+
+    private User getEntityFromResultSet(ResultSet rs) throws SQLException {
+        return new User.Builder()
+                .setId(rs.getInt(ID))
+                .setLastName(rs.getString(LASTNAME))
+                .setFirstName(rs.getString(FIRSTNAME))
+                .setSurName(rs.getString(SURNAME))
+                .setRole(User.Role.valueOf(rs.getString(ROLE)))
+                .setEmail(rs.getString(EMAIL))
+                .setPassword(rs.getString(PASSWORD))
+                .build();
+    }
+}
