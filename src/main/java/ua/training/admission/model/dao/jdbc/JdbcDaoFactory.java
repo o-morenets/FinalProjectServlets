@@ -21,7 +21,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public JdbcDaoFactory() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/admission");
+            dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/admission_servlets");
         } catch (NamingException e) {
             throw new AppException(Errors.NAMING_EXCEPTION, e);
         }

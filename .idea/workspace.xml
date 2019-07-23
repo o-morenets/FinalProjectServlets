@@ -1,0 +1,1554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="FinalProjectServlets:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="registration form validation">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/FinalProjectServlets_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/FinalProjectServlets_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jsp_jsp_api_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/EncryptPassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/LogMessages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets.mwb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_create_tables.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="admission_servlets: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/SignupCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1360">
+              <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="16" selection-start-line="16" selection-end-line="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/security/EncryptPassword.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/GenericDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>hospital</find>
+      <find>REDIRECTED</find>
+      <find>INSERT</find>
+      <find>delete</find>
+      <find>setMax</find>
+      <find>close</find>
+      <find>i18n_config</find>
+      <find>rest</find>
+      <find>api</find>
+      <find>8080</find>
+      <find>Main</find>
+      <find>bundle</find>
+      <find>title.home</find>
+      <find>navbar.ftl</find>
+      <find>incl</find>
+      <find>staff</find>
+      <find>Staff</find>
+      <find>alexey</find>
+      <find>username</find>
+      <find>userName</find>
+      <find>Hospital</find>
+      <find>title.login.form</find>
+      <find>page_title</find>
+      <find>loggedUsers</find>
+      <find>user</find>
+      <find>LOGGER</find>
+      <find>404</find>
+      <find>principal</find>
+      <find>request.getContextPath()</find>
+      <find>jdbc/admission</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>N</replace>
+      <replace>Staff</replace>
+      <replace>&lt;br&gt;</replace>
+      <replace>throw new AppException(e);</replace>
+      <replace>user</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Олексій\IdeaProjects\TrainingJavaWeb2016\Hospital\web\WEB-INF\view</dir>
+      <dir>C:\Users\Олексій\IdeaProjects\TrainingJavaWeb2016\Hospital\src\main\java</dir>
+      <dir>C:\Users\Oleksii\IdeaProjects\TrainingJavaWeb2016\4 Projects\Hospital\src\main\java</dir>
+      <dir>C:\Users\Oleksii\IdeaProjects\TrainingJavaWeb2016\4 Projects\Hospital\src</dir>
+      <dir>C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\java\ua\training\admission\controller</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="59bb04f9414b646f63dca688d6c2566c460a894a" />
+      </map>
+    </option>
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/UserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/exception/AppException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/commands/LoginCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/lang.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/commands/CommandHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/404.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/403.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/i18n_config.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/Home1Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/Home_1_Command.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home1.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandHolder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/ShowLoginFormCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/ShowSignupFormCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/HomeCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/FormLoginCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/view/GlobalConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/FormSignupCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandUtility.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/errorPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell_1" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/listener/SessionListener.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LogoutCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Attributes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signup.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/view/LogMessages.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/security/EncryptPassword.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/SignupCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Hospital/invalid/Web" />
+    </ignored-facets>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="FinalProjectServlets" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="FinalProjectServlets" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Logging issuesJava</id>
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>LoggerInitializedWithForeignClass</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <flattenPackages ProjectPane="false" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FinalProjectServlets" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FinalProjectServlets" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="setattribute&#9;PSI&#9;JAVA://javax.servlet.ServletContext#setAttribute&#10;setattrib&#9;null&#9;null&#10;RETURN_GENERATED_KEYS&#9;PSI&#9;JAVA://java.sql.Statement#RETURN_GENERATED_KEYS&#10;wrap&#9;PSI&#9;JAVA://controller.commands.CommandWrapper&#10;asinputstream&#9;null&#9;null&#10;font&#9;ACTION&#9;EditorIncreaseFontSize&#10;HOLDER&#9;PSI&#9;JAVA://model.services.DiagnosisService.Holder&#10;addAss&#9;FILE&#9;file://C:/Users/Олексій/IdeaProjects/TrainingJavaWeb2016/Hospital/web/WEB-INF/view/addAssignations.jsp&#10;DiagnosisType&#9;PSI&#9;JAVA://model.entities.DiagnosisHistory#diagnosisType&#10;connection.commit()&#9;null&#9;null&#10;rs&#9;PSI&#9;JAVA://model.dao.jdbc.JdbcDiagnosisDao#getDiagnosisFromResultSet&#10;person&#9;PSI&#9;JAVA://model.dao.jdbc.JdbcStaffDao#getPersonFromResultSet" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547325259959" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="controller.commands" />
+      <recent name="controller.exception" />
+      <recent name="view" />
+      <recent name="controller" />
+      <recent name="model.dao.jdbc" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\java\ua\training\admission\model\service" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\java\ua\training\admission\model\dao\jdbc" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\java\ua\training\admission\view" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\java\ua\training\admission\security" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\resources" />
+    </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.view.GlobalConstants" />
+      <recent name="view.Attributes" />
+      <recent name="view.Parameters" />
+      <recent name="controller.commands.CommandsHolder" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF\ua.training.admission" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\resources" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaWeb2016\4 Projects\Hospital\src\main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.security" />
+      <recent name="ua.training.admission.controller.exception" />
+      <recent name="ua.training.admission.controller.command" />
+      <recent name="ua.training.admission.controller.listener" />
+      <recent name="ua.training.admission.controller.commands" />
+    </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="view.Errors" />
+      <recent name="view.Parameters" />
+      <recent name="view.Attributes" />
+      <recent name="view.GlobalConstants" />
+      <recent name="controller.commands.AddAssignationsCommand" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M15" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files\Java\jdk1.8.0_112\jre">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Admission" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="FinalProjectServlets:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Admission" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Hospital_9" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62846" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="FinalProjectServlets:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="" />
+      <created>1485009892132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1485009892132</updated>
+      <workItem from="1485009894540" duration="3939000" />
+      <workItem from="1485016258345" duration="42392000" />
+      <workItem from="1485107048338" duration="18596000" />
+      <workItem from="1485174248285" duration="3414000" />
+      <workItem from="1485200564590" duration="75000" />
+      <workItem from="1485204414732" duration="1526000" />
+      <workItem from="1485206124311" duration="862000" />
+      <workItem from="1485207085361" duration="5741000" />
+      <workItem from="1485213952274" duration="2879000" />
+      <workItem from="1485217809170" duration="1173000" />
+      <workItem from="1485219837010" duration="843000" />
+      <workItem from="1485247679637" duration="312000" />
+      <workItem from="1485276928940" duration="4632000" />
+      <workItem from="1485286840452" duration="9007000" />
+      <workItem from="1485337112334" duration="13252000" />
+      <workItem from="1485354365290" duration="29328000" />
+      <workItem from="1485422900035" duration="13189000" />
+      <workItem from="1485437636823" duration="35431000" />
+      <workItem from="1485497607848" duration="6961000" />
+      <workItem from="1485512817272" duration="21468000" />
+      <workItem from="1485547996308" duration="2170000" />
+      <workItem from="1485550374357" duration="1050000" />
+      <workItem from="1485551492878" duration="7122000" />
+      <workItem from="1485601756572" duration="5079000" />
+      <workItem from="1485612570275" duration="561000" />
+      <workItem from="1485614345094" duration="32272000" />
+      <workItem from="1485680449432" duration="40619000" />
+      <workItem from="1485765357399" duration="16966000" />
+      <workItem from="1485795567811" duration="1789000" />
+      <workItem from="1485797800146" duration="2580000" />
+      <workItem from="1485811741203" duration="795000" />
+      <workItem from="1485872123117" duration="739000" />
+      <workItem from="1485876832774" duration="2201000" />
+      <workItem from="1485879640569" duration="903000" />
+      <workItem from="1485961176921" duration="96000" />
+      <workItem from="1485961468724" duration="2364000" />
+      <workItem from="1485978742006" duration="1871000" />
+      <workItem from="1486158376577" duration="825000" />
+      <workItem from="1486577211857" duration="691000" />
+      <workItem from="1486727807586" duration="169000" />
+      <workItem from="1491890569777" duration="1319000" />
+      <workItem from="1513516915673" duration="3288000" />
+      <workItem from="1513538199094" duration="160000" />
+      <workItem from="1513542806480" duration="3004000" />
+      <workItem from="1513891770293" duration="1041000" />
+      <workItem from="1513892860371" duration="1602000" />
+      <workItem from="1513949839637" duration="817000" />
+      <workItem from="1513951708506" duration="566000" />
+      <workItem from="1514041429402" duration="581000" />
+      <workItem from="1514044829027" duration="2499000" />
+      <workItem from="1514056560160" duration="3463000" />
+      <workItem from="1514137117265" duration="967000" />
+      <workItem from="1514325576371" duration="238000" />
+      <workItem from="1514375425706" duration="603000" />
+      <workItem from="1514584555133" duration="1299000" />
+      <workItem from="1532024721953" duration="1684000" />
+      <workItem from="1532026862416" duration="617000" />
+      <workItem from="1532264915758" duration="1593000" />
+      <workItem from="1532269960515" duration="632000" />
+      <workItem from="1532279742548" duration="809000" />
+      <workItem from="1532281777295" duration="1449000" />
+      <workItem from="1532372021280" duration="94000" />
+      <workItem from="1532466472310" duration="1333000" />
+      <workItem from="1532468380703" duration="628000" />
+      <workItem from="1533295904577" duration="6000" />
+      <workItem from="1533553748758" duration="784000" />
+      <workItem from="1534189064014" duration="132000" />
+      <workItem from="1540210814029" duration="1192000" />
+      <workItem from="1541967063749" duration="89000" />
+      <workItem from="1544736639386" duration="134000" />
+      <workItem from="1544737040929" duration="411000" />
+      <workItem from="1544891876286" duration="739000" />
+      <workItem from="1545342639769" duration="548000" />
+      <workItem from="1545343494790" duration="1227000" />
+      <workItem from="1547119493397" duration="3246000" />
+      <workItem from="1547300201054" duration="1646000" />
+      <workItem from="1547303948347" duration="1851000" />
+      <workItem from="1547312001280" duration="7899000" />
+      <workItem from="1557809061481" duration="716000" />
+      <workItem from="1557810291383" duration="184000" />
+      <workItem from="1559665148660" duration="64000" />
+      <workItem from="1561649675816" duration="710000" />
+      <workItem from="1561722779218" duration="720000" />
+      <workItem from="1562231977929" duration="292000" />
+      <workItem from="1562401776116" duration="86000" />
+      <workItem from="1562690665964" duration="1825000" />
+      <workItem from="1563209852444" duration="349000" />
+      <workItem from="1563211708707" duration="247000" />
+      <workItem from="1563212058648" duration="643000" />
+      <workItem from="1563279957070" duration="3153000" />
+      <workItem from="1563284089310" duration="1769000" />
+      <workItem from="1563290585778" duration="3052000" />
+      <workItem from="1563294233219" duration="794000" />
+      <workItem from="1563462786910" duration="181000" />
+      <workItem from="1563561541602" duration="281000" />
+      <workItem from="1563792281848" duration="29279000" />
+      <workItem from="1563829119867" duration="7263000" />
+      <workItem from="1563864939943" duration="12910000" />
+      <workItem from="1563881829920" duration="5009000" />
+      <workItem from="1563887626713" duration="3144000" />
+      <workItem from="1563894181320" duration="47000" />
+      <workItem from="1563894569187" duration="20906000" />
+      <workItem from="1563922440616" duration="1395000" />
+    </task>
+    <task id="LOCAL-00001" summary="App works properly">
+      <created>1485011675502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1485011675502</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Servlet works&#10;&#10;but&#10;&#10;java.sql.SQLException: No suitable driver found for jdbc:mysql:">
+      <created>1485017295165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485017295165</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Servlet works&#10;FIXED: java.sql.SQLException: No suitable driver found for jdbc:mysql:&#10;jdbc-connector.jar was placed to WEB-INF\lib">
+      <created>1485019008726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1485019008726</updated>
+    </task>
+    <task id="LOCAL-00004" summary="PatientsList&#10;jstl.jar was placed to WEB-INF\lib">
+      <created>1485039975177</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1485039975177</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+ AddPatient (cyrillic bad encoding)&#10;+ ShowPatientInfo">
+      <created>1485105648229</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1485105648229</updated>
+    </task>
+    <task id="LOCAL-00006" summary="(cyrillic bad encoding)&#10;ShowPatientInfo: +diagnosisHistory (id only)">
+      <created>1485113423875</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1485113423875</updated>
+    </task>
+    <task id="LOCAL-00007" summary="(cyrillic bad encoding)&#10;ShowPatientInfo: +diagnosisHistory">
+      <created>1485120686688</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1485120686688</updated>
+    </task>
+    <task id="LOCAL-00008" summary="+ All servlet STUBS&#10;+ All JSP STUBS">
+      <created>1485128601336</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1485128601336</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+ Connection pool&#10;&#10;XXX Hospital.war:exploded can not be deployed. Server is not connected !!!">
+      <created>1485214746868</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1485214746868</updated>
+    </task>
+    <task id="LOCAL-00010" summary="...After reinstalling windows erc...">
+      <created>1485287129448</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485287129448</updated>
+    </task>
+    <task id="LOCAL-00011" summary="+ Diagnoses">
+      <created>1485356748700</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1485356748700</updated>
+    </task>
+    <task id="LOCAL-00012" summary="+ Diagnoses">
+      <created>1485375671005</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1485375671005</updated>
+    </task>
+    <task id="LOCAL-00013" summary="+ Home page">
+      <created>1485382747923</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1485382747923</updated>
+    </task>
+    <task id="LOCAL-00014" summary="+ AddAssignations Form">
+      <created>1485386663466</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1485386663466</updated>
+    </task>
+    <task id="LOCAL-00015" summary="+ Main functionality">
+      <created>1485467587241</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1485467587241</updated>
+    </task>
+    <task id="LOCAL-00016" summary="... ResourceBundle started">
+      <created>1485472864784</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1485472864784</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Languages working!!!">
+      <created>1485474696917</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1485474696917</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Languages working in several pages (NOT ALL !!!)&#10;LocaleFilter&#10;i18n filter + Bundle&#10;Commands initialization moved to CommandHolder">
+      <created>1485558612125</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1485558612125</updated>
+    </task>
+    <task id="LOCAL-00019" summary="languages.jsp fixed - current locale is not a link">
+      <created>1485623418312</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1485623418312</updated>
+    </task>
+    <task id="LOCAL-00020" summary="+ errorPage">
+      <created>1485706048010</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1485706048010</updated>
+    </task>
+    <task id="LOCAL-00021" summary="+ CommandWrapper">
+      <created>1485711006019</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1485711006019</updated>
+    </task>
+    <task id="LOCAL-00022" summary="commit">
+      <created>1485729873399</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1485729873399</updated>
+    </task>
+    <task id="LOCAL-00023" summary="+ 404&#10;Languages fixed, but:&#10;якщо змінювати мови 2+ разів, то не враховується параметер lang=... , який вже є&#10; &#10; Треба переробити обробку сервлетом команд REST.">
+      <created>1485779898830</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1485779898830</updated>
+    </task>
+    <task id="LOCAL-00024" summary="html">
+      <created>1485811138847</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1485811138847</updated>
+    </task>
+    <task id="LOCAL-00025" summary="parameters transfer via request, not session!">
+      <created>1485985153840</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1485985153840</updated>
+    </task>
+    <task id="LOCAL-00026" summary="parameters transfer via request, not session!">
+      <created>1513894452804</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1513894452804</updated>
+    </task>
+    <task id="LOCAL-00027" summary="parameters transfer via request, not session!">
+      <created>1513952212574</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1513952212574</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Some fixes">
+      <created>1532027214777</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1532027214777</updated>
+    </task>
+    <task id="LOCAL-00029" summary="+ LOGGER in LoginCommand (debug ContexPath)">
+      <created>1532266579526</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1532266579526</updated>
+    </task>
+    <task id="LOCAL-00030" summary="+ Everywhere before redirect() added contextPath&#10;+ folder db: .mwb and .sql files to create schema and populate tables with data">
+      <created>1532468744358</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1532468744358</updated>
+    </task>
+    <task id="LOCAL-00031" summary="- setConnection()">
+      <created>1547314640524</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1547314640540</updated>
+    </task>
+    <task id="LOCAL-00032" summary="navbar: &lt;c:if&gt;">
+      <created>1563829222833</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1563829222833</updated>
+    </task>
+    <task id="LOCAL-00033" summary="registration form validation">
+      <created>1563917597351</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1563917597351</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="481091000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49615806" visible="true" weight="0.3080537" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Web" order="6" sideWeight="0.50384194" side_tool="true" weight="0.23854166" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49479166" visible="true" weight="0.31303117" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32842582" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5052083" side_tool="true" weight="0.3361582" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.3295583" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32719547" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="12" sideWeight="0.49791667" weight="0.32930845" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.3286119" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Properties" order="4" />
+      <window_info anchor="right" id="Database" order="5" weight="0.17785235" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.19763695" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.21073826" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="(cyrillic bad encoding)&#10;ShowPatientInfo: +diagnosisHistory (id only)" />
+    <MESSAGE value="(cyrillic bad encoding)&#10;ShowPatientInfo: +diagnosisHistory" />
+    <MESSAGE value="+ All servlet STUBS&#10;+ All JSP STUBS" />
+    <MESSAGE value="+ Connection pool&#10;&#10;XXX Hospital.war:exploded can not be deployed. Server is not connected !!!" />
+    <MESSAGE value="...After reinstalling windows erc..." />
+    <MESSAGE value="+ Diagnoses" />
+    <MESSAGE value="+ Home page" />
+    <MESSAGE value="+ AddAssignations Form" />
+    <MESSAGE value="+ Main functionality" />
+    <MESSAGE value="... ResourceBundle started" />
+    <MESSAGE value="Languages working!!!" />
+    <MESSAGE value="Languages working in several pages (NOT ALL !!!)&#10;LocaleFilter&#10;i18n filter + Bundle&#10;Commands initialization moved to CommandHolder" />
+    <MESSAGE value="languages.jsp fixed - current locale is not a link" />
+    <MESSAGE value="+ errorPage" />
+    <MESSAGE value="+ CommandWrapper" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="+ 404&#10;Languages fixed, but:&#10;якщо змінювати мови 2+ разів, то не враховується параметер lang=... , який вже є&#10; &#10; Треба переробити обробку сервлетом команд REST." />
+    <MESSAGE value="html" />
+    <MESSAGE value="parameters transfer via request, not session!" />
+    <MESSAGE value="Some fixes" />
+    <MESSAGE value="+ LOGGER in LoginCommand (debug ContexPath)" />
+    <MESSAGE value="+ Everywhere before redirect() added contextPath&#10;+ folder db: .mwb and .sql files to create schema and populate tables with data" />
+    <MESSAGE value="- setConnection()" />
+    <MESSAGE value="navbar: &lt;c:if&gt;" />
+    <MESSAGE value="registration form validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="registration form validation" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageLoginCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="52" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageHomeCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/Errors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/EncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/LocaleFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="17" selection-start-line="17" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="168" column="18" selection-start-line="168" selection-start-column="18" selection-end-line="168" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/errorPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/listener/SessionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="20" column="79" selection-start-line="20" selection-start-column="79" selection-end-line="20" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="58" lean-forward="true" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LogoutCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="68" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="39" lean-forward="true" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/exception/NotUniqueUsernameException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-256">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/GlobalConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/i18n/messages.properties">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/Attributes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://17e92ad2-e94e-4568-811a-827604d00623/schema/admission/table/usr" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signup.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="66" column="65" selection-start-line="66" selection-start-column="65" selection-end-line="66" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/bf239425-c7f2-45e4-a45b-091b520d8937/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://bf239425-c7f2-45e4-a45b-091b520d8937/schema/admission_servlets/table/user_role">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="d297dcc8-192d-41cd-b56c-42d18a72ee70">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://bf239425-c7f2-45e4-a45b-091b520d8937/schema/admission_servlets/table/usr">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="d297dcc8-192d-41cd-b56c-42d18a72ee70">
+          <filtering>
+            <filter text="" />
+          </filtering>
+          <column-attributes>
+            <column name="email" position="4" />
+            <column name="first_name" position="5" />
+            <column name="last_name" position="6" />
+            <column name="password" position="3" />
+            <column name="username" position="2" />
+          </column-attributes>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/i18n_config.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/view/LogMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-331">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="16" selection-start-line="16" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/GenericDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="29" column="72" selection-start-line="29" selection-start-column="72" selection-end-line="29" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/SignupCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e530987e-59f1-4ed6-b39d-842a7d4e19bd/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ua/training/admission/security/EncryptPassword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="45" column="39" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="45" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArquillianSettingsConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>FinalProjectServlets:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Detection</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web|FinalProjectServlets</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: mysql:mysql-connector-java:8.0.16</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

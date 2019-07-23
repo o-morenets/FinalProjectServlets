@@ -1,17 +1,23 @@
 package ua.training.admission.model.service;
 
-import java.util.Optional;
-
+import org.apache.log4j.Logger;
+import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
 import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.User;
 
+import java.sql.SQLException;
+import java.util.Optional;
+
 /**
  * UserService
  */
 public class UserService {
+
+    private static final Logger LOG = Logger.getLogger(UserService.class);
+    private static final int SQL_CONSTRAINT_NOT_UNIQUE = 1062;
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
@@ -43,7 +49,25 @@ public class UserService {
     }
 
     public void createUser(User user) {
-        // TODO
-        throw new NotUniqueUsernameException("Not unique username");
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+            userDao.create(user);
+        } catch (AppException ex) {
+            int errorCode = 0;
+
+            final Throwable sqlEx = ex.getCause();
+            if (sqlEx instanceof SQLException) {
+                SQLException sqlException = (SQLException) sqlEx;
+                errorCode = sqlException.getErrorCode();
+            }
+
+            if (errorCode == SQL_CONSTRAINT_NOT_UNIQUE) {
+                LOG.warn("User already exists");
+
+                throw new NotUniqueUsernameException("User already exists");
+            }
+
+            throw ex;
+        }
     }
 }

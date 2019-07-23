@@ -5,10 +5,7 @@ import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Errors;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +17,9 @@ public class JdbcUserDao implements UserDao {
     /* SQL */
     private static final String SELECT_STAFF_BY_LOGIN = "SELECT * FROM usr WHERE lower(username) = ?";
     private static final String SELECT_STAFF_BY_ID = "SELECT * FROM usr WHERE id = ?";
+    private static final String INSERT_INTO_USR = "INSERT INTO usr" +
+            " (username, password, email, first_name, last_name, role)" +
+            " VALUES (?, ?, ?, ?, ?, ?)";
 
     /* Fields */
     private static final String ID = "id";
@@ -59,7 +59,22 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void create(User user) {
-        throw new UnsupportedOperationException();
+        try (PreparedStatement query = connection.prepareStatement(INSERT_INTO_USR, Statement.RETURN_GENERATED_KEYS)) {
+            query.setString(1, user.getUsername());
+            query.setString(2, user.getPassword());
+            query.setString(3, user.getEmail());
+            query.setString(4, user.getFirstName());
+            query.setString(5, user.getLastName());
+            query.setString(6, user.getRole().name());
+            query.executeUpdate();
+            ResultSet keys = query.getGeneratedKeys();
+
+            if (keys.next()) {
+                user.setId(keys.getInt(1));
+            }
+        } catch (SQLException e) {
+            throw new AppException(Errors.SQL_ERROR, e);
+        }
     }
 
     @Override
