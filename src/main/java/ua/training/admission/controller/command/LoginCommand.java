@@ -3,6 +3,7 @@ package ua.training.admission.controller.command;
 import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
+import ua.training.admission.security.EncryptPassword;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
@@ -27,7 +28,7 @@ public class LoginCommand extends CommandWrapper {
         String password = request.getParameter(Parameters.PASSWORD);
 
         if (username != null && password != null) {
-            Optional<User> user = userService.login(username, password);
+            Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
 
             String contextPath = request.getContextPath();
 

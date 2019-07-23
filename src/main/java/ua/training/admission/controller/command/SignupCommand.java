@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
+import ua.training.admission.security.EncryptPassword;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
@@ -78,7 +79,7 @@ public class SignupCommand extends CommandWrapper {
 
         User user = User.builder()
                 .username(username)
-                .password(password)
+                .password(EncryptPassword.encrypt(password))
                 .email(email)
                 .firstName(firstName)
                 .lastName(lastName)

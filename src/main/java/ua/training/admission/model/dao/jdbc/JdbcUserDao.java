@@ -65,7 +65,7 @@ public class JdbcUserDao implements UserDao {
             query.setString(3, user.getEmail());
             query.setString(4, user.getFirstName());
             query.setString(5, user.getLastName());
-            query.setString(6, user.getRole().name());
+            query.setString(6, User.Role.USER.name());
             query.executeUpdate();
             ResultSet keys = query.getGeneratedKeys();
 
