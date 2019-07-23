@@ -15,14 +15,14 @@
                                 <div class="input-group-text">@</div>
                             </div>
                             <input type="text"
-                                   class="form-control <c:if test="${usernameError}">'is-invalid'</c:if>"
+                                   class="form-control <c:if test="${!empty usernameError}">is-invalid</c:if>"
                                    id="inputUsername"
                                    placeholder="<fmt:message key="user.username"/>"
-                                   value="<c:if test="${user}">${user.username}</c:if>"
+                                   value="<c:if test="${!empty user}">${user.username}</c:if>"
                                    required
                                    autofocus
                                    name="username">
-                            <c:if test="${usernameError}">
+                            <c:if test="${not empty usernameError}">
                                 <div class="invalid-feedback">
                                     <fmt:message key="${usernameError}"/>
                                 </div>
@@ -37,17 +37,17 @@
                                 <div class="input-group-text">#</div>
                             </div>
                             <input type="password"
-                                   class="form-control <c:if test="${passwordError}">'is-invalid'</c:if>"
+                                   class="form-control <c:if test="${!empty passwordError}">is-invalid</c:if>"
                                    id="inputPassword"
                                    placeholder="<fmt:message key="user.password"/>"
                                    required
                                    name="password">
+                            <c:if test="${!empty passwordError}">
+                                <div class="invalid-feedback">
+                                    <fmt:message key="${passwordError}"/>
+                                </div>
+                            </c:if>
                         </div>
-                        <c:if test="${passwordError}">
-                            <div class="invalid-feedback">
-                                <fmt:message key="${passwordError}"/>
-                            </div>
-                        </c:if>
                     </div>
                     <div class="form-group-row">
                         <label class="control-label"
@@ -57,29 +57,29 @@
                                 <div class="input-group-text">#</div>
                             </div>
                             <input type="password"
-                                   class="form-control <c:if test="${password2Error}">'is-invalid'</c:if>"
+                                   class="form-control <c:if test="${!empty password2Error}">is-invalid</c:if>"
                                    id="inputPasswordRetype"
                                    placeholder="<fmt:message key="form.control.passwordRetype"/>"
                                    required
                                    name="password2">
+                            <c:if test="${!empty password2Error}">
+                                <div class="invalid-feedback">
+                                    <fmt:message key="${password2Error}"/>
+                                </div>
+                            </c:if>
                         </div>
-                        <c:if test="${password2Error}">
-                            <div class="invalid-feedback">
-                                <@s.message "${password2Error}"/>
-                            </div>
-                        </c:if>
                     </div>
                     <div class="form-group-row">
                         <label class="control-label"
                                for="inputEmail"><fmt:message key="user.email"/></label>
                         <input type="email"
-                               class="form-control <c:if test="${emailError}">'is-invalid'</c:if>"
+                               class="form-control <c:if test="${!empty emailError}">is-invalid</c:if>"
                                id="inputEmail"
                                placeholder="<fmt:message key="user.email"/>"
-                               value="<c:if test="user">${user.email}</c:if>"
+                               value="<c:if test="${!empty user}">${user.email}</c:if>"
                                required
                                name="email">
-                        <c:if test="emailError">
+                        <c:if test="${!empty emailError}">
                             <div class="invalid-feedback">
                                 <fmt:message key="${emailError}"/>
                             </div>
@@ -89,13 +89,13 @@
                         <label class="control-label"
                                for="inputFirstName"><fmt:message key="user.firstName"/></label>
                         <input type="text"
-                               class="form-control <c:if test="${firstNameError}">'is-invalid'</c:if>"
+                               class="form-control <c:if test="${!empty firstNameError}">is-invalid</c:if>"
                                id="inputFirstName"
                                placeholder="<fmt:message key="user.firstName"/>"
-                               value="<c:if test="user">${user.firstName}</c:if>"
+                               value="<c:if test="${!empty user}">${user.firstName}</c:if>"
                                required
                                name="firstName">
-                        <c:if test="firstNameError">
+                        <c:if test="${!empty firstNameError}">
                             <div class="invalid-feedback">
                                 <fmt:message key="form.invalid.firstName"/>
                             </div>
@@ -105,13 +105,13 @@
                         <label class="control-label"
                                for="inputLastName"><fmt:message key="user.lastName"/></label>
                         <input type="text"
-                               class="form-control <c:if test="${lastNameError}">'is-invalid'</c:if>"
+                               class="form-control <c:if test="${!empty lastNameError}">is-invalid</c:if>"
                                id="inputLastName"
                                placeholder="<fmt:message key="user.lastName"/>"
-                               value="<c:if test="user">${user.lastName}</c:if>"
+                               value="<c:if test="${!empty user}">${user.lastName}</c:if>"
                                required
                                name="lastName">
-                        <c:if test="lastNameError">
+                        <c:if test="${!empty lastNameError}">
                             <div class="invalid-feedback">
                                 <fmt:message key="form.invalid.lastName"/>
                             </div>

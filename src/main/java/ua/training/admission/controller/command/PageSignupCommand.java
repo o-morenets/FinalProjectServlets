@@ -1,23 +1,20 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import org.apache.log4j.Logger;
-import ua.training.admission.model.entities.User;
-import ua.training.admission.model.services.UserService;
+import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Attributes;
-import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Optional;
 
-public class SignupCommand extends CommandWrapper {
+import static ua.training.admission.view.GlobalConstants.TITLE_FORM_SIGNUP;
 
-    private static final Logger LOGGER = Logger.getLogger(SignupCommand.class);
+public class PageSignupCommand extends CommandWrapper {
 
-    private static final String TITLE_HOME = "admission.title"; // TODO title for all pages
+    private static final Logger LOG = Logger.getLogger(PageSignupCommand.class);
 
     private UserService userService = UserService.getInstance();
 
@@ -25,6 +22,8 @@ public class SignupCommand extends CommandWrapper {
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        return Paths.REDIRECTED;
+        request.setAttribute(Attributes.PAGE_TITLE, TITLE_FORM_SIGNUP);
+
+        return Paths.SIGNUP_JSP;
     }
 }

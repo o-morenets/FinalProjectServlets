@@ -1,4 +1,4 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * ShowLoginFormCommand
- */
-public class ShowLoginFormCommand extends CommandWrapper {
+import static ua.training.admission.view.GlobalConstants.TITLE_FORM_LOGIN;
 
-    private static final String TITLE_LOGIN_FORM = "title.login.form";
+/**
+ * PageLoginCommand
+ */
+public class PageLoginCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute(Attributes.PAGE_TITLE, TITLE_LOGIN_FORM);
+        request.setAttribute(Attributes.PAGE_TITLE, TITLE_FORM_LOGIN);
+
         return Paths.LOGIN_JSP;
     }
 

@@ -1,4 +1,4 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import java.io.IOException;
 

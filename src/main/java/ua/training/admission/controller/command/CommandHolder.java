@@ -1,4 +1,4 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.GlobalConstants;
@@ -21,11 +21,12 @@ public class CommandHolder {
     private void initCommands() {
         commands = new HashMap<String, Command>() {
             {
-                put(GlobalConstants.GET + Paths.HOME, new HomeCommand());
-                put(GlobalConstants.GET + Paths.LOGIN, new ShowLoginFormCommand());
-                put(GlobalConstants.GET + Paths.SIGNUP, new ShowSignupFormCommand());
+                put(GlobalConstants.GET + Paths.HOME, new PageHomeCommand());
+                put(GlobalConstants.GET + Paths.LOGIN, new PageLoginCommand());
+                put(GlobalConstants.GET + Paths.SIGNUP, new PageSignupCommand());
 
                 put(GlobalConstants.POST + Paths.LOGIN, new LoginCommand());
+                put(GlobalConstants.POST + Paths.LOGOUT, new LogoutCommand());
                 put(GlobalConstants.POST + Paths.SIGNUP, new SignupCommand());
             }
         };

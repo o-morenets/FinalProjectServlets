@@ -1,6 +1,6 @@
 package ua.training.admission.model.dao;
 
-import ua.training.admission.model.entities.User;
+import ua.training.admission.model.entity.User;
 
 import java.util.Optional;
 

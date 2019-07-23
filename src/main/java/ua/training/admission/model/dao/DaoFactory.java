@@ -14,7 +14,7 @@ public abstract class DaoFactory {
 
     public abstract DaoConnection getConnection();
 
-    public abstract UserDao createStaffDao(DaoConnection connection);
+    public abstract UserDao createUserDao(DaoConnection connection);
 
     private static final String DB_FILE = "/db.properties";
 

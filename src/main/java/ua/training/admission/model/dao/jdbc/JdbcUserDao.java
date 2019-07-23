@@ -2,7 +2,7 @@ package ua.training.admission.model.dao.jdbc;
 
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.UserDao;
-import ua.training.admission.model.entities.User;
+import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Errors;
 
 import java.sql.Connection;
@@ -18,17 +18,17 @@ import java.util.Optional;
 public class JdbcUserDao implements UserDao {
 
     /* SQL */
-    private static final String SELECT_STAFF_BY_LOGIN = "SELECT * FROM staff WHERE lower(email) = ?";
-    private static final String SELECT_STAFF_BY_ID = "SELECT * FROM staff WHERE id = ?";
+    private static final String SELECT_STAFF_BY_LOGIN = "SELECT * FROM usr WHERE lower(username) = ?";
+    private static final String SELECT_STAFF_BY_ID = "SELECT * FROM usr WHERE id = ?";
 
     /* Fields */
     private static final String ID = "id";
-    private static final String LASTNAME = "lastname";
-    private static final String FIRSTNAME = "firstname";
-    private static final String SURNAME = "surname";
-    private static final String ROLE = "role";
-    private static final String EMAIL = "email";
+    private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
+    private static final String EMAIL = "email";
+    private static final String LAST_NAME = "last_name";
+    private static final String FIRST_NAME = "first_name";
+    private static final String ROLE = "role";
 
     private Connection connection;
 
@@ -91,12 +91,12 @@ public class JdbcUserDao implements UserDao {
     private User getEntityFromResultSet(ResultSet rs) throws SQLException {
         return new User.Builder()
                 .setId(rs.getInt(ID))
-                .setLastName(rs.getString(LASTNAME))
-                .setFirstName(rs.getString(FIRSTNAME))
-                .setSurName(rs.getString(SURNAME))
-                .setRole(User.Role.valueOf(rs.getString(ROLE)))
-                .setEmail(rs.getString(EMAIL))
-                .setPassword(rs.getString(PASSWORD))
+                .username(rs.getString(USERNAME))
+                .password(rs.getString(PASSWORD))
+                .email(rs.getString(EMAIL))
+                .firstName(rs.getString(FIRST_NAME))
+                .lastName(rs.getString(LAST_NAME))
+                .role(User.Role.valueOf(rs.getString(ROLE)))
                 .build();
     }
 }

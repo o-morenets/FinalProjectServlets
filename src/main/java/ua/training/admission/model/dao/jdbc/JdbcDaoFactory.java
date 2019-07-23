@@ -37,7 +37,7 @@ public class JdbcDaoFactory extends DaoFactory {
     }
 
     @Override
-    public UserDao createStaffDao(DaoConnection connection) {
+    public UserDao createUserDao(DaoConnection connection) {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();
         return new JdbcUserDao(sqlConnection);

@@ -1,4 +1,4 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * HomeCommand
- */
-public class HomeCommand extends CommandWrapper {
+import static ua.training.admission.view.GlobalConstants.TITLE_HOME;
 
-    private static final String TITLE_HOME = "admission.title";
+/**
+ * PageHomeCommand
+ */
+public class PageHomeCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)

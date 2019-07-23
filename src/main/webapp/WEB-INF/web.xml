@@ -10,14 +10,19 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/index.html</location>
-    </error-page>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
         <location>/WEB-INF/view/errorPage/errorPage.jsp</location>
     </error-page>
+
+    <listener>
+        <listener-class>
+            ua.training.admission.controller.listener.SessionListener
+        </listener-class>
+    </listener>
 
 </web-app>

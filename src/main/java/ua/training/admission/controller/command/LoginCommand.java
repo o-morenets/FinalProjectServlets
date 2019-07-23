@@ -1,8 +1,8 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
-import ua.training.admission.model.entities.User;
-import ua.training.admission.model.services.UserService;
 import org.apache.log4j.Logger;
+import ua.training.admission.model.entity.User;
+import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
@@ -15,9 +15,7 @@ import java.util.Optional;
 
 public class LoginCommand extends CommandWrapper {
 
-    private static final Logger LOGGER = Logger.getLogger(LoginCommand.class);
-
-    private static final String TITLE_HOME = "admission.title"; // TODO title for all pages
+    private static final Logger LOG = Logger.getLogger(LoginCommand.class);
 
     private UserService userService = UserService.getInstance();
 
@@ -27,20 +25,27 @@ public class LoginCommand extends CommandWrapper {
 
         String username = request.getParameter(Parameters.USERNAME);
         String password = request.getParameter(Parameters.PASSWORD);
+
         if (username != null && password != null) {
             Optional<User> user = userService.login(username, password);
 
             String contextPath = request.getContextPath();
-            LOGGER.debug("contextPath: " + contextPath);
 
             if (user.isPresent()) {
-                request.getSession().setAttribute(Attributes.USER, user.get());
-                response.sendRedirect(contextPath + Paths.HOME); // FIXME path
+                final User usr = user.get();
+                if (CommandUtils.checkUserIsLogged(request, usr.getUsername())) {
+                    response.sendRedirect(contextPath + Paths.API_LOGIN_AUTHORIZED);
+                } else {
+                    CommandUtils.setUserRole(request, usr.getRole(), usr.getUsername());
+                    request.getSession().setAttribute(Attributes.PRINCIPAL, usr);
+                    response.sendRedirect(contextPath + Paths.API_HOME);
+                }
             } else {
-                request.setAttribute(Attributes.PAGE_TITLE, TITLE_HOME);
-                response.sendRedirect(contextPath + Paths.HOME); // FIXME path
+                CommandUtils.setUserRole(request, User.Role.GUEST, "Guest");
+                response.sendRedirect(contextPath + Paths.API_LOGIN_ERROR);
             }
         }
+
         return Paths.REDIRECTED;
     }
 }

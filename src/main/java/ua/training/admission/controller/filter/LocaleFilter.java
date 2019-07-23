@@ -1,4 +1,4 @@
-package ua.training.admission.controller.filters;
+package ua.training.admission.controller.filter;
 
 import ua.training.admission.config.AdmissionConfig;
 import ua.training.admission.i18n.SupportedLocale;

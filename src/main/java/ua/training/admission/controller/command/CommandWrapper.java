@@ -1,4 +1,4 @@
-package ua.training.admission.controller.commands;
+package ua.training.admission.controller.command;
 
 import ua.training.admission.controller.exception.AppException;
 import org.apache.log4j.Logger;
@@ -15,14 +15,14 @@ import java.io.IOException;
 public abstract class CommandWrapper implements Command {
 
     private static final Object ERROR = "error";
-    private static final Logger LOGGER = Logger.getLogger(CommandWrapper.class);
+    private static final Logger LOG = Logger.getLogger(CommandWrapper.class);
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             return doExecute(request, response);
         } catch (AppException e) {
             System.out.println(e.getCause().toString());
-            LOGGER.error(e);
+            LOG.error(e);
             request.setAttribute(Attributes.PAGE_TITLE, ERROR);
             throw e;
         }

@@ -9,9 +9,8 @@ public interface GlobalConstants {
     String GET = "GET:";
     String POST = "POST:";
 
-    /* JSP */
-    String PREFIX = "/WEB-INF/view";
-
-    /* Paths for Commands */
-    String LOGIN = "/login";
+    /* Page titles */
+    String TITLE_HOME = "title.home";
+    String TITLE_FORM_LOGIN = "title.form.login";
+    String TITLE_FORM_SIGNUP = "title.form.signup";
 }

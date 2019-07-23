@@ -4,7 +4,7 @@
 
 <div class="row justify-content-center">
     <div class="col-6">
-        <c:if test="${logout}">
+        <c:if test="${param.logout == true}">
             <div class="row">
                 <div class="col">
                     <div class="alert alert-primary" role="alert">
@@ -13,11 +13,20 @@
                 </div>
             </div>
         </c:if>
-        <c:if test="${error}">
+        <c:if test="${param.error == true}">
             <div class="row">
                 <div class="col">
                     <div class="alert alert-danger" role="alert">
                         <fmt:message key="form.alert.error"/>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+        <c:if test="${param.authorized == true}">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        <fmt:message key="form.alert.authorized"/>
                     </div>
                 </div>
             </div>
