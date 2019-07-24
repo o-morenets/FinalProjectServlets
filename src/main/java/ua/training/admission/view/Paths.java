@@ -12,6 +12,7 @@ public final class Paths {
     public static final String HOME_JSP = PREFIX + "/home.jsp";
     public static final String LOGIN_JSP = PREFIX + "/login.jsp";
     public static final String SIGNUP_JSP = PREFIX + "/signup.jsp";
+    public static final String USERLIST_JSP = PREFIX + "/userList.jsp";
     public static final String PAGE_404 = PREFIX + "/404.jsp";
 
     /* Paths for Commands */
