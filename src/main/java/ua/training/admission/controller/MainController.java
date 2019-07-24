@@ -14,12 +14,15 @@ import ua.training.admission.controller.command.*;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
+import ua.training.admission.view.Attributes;
+import ua.training.admission.view.Messages;
 import ua.training.admission.view.Paths;
+import ua.training.admission.view.TextConstants;
 
 /**
  * Servlet implementation class MainController
  */
-@WebServlet("/api/*")
+@WebServlet(Paths.API + "/*")
 public class MainController extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(MainController.class);
@@ -33,7 +36,7 @@ public class MainController extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        config.getServletContext().setAttribute("loggedUsers", new HashSet<User>());
+        config.getServletContext().setAttribute(Attributes.LOGGED_USERS, new HashSet<User>());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +58,7 @@ public class MainController extends HttpServlet {
         String viewPage = "";
         viewPage = command.execute(request, response);
         if (!viewPage.equals(Paths.REDIRECTED)) {
-            LOG.debug("FORWARD to " + viewPage);
+            LOG.debug(Messages.FORWARD_TO + viewPage);
             request.getRequestDispatcher(viewPage).forward(request, response);
         }
     }
@@ -68,7 +71,7 @@ public class MainController extends HttpServlet {
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getRequestURI().replaceAll(".*/api", "");
-        return method + ":" + path;
+        String path = request.getRequestURI().replaceAll(".*" + Paths.API, "");
+        return method + TextConstants.COLON + path;
     }
 }

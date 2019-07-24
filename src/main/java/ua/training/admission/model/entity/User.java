@@ -15,13 +15,6 @@ public class User {
 	private String lastName;
 	private Role role;
 
-	public static User userGuest() {
-		return User.builder()
-				.username("Guest")
-				.role(Role.GUEST)
-				.build();
-	}
-
 	public enum Role {
 		ADMIN,
 		USER,

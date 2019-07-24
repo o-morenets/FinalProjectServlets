@@ -19,8 +19,6 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
     private static final Logger LOG = Logger.getLogger(AuthFilter.class);
-    private static final String ACCESS_DENIED_LOG_MESSAGE_FORMAT =
-            "Access denied. Requested URI='%s', userId='%s', adminId='%s'";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -38,8 +36,8 @@ public class AuthFilter implements Filter {
         HttpSession session = req.getSession();
         ServletContext context = request.getServletContext();
         LOG.debug(session);
-        LOG.debug(session.getAttribute("role"));
-        LOG.debug(context.getAttribute("loggedUsers"));
+        LOG.debug(session.getAttribute(Attributes.ROLE));
+        LOG.debug(context.getAttribute(Attributes.LOGGED_USERS));
         LOG.debug("*** Current user: " + session.getAttribute(Attributes.PRINCIPAL));
 
         filterChain.doFilter(request,response);

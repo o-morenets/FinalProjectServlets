@@ -11,9 +11,7 @@ import java.util.Set;
 
 public class CommandUtils {
 
-    static void setUserRole(HttpServletRequest request,
-                            User.Role role, String name) {
-
+    static void setUserRole(HttpServletRequest request, User.Role role, String name) {
         HttpSession session = request.getSession();
         ServletContext context = request.getServletContext();
         context.setAttribute("userName", name);
@@ -27,9 +25,10 @@ public class CommandUtils {
         if(loggedUsers.stream().anyMatch(userName::equals)){
             return true;
         }
+
         loggedUsers.add(userName);
-        request.getSession().getServletContext()
-                .setAttribute("loggedUsers", loggedUsers);
+        request.getSession().getServletContext().setAttribute("loggedUsers", loggedUsers);
+
         return false;
     }
 }

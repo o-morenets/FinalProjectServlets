@@ -11,4 +11,15 @@ public class Attributes {
 
     public static final String PRINCIPAL = "principal";
     public static final String USER = "user";
+    public static final String USERS = "users";
+    public static final String ROLE = "role";
+    public static final String LOGGED_USERS = "loggedUsers";
+    public static final String USER_NAME = "userName";
+
+    public static final String USERNAME_ERROR = "usernameError";
+    public static final String PASSWORD_ERROR = "passwordError";
+    public static final String PASSWORD_2_ERROR = "password2Error";
+    public static final String EMAIL_ERROR = "emailError";
+    public static final String FIRST_NAME_ERROR = "firstNameError";
+    public static final String LAST_NAME_ERROR = "lastNameError";
 }

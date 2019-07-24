@@ -11,9 +11,11 @@ import java.io.IOException;
 
 public class LogoutCommand extends CommandWrapper {
 
+    public static final String GUEST = "Guest";
+
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CommandUtils.setUserRole(request, User.Role.GUEST, "Guest");
+        CommandUtils.setUserRole(request, User.Role.GUEST, GUEST);
         request.getSession().setAttribute(Attributes.PRINCIPAL, null);
         response.sendRedirect(request.getContextPath() + Paths.API_LOGIN_LOGOUT);
 

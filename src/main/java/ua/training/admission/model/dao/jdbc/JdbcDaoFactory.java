@@ -2,7 +2,8 @@ package ua.training.admission.model.dao.jdbc;
 
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.*;
-import ua.training.admission.view.Errors;
+import ua.training.admission.view.Config;
+import ua.training.admission.view.Messages;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,9 +22,9 @@ public class JdbcDaoFactory extends DaoFactory {
     public JdbcDaoFactory() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/admission_servlets");
+            dataSource = (DataSource) ic.lookup(Config.JAVA_COMP_ENV_JDBC);
         } catch (NamingException e) {
-            throw new AppException(Errors.NAMING_EXCEPTION, e);
+            throw new AppException(Messages.NAMING_EXCEPTION, e);
         }
     }
 
@@ -32,7 +33,7 @@ public class JdbcDaoFactory extends DaoFactory {
         try {
             return new JdbcDaoConnection(dataSource.getConnection());
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 

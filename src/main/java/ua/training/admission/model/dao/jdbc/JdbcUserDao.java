@@ -3,32 +3,19 @@ package ua.training.admission.model.dao.jdbc;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.User;
-import ua.training.admission.view.Errors;
+import ua.training.admission.view.Messages;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static ua.training.admission.view.SQL.*;
 
 /**
  * JdbcUserDao
  */
 public class JdbcUserDao implements UserDao {
-
-    /* SQL */
-    private static final String SELECT_STAFF_BY_LOGIN = "SELECT * FROM usr WHERE lower(username) = ?";
-    private static final String SELECT_STAFF_BY_ID = "SELECT * FROM usr WHERE id = ?";
-    private static final String INSERT_INTO_USR = "INSERT INTO usr" +
-            " (username, password, email, first_name, last_name, role)" +
-            " VALUES (?, ?, ?, ?, ?, ?)";
-
-    /* Fields */
-    private static final String ID = "id";
-    private static final String USERNAME = "username";
-    private static final String PASSWORD = "password";
-    private static final String EMAIL = "email";
-    private static final String LAST_NAME = "last_name";
-    private static final String FIRST_NAME = "first_name";
-    private static final String ROLE = "role";
 
     private Connection connection;
 
@@ -39,7 +26,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findById(int id) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(SELECT_STAFF_BY_ID)) {
+        try (PreparedStatement query = connection.prepareStatement(SELECT_USER_BY_ID)) {
             query.setString(1, String.valueOf(id));
             ResultSet resultSet = query.executeQuery();
             if (resultSet.next()) {
@@ -47,7 +34,7 @@ public class JdbcUserDao implements UserDao {
                 result = Optional.of(user);
             }
         } catch (SQLException ex) {
-            throw new AppException(Errors.SQL_ERROR, ex);
+            throw new AppException(Messages.SQL_ERROR, ex);
         }
         return result;
     }
@@ -59,7 +46,9 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void create(User user) {
-        try (PreparedStatement query = connection.prepareStatement(INSERT_INTO_USR, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement query = connection.prepareStatement(
+                INSERT_INTO_USER, Statement.RETURN_GENERATED_KEYS)) {
+
             query.setString(1, user.getUsername());
             query.setString(2, user.getPassword());
             query.setString(3, user.getEmail());
@@ -73,7 +62,7 @@ public class JdbcUserDao implements UserDao {
                 user.setId(keys.getInt(1));
             }
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 
@@ -88,18 +77,40 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public Optional<User> getUserByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(SELECT_STAFF_BY_LOGIN)) {
-            query.setString(1, username.toLowerCase());
-            ResultSet resultSet = query.executeQuery();
+        try (PreparedStatement stmt = connection.prepareStatement(SELECT_USER_BY_USERNAME)) {
+            stmt.setString(1, username.toLowerCase());
+            ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 User user = getEntityFromResultSet(resultSet);
                 result = Optional.of(user);
             }
+
         } catch (SQLException ex) {
-            throw new AppException(Errors.SQL_ERROR, ex);
+            throw new AppException(Messages.SQL_ERROR, ex);
         }
+
+        return result;
+    }
+
+    @Override
+    public List<User> findAllByRole(User.Role role) {
+        List<User> result = new ArrayList<>();
+
+        try (PreparedStatement stmt = connection.prepareStatement(SELECT_USERS_BY_ROLE)) {
+            stmt.setString(1, role.name());
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                result.add(getEntityFromResultSet(resultSet));
+            }
+
+        } catch (SQLException e) {
+            throw new AppException(Messages.SQL_ERROR, e);
+        }
+
         return result;
     }
 

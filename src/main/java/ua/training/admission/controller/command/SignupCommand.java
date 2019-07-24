@@ -5,8 +5,6 @@ import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.security.EncryptPassword;
-import ua.training.admission.view.Attributes;
-import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
 
 import javax.servlet.ServletException;
@@ -14,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static ua.training.admission.view.GlobalConstants.TITLE_FORM_SIGNUP;
+import static ua.training.admission.view.Attributes.*;
+import static ua.training.admission.view.Parameters.*;
+import static ua.training.admission.view.TextConstants.*;
 
 public class SignupCommand extends CommandWrapper {
 
@@ -26,54 +26,54 @@ public class SignupCommand extends CommandWrapper {
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter(Parameters.USERNAME);
-        String password = request.getParameter(Parameters.PASSWORD);
-        String passwordConfirm = request.getParameter(Parameters.PASSWORD_2);
-        String email = request.getParameter(Parameters.EMAIL);
-        String firstName = request.getParameter(Parameters.FIRSTNAME);
-        String lastName = request.getParameter(Parameters.LASTNAME);
+        String username = request.getParameter(USERNAME);
+        String password = request.getParameter(PASSWORD);
+        String passwordConfirm = request.getParameter(PASSWORD_2);
+        String email = request.getParameter(EMAIL);
+        String firstName = request.getParameter(FIRSTNAME);
+        String lastName = request.getParameter(LASTNAME);
 
         boolean isFormValid = true;
 
         // TODO green text -> psfs
 
         if (username.trim().isEmpty()) {
-            request.setAttribute("usernameError", "form.invalid.username.empty");
+            request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EMPTY);
             isFormValid = false;
         }
 
         if (password.trim().isEmpty()) {
-            request.setAttribute("passwordError", "form.invalid.password.empty");
+            request.setAttribute(PASSWORD_ERROR, FORM_INVALID_PASSWORD_EMPTY);
             isFormValid = false;
         }
 
         boolean isConfirmEmpty = passwordConfirm.trim().isEmpty();
         if (isConfirmEmpty) {
-            request.setAttribute("password2Error", "form.invalid.passwordRetype.empty");
+            request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_RETYPE_EMPTY);
             isFormValid = false;
         }
 
         boolean passwordsDifferent = !password.equals(passwordConfirm);
         if (passwordsDifferent) {
-            request.setAttribute("passwordError", "form.invalid.password.different");
-            request.setAttribute("password2Error", "form.invalid.password.different");
+            request.setAttribute(PASSWORD_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
+            request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
             isFormValid = false;
         }
 
         if (email.trim().isEmpty()) {
-            request.setAttribute("emailError", "form.invalid.email.empty");
+            request.setAttribute(EMAIL_ERROR, FORM_INVALID_EMAIL_EMPTY);
             isFormValid = false;
         }
 
         // TODO @Email validation with RegEx
 
         if (firstName.trim().isEmpty()) {
-            request.setAttribute("firstNameError", "form.invalid.firstName");
+            request.setAttribute(FIRST_NAME_ERROR, FORM_INVALID_FIRST_NAME);
             isFormValid = false;
         }
 
         if (lastName.trim().isEmpty()) {
-            request.setAttribute("lastNameError", "form.invalid.lastName");
+            request.setAttribute(LAST_NAME_ERROR, FORM_INVALID_LAST_NAME);
             isFormValid = false;
         }
 
@@ -86,8 +86,8 @@ public class SignupCommand extends CommandWrapper {
                 .build();
 
         if (!isFormValid) {
-            request.setAttribute(Attributes.PAGE_TITLE, TITLE_FORM_SIGNUP);
-            request.setAttribute(Attributes.USER, user);
+            request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
+            request.setAttribute(USER, user);
             return Paths.SIGNUP_JSP;
         }
 
@@ -96,9 +96,9 @@ public class SignupCommand extends CommandWrapper {
             response.sendRedirect(request.getContextPath() + Paths.API_LOGIN);
 
         } catch (NotUniqueUsernameException ex) {
-            request.setAttribute(Attributes.PAGE_TITLE, TITLE_FORM_SIGNUP);
-            request.setAttribute(Attributes.USER, user);
-            request.setAttribute("usernameError", "form.invalid.username.exists");
+            request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
+            request.setAttribute(USER, user);
+            request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
             return Paths.SIGNUP_JSP;
         }
 

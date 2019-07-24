@@ -9,29 +9,31 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th><fmt:message key="user.username"/></th>
-                        <th><fmt:message key="user.email"/></th>
                         <th><fmt:message key="user.lastName"/></th>
                         <th><fmt:message key="user.firstName"/></th>
+                        <th><fmt:message key="user.email"/></th>
+                        <th><fmt:message key="user.username"/></th>
                         <th><fmt:message key="user.speciality.name"/></th>
                         <th><fmt:message key="userList.link.grades"/></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${userList}" var="user">
+                    <c:forEach items="${users}" var="user">
                         <tr>
-                            <td>${user.username}</td>
-                            <td>${user.email}</td>
                             <td>${user.lastName}</td>
                             <td>${user.firstName}</td>
+                            <td>${user.email}</td>
+                            <td>${user.username}</td>
                             <td>
-                                <c:choose>
-                                    <c:when test="${!empty user.speciality}">${user.speciality.name}</c:when>
-                                    <c:otherwise>---</c:otherwise>
-                                </c:choose>
+<%--                                <c:choose>--%>
+<%--                                    <c:when test="${!empty user.speciality}">${user.speciality.name}</c:when>--%>
+<%--                                    <c:otherwise>---</c:otherwise>--%>
+<%--                                </c:choose>--%>
                             </td>
                             <td>
-                                <a href="/users/${user.id}/grades" class="badge badge-warning">grades</a>
+                                <a href="/users/${user.id}/grades" class="badge badge-warning">
+                                    <fmt:message key="userList.link.grades"/>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>

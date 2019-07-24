@@ -1,11 +1,10 @@
 package ua.training.admission.security;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.view.Messages;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import static ua.training.admission.view.LogMessages.ERROR_ENCRYPT_ALGORITHM;
 
 /**
  * EncryptPassword
@@ -43,7 +42,7 @@ public class EncryptPassword {
             }
             generatedPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
-            LOG.error(ERROR_ENCRYPT_ALGORITHM);
+            LOG.error(Messages.ERROR_ENCRYPT_ALGORITHM);
             throw new RuntimeException(e);
         }
         return generatedPassword;

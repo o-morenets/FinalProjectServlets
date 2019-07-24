@@ -3,6 +3,7 @@ package ua.training.admission.controller.command;
 import ua.training.admission.controller.exception.AppException;
 import org.apache.log4j.Logger;
 import ua.training.admission.view.Attributes;
+import ua.training.admission.view.Messages;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,6 @@ import java.io.IOException;
  */
 public abstract class CommandWrapper implements Command {
 
-    private static final Object ERROR = "error";
     private static final Logger LOG = Logger.getLogger(CommandWrapper.class);
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public abstract class CommandWrapper implements Command {
         } catch (AppException e) {
             System.out.println(e.getCause().toString());
             LOG.error(e);
-            request.setAttribute(Attributes.PAGE_TITLE, ERROR);
+            request.setAttribute(Attributes.PAGE_TITLE, Messages.ERROR);
             throw e;
         }
     }

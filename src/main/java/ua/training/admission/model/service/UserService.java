@@ -7,8 +7,11 @@ import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
 import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.User;
+import ua.training.admission.view.Messages;
+import ua.training.admission.view.SQL;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,11 +20,11 @@ import java.util.Optional;
 public class UserService {
 
     private static final Logger LOG = Logger.getLogger(UserService.class);
-    private static final int SQL_CONSTRAINT_NOT_UNIQUE = 1062;
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {
+
         static final UserService INSTANCE = new UserService();
     }
 
@@ -29,18 +32,16 @@ public class UserService {
         return Holder.INSTANCE;
     }
 
-    /* Service methods */
-
     public Optional<User> login(String username, String password) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.getUserByUsername(username)
+            return userDao.findByUsername(username)
                     .filter(staff -> password.equals(staff.getPassword()));
         }
     }
 
-    public Optional<User> getUserById(int Id) {
+    public Optional<User> findUserById(int Id) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
@@ -61,13 +62,20 @@ public class UserService {
                 errorCode = sqlException.getErrorCode();
             }
 
-            if (errorCode == SQL_CONSTRAINT_NOT_UNIQUE) {
-                LOG.warn("User already exists");
+            if (errorCode == SQL.SQL_CONSTRAINT_NOT_UNIQUE) {
+                LOG.warn(Messages.USER_ALREADY_EXISTS);
 
-                throw new NotUniqueUsernameException("User already exists");
+                throw new NotUniqueUsernameException(Messages.USER_ALREADY_EXISTS);
             }
 
             throw ex;
+        }
+    }
+
+    public List<User> findAllUsersByRole(User.Role role) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+            return userDao.findAllByRole(role);
         }
     }
 }

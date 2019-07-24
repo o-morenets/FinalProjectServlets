@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.DaoConnection;
-import ua.training.admission.view.Errors;
+import ua.training.admission.view.Messages;
 
 /**
  * JdbcDaoConnection
@@ -32,7 +32,7 @@ public class JdbcDaoConnection implements DaoConnection {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 
@@ -42,7 +42,7 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.setAutoCommit(false);
             inTransaction = true;
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 
@@ -52,7 +52,7 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.commit();
             inTransaction = false;
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 
@@ -62,7 +62,7 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.rollback();
             inTransaction = false;
         } catch (SQLException e) {
-            throw new AppException(Errors.SQL_ERROR, e);
+            throw new AppException(Messages.SQL_ERROR, e);
         }
     }
 }
