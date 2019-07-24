@@ -14,15 +14,18 @@
                 <a class="nav-link" href=".${Paths.HOME}"><fmt:message key="admission.homePage"/></a>
             </li>
             <c:if test="${!empty principal}">
-                <%--            <#if isAdmin>--%>
-                <li class="nav-item">
-                    <a class="nav-link" href=".${Paths.USERS}"><fmt:message key="menu.admin.grades"/></a>
-                </li>
-                <%--            <#else>--%>
-                <li class="nav-item">
-                    <a class="nav-link" href=".${Paths.USER_PROFILE}"><fmt:message key="menu.user.profile"/></a>
-                </li>
-                <%--        </#if>--%>
+                <c:choose>
+                    <c:when test="${isAdmin}">
+                        <li class="nav-item">
+                            <a class="nav-link" href=".${Paths.USERS}"><fmt:message key="menu.admin.grades"/></a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item">
+                            <a class="nav-link" href=".${Paths.USER_PROFILE}"><fmt:message key="menu.user.profile"/></a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </c:if>
         </ul>
 
@@ -41,7 +44,8 @@
                         <a class="nav-link" href=".${Paths.SIGNUP}"><fmt:message key="menu.signup"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary" href=".${Paths.LOGIN}" role="button"><fmt:message key="menu.login"/></a>
+                        <a class="btn btn-primary" href=".${Paths.LOGIN}" role="button"><fmt:message
+                                key="menu.login"/></a>
                     </li>
                 </ul>
             </c:otherwise>

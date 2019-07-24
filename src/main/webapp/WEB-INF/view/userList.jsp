@@ -18,22 +18,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${users}" var="user">
+                    <c:forEach items="${requestScope[Attributes.USERS]}" var="user">
                         <tr>
                             <td>${user.lastName}</td>
                             <td>${user.firstName}</td>
                             <td>${user.email}</td>
                             <td>${user.username}</td>
                             <td>
-<%--                                <c:choose>--%>
-<%--                                    <c:when test="${!empty user.speciality}">${user.speciality.name}</c:when>--%>
-<%--                                    <c:otherwise>---</c:otherwise>--%>
-<%--                                </c:choose>--%>
+                                <c:choose>
+                                    <c:when test="${!empty user.speciality}">${user.speciality.name}</c:when>
+                                    <c:otherwise>-<fmt:message key="user.speciality.notSelected"/>-</c:otherwise>
+                                </c:choose>
                             </td>
                             <td>
-                                <a href="/users/${user.id}/grades" class="badge badge-warning">
-                                    <fmt:message key="userList.link.grades"/>
-                                </a>
+                                <c:if test="${!empty user.speciality}">
+                                    <a href="/users/${user.id}/grades" class="badge badge-warning">
+                                        <fmt:message key="userList.link.grades"/>
+                                    </a>
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>

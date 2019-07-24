@@ -7,12 +7,13 @@ import java.util.Objects;
  */
 public class User {
 
-	private int id;
+	private Long id;
 	private String username;
 	private String password;
 	private String email;
 	private String firstName;
 	private String lastName;
+	private Speciality speciality;
 	private Role role;
 
 	public enum Role {
@@ -22,15 +23,16 @@ public class User {
 	}
 
 	public static class Builder {
-		private int id;
+		private Long id;
 		private String username;
 		private String password;
 		private String email;
 		private String firstName;
 		private String lastName;
+		private Speciality speciality;
 		private Role role;
 
-		public Builder setId(int id) {
+		public Builder id(Long id) {
 			this.id = id;
 			return this;
 		}
@@ -60,6 +62,11 @@ public class User {
 			return this;
 		}
 
+		public Builder speciality(Speciality speciality) {
+			this.speciality = speciality;
+			return this;
+		}
+
 		public Builder role(Role role) {
 			this.role = role;
 			return this;
@@ -73,6 +80,7 @@ public class User {
 			user.setEmail(email);
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
+			user.setSpeciality(speciality);
 			user.setRole(role);
 
 			return user;
@@ -83,11 +91,11 @@ public class User {
 		return new Builder();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -131,43 +139,19 @@ public class User {
 		this.lastName = lastNname;
 	}
 
+	public Speciality getSpeciality() {
+		return speciality;
+	}
+
+	public void setSpeciality(Speciality speciality) {
+		this.speciality = speciality;
+	}
+
 	public Role getRole() {
 		return role;
 	}
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		User user = (User) o;
-		return id == user.id &&
-				Objects.equals(username, user.username) &&
-				Objects.equals(password, user.password) &&
-				Objects.equals(email, user.email) &&
-				Objects.equals(firstName, user.firstName) &&
-				Objects.equals(lastName, user.lastName) &&
-				role == user.role;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, username, password, email, firstName, lastName, role);
-	}
-
-	@Override
-	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", username='" + username + '\'' +
-				", password='" + password + '\'' +
-				", email='" + email + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", role=" + role +
-				'}';
 	}
 }

@@ -20,7 +20,6 @@ import java.util.Optional;
 public class UserService {
 
     private static final Logger LOG = Logger.getLogger(UserService.class);
-
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {

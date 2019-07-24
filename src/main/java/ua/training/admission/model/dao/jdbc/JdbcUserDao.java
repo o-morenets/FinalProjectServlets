@@ -1,22 +1,25 @@
 package ua.training.admission.model.dao.jdbc;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
+import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Messages;
+import ua.training.admission.view.SQL;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static ua.training.admission.view.SQL.*;
-
 /**
  * JdbcUserDao
  */
 public class JdbcUserDao implements UserDao {
 
+    private static final Logger LOG = Logger.getLogger(JdbcUserDao.class);
     private Connection connection;
 
     JdbcUserDao(Connection connection) {
@@ -26,7 +29,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findById(int id) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(SELECT_USER_BY_ID)) {
+        try (PreparedStatement query = connection.prepareStatement(SQL.SELECT_USER_BY_ID)) {
             query.setString(1, String.valueOf(id));
             ResultSet resultSet = query.executeQuery();
             if (resultSet.next()) {
@@ -47,7 +50,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public void create(User user) {
         try (PreparedStatement query = connection.prepareStatement(
-                INSERT_INTO_USER, Statement.RETURN_GENERATED_KEYS)) {
+                SQL.INSERT_INTO_USER, Statement.RETURN_GENERATED_KEYS)) {
 
             query.setString(1, user.getUsername());
             query.setString(2, user.getPassword());
@@ -59,7 +62,7 @@ public class JdbcUserDao implements UserDao {
             ResultSet keys = query.getGeneratedKeys();
 
             if (keys.next()) {
-                user.setId(keys.getInt(1));
+                user.setId(keys.getLong(1));
             }
         } catch (SQLException e) {
             throw new AppException(Messages.SQL_ERROR, e);
@@ -79,7 +82,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findByUsername(String username) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement stmt = connection.prepareStatement(SELECT_USER_BY_USERNAME)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USER_BY_USERNAME)) {
             stmt.setString(1, username.toLowerCase());
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -98,13 +101,24 @@ public class JdbcUserDao implements UserDao {
     public List<User> findAllByRole(User.Role role) {
         List<User> result = new ArrayList<>();
 
-        try (PreparedStatement stmt = connection.prepareStatement(SELECT_USERS_BY_ROLE)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USERS_BY_ROLE)) {
+
+            LOG.debug(SQL.SELECT_USERS_BY_ROLE);
+
             stmt.setString(1, role.name());
 
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                result.add(getEntityFromResultSet(resultSet));
+                final User user = getEntityFromResultSet(resultSet);
+                final long specialityId = resultSet.getLong(SQL.SPECIALITY_ID);
+                if (specialityId > 0) {
+                    user.setSpeciality(Speciality.builder()
+                            .id(specialityId)
+                            .name(resultSet.getString(SQL.NAME))
+                            .build());
+                }
+                result.add(user);
             }
 
         } catch (SQLException e) {
@@ -116,13 +130,13 @@ public class JdbcUserDao implements UserDao {
 
     private User getEntityFromResultSet(ResultSet rs) throws SQLException {
         return new User.Builder()
-                .setId(rs.getInt(ID))
-                .username(rs.getString(USERNAME))
-                .password(rs.getString(PASSWORD))
-                .email(rs.getString(EMAIL))
-                .firstName(rs.getString(FIRST_NAME))
-                .lastName(rs.getString(LAST_NAME))
-                .role(User.Role.valueOf(rs.getString(ROLE)))
+                .id(rs.getLong(SQL.ID))
+                .username(rs.getString(SQL.USERNAME))
+                .password(rs.getString(SQL.PASSWORD))
+                .email(rs.getString(SQL.EMAIL))
+                .firstName(rs.getString(SQL.FIRST_NAME))
+                .lastName(rs.getString(SQL.LAST_NAME))
+                .role(User.Role.valueOf(rs.getString(SQL.ROLE)))
                 .build();
     }
 }

@@ -8,10 +8,10 @@
         <li class="nav-item">
             <c:choose>
                 <c:when test="${locale.locale == sessionScope[Attributes.USER_LOCALE]}">
-                    <a class="nav-link disabled" href="?${Parameters.USER_LOCALE}=${locale.param}">${locale}</a>
+                    <a class="nav-link disabled" href="?${Parameters.USER_LOCALE}=${locale.key}">${locale}</a>
                 </c:when>
                 <c:otherwise>
-                    <a class="nav-link active" href="?${Parameters.USER_LOCALE}=${locale.param}">${locale}</a>
+                    <a class="nav-link active" href="?${Parameters.USER_LOCALE}=${locale.key}">${locale}</a>
                 </c:otherwise>
             </c:choose>
         </li>

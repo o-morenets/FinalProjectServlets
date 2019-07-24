@@ -26,7 +26,6 @@ import ua.training.admission.view.TextConstants;
 public class MainController extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(MainController.class);
-
     private CommandHolder commandHolder;
 
     public MainController() {

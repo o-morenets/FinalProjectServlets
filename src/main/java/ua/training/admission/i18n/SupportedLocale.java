@@ -6,24 +6,24 @@ import java.util.Locale;
  * SupportedLocale
  */
 public enum SupportedLocale {
-    UA (new Locale("uk", "UA"), "ua"),
-    EN (new Locale("en", "EN"), "en");
+    UA ("ua", new Locale("uk", "UA")),
+    EN ("en", new Locale("en", "EN"));
 
     private final Locale locale;
-    private final String param;
-    private static final SupportedLocale DEFAULT_LOCALE = EN;
+    private final String key;
+    private static final SupportedLocale DEFAULT_LOCALE = UA;
 
-    SupportedLocale(Locale locale, String param) {
+    SupportedLocale(String key, Locale locale) {
         this.locale = locale;
-        this.param = param;
+        this.key = key;
     }
 
     public Locale getLocale() {
         return locale;
     }
 
-    public String getParam() {
-        return param;
+    public String getKey() {
+        return key;
     }
 
     public static Locale getDefault() {

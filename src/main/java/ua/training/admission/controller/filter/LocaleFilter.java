@@ -49,7 +49,7 @@ public class LocaleFilter implements Filter {
         if (userLocale != null) {
             Locale locale = SupportedLocale.getDefault();
             for (SupportedLocale loc : SupportedLocale.values()) {
-                if (loc.getParam().equals(userLocale)) {
+                if (loc.getKey().equals(userLocale)) {
                     locale = loc.getLocale();
                     break;
                 }
@@ -63,9 +63,9 @@ public class LocaleFilter implements Filter {
         Locale locale = null;
         Locale requestLocale = request.getLocale();
         if (requestLocale != null) {
-            for (SupportedLocale loc : SupportedLocale.values()) {
-                if (loc.getLocale().toString().equals(requestLocale.toString())) {
-                    locale = loc.getLocale();
+            for (SupportedLocale supportedLocale : SupportedLocale.values()) {
+                if (supportedLocale.getLocale().toString().equals(requestLocale.toString())) {
+                    locale = supportedLocale.getLocale();
                     break;
                 }
             }
