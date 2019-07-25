@@ -40,7 +40,7 @@ public class UserService {
         }
     }
 
-    public Optional<User> findUserById(int Id) {
+    public Optional<User> findById(Long Id) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
@@ -48,7 +48,7 @@ public class UserService {
         }
     }
 
-    public void createUser(User user) {
+    public void create(User user) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             userDao.create(user);
@@ -71,7 +71,7 @@ public class UserService {
         }
     }
 
-    public List<User> findAllUsersByRole(User.Role role) {
+    public List<User> findAllByRole(User.Role role) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             return userDao.findAllByRole(role);

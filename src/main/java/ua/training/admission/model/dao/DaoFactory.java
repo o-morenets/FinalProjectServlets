@@ -16,6 +16,9 @@ public abstract class DaoFactory {
     public abstract DaoConnection getConnection();
 
     public abstract UserDao createUserDao(DaoConnection connection);
+    public abstract SpecialityDao createSpecialityDao(DaoConnection connection);
+    public abstract SubjectDao createSubjectDao(DaoConnection connection);
+    public abstract SubjectGradeDao createSubjectGradeDao(DaoConnection connection);
 
 
     private static DaoFactory instance;
@@ -34,5 +37,4 @@ public abstract class DaoFactory {
         }
         return instance;
     }
-
 }

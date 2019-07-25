@@ -1,5 +1,4 @@
 <%@ page import="ua.training.admission.view.Paths" %>
-
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 
 <div class="row justify-content-center">

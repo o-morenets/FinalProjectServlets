@@ -22,7 +22,7 @@
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
-                            <a class="nav-link" href=".${Paths.USER_PROFILE}"><fmt:message key="menu.user.profile"/></a>
+                            <a class="nav-link" href=".${Paths.USERS_}${principal.id}/grades"><fmt:message key="menu.user.profile"/></a>
                         </li>
                     </c:otherwise>
                 </c:choose>

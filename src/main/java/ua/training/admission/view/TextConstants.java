@@ -13,6 +13,8 @@ public interface TextConstants {
     String TITLE_HOME = "title.home";
     String TITLE_FORM_LOGIN = "title.form.login";
     String TITLE_FORM_SIGNUP = "title.form.signup";
+    String TITLE_SPECIALITIES = "title.userSpeciality";
+    String TITLE_GRADES = "title.grades";
 
     /* Form validation messages */
     String FORM_INVALID_USERNAME_EMPTY = "form.invalid.username.empty";

@@ -23,7 +23,7 @@ public class UserListCommand extends CommandWrapper {
             throws ServletException, IOException {
 
         request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_HOME);
-        request.setAttribute(Attributes.USERS, userService.findAllUsersByRole(User.Role.USER));
+        request.setAttribute(Attributes.USERS, userService.findAllByRole(User.Role.USER));
 
         return Paths.USERLIST_JSP;
     }

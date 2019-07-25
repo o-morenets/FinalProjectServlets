@@ -6,4 +6,78 @@ public class SubjectGrade {
     private User user;
     private Subject subject;
     private int grade;
+
+    public static class Builder {
+
+        private Long id;
+        private User user;
+        private Subject subject;
+        private int grade;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Builder subject(Subject subject) {
+            this.subject = subject;
+            return this;
+        }
+
+        public Builder grade(int grade) {
+            this.grade = grade;
+            return this;
+        }
+
+        public SubjectGrade build() {
+            SubjectGrade subjectGrade = new SubjectGrade();
+            subjectGrade.setId(id);
+            subjectGrade.setUser(user);
+            subjectGrade.setSubject(subject);
+            subjectGrade.setGrade(grade);
+
+            return subjectGrade;
+        }
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
 }

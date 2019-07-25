@@ -91,7 +91,7 @@ public class SignupCommand extends CommandWrapper {
         }
 
         try {
-            userService.createUser(user);
+            userService.create(user);
             response.sendRedirect(request.getContextPath() + Paths.API_LOGIN);
 
         } catch (NotUniqueUsernameException ex) {

@@ -1,7 +1,5 @@
 package ua.training.admission.model.entity;
 
-import java.util.Objects;
-
 /**
  * User
  */
@@ -23,6 +21,7 @@ public class User {
 	}
 
 	public static class Builder {
+
 		private Long id;
 		private String username;
 		private String password;
@@ -52,13 +51,13 @@ public class User {
 			return this;
 		}
 
-		public Builder firstName(String firstNname) {
-			this.firstName = firstNname;
+		public Builder firstName(String firstName) {
+			this.firstName = firstName;
 			return this;
 		}
 
-		public Builder lastName(String lastNname) {
-			this.lastName = lastNname;
+		public Builder lastName(String lastName) {
+			this.lastName = lastName;
 			return this;
 		}
 
@@ -87,7 +86,7 @@ public class User {
 		}
 	}
 
-	public static User.Builder builder() {
+	public static Builder builder() {
 		return new Builder();
 	}
 

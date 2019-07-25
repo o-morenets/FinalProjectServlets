@@ -54,7 +54,7 @@ public class MainController extends HttpServlet {
         String commandKey = getCommandKey(request);
         LOG.debug(commandKey);
         Command command = commandHolder.getCommand(commandKey);
-        String viewPage = "";
+        String viewPage;
         viewPage = command.execute(request, response);
         if (!viewPage.equals(Paths.REDIRECTED)) {
             LOG.debug(Messages.FORWARD_TO + viewPage);
@@ -70,7 +70,9 @@ public class MainController extends HttpServlet {
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getRequestURI().replaceAll(".*" + Paths.API, "");
+        String path = request.getPathInfo()
+                .replaceAll(".*" + Paths.API, "")
+                .replaceAll("\\d.*", "");
         return method + TextConstants.COLON + path;
     }
 }
