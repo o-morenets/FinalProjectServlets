@@ -7,23 +7,26 @@ public final class Paths {
 
     public static final String REDIRECTED = "REDIRECTED";
 
-    /* Paths for Commands */
-    public static final String HOME = "/home";
-    public static final String LOGIN = "/login";
-    public static final String LOGOUT = "/logout";
-    public static final String SIGNUP = "/signup";
-    public static final String USERS = "/users";
-    public static final String USERS_ = USERS + "/";
-    public static final String USERS_SELECT_SPEC = "/selectSpec";
-    public static final String USERS_GRADES = "/grades";
-
     /* api */
     public static final String API = "/api";
-    public static final String API_LOGIN = API + LOGIN;
-    public static final String API_LOGIN_ERROR = API_LOGIN + "?error=true";
-    public static final String API_LOGIN_LOGOUT = API_LOGIN + "?logout=true";
-    public static final String API_LOGIN_AUTHORIZED = API_LOGIN + "?authorized=true";
-    public static final String API_HOME = API + HOME;
+
+    /* Paths for Commands */
+    public static final String HOME = API + "/home";
+    public static final String LOGIN = API + "/login";
+    public static final String LOGOUT = API + "/logout";
+    public static final String SIGNUP = API + "/signup";
+    public static final String USERS = API + "/users";
+    public static final String USERS_ = USERS + "/";
+    public static final String GRADES = "/grades";
+    public static final String USERS_GRADES = API + GRADES;
+    public static final String UPDATE_SPEC = "/updateSpec";
+    public static final String UPDATE_GRADES = "/updateGrades";
+    public static final String SELECT_SPEC = "/selectSpec";
+    public static final String USERS_SELECT_SPEC = API + SELECT_SPEC;
+
+    public static final String LOGIN_ERROR = LOGIN + "?error=true";
+    public static final String LOGIN_LOGOUT = LOGIN + "?logout=true";
+    public static final String LOGIN_AUTHORIZED = LOGIN + "?authorized=true";
 
     /* JSP */
     private static final String PREFIX = "/WEB-INF/view";
@@ -31,7 +34,7 @@ public final class Paths {
     public static final String LOGIN_JSP = PREFIX + "/login.jsp";
     public static final String SIGNUP_JSP = PREFIX + "/signup.jsp";
     public static final String USERLIST_JSP = PREFIX + "/userList.jsp";
-    public static final String USER_SPECIALITY_JSP = "/userSpeciality.jsp";
-    public static final String PAGE_404 = PREFIX + "/404.jsp";
-    public static final String USER_GRADES_JSP = "/userGrades.jsp";
+    public static final String USER_SPECIALITY_JSP = PREFIX + "/userSpeciality.jsp";
+    public static final String USER_GRADES_JSP = PREFIX + "/userGrades.jsp";
+    public static final String PAGE_404_JSP = PREFIX + "/404.jsp";
 }

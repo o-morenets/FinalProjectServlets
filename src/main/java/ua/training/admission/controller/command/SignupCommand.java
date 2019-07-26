@@ -92,7 +92,7 @@ public class SignupCommand extends CommandWrapper {
 
         try {
             userService.create(user);
-            response.sendRedirect(request.getContextPath() + Paths.API_LOGIN);
+            response.sendRedirect(request.getContextPath() + Paths.LOGIN);
 
         } catch (NotUniqueUsernameException ex) {
             request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);

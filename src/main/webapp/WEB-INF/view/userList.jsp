@@ -31,8 +31,8 @@
                             </td>
                             <td>
                                 <c:if test="${!empty user.speciality}">
-                                    <a href="/users/${user.id}/grades" class="badge badge-warning">
-                                        <fmt:message key="userList.link.grades"/>
+                                    <a href="${pageContext.request.contextPath}${Paths.USERS_}${user.id}${Paths.GRADES}"
+                                       class="badge badge-warning"><fmt:message key="userList.link.grades"/>
                                     </a>
                                 </c:if>
                             </td>

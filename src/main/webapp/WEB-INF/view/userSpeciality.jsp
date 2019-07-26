@@ -1,8 +1,9 @@
+<%@ page import="ua.training.admission.view.Paths" %>
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 
 ${user.lastName} - <fmt:message key="selectSpec.selectSpeciality"/>
 
-<form action="/users/updateSpec" method="post">
+<form action="${pageContext.request.contextPath}${Paths.USERS_}${Paths.UPDATE_SPEC}" method="post">
     <div class="form-check">
         <input class="form-check-input" type="radio" name="specRadios" value="-1" id="spec_none" checked>
         <label class="form-check-label" for="spec_none">
@@ -19,7 +20,7 @@ ${user.lastName} - <fmt:message key="selectSpec.selectSpeciality"/>
         </div>
     </c:forEach>
     <input type="hidden" name="userId" value="${user.id}"/>
-    <button type="submit"><@s.message "button.save"/></button>
+    <button type="submit"><fmt:message key="button.save"/></button>
 </form>
 
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

@@ -1,5 +1,8 @@
 package ua.training.admission.controller.command;
 
+import ua.training.admission.view.Attributes;
+import ua.training.admission.view.Paths;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +12,8 @@ public class UserCommand extends CommandWrapper {
 
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return request.getPathInfo().replaceAll(".*\\d+", "");
+        request.setAttribute(Attributes.USER_ID, request.getPathInfo().replaceAll("\\D+", ""));
+
+        return Paths.API + request.getPathInfo().replaceAll(".*\\d+", "");
     }
 }

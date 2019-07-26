@@ -37,7 +37,13 @@ public interface SQL {
     String SELECT_USER_BY_USERNAME =
             "SELECT * FROM " + TABLE_USER + " WHERE lower(" + USER_USERNAME + ") = ?";
     String SELECT_USER_BY_ID =
-            "SELECT * FROM " + TABLE_USER + " WHERE " + USER_ID + " = ?";
+            "SELECT " + TABLE_USER + "." + USER_ID +  ", " + USER_USERNAME + ", " + USER_PASSWORD +
+                    ", " + USER_EMAIL + ", " + USER_ROLE + ", " + USER_FIRST_NAME +
+                    ", " + USER_LAST_NAME + ", " + USER_SPECIALITY_ID + ", " + SPECIALITY_NAME +
+                    " FROM " + TABLE_USER +
+                    " LEFT JOIN " + TABLE_SPECIALITY +
+                    " ON " + TABLE_USER + "." + USER_SPECIALITY_ID + " = " + TABLE_SPECIALITY + "." + SPECIALITY_ID +
+                    " WHERE " + TABLE_USER + "." + USER_ID + " = ?";
     String INSERT_INTO_USER =
             "INSERT INTO " + TABLE_USER +
             " (" + USER_USERNAME + ", " + USER_PASSWORD + ", " + USER_EMAIL +

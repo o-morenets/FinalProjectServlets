@@ -39,7 +39,7 @@ public class CommandHolder {
     public Command getCommand(String key) {
         return commands.getOrDefault(key, (request, response) -> {
             request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_HOME);
-            response.sendRedirect(request.getContextPath() + Paths.PAGE_404);
+            response.sendRedirect(request.getContextPath() + Paths.PAGE_404_JSP);
             return Paths.REDIRECTED;
         });
     }

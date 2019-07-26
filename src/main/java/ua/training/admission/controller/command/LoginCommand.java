@@ -34,15 +34,15 @@ public class LoginCommand extends CommandWrapper {
             if (user.isPresent()) {
                 final User usr = user.get();
                 if (CommandUtils.checkUserIsLogged(request, usr.getUsername())) {
-                    response.sendRedirect(contextPath + Paths.API_LOGIN_AUTHORIZED);
+                    response.sendRedirect(contextPath + Paths.LOGIN_AUTHORIZED);
                 } else {
                     CommandUtils.setUserRole(request, usr.getRole(), usr.getUsername());
                     request.getSession().setAttribute(Attributes.PRINCIPAL, usr);
-                    response.sendRedirect(contextPath + Paths.API_HOME);
+                    response.sendRedirect(contextPath + Paths.HOME);
                 }
             } else {
                 CommandUtils.setUserRole(request, User.Role.GUEST, "Guest");
-                response.sendRedirect(contextPath + Paths.API_LOGIN_ERROR);
+                response.sendRedirect(contextPath + Paths.LOGIN_ERROR);
             }
         }
 

@@ -63,16 +63,16 @@ public class MainController extends HttpServlet {
     }
 
     /**
-     * Detect GET or POST command
+     * Detect GET or POST method and return appropriate command
      *
      * @param request http request
      * @return {GET|POST}:{URL}
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getPathInfo()
-                .replaceAll(".*" + Paths.API, "")
+        String path = request.getServletPath() + request.getPathInfo()
                 .replaceAll("\\d.*", "");
+        LOG.debug("path: " + path);
         return method + TextConstants.COLON + path;
     }
 }

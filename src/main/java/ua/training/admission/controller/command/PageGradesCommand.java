@@ -1,5 +1,6 @@
 package ua.training.admission.controller.command;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.SubjectGradeService;
 import ua.training.admission.model.service.UserService;
@@ -15,13 +16,15 @@ import java.util.Optional;
 
 public class PageGradesCommand extends CommandWrapper {
 
+    private static final Logger LOG = Logger.getLogger(UserService.class);
     private SubjectGradeService subjectGradeService = SubjectGradeService.getInstance();
     private UserService userService = UserService.getInstance();
 
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long userId = Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
+        Long userId = Long.valueOf((String) request.getAttribute(Attributes.USER_ID));
         final Optional<User> user = userService.findById(userId);
+        LOG.debug(user);
         user.ifPresent(usr -> {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute("userSubjectGradeList", subjectGradeService.getUserSubjectGradeList(usr));

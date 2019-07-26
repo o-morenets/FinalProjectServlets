@@ -33,7 +33,7 @@
 
         <div class="row">
             <div class="col">
-                <form class="needs-validation" novalidate action=".${Paths.LOGIN}" method="post">
+                <form class="needs-validation" novalidate action="${pageContext.request.contextPath}${Paths.LOGIN}" method="post">
                     <div class="form-group-row">
                         <label class="control-label"
                                for="inputUsername"><fmt:message key="user.username"/></label>
@@ -77,7 +77,7 @@
                                     </label>
                                 </div>
                                 <div class="col-md-5 mt-2">
-                                    <p class="text-right"><a href=".${Paths.SIGNUP}">
+                                    <p class="text-right"><a href="${Paths.SIGNUP}">
                                         <fmt:message key="form.control.signup"/></a></p>
                                 </div>
                             </div>
