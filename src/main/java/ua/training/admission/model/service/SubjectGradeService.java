@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SubjectGradeService {
 
-    private static final Logger LOG = Logger.getLogger(SubjectGradeService.class);
+    private static final Logger log = Logger.getLogger(SubjectGradeService.class);
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {

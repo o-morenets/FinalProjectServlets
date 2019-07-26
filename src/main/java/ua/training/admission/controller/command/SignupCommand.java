@@ -5,6 +5,7 @@ import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.security.EncryptPassword;
+import ua.training.admission.view.Messages;
 import ua.training.admission.view.Paths;
 
 import javax.servlet.ServletException;
@@ -14,11 +15,11 @@ import java.io.IOException;
 
 import static ua.training.admission.view.Attributes.*;
 import static ua.training.admission.view.Parameters.*;
-import static ua.training.admission.view.TextConstants.*;
+import static ua.training.admission.view.I18n.*;
 
 public class SignupCommand extends CommandWrapper {
 
-    private static final Logger LOG = Logger.getLogger(SignupCommand.class);
+    private static final Logger log = Logger.getLogger(SignupCommand.class);
     private UserService userService = UserService.getInstance();
 
     @Override
@@ -95,9 +96,11 @@ public class SignupCommand extends CommandWrapper {
             response.sendRedirect(request.getContextPath() + Paths.LOGIN);
 
         } catch (NotUniqueUsernameException e) {
+            log.warn(Messages.USER_ALREADY_EXISTS);
             request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
             request.setAttribute(USER, user);
             request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
+
             return Paths.SIGNUP_JSP;
         }
 

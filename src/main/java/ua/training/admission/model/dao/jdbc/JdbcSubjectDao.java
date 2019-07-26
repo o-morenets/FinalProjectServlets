@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class JdbcSubjectDao implements SubjectDao {
 
-    private static final Logger LOG = Logger.getLogger(JdbcSubjectDao.class);
+    private static final Logger log = Logger.getLogger(JdbcSubjectDao.class);
     private Connection connection;
 
     JdbcSubjectDao(Connection connection) {

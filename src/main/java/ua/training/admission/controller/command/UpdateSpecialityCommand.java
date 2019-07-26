@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class UpdateSpecialityCommand extends CommandWrapper {
 
-    private static final Logger LOG = Logger.getLogger(UpdateSpecialityCommand.class);
+    private static final Logger log = Logger.getLogger(UpdateSpecialityCommand.class);
     private UserService userService = UserService.getInstance();
 
     @Override

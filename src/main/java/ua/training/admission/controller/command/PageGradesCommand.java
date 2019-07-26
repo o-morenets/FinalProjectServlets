@@ -6,7 +6,7 @@ import ua.training.admission.model.service.SubjectGradeService;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.I18n;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class PageGradesCommand extends CommandWrapper {
 
-    private static final Logger LOG = Logger.getLogger(UserService.class);
+    private static final Logger log = Logger.getLogger(UserService.class);
     private SubjectGradeService subjectGradeService = SubjectGradeService.getInstance();
     private UserService userService = UserService.getInstance();
 
@@ -28,7 +28,7 @@ public class PageGradesCommand extends CommandWrapper {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(usr));
         });
-        request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_GRADES);
+        request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_GRADES);
 
         return Paths.USER_GRADES_JSP;
     }

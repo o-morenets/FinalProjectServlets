@@ -18,7 +18,7 @@ import java.io.IOException;
 @WebFilter("/*")
 public class AuthFilter implements Filter {
 
-    private static final Logger LOG = Logger.getLogger(AuthFilter.class);
+    private static final Logger log = Logger.getLogger(AuthFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -35,10 +35,10 @@ public class AuthFilter implements Filter {
 
         HttpSession session = req.getSession();
         ServletContext context = request.getServletContext();
-        LOG.debug(session);
-        LOG.debug(session.getAttribute(Attributes.ROLE));
-        LOG.debug(context.getAttribute(Attributes.LOGGED_USERS));
-        LOG.debug("*** Current user: " + session.getAttribute(Attributes.PRINCIPAL));
+        log.debug(session);
+        log.debug(session.getAttribute(Attributes.ROLE));
+        log.debug(context.getAttribute(Attributes.LOGGED_USERS));
+        log.debug("*** Current user: " + session.getAttribute(Attributes.PRINCIPAL));
 
         filterChain.doFilter(request,response);
     }

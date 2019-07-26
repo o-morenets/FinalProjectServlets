@@ -19,7 +19,7 @@ import java.util.Optional;
 
 public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
-    private static final Logger LOG = Logger.getLogger(JdbcSubjectGradeDao.class);
+    private static final Logger log = Logger.getLogger(JdbcSubjectGradeDao.class);
     private Connection connection;
 
     JdbcSubjectGradeDao(Connection connection) {
@@ -65,7 +65,8 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
             }
 
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
         return result;

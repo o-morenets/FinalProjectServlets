@@ -2,7 +2,6 @@ package ua.training.admission.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
-import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
@@ -19,7 +18,7 @@ import java.util.Optional;
  */
 public class JdbcUserDao implements UserDao {
 
-    private static final Logger LOG = Logger.getLogger(JdbcUserDao.class);
+    private static final Logger log = Logger.getLogger(JdbcUserDao.class);
     private Connection connection;
 
     JdbcUserDao(Connection connection) {
@@ -38,7 +37,8 @@ public class JdbcUserDao implements UserDao {
                 result = Optional.of(user);
             }
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
         return result;
     }
@@ -66,7 +66,8 @@ public class JdbcUserDao implements UserDao {
                 user.setId(keys.getLong(1));
             }
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
     }
 
@@ -82,7 +83,8 @@ public class JdbcUserDao implements UserDao {
             stmt.setLong(2, user.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
     }
 
@@ -103,7 +105,8 @@ public class JdbcUserDao implements UserDao {
             }
 
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
         return result;
@@ -124,7 +127,8 @@ public class JdbcUserDao implements UserDao {
             }
 
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
         return result;

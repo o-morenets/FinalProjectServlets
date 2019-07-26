@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class LoginCommand extends CommandWrapper {
 
-    private static final Logger LOG = Logger.getLogger(LoginCommand.class);
+    private static final Logger log = Logger.getLogger(LoginCommand.class);
     private UserService userService = UserService.getInstance();
 
     @Override

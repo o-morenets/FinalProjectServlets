@@ -1,6 +1,7 @@
 package ua.training.admission.controller.filter;
 
 import ua.training.admission.view.Parameters;
+import ua.training.admission.view.I18n;
 import ua.training.admission.view.TextConstants;
 
 import javax.servlet.*;

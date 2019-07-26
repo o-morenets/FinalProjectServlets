@@ -21,7 +21,7 @@ import java.util.Optional;
  */
 public class UserService {
 
-    private static final Logger LOG = Logger.getLogger(UserService.class);
+    private static final Logger log = Logger.getLogger(UserService.class);
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {
@@ -64,7 +64,6 @@ public class UserService {
             }
 
             if (errorCode == SQL.SQL_CONSTRAINT_NOT_UNIQUE) {
-                LOG.warn(Messages.USER_ALREADY_EXISTS);
                 throw new NotUniqueUsernameException(Messages.USER_ALREADY_EXISTS);
             }
 

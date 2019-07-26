@@ -1,5 +1,6 @@
 package ua.training.admission.model.dao.jdbc;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.*;
 import ua.training.admission.view.Config;
@@ -17,6 +18,8 @@ import java.sql.SQLException;
  */
 public class JdbcDaoFactory extends DaoFactory {
 
+    private static final Logger log = Logger.getLogger(JdbcDaoFactory.class);
+
     private DataSource dataSource;
 
     public JdbcDaoFactory() {
@@ -24,6 +27,7 @@ public class JdbcDaoFactory extends DaoFactory {
             InitialContext ic = new InitialContext();
             dataSource = (DataSource) ic.lookup(Config.JAVA_COMP_ENV_JDBC);
         } catch (NamingException e) {
+            log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.NAMING_EXCEPTION, e);
         }
     }
@@ -33,7 +37,8 @@ public class JdbcDaoFactory extends DaoFactory {
         try {
             return new JdbcDaoConnection(dataSource.getConnection());
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
     }
 
@@ -49,13 +54,6 @@ public class JdbcDaoFactory extends DaoFactory {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();
         return new JdbcSpecialityDao(sqlConnection);
-    }
-
-    @Override
-    public SubjectDao createSubjectDao(DaoConnection connection) {
-        JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
-        Connection sqlConnection = jdbcConnection.getConnection();
-        return new JdbcSubjectDao(sqlConnection);
     }
 
     @Override

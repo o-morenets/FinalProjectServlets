@@ -3,6 +3,7 @@ package ua.training.admission.model.dao.jdbc;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.view.Messages;
@@ -11,6 +12,8 @@ import ua.training.admission.view.Messages;
  * JdbcDaoConnection
  */
 public class JdbcDaoConnection implements DaoConnection {
+
+    private static final Logger log = Logger.getLogger(JdbcDaoConnection.class);
 
     private Connection connection;
     private boolean inTransaction = false;
@@ -32,7 +35,8 @@ public class JdbcDaoConnection implements DaoConnection {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION_CONNECTION_CLOSE, e);
+            throw new AppException(Messages.SQL_EXCEPTION_CONNECTION_CLOSE, e);
         }
     }
 
@@ -42,7 +46,8 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.setAutoCommit(false);
             inTransaction = true;
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION_TRANSACTION_BEGIN, e);
+            throw new AppException(Messages.SQL_EXCEPTION_TRANSACTION_BEGIN, e);
         }
     }
 
@@ -52,7 +57,8 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.commit();
             inTransaction = false;
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION_TRANSACTION_COMMIT, e);
+            throw new AppException(Messages.SQL_EXCEPTION_TRANSACTION_COMMIT, e);
         }
     }
 
@@ -62,7 +68,8 @@ public class JdbcDaoConnection implements DaoConnection {
             connection.rollback();
             inTransaction = false;
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION_TRANSACTION_ROLLBACK, e);
+            throw new AppException(Messages.SQL_EXCEPTION_TRANSACTION_ROLLBACK, e);
         }
     }
 }

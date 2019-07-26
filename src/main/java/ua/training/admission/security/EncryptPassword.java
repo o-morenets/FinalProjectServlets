@@ -13,7 +13,7 @@ public class EncryptPassword {
     /**
      * Logger for logging errors
      */
-    private static final Logger LOG = Logger.getLogger(EncryptPassword.class);
+    private static final Logger log = Logger.getLogger(EncryptPassword.class);
 
     /**
      * Algorithm name used for encryption
@@ -42,7 +42,7 @@ public class EncryptPassword {
             }
             generatedPassword = sb.toString();
         } catch (NoSuchAlgorithmException e) {
-            LOG.error(Messages.ERROR_ENCRYPT_ALGORITHM);
+            log.error(Messages.ERROR_ENCRYPT_ALGORITHM);
             throw new RuntimeException(e);
         }
         return generatedPassword;

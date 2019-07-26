@@ -1,5 +1,6 @@
 package ua.training.admission.model.dao;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.view.Config;
 import ua.training.admission.view.Messages;
@@ -17,10 +18,11 @@ public abstract class DaoFactory {
 
     public abstract UserDao createUserDao(DaoConnection connection);
     public abstract SpecialityDao createSpecialityDao(DaoConnection connection);
-    public abstract SubjectDao createSubjectDao(DaoConnection connection);
     public abstract SubjectGradeDao createSubjectGradeDao(DaoConnection connection);
 
     private static DaoFactory instance;
+
+    private static final Logger log = Logger.getLogger(DaoFactory.class);
 
     public static DaoFactory getInstance() {
         if (instance == null) {
@@ -31,6 +33,7 @@ public abstract class DaoFactory {
                 String factoryClass = dbProps.getProperty(Config.DB_FACTORY_CLASS);
                 instance = (DaoFactory) Class.forName(factoryClass).newInstance();
             } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+                log.error(Messages.DAO_FACTORY_EXCEPTION, e);
                 throw new AppException(Messages.DAO_FACTORY_EXCEPTION, e);
             }
         }

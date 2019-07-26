@@ -17,7 +17,7 @@ import java.util.Optional;
 
 public class JdbcSpecialityDao implements SpecialityDao {
 
-    private static final Logger LOG = Logger.getLogger(JdbcSpecialityDao.class);
+    private static final Logger log = Logger.getLogger(JdbcSpecialityDao.class);
     private Connection connection;
 
     JdbcSpecialityDao(Connection connection) {
@@ -35,7 +35,8 @@ public class JdbcSpecialityDao implements SpecialityDao {
                 result = Optional.of(speciality);
             }
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
         return result;
     }
@@ -52,7 +53,8 @@ public class JdbcSpecialityDao implements SpecialityDao {
             }
 
         } catch (SQLException e) {
-            throw new AppException(Messages.SQL_ERROR, e);
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
         return result;

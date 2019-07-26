@@ -14,10 +14,7 @@ import ua.training.admission.controller.command.*;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
-import ua.training.admission.view.Attributes;
-import ua.training.admission.view.Messages;
-import ua.training.admission.view.Paths;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.*;
 
 /**
  * Servlet implementation class MainController
@@ -25,7 +22,7 @@ import ua.training.admission.view.TextConstants;
 @WebServlet(Paths.API + "/*")
 public class MainController extends HttpServlet {
 
-    private static final Logger LOG = Logger.getLogger(MainController.class);
+    private static final Logger log = Logger.getLogger(MainController.class);
     private CommandHolder commandHolder;
 
     public MainController() {
@@ -52,12 +49,12 @@ public class MainController extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String commandKey = getCommandKey(request);
-        LOG.debug(commandKey);
+        log.debug(commandKey);
         Command command = commandHolder.getCommand(commandKey);
         String viewPage;
         viewPage = command.execute(request, response);
         if (!viewPage.equals(Paths.REDIRECTED)) {
-            LOG.debug(Messages.FORWARD_TO + viewPage);
+            log.debug("forward to: " + viewPage);
             request.getRequestDispatcher(viewPage).forward(request, response);
         }
     }
@@ -66,13 +63,12 @@ public class MainController extends HttpServlet {
      * Detect GET or POST method and return appropriate command
      *
      * @param request http request
-     * @return {GET|POST}:{URL}
+     * @return {GET|POST}:{URI}
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getServletPath() + request.getPathInfo()
-                .replaceAll("\\d.*", "");
-        LOG.debug("path: " + path);
+        String path = request.getServletPath() + request.getPathInfo().replaceAll("\\d.*", "");
+
         return method + TextConstants.COLON + path;
     }
 }

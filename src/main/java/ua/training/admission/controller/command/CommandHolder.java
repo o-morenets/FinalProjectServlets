@@ -1,8 +1,9 @@
 package ua.training.admission.controller.command;
 
 import ua.training.admission.view.Attributes;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.I18n;
 import ua.training.admission.view.Paths;
+import ua.training.admission.view.TextConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +34,14 @@ public class CommandHolder {
                 put(TextConstants.POST + Paths.LOGOUT, new LogoutCommand());
                 put(TextConstants.POST + Paths.SIGNUP, new SignupCommand());
                 put(TextConstants.POST + Paths.USERS_UPDATE_SPEC, new UpdateSpecialityCommand());
+                put(TextConstants.POST + Paths.USERS_UPDATE_GRADES, new UpdateGradesCommand());
             }
         };
     }
 
     public Command getCommand(String key) {
         return commands.getOrDefault(key, (request, response) -> {
-            request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_HOME);
+            request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_404);
             response.sendRedirect(request.getContextPath() + Paths.PAGE_404_JSP);
             return Paths.REDIRECTED;
         });

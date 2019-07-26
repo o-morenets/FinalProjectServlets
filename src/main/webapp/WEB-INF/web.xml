@@ -11,8 +11,18 @@
     </resource-ref>
 
     <welcome-file-list>
-        <welcome-file>api/home</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/view/errorPage/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/WEB-INF/view/errorPage/errorPage.jsp</location>
+    </error-page>
 
     <listener>
         <listener-class>

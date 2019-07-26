@@ -5,7 +5,7 @@ import ua.training.admission.model.service.SpecialityService;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.I18n;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class PageSpecialityCommand extends CommandWrapper {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute(Attributes.SPECIALITIES, specialityService.findAll());
         });
-        request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_SPECIALITIES);
+        request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_SPECIALITIES);
 
         return Paths.USER_SPECIALITY_JSP;
     }
