@@ -11,6 +11,7 @@ public final class Paths {
     public static final String API = "/api";
 
     /* Paths for Commands */
+    // GET
     public static final String HOME = API + "/home";
     public static final String LOGIN = API + "/login";
     public static final String LOGOUT = API + "/logout";
@@ -19,11 +20,12 @@ public final class Paths {
     public static final String USERS_ = USERS + "/";
     public static final String GRADES = "/grades";
     public static final String USERS_GRADES = API + GRADES;
-    public static final String UPDATE_SPEC = "/updateSpec";
-    public static final String UPDATE_GRADES = "/updateGrades";
-    public static final String SELECT_SPEC = "/selectSpec";
-    public static final String USERS_SELECT_SPEC = API + SELECT_SPEC;
-
+    public static final String SPEC = "/spec";
+    public static final String USERS_SELECT_SPEC = API + SPEC;
+    // POST
+    public static final String USERS_UPDATE_SPEC = USERS + "/updateSpec";
+    public static final String USERS_UPDATE_GRADES = USERS + "/updateGrades";
+    // ERRORS
     public static final String LOGIN_ERROR = LOGIN + "?error=true";
     public static final String LOGIN_LOGOUT = LOGIN + "?logout=true";
     public static final String LOGIN_AUTHORIZED = LOGIN + "?authorized=true";

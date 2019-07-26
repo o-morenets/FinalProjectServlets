@@ -5,14 +5,14 @@ public class SubjectGrade {
     private Long id;
     private User user;
     private Subject subject;
-    private int grade;
+    private Integer grade;
 
     public static class Builder {
 
         private Long id;
         private User user;
         private Subject subject;
-        private int grade;
+        private Integer grade;
 
         public Builder id(Long id) {
             this.id = id;
@@ -29,7 +29,7 @@ public class SubjectGrade {
             return this;
         }
 
-        public Builder grade(int grade) {
+        public Builder grade(Integer grade) {
             this.grade = grade;
             return this;
         }
@@ -73,11 +73,11 @@ public class SubjectGrade {
         this.subject = subject;
     }
 
-    public int getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 }

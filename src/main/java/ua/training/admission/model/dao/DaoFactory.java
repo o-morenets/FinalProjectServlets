@@ -20,7 +20,6 @@ public abstract class DaoFactory {
     public abstract SubjectDao createSubjectDao(DaoConnection connection);
     public abstract SubjectGradeDao createSubjectGradeDao(DaoConnection connection);
 
-
     private static DaoFactory instance;
 
     public static DaoFactory getInstance() {

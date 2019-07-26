@@ -1,7 +1,9 @@
 package ua.training.admission.model.service;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
+import ua.training.admission.model.dao.SubjectGradeDao;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 
@@ -22,7 +24,9 @@ public class SubjectGradeService {
     }
 
     public List<SubjectGrade> getUserSubjectGradeList(User user) {
-        // TODO
-        return null;
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
+            return subjectGradeDao.findAllUserSubjectGradeByUser(user);
+        }
     }
 }

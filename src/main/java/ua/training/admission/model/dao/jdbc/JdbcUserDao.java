@@ -2,6 +2,7 @@ package ua.training.admission.model.dao.jdbc;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
+import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
@@ -28,16 +29,16 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findById(Long id) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(SQL.SELECT_USER_BY_ID)) {
-            query.setString(1, String.valueOf(id));
-            ResultSet resultSet = query.executeQuery();
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USER_BY_ID)) {
+            stmt.setString(1, String.valueOf(id));
+            ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 User user = getEntityFromResultSet(resultSet);
                 setSpeciality(user, resultSet);
                 result = Optional.of(user);
             }
-        } catch (SQLException ex) {
-            throw new AppException(Messages.SQL_ERROR, ex);
+        } catch (SQLException e) {
+            throw new AppException(Messages.SQL_ERROR, e);
         }
         return result;
     }
@@ -49,17 +50,17 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void create(User user) {
-        try (PreparedStatement query = connection.prepareStatement(
+        try (PreparedStatement stmt = connection.prepareStatement(
                 SQL.INSERT_INTO_USER, Statement.RETURN_GENERATED_KEYS)) {
 
-            query.setString(1, user.getUsername());
-            query.setString(2, user.getPassword());
-            query.setString(3, user.getEmail());
-            query.setString(4, user.getFirstName());
-            query.setString(5, user.getLastName());
-            query.setString(6, User.Role.USER.name());
-            query.executeUpdate();
-            ResultSet keys = query.getGeneratedKeys();
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getEmail());
+            stmt.setString(4, user.getFirstName());
+            stmt.setString(5, user.getLastName());
+            stmt.setString(6, User.Role.USER.name());
+            stmt.executeUpdate();
+            ResultSet keys = stmt.getGeneratedKeys();
 
             if (keys.next()) {
                 user.setId(keys.getLong(1));
@@ -71,7 +72,18 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void update(User user) {
-        throw new UnsupportedOperationException();
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.UPDATE_USER)) {
+            if (user.getSpeciality() == null) {
+                stmt.setNull(1, Types.BIGINT);
+            } else {
+                final Long specId = user.getSpeciality().getId();
+                stmt.setLong(1, specId);
+            }
+            stmt.setLong(2, user.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new AppException(Messages.SQL_ERROR, e);
+        }
     }
 
     @Override
@@ -90,8 +102,8 @@ public class JdbcUserDao implements UserDao {
                 result = Optional.of(user);
             }
 
-        } catch (SQLException ex) {
-            throw new AppException(Messages.SQL_ERROR, ex);
+        } catch (SQLException e) {
+            throw new AppException(Messages.SQL_ERROR, e);
         }
 
         return result;
@@ -118,16 +130,6 @@ public class JdbcUserDao implements UserDao {
         return result;
     }
 
-    private void setSpeciality(User user, ResultSet resultSet) throws SQLException {
-        final long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
-        if (specialityId > 0) {
-            user.setSpeciality(Speciality.builder()
-                    .id(specialityId)
-                    .name(resultSet.getString(SQL.SPECIALITY_NAME))
-                    .build());
-        }
-    }
-
     private User getEntityFromResultSet(ResultSet rs) throws SQLException {
         return User.builder()
                 .id(rs.getLong(SQL.USER_ID))
@@ -138,5 +140,15 @@ public class JdbcUserDao implements UserDao {
                 .lastName(rs.getString(SQL.USER_LAST_NAME))
                 .role(User.Role.valueOf(rs.getString(SQL.USER_ROLE)))
                 .build();
+    }
+
+    private void setSpeciality(User user, ResultSet resultSet) throws SQLException {
+        final long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
+        if (specialityId > 0) {
+            user.setSpeciality(Speciality.builder()
+                    .id(specialityId)
+                    .name(resultSet.getString(SQL.SPECIALITY_NAME))
+                    .build());
+        }
     }
 }

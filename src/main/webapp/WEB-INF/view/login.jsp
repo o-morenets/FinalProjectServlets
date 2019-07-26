@@ -1,6 +1,6 @@
 <%@ page import="ua.training.admission.view.Paths" %>
-<%@ include file="/WEB-INF/view/parts/header.jsp" %>
 
+<%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
     <div class="col-6">
         <c:if test="${param.logout == true}">
@@ -30,7 +30,6 @@
                 </div>
             </div>
         </c:if>
-
         <div class="row">
             <div class="col">
                 <form class="needs-validation" novalidate action="${pageContext.request.contextPath}${Paths.LOGIN}" method="post">
@@ -50,7 +49,6 @@
                                    name="username">
                         </div>
                     </div>
-
                     <div class="form-group-row">
                         <label class="control-label"
                                for="inputPassword"><fmt:message key="user.password"/></label>
@@ -66,7 +64,6 @@
                                    name="password">
                         </div>
                     </div>
-
                     <div class="form-group-row">
                         <div class="col-sm-offset-2 col-12">
                             <div class="row justify-content-between">
@@ -83,7 +80,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group-row">
                         <div class="col-sm-offset-2 col-sm-6 mt-2">
                             <button id="btnSubmit" type="submit" class="btn btn-success">
@@ -95,5 +91,4 @@
             </div>
         </div>
     </div>
-
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

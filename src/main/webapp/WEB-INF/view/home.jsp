@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
-
 <div class="row">
     <div class="mx-auto">
         <h2>
@@ -7,5 +6,4 @@
         </h2>
     </div>
 </div>
-
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

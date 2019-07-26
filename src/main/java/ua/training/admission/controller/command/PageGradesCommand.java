@@ -24,10 +24,9 @@ public class PageGradesCommand extends CommandWrapper {
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long userId = Long.valueOf((String) request.getAttribute(Attributes.USER_ID));
         final Optional<User> user = userService.findById(userId);
-        LOG.debug(user);
         user.ifPresent(usr -> {
             request.setAttribute(Attributes.USER, usr);
-            request.setAttribute("userSubjectGradeList", subjectGradeService.getUserSubjectGradeList(usr));
+            request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(usr));
         });
         request.setAttribute(Attributes.PAGE_TITLE, TextConstants.TITLE_GRADES);
 

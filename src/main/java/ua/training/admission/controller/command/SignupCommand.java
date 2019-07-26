@@ -94,7 +94,7 @@ public class SignupCommand extends CommandWrapper {
             userService.create(user);
             response.sendRedirect(request.getContextPath() + Paths.LOGIN);
 
-        } catch (NotUniqueUsernameException ex) {
+        } catch (NotUniqueUsernameException e) {
             request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
             request.setAttribute(USER, user);
             request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);

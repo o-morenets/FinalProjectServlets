@@ -5,7 +5,9 @@ import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
+import ua.training.admission.model.dao.SpecialityDao;
 import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.SQL;
@@ -52,10 +54,10 @@ public class UserService {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             userDao.create(user);
-        } catch (AppException ex) {
+        } catch (AppException e) {
             int errorCode = 0;
 
-            final Throwable sqlEx = ex.getCause();
+            final Throwable sqlEx = e.getCause();
             if (sqlEx instanceof SQLException) {
                 SQLException sqlException = (SQLException) sqlEx;
                 errorCode = sqlException.getErrorCode();
@@ -63,11 +65,10 @@ public class UserService {
 
             if (errorCode == SQL.SQL_CONSTRAINT_NOT_UNIQUE) {
                 LOG.warn(Messages.USER_ALREADY_EXISTS);
-
                 throw new NotUniqueUsernameException(Messages.USER_ALREADY_EXISTS);
             }
 
-            throw ex;
+            throw e;
         }
     }
 
@@ -75,6 +76,19 @@ public class UserService {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             return userDao.findAllByRole(role);
+        }
+    }
+
+    public void updateSpeciality(Long userId, Long specId) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+            final Optional<User> user = userDao.findById(userId);
+            user.ifPresent(usr -> {
+                SpecialityDao specialityDao = daoFactory.createSpecialityDao(connection);
+                Optional<Speciality> speciality = specialityDao.findById(specId);
+                speciality.ifPresent(usr::setSpeciality);
+                userDao.update(usr);
+            });
         }
     }
 }

@@ -27,15 +27,15 @@ public class JdbcSpecialityDao implements SpecialityDao {
     @Override
     public Optional<Speciality> findById(Long id) {
         Optional<Speciality> result = Optional.empty();
-        try (PreparedStatement query = connection.prepareStatement(SQL.SELECT_SPECIALITY_BY_ID)) {
-            query.setString(1, String.valueOf(id));
-            ResultSet resultSet = query.executeQuery();
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_SPECIALITY_BY_ID)) {
+            stmt.setString(1, String.valueOf(id));
+            ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 Speciality speciality = getEntityFromResultSet(resultSet);
                 result = Optional.of(speciality);
             }
-        } catch (SQLException ex) {
-            throw new AppException(Messages.SQL_ERROR, ex);
+        } catch (SQLException e) {
+            throw new AppException(Messages.SQL_ERROR, e);
         }
         return result;
     }

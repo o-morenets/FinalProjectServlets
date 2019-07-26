@@ -32,6 +32,7 @@ public class CommandHolder {
                 put(TextConstants.POST + Paths.LOGIN, new LoginCommand());
                 put(TextConstants.POST + Paths.LOGOUT, new LogoutCommand());
                 put(TextConstants.POST + Paths.SIGNUP, new SignupCommand());
+                put(TextConstants.POST + Paths.USERS_UPDATE_SPEC, new UpdateSpecialityCommand());
             }
         };
     }

@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
-
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -44,5 +43,4 @@
         </div>
     </div>
 </div>
-
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>
