@@ -1,19 +1,20 @@
 package ua.training.admission.controller.filter;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.model.entity.User;
+import ua.training.admission.security.SecurityUtils;
+import ua.training.admission.security.UserRoleRequestWrapper;
 import ua.training.admission.view.Attributes;
+import ua.training.admission.view.I18n;
+import ua.training.admission.view.Paths;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-/**
- * This class represents security filter to restrict access of unauthorized users and admins to pages,
- * where they should not be. If filter detects mentioned access it redirects to login page for that access area.
- */
+import java.util.Arrays;
+import java.util.List;
 
 @WebFilter("/*")
 public class AuthFilter implements Filter {
@@ -21,92 +22,80 @@ public class AuthFilter implements Filter {
     private static final Logger log = Logger.getLogger(AuthFilter.class);
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
-    public void doFilter(ServletRequest request,
-                         ServletResponse response,
+    public void doFilter(ServletRequest req,
+                         ServletResponse resp,
                          FilterChain filterChain) throws IOException, ServletException {
 
-        final HttpServletRequest req = (HttpServletRequest) request;
-        final HttpServletResponse res = (HttpServletResponse) response;
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) resp;
 
-        HttpSession session = req.getSession();
-        ServletContext context = request.getServletContext();
-        log.debug(session);
-        log.debug(session.getAttribute(Attributes.ROLE));
-        log.debug(context.getAttribute(Attributes.LOGGED_USERS));
-        log.debug("*** Current user: " + session.getAttribute(Attributes.PRINCIPAL));
+        String servletPath = request.getServletPath();
+        log.debug("***** servletPath: " + servletPath);
 
-        filterChain.doFilter(request,response);
+        // User information stored in the Session.
+        // (After successful login).
+        User loggedUser = (User) request.getSession().getAttribute(Attributes.PRINCIPAL);
+        log.debug("***** loggedUser: " + loggedUser);
+        if (servletPath.equals(Paths.LOGIN)) {
+            log.debug("***** servletPath = /login - return");
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        HttpServletRequest wrapRequest = request;
+
+        if (loggedUser != null) {
+            // User Name
+            String userName = loggedUser.getUsername();
+            log.debug("***** loggedUser: " + loggedUser);
+
+            // Roles
+            List<User.Role> roles = loggedUser.getRoles();
+            log.debug("***** roles: " + Arrays.toString(roles.toArray()));
+
+            // Wrap old request by a new Request with userName and Roles information.
+            wrapRequest = new UserRoleRequestWrapper(userName, roles, request);
+        }
+
+        // Pages must be signed in.
+        if (SecurityUtils.isSecurityPage(request)) {
+            log.debug("***** SECURITY PAGE!");
+            // If the user is not logged in, Redirect to the login page.
+            if (loggedUser == null) {
+                log.debug("***** loggedUser == null");
+
+                String requestUri = request.getRequestURI();
+
+                // Store the current page to redirect to after successful login.
+                log.debug("***** Store the current page to redirect to after successful login...");
+                int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
+
+                log.debug("***** sendRedirect -> login?redirectId=" + redirectId);
+                response.sendRedirect(wrapRequest.getContextPath() + "/api//login?redirectId=" + redirectId); // FIXME
+                return;
+            }
+
+            // Check if the user has a valid role?
+            boolean hasPermission = SecurityUtils.hasPermission(wrapRequest);
+            if (!hasPermission) {
+                log.warn("***** user has not valid role! - forward to 403 page...");
+                request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
+                RequestDispatcher dispatcher =
+                        request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP);
+
+                dispatcher.forward(request, response);
+                return;
+            }
+        }
+
+        filterChain.doFilter(wrapRequest, response);
     }
 
     @Override
     public void destroy() {
-
     }
-
-//    private Authorizer guestAuthorizer = (uri, userId) -> checkUriForGuest(uri);
-//    private Authorizer userAuthorizer = (uri, userId) -> (userId != null) && checkUriForUser(uri);
-//    private Authorizer adminAuthorizer = (uri, userId) -> (userId != null) && checkUriForAdmin(uri);
-
-/*
-    private Map<UserRole, Authorizer> authorizeByRole = new HashMap<>() ;
-    {
-        authorizeByRole.put(UserRole.PRINCIPAL, userAuthorizer);
-        authorizeByRole.put(UserRole.ADMIN, adminAuthorizer);
-    }
-*/
-
-/*
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession();
-        String uri = req.getRequestURI();
-        UserRole role = (UserRole) session.getAttribute(USER_ROLE);
-        Object userId = session.getAttribute(USER_ID);
-
-        if (!isAuthorized(uri, userId, role)) {
-            req.getRequestDispatcher(LOGIN_PATH).forward(request, response);
-            logger.info(String.format(ACCESS_DENIED_LOG_MESSAGE_FORMAT, uri, userId, role));
-            return;
-        }
-
-        chain.doFilter(request, response);
-    }
-*/
-
-/*
-    private boolean isAuthorized(String uri, Object userId, UserRole role) {
-        Authorizer authorizer = authorizeByRole.getOrDefault(role, guestAuthorizer);
-        return authorizer.check(uri, userId);
-    }
-*/
-
-    @FunctionalInterface
-    private interface Authorizer {
-        boolean check(String uri, Object userId);
-    }
-
-/*
-    private boolean checkUriForGuest(String uri) {
-        return (!uri.startsWith(ADMIN)) && (uri.startsWith(USER_REGISTER_PATH) || !uri.startsWith(PRINCIPAL));
-    }
-*/
-
-/*
-    private boolean checkUriForUser(String uri) {
-        return !uri.startsWith(ADMIN);
-    }
-*/
-
-/*
-    private boolean checkUriForAdmin(String uri) {
-        return !uri.startsWith(PRINCIPAL);
-    }
-*/
 }

@@ -1,5 +1,9 @@
 package ua.training.admission.model.entity;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * User
  */
@@ -14,7 +18,12 @@ public class User {
 	private Speciality speciality;
 	private Role role;
 
-	public enum Role {
+	// TODO add multiple roles
+	public List<Role> getRoles() {
+		return Collections.singletonList(role);
+	}
+
+    public enum Role {
 		ADMIN,
 		USER,
         GUEST

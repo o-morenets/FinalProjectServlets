@@ -1,5 +1,5 @@
 <%@ taglib prefix="w" tagdir="/WEB-INF/tags" %>
-<w:wrapper>
+<%@ include file="/WEB-INF/view/parts/header.jsp" %>
     <div class="row">
         <div class="mx-auto">
             <h2>
@@ -7,4 +7,4 @@
             </h2>
         </div>
     </div>
-</w:wrapper>
+<%@ include file="/WEB-INF/view/parts/footer.jsp" %>

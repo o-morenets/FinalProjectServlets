@@ -7,7 +7,7 @@
 <%! private static final Logger logger = Logger.getLogger("JSP Error Handler Page"); %>
 <% logger.error(pageContext.getException()); %>
 
-<w:wrapper>
+<%@ include file="/WEB-INF/view/parts/header.jsp" %>
     <!DOCTYPE html>
     <div class="alert alert-danger" role="alert">
         <h3><fmt:message key="title.error.throwable"/></h3>
@@ -19,4 +19,5 @@
             %>
         </div>
     </div>
-</w:wrapper>
+<%@ include file="/WEB-INF/view/parts/footer.jsp" %>
+

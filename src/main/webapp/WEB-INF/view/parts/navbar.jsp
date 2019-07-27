@@ -18,23 +18,23 @@
                 </a>
             </li>
             <c:if test="${!empty principal}">
-                <c:choose>
-                    <c:when test="${isAdmin}">
+<%--                <c:choose>--%>
+<%--                    <c:when test="${isAdmin}">--%>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}${Paths.USERS}">
                                 <fmt:message key="menu.admin.grades"/>
                             </a>
                         </li>
-                    </c:when>
-                    <c:otherwise>
+<%--                    </c:when>--%>
+<%--                    <c:otherwise>--%>
                         <li class="nav-item">
                             <a class="nav-link"
                                href="${pageContext.request.contextPath}${Paths.USERS_}${principal.id}${Paths.GRADES}">
                                 <fmt:message key="menu.user.profile"/>
                             </a>
                         </li>
-                    </c:otherwise>
-                </c:choose>
+<%--                    </c:otherwise>--%>
+<%--                </c:choose>--%>
             </c:if>
         </ul>
 
