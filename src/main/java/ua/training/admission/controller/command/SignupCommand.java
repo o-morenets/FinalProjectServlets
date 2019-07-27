@@ -35,8 +35,6 @@ public class SignupCommand extends CommandWrapper {
 
         boolean isFormValid = true;
 
-        // TODO green text -> psfs
-
         if (username.trim().isEmpty()) {
             request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EMPTY);
             isFormValid = false;

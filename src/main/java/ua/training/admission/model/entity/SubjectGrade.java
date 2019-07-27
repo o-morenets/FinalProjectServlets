@@ -2,22 +2,15 @@ package ua.training.admission.model.entity;
 
 public class SubjectGrade {
 
-    private Long id;
     private User user;
     private Subject subject;
     private Integer grade;
 
     public static class Builder {
 
-        private Long id;
         private User user;
         private Subject subject;
         private Integer grade;
-
-        public Builder id(Long id) {
-            this.id = id;
-            return this;
-        }
 
         public Builder user(User user) {
             this.user = user;
@@ -36,7 +29,6 @@ public class SubjectGrade {
 
         public SubjectGrade build() {
             SubjectGrade subjectGrade = new SubjectGrade();
-            subjectGrade.setId(id);
             subjectGrade.setUser(user);
             subjectGrade.setSubject(subject);
             subjectGrade.setGrade(grade);
@@ -47,14 +39,6 @@ public class SubjectGrade {
 
     public static Builder builder() {
         return new Builder();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public User getUser() {

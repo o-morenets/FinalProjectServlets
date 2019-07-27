@@ -60,7 +60,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                final SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
+                SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
                 result.add(subjectGrade);
             }
 
@@ -78,7 +78,6 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
             grade = null;
         }
         return SubjectGrade.builder()
-                .id(rs.getLong(SQL.SUBJECT_GRADE_ID))
                 .subject(Subject.builder()
                         .id(rs.getLong(SQL.SUBJECT_ID))
                         .name(rs.getString(SQL.SUBJECT_NAME))

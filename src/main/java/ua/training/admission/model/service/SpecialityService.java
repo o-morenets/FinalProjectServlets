@@ -14,7 +14,6 @@ public class SpecialityService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {
-
         static final SpecialityService INSTANCE = new SpecialityService();
     }
 

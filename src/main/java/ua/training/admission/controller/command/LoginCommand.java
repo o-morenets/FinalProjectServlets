@@ -32,7 +32,7 @@ public class LoginCommand extends CommandWrapper {
             String contextPath = request.getContextPath();
 
             if (user.isPresent()) {
-                final User usr = user.get();
+                User usr = user.get();
                 if (CommandUtils.checkUserIsLogged(request, usr.getUsername())) {
                     response.sendRedirect(contextPath + Paths.LOGIN_AUTHORIZED);
                 } else {

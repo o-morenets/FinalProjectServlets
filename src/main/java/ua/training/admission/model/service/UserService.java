@@ -25,7 +25,6 @@ public class UserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {
-
         static final UserService INSTANCE = new UserService();
     }
 
@@ -57,7 +56,7 @@ public class UserService {
         } catch (AppException e) {
             int errorCode = 0;
 
-            final Throwable sqlEx = e.getCause();
+            Throwable sqlEx = e.getCause();
             if (sqlEx instanceof SQLException) {
                 SQLException sqlException = (SQLException) sqlEx;
                 errorCode = sqlException.getErrorCode();
@@ -81,7 +80,7 @@ public class UserService {
     public void updateSpeciality(Long userId, Long specId) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
-            final Optional<User> user = userDao.findById(userId);
+            Optional<User> user = userDao.findById(userId);
             user.ifPresent(usr -> {
                 SpecialityDao specialityDao = daoFactory.createSpecialityDao(connection);
                 Optional<Speciality> speciality = specialityDao.findById(specId);

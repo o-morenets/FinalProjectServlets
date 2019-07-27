@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.SpecialityDao;
 import ua.training.admission.model.entity.Speciality;
+import ua.training.admission.model.entity.Subject;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.SQL;
 
@@ -11,9 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class JdbcSpecialityDao implements SpecialityDao {
 
@@ -31,7 +30,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
-                Speciality speciality = getEntityFromResultSet(resultSet);
+                Speciality speciality = getSpecialityFromResultSet(resultSet);
                 result = Optional.of(speciality);
             }
         } catch (SQLException e) {
@@ -43,13 +42,21 @@ public class JdbcSpecialityDao implements SpecialityDao {
 
     @Override
     public List<Speciality> findAll() {
-        List<Speciality> result = new ArrayList<>();
+        Map<Long, Speciality> specialityMap = new HashMap<>();
 
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_SPECIALITIES)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS)) {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                result.add(getEntityFromResultSet(resultSet));
+                Speciality speciality = getSpecialityFromResultSet(resultSet);
+                specialityMap.putIfAbsent(speciality.getId(), speciality);
+                speciality = specialityMap.get(speciality.getId());
+
+                Subject subject = getSubjectFromResultSet(resultSet);
+                if (subject != null) {
+                    speciality.getSubjects().add(subject);
+                    subject.getSpecialities().add(speciality);
+                }
             }
 
         } catch (SQLException e) {
@@ -57,7 +64,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
             throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
-        return result;
+        return new ArrayList<>(specialityMap.values());
     }
 
     @Override
@@ -75,10 +82,24 @@ public class JdbcSpecialityDao implements SpecialityDao {
         throw new UnsupportedOperationException();
     }
 
-    private Speciality getEntityFromResultSet(ResultSet rs) throws SQLException {
+    private Speciality getSpecialityFromResultSet(ResultSet rs) throws SQLException {
         return Speciality.builder()
                 .id(rs.getLong(SQL.SPECIALITY_ID))
                 .name(rs.getString(SQL.SPECIALITY_NAME))
+                .subjects(new HashSet<>())
+                .build();
+    }
+
+    private Subject getSubjectFromResultSet(ResultSet rs) throws SQLException {
+        long id = rs.getLong(SQL.SUBJECT_ID);
+        if (rs.wasNull()) {
+            return null;
+        }
+
+        return Subject.builder()
+                .id(id)
+                .name(rs.getString(SQL.SUBJECT_NAME))
+                .specialities(new HashSet<>())
                 .build();
     }
 }

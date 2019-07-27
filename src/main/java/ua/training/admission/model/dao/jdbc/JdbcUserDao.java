@@ -77,7 +77,7 @@ public class JdbcUserDao implements UserDao {
             if (user.getSpeciality() == null) {
                 stmt.setNull(1, Types.BIGINT);
             } else {
-                final Long specId = user.getSpeciality().getId();
+                Long specId = user.getSpeciality().getId();
                 stmt.setLong(1, specId);
             }
             stmt.setLong(2, user.getId());
@@ -121,7 +121,7 @@ public class JdbcUserDao implements UserDao {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                final User user = getEntityFromResultSet(resultSet);
+                User user = getEntityFromResultSet(resultSet);
                 setSpeciality(user, resultSet);
                 result.add(user);
             }
@@ -147,8 +147,8 @@ public class JdbcUserDao implements UserDao {
     }
 
     private void setSpeciality(User user, ResultSet resultSet) throws SQLException {
-        final long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
-        if (specialityId > 0) {
+        long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
+        if (!resultSet.wasNull()) {
             user.setSpeciality(Speciality.builder()
                     .id(specialityId)
                     .name(resultSet.getString(SQL.SPECIALITY_NAME))
