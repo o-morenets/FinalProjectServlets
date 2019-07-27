@@ -32,7 +32,8 @@
         </c:if>
         <div class="row">
             <div class="col">
-                <form class="needs-validation" novalidate action="${pageContext.request.contextPath}${Paths.LOGIN}" method="post">
+                <form class="needs-validation" novalidate action="${pageContext.request.contextPath}${Paths.LOGIN}"
+                      method="post">
                     <div class="form-group-row">
                         <label class="control-label"
                                for="inputUsername"><fmt:message key="user.username"/></label>

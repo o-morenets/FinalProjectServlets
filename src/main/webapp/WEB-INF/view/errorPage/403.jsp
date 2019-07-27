@@ -1,9 +1,10 @@
-<%@ include file="/WEB-INF/view/parts/header.jsp" %>
-<div class="row">
-    <div class="mx-auto">
-        <h2>
-            403
-        </h2>
+<%@ taglib prefix="w" tagdir="/WEB-INF/tags" %>
+<w:wrapper>
+    <div class="row">
+        <div class="mx-auto">
+            <h2>
+                403
+            </h2>
+        </div>
     </div>
-</div>
-<%@ include file="/WEB-INF/view/parts/footer.jsp" %>
+</w:wrapper>
