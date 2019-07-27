@@ -14,6 +14,6 @@ public class UserCommand extends CommandWrapper {
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute(Attributes.USER_ID, request.getPathInfo().replaceAll("\\D+", ""));
 
-        return Paths.API + request.getPathInfo().replaceAll(".*\\d+", "");
+        return Paths.SERVLET_PATH + request.getPathInfo().replaceAll(".*\\d+", "");
     }
 }

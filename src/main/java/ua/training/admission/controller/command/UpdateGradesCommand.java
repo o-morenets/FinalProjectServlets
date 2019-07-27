@@ -20,7 +20,7 @@ public class UpdateGradesCommand extends CommandWrapper {
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long userId = Long.valueOf(request.getParameter(Parameters.USER_ID));
         subjectGradeService.updateGrades(userId, request);
-        response.sendRedirect(request.getContextPath() + Paths.USERS);
+        response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.USERS);
 
         return Paths.REDIRECTED;
     }

@@ -19,7 +19,7 @@ import ua.training.admission.view.*;
 /**
  * Servlet implementation class MainController
  */
-@WebServlet(Paths.API + "/*")
+@WebServlet(Paths.SERVLET_PATH + "/*")
 public class MainController extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(MainController.class);
@@ -66,7 +66,7 @@ public class MainController extends HttpServlet {
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getServletPath() + request.getPathInfo().replaceAll("\\d.*", "");
+        String path = request.getPathInfo().replaceAll("\\d.*", "");
 
         return method + TextConstants.COLON + path;
     }

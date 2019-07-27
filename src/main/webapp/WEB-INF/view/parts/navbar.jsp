@@ -2,7 +2,7 @@
 <%@include file="security.jsp" %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}${Paths.HOME}">
+    <a class="navbar-brand" href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.HOME}">
         <img alt="" src="${pageContext.request.contextPath}/img/book.png">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,7 +13,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}${Paths.HOME}">
+                <a class="nav-link"
+                   href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.HOME}">
                     <fmt:message key="admission.homePage"/>
                 </a>
             </li>
@@ -21,7 +22,8 @@
 <%--                <c:choose>--%>
 <%--                    <c:when test="${isAdmin}">--%>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}${Paths.USERS}">
+                            <a class="nav-link"
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}">
                                 <fmt:message key="menu.admin.grades"/>
                             </a>
                         </li>
@@ -29,7 +31,7 @@
 <%--                    <c:otherwise>--%>
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="${pageContext.request.contextPath}${Paths.USERS_}${principal.id}${Paths.GRADES}">
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${principal.id}${Paths.GRADES}">
                                 <fmt:message key="menu.user.profile"/>
                             </a>
                         </li>
@@ -41,7 +43,8 @@
         <c:choose>
             <c:when test="${!empty principal}">
                 <div class="navbar-text mr-3">${principal.username}</div>
-                <form action="${pageContext.request.contextPath}${Paths.LOGOUT}" method="post">
+                <form method="post"
+                      action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGOUT}">
                     <button class="btn btn-secondary" type="submit">
                         <fmt:message key="menu.logout"/>
                     </button>
@@ -50,11 +53,14 @@
             <c:otherwise>
                 <ul class="navbar-nav mr-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}${Paths.SIGNUP}"><fmt:message
-                                key="menu.signup"/></a>
+                        <a class="nav-link"
+                           href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.SIGNUP}">
+                            <fmt:message key="menu.signup"/>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="${pageContext.request.contextPath}${Paths.LOGIN}"
+                        <a class="btn btn-primary"
+                           href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGIN}"
                            role="button"><fmt:message
                                 key="menu.login"/></a>
                     </li>

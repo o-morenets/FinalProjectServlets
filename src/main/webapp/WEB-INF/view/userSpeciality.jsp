@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 ${user.lastName} - <fmt:message key="selectSpec.selectSpeciality"/>
-<form action="${pageContext.request.contextPath}${Paths.USERS_UPDATE_SPEC}" method="post">
+<form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_SPEC}" method="post">
     <div class="form-check">
         <input class="form-check-input" type="radio" name="specRadios" value="-1" id="spec_none" checked>
         <label class="form-check-label" for="spec_none">

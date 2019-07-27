@@ -30,7 +30,7 @@
                             </td>
                             <td>
                                 <c:if test="${!empty user.speciality}">
-                                    <a href="${pageContext.request.contextPath}${Paths.USERS_}${user.id}${Paths.GRADES}"
+                                    <a href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${user.id}${Paths.GRADES}"
                                        class="badge badge-warning"><fmt:message key="userList.link.grades"/>
                                     </a>
                                 </c:if>

@@ -32,7 +32,8 @@
         </c:if>
         <div class="row">
             <div class="col">
-                <form class="needs-validation" novalidate action="${pageContext.request.contextPath}${Paths.LOGIN}"
+                <form class="needs-validation" novalidate
+                      action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGIN}"
                       method="post">
                     <div class="form-group-row">
                         <label class="control-label"
@@ -75,7 +76,8 @@
                                     </label>
                                 </div>
                                 <div class="col-md-5 mt-2">
-                                    <p class="text-right"><a href="${Paths.SIGNUP}">
+                                    <p class="text-right">
+                                        <a href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.SIGNUP}">
                                         <fmt:message key="form.control.signup"/></a></p>
                                 </div>
                             </div>

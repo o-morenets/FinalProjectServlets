@@ -8,7 +8,7 @@
     <c:when test="${!empty user.speciality}">
         <span class="badge badge-info">${user.speciality.name}</span>
         <br/>
-        <form action="${pageContext.request.contextPath}${Paths.USERS_UPDATE_GRADES}" method="post">
+        <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_GRADES}" method="post">
             <c:choose>
                 <c:when test="${!empty requestScope[Attributes.USER_SUBJECT_GRADE_LIST]}">
                     <table>
@@ -52,7 +52,7 @@
     <c:otherwise>
         <fmt:message key="user.speciality.notSelected"/>
         <c:if test="${!isAdmin}">
-            <a href="${pageContext.request.contextPath}${Paths.USERS_}${user.id}${Paths.SPEC}"
+            <a href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${user.id}${Paths.SPECIALITY}"
                class="badge badge-warning">
                 <fmt:message key="button.select"/>
             </a>

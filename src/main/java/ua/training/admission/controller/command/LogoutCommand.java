@@ -16,7 +16,7 @@ public class LogoutCommand extends CommandWrapper {
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CommandUtils.setUserRole(request, User.Role.GUEST, TextConstants.GUEST);
         request.getSession().setAttribute(Attributes.PRINCIPAL, null);
-        response.sendRedirect(request.getContextPath() + Paths.LOGIN_LOGOUT);
+        response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.LOGIN_LOGOUT);
 
         return Paths.REDIRECTED;
     }

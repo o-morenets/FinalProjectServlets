@@ -20,15 +20,15 @@ public class SecurityConfig {
                 Paths.SIGNUP
         ));
         securedPages.put(User.Role.USER, Arrays.asList(
-                Paths.USERS_SPECIALITY,
+                Paths.SPECIALITY,
                 Paths.USERS_,
-                Paths.USERS_GRADES // FIXME
+                Paths.GRADES // FIXME
 //                Paths.USERS_UPDATE_SPEC
         ));
 
         securedPages.put(User.Role.ADMIN, Arrays.asList(
                 Paths.USERS,
-                Paths.USERS_GRADES // FIXME
+                Paths.GRADES // FIXME
 //                Paths.USERS_UPDATE_GRADES
         ));
     }

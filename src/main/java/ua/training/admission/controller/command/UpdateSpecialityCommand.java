@@ -21,7 +21,8 @@ public class UpdateSpecialityCommand extends CommandWrapper {
         Long userId = Long.valueOf(request.getParameter(Parameters.USER_ID));
         Long specId = Long.valueOf(request.getParameter(Parameters.SPEC_RADIOS));
         userService.updateSpeciality(userId, specId);
-        response.sendRedirect(request.getContextPath() + Paths.USERS_ + userId + Paths.GRADES);
+        response.sendRedirect(request.getContextPath() + request.getServletPath() +
+                Paths.USERS_ + userId + Paths.GRADES);
 
         return Paths.REDIRECTED;
     }

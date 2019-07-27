@@ -7,6 +7,7 @@ public class Attributes {
 
     public static final String BUNDLE_FILE = "bundle_file";
     public static final String USER_LOCALE = "javax.servlet.jsp.jstl.fmt.locale.session";
+    public static final String SERVLET_PATH_API = "javax.servlet.forward.servlet_path";
     public static final String PAGE_TITLE = "page_title";
 
     public static final String PRINCIPAL = "principal";

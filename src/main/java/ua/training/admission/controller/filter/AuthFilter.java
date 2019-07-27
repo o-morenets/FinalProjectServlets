@@ -33,7 +33,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        String servletPath = request.getServletPath();
+        String servletPath = request.getServletPath(); // FIXME
         log.debug("***** servletPath: " + servletPath);
 
         // User information stored in the Session.

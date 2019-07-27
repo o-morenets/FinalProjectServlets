@@ -5,8 +5,8 @@
     <div class="col-6">
         <div class="row">
             <div class="col">
-                <form class="needs-validation" novalidate
-                      action="${pageContext.request.contextPath}${Paths.SIGNUP}" method="post">
+                <form class="needs-validation" novalidate method="post"
+                      action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.SIGNUP}">
                     <div class="form-group-row">
                         <label class="control-label"
                                for="inputUsername"><fmt:message key="user.username"/></label>

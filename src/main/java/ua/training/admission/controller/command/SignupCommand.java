@@ -91,7 +91,7 @@ public class SignupCommand extends CommandWrapper {
 
         try {
             userService.create(user);
-            response.sendRedirect(request.getContextPath() + Paths.LOGIN);
+            response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.LOGIN);
 
         } catch (NotUniqueUsernameException e) {
             log.warn(Messages.USER_ALREADY_EXISTS);

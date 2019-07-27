@@ -29,20 +29,20 @@ public class LoginCommand extends CommandWrapper {
         if (username != null && password != null) {
             Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
 
-            String contextPath = request.getContextPath();
+            String path = request.getContextPath() + request.getServletPath();
 
             if (user.isPresent()) {
                 User usr = user.get();
                 if (CommandUtils.checkUserIsLogged(request, usr.getUsername())) {
-                    response.sendRedirect(contextPath + Paths.LOGIN_AUTHORIZED);
+                    response.sendRedirect(path + Paths.LOGIN_AUTHORIZED);
                 } else {
                     CommandUtils.setUserRole(request, usr.getRole(), usr.getUsername());
                     request.getSession().setAttribute(Attributes.PRINCIPAL, usr);
-                    response.sendRedirect(contextPath + Paths.HOME);
+                    response.sendRedirect(path + Paths.HOME);
                 }
             } else {
                 CommandUtils.setUserRole(request, User.Role.GUEST, "Guest");
-                response.sendRedirect(contextPath + Paths.LOGIN_ERROR);
+                response.sendRedirect(path + Paths.LOGIN_ERROR);
             }
         }
 

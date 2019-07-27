@@ -9,21 +9,19 @@ public final class Paths {
     public static final String REDIRECTED = "REDIRECTED";
 
     /* api */
-    public static final String API = "/api";
+    public static final String SERVLET_PATH = "/api";
 
     /* Paths for Commands */
 
     // GET
-    public static final String HOME = API + "/home";
-    public static final String LOGIN = API + "/login";
-    public static final String LOGOUT = API + "/logout";
-    public static final String SIGNUP = API + "/signup";
-    public static final String USERS = API + "/users";
+    public static final String HOME = "/home";
+    public static final String LOGIN = "/login";
+    public static final String LOGOUT = "/logout";
+    public static final String SIGNUP ="/signup";
+    public static final String USERS = "/users";
     public static final String USERS_ = USERS + "/";
     public static final String GRADES = "/grades";
-    public static final String USERS_GRADES = API + GRADES;
-    public static final String SPEC = "/spec";
-    public static final String USERS_SPECIALITY = API + SPEC;
+    public static final String SPECIALITY = "/speciality";
 
     // POST
     public static final String USERS_UPDATE_SPEC = USERS + "/updateSpec";

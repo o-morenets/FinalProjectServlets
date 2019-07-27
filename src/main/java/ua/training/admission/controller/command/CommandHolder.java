@@ -27,8 +27,8 @@ public class CommandHolder {
                 put(TextConstants.GET + Paths.SIGNUP, new PageSignupCommand());
                 put(TextConstants.GET + Paths.USERS, new UserListCommand());
                 put(TextConstants.GET + Paths.USERS_, new UserCommand());
-                put(TextConstants.GET + Paths.USERS_SPECIALITY, new PageSpecialityCommand());
-                put(TextConstants.GET + Paths.USERS_GRADES, new PageGradesCommand());
+                put(TextConstants.GET + Paths.SPECIALITY, new PageSpecialityCommand());
+                put(TextConstants.GET + Paths.GRADES, new PageGradesCommand());
 
                 put(TextConstants.POST + Paths.LOGIN, new LoginCommand());
                 put(TextConstants.POST + Paths.LOGOUT, new LogoutCommand());
