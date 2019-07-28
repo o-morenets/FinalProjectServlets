@@ -9,4 +9,6 @@ public interface SubjectGradeDao extends GenericDao<SubjectGrade> {
 
     List<SubjectGrade> findAllUserSubjectGradeByUser(User user);
 
+    void deleteByUserId(long userId);
+
 }

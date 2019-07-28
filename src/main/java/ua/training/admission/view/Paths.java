@@ -30,7 +30,7 @@ public final class Paths {
     /* ERRORS */
     public static final String LOGIN_ERROR = LOGIN + "?error=true";
     public static final String LOGIN_LOGOUT = LOGIN + "?logout=true";
-    public static final String LOGIN_AUTHORIZED = LOGIN + "?authorized=true";
+    public static final String LOGIN_AUTHORIZED = LOGIN + "?authorized=true"; // TODO --
 
     /* JSP */
     private static final String PREFIX = "/WEB-INF/view";

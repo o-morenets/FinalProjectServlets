@@ -5,7 +5,6 @@ import java.util.Optional;
 
 /**
  * interface GenericDao
- * Created by alexey.morenets@gmail.com on 26.01.2017.
  */
 public interface GenericDao<T> {
 	

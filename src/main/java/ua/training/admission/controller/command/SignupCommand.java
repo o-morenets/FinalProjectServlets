@@ -45,14 +45,12 @@ public class SignupCommand extends CommandWrapper {
             isFormValid = false;
         }
 
-        boolean isConfirmEmpty = passwordConfirm.trim().isEmpty();
-        if (isConfirmEmpty) {
+        if (passwordConfirm.trim().isEmpty()) {
             request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_RETYPE_EMPTY);
             isFormValid = false;
         }
 
-        boolean passwordsDifferent = !password.equals(passwordConfirm);
-        if (passwordsDifferent) {
+        if (!password.equals(passwordConfirm)) {
             request.setAttribute(PASSWORD_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
             request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
             isFormValid = false;

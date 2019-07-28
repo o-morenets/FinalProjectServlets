@@ -33,10 +33,12 @@ public class JdbcSpecialityDao implements SpecialityDao {
                 Speciality speciality = getSpecialityFromResultSet(resultSet);
                 result = Optional.of(speciality);
             }
+
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
         }
+
         return result;
     }
 

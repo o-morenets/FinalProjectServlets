@@ -36,10 +36,12 @@ public class JdbcUserDao implements UserDao {
                 setSpeciality(user, resultSet);
                 result = Optional.of(user);
             }
+
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
         }
+
         return result;
     }
 
@@ -65,6 +67,7 @@ public class JdbcUserDao implements UserDao {
             if (keys.next()) {
                 user.setId(keys.getLong(1));
             }
+
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
@@ -82,6 +85,7 @@ public class JdbcUserDao implements UserDao {
             }
             stmt.setLong(2, user.getId());
             stmt.executeUpdate();
+
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);

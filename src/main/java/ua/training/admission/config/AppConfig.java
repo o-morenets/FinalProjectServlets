@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 /**
  * interface AdmissionConfig
  */
-public interface AdmissionConfig {
+public interface AppConfig {
 
     ResourceBundle config = ResourceBundle.getBundle("i18n_config");
 

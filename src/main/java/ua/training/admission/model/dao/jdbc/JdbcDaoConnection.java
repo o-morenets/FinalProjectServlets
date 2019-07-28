@@ -41,7 +41,7 @@ public class JdbcDaoConnection implements DaoConnection {
     }
 
     @Override
-    public void begin() {
+    public void beginTransaction() {
         try {
             connection.setAutoCommit(false);
             inTransaction = true;
@@ -67,6 +67,7 @@ public class JdbcDaoConnection implements DaoConnection {
         try {
             connection.rollback();
             inTransaction = false;
+            connection.setAutoCommit(true);
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION_TRANSACTION_ROLLBACK, e);
             throw new AppException(Messages.SQL_EXCEPTION_TRANSACTION_ROLLBACK, e);

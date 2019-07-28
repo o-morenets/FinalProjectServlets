@@ -12,6 +12,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -33,15 +34,16 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
-        String servletPath = request.getServletPath(); // FIXME
-        log.debug("***** servletPath: " + servletPath);
+        String pathInfo = request.getPathInfo(); // FIXME - check only pathInfo
+        log.debug("***** pathInfo: " + pathInfo);
 
         // User information stored in the Session.
         // (After successful login).
-        User loggedUser = (User) request.getSession().getAttribute(Attributes.PRINCIPAL);
+        User loggedUser = SecurityUtils.getLoggedUser(request.getSession());
         log.debug("***** loggedUser: " + loggedUser);
-        if (servletPath.equals(Paths.LOGIN)) {
-            log.debug("***** servletPath = /login - return");
+
+        if (pathInfo != null && pathInfo.equals(Paths.LOGIN)) {
+            log.debug("***** pathInfo == /login - return");
             filterChain.doFilter(request, response);
             return;
         }
@@ -51,7 +53,7 @@ public class AuthFilter implements Filter {
         if (loggedUser != null) {
             // User Name
             String userName = loggedUser.getUsername();
-            log.debug("***** loggedUser: " + loggedUser);
+            log.debug("***** loggedUser username: " + userName);
 
             // Roles
             List<User.Role> roles = loggedUser.getRoles();
@@ -75,13 +77,13 @@ public class AuthFilter implements Filter {
                 int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
 
                 log.debug("***** sendRedirect -> login?redirectId=" + redirectId);
-                response.sendRedirect(wrapRequest.getContextPath() + "/api//login?redirectId=" + redirectId); // FIXME
+                response.sendRedirect(wrapRequest.getContextPath() + wrapRequest.getServletPath() +
+                        "/login?redirectId=" + redirectId); // FIXME
                 return;
             }
 
             // Check if the user has a valid role?
-            boolean hasPermission = SecurityUtils.hasPermission(wrapRequest);
-            if (!hasPermission) {
+            if (!SecurityUtils.hasPermission(wrapRequest)) {
                 log.warn("***** user has not valid role! - forward to 403 page...");
                 request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
                 RequestDispatcher dispatcher =

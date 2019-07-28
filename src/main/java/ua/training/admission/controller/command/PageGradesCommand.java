@@ -23,8 +23,7 @@ public class PageGradesCommand extends CommandWrapper {
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long userId = Long.valueOf((String) request.getAttribute(Attributes.USER_ID));
-        Optional<User> user = userService.findById(userId);
-        user.ifPresent(usr -> {
+        userService.findById(userId).ifPresent(usr -> {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(usr));
         });

@@ -10,14 +10,9 @@ import java.security.NoSuchAlgorithmException;
  * EncryptPassword
  */
 public class EncryptPassword {
-    /**
-     * Logger for logging errors
-     */
+
     private static final Logger log = Logger.getLogger(EncryptPassword.class);
 
-    /**
-     * Algorithm name used for encryption
-     */
     private static final String ALGORITHM = "MD5";
     private static final int RADIX = 16;
     private static final int SUFFIX = 0xff;
@@ -41,10 +36,12 @@ public class EncryptPassword {
                 sb.append(Integer.toString((aByte & SUFFIX) + PREFIX, RADIX).substring(1));
             }
             generatedPassword = sb.toString();
+
         } catch (NoSuchAlgorithmException e) {
             log.error(Messages.ERROR_ENCRYPT_ALGORITHM);
             throw new RuntimeException(e);
         }
+
         return generatedPassword;
     }
 }

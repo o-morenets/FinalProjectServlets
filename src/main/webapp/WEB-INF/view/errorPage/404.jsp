@@ -1,10 +1,10 @@
-<%@ taglib prefix="w" tagdir="/WEB-INF/tags" %>
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
-    <div class="row">
-        <div class="mx-auto">
-            <h2>
-                404
-            </h2>
-        </div>
+<div class="alert alert-danger" role="alert">
+    <h3>404</h3>
+</div>
+<div class="card">
+    <div class="card-body">
+        404
     </div>
+</div>
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

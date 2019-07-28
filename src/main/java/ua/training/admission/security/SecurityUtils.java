@@ -12,17 +12,19 @@ import java.util.*;
 
 public class SecurityUtils {
 
-	private static final Logger log = Logger.getLogger(SecurityUtils.class);
-
 	private static int REDIRECT_ID = 0;
-
 	private static final Map<Integer, String> id_uri_map = new HashMap<>();
 	private static final Map<String, Integer> uri_id_map = new HashMap<>();
+	private static final Logger log = Logger.getLogger(SecurityUtils.class);
 
 	// Store user info in Session.
-	public static void storeLoginedUser(HttpSession session, User loginedUser) {
-		// On the JSP can access via ${loginedUser}
-		session.setAttribute(Attributes.USER, loginedUser);
+	public static void storeLoggedUser(HttpSession session, User principal) {
+		// On the JSP can access via ${Attributes.PRINCIPAL}
+		session.setAttribute(Attributes.PRINCIPAL, principal);
+	}
+
+	public static User getLoggedUser(HttpSession session) {
+		return (User) session.getAttribute(Attributes.PRINCIPAL);
 	}
 
 	public static int storeRedirectAfterLoginUrl(HttpSession session, String requestUri) {
@@ -39,7 +41,7 @@ public class SecurityUtils {
 		return id;
 	}
 
-	public static String getRedirectAfterLoginUrl(HttpSession session, int redirectId) {
+	public static String getRedirectAfterLoginUrl(int redirectId) {
 		return id_uri_map.get(redirectId);
 	}
 
@@ -57,6 +59,7 @@ public class SecurityUtils {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -70,11 +73,13 @@ public class SecurityUtils {
 			if (!request.isUserInRole(role.name())) {
 				continue;
 			}
+
 			List<String> urlPatterns = SecurityConfig.getUrlPatternsForRole(role);
 			if (urlPatterns != null && urlPatterns.contains(urlPattern)) {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -123,6 +128,7 @@ public class SecurityUtils {
 				return urlPattern;
 			}
 		}
+
 		return "/";
 	}
 }

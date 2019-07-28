@@ -24,6 +24,7 @@ public class SpecialityService {
     public List<Speciality> findAll() {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SpecialityDao userDao = daoFactory.createSpecialityDao(connection);
+
             return userDao.findAll();
         }
     }

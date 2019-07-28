@@ -2,7 +2,7 @@ package ua.training.admission.view;
 
 public interface Messages {
 
-    String AppException = "Application exception";
+    String APPLICATION_EXCEPTION = "Application exception";
     String NAMING_EXCEPTION = "Naming Exception";
     String DAO_FACTORY_EXCEPTION = "Dao Factory Exception";
     String USER_ALREADY_EXISTS = "User already exists";

@@ -22,7 +22,7 @@ public abstract class CommandWrapper implements Command {
         try {
             return doExecute(request, response);
         } catch (AppException e) {
-            log.error(Messages.AppException, e);
+            log.error(Messages.APPLICATION_EXCEPTION, e);
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_ERROR);
             throw e;
         }

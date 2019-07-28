@@ -5,6 +5,7 @@ import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
 import ua.training.admission.model.dao.SubjectGradeDao;
 import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.TextConstants;
@@ -42,14 +43,36 @@ public class SubjectGradeService {
             user.ifPresent(usr -> {
                 SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
                 Enumeration<String> parameterNames = request.getParameterNames();
+
+                connection.beginTransaction();
+                subjectGradeDao.deleteByUserId(usr.getId());
+
                 while (parameterNames.hasMoreElements()) {
                     String elementName = parameterNames.nextElement();
+
                     if (elementName.startsWith(TextConstants.PREFIX_SUBJECT)) {
-                        String elementValue = request.getParameter(elementName);
+                        try {
+                            long subjectId = Long.parseLong(elementName.replaceAll("\\D+", ""));
+                            try {
+                                int grade = Integer.parseInt(request.getParameter(elementName));
+                                subjectGradeDao.create(SubjectGrade.builder()
+                                        .user(User.builder()
+                                                .id(usr.getId())
+                                                .build())
+                                        .subject(Subject.builder()
+                                                .id(subjectId)
+                                                .build())
+                                        .grade(grade)
+                                        .build());
+
+                            } catch (NumberFormatException ignored) {
+                            }
+
+                        } catch (NumberFormatException ignored) {
+                        }
                     }
-                    // TODO
-//                    subjectGradeDao.delete(subjectGradeId);
                 }
+                connection.commit();
             });
         }
     }

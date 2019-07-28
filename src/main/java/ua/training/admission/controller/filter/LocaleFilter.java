@@ -1,6 +1,6 @@
 package ua.training.admission.controller.filter;
 
-import ua.training.admission.config.AdmissionConfig;
+import ua.training.admission.config.AppConfig;
 import ua.training.admission.i18n.SupportedLocale;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Parameters;
@@ -20,7 +20,6 @@ public class LocaleFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -31,7 +30,7 @@ public class LocaleFilter implements Filter {
         HttpSession session = req.getSession();
 
         if (req.getSession().getAttribute(Attributes.BUNDLE_FILE) == null) {
-            req.getSession().setAttribute(Attributes.BUNDLE_FILE, AdmissionConfig.MESSAGES);
+            req.getSession().setAttribute(Attributes.BUNDLE_FILE, AppConfig.MESSAGES);
         }
 
         changeUserLocaleByRequestParameter(req);
@@ -78,6 +77,5 @@ public class LocaleFilter implements Filter {
 
     @Override
     public void destroy() {
-
     }
 }

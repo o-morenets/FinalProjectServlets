@@ -36,8 +36,7 @@ public class UserService {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.findByUsername(username)
-                    .filter(staff -> password.equals(staff.getPassword()));
+            return userDao.findByUsername(username).filter(user -> password.equals(user.getPassword()));
         }
     }
 
@@ -53,6 +52,7 @@ public class UserService {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             userDao.create(user);
+
         } catch (AppException e) {
             int errorCode = 0;
 
@@ -73,6 +73,7 @@ public class UserService {
     public List<User> findAllByRole(User.Role role) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
+
             return userDao.findAllByRole(role);
         }
     }

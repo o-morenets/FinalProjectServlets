@@ -33,11 +33,11 @@ public class SecurityConfig {
         ));
     }
 
-    public static Set<User.Role> getAllAppRoles() {
+    static Set<User.Role> getAllAppRoles() {
         return securedPages.keySet();
     }
 
-    public static List<String> getUrlPatternsForRole(User.Role role) {
+    static List<String> getUrlPatternsForRole(User.Role role) {
         return securedPages.get(role);
     }
 }

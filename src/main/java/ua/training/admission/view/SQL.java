@@ -1,5 +1,5 @@
 package ua.training.admission.view;
-
+// TODO - make separate files
 public interface SQL {
 
     /* SQL 'not unique' constraint code */
@@ -45,7 +45,7 @@ public interface SQL {
     String SUBJECT_GRADE_SUBJECT_ID = TABLE_SUBJECT_GRADE + "." + "subject_id";
     String SUBJECT_GRADE_GRADE = TABLE_SUBJECT_GRADE + "." + "grade";
 
-    
+
     /* SQL */
 
     // User
@@ -99,4 +99,8 @@ public interface SQL {
             " LEFT JOIN " + TABLE_SUBJECT_GRADE +
             " ON " + SUBJECT_GRADE_SUBJECT_ID + " = " + SUBJECT_ID + " AND " + SUBJECT_GRADE_USER_ID + " = " + USER_ID +
             " WHERE " + USER_ID + " = ?";
+    String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID =
+            "DELETE FROM subject_grade WHERE subject_grade.user_id = ?";
+    String INSERT_INTO_SUBJECT_GRADE =
+            "INSERT INTO subject_grade (user_id, subject_id, grade) VALUES (?, ?, ?)";
 }

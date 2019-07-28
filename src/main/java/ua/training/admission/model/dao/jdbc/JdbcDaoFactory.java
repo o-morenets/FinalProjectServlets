@@ -46,6 +46,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public UserDao createUserDao(DaoConnection connection) {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();
+
         return new JdbcUserDao(sqlConnection);
     }
 
@@ -53,6 +54,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public SpecialityDao createSpecialityDao(DaoConnection connection) {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();
+
         return new JdbcSpecialityDao(sqlConnection);
     }
 
@@ -60,6 +62,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public SubjectGradeDao createSubjectGradeDao(DaoConnection connection) {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();
+
         return new JdbcSubjectGradeDao(sqlConnection);
     }
 }
