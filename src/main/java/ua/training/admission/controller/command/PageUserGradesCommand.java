@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-public class PageGradesCommand extends CommandWrapper {
+public class PageUserGradesCommand extends CommandWrapper {
 
     private static final Logger log = Logger.getLogger(UserService.class);
     private SubjectGradeService subjectGradeService = SubjectGradeService.getInstance();
@@ -22,7 +22,7 @@ public class PageGradesCommand extends CommandWrapper {
 
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long userId = Long.valueOf((String) request.getAttribute(Attributes.USER_ID));
+        Long userId = Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
         userService.findById(userId).ifPresent(usr -> {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(usr));

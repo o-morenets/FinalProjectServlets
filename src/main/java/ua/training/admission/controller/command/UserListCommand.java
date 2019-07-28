@@ -29,7 +29,7 @@ public class UserListCommand extends CommandWrapper {
         String paramCurrentPage = request.getParameter("currentPage");
         String paramRecordsPerPage = request.getParameter("recordsPerPage");
         log.debug(paramCurrentPage + " & " + paramRecordsPerPage);
-        int currentPage = Integer.parseInt(paramCurrentPage);
+        int currentPage = Integer.parseInt(paramCurrentPage); // FIXME
         int recordsPerPage = Integer.parseInt(paramRecordsPerPage);
 
         int rows = userService.getNumberOfRowsByRole();

@@ -49,7 +49,6 @@ public class JdbcSubjectDao implements SubjectDao {
         return Subject.builder()
                 .id(rs.getLong(SQL.SUBJECT_ID))
                 .name(rs.getString(SQL.SUBJECT_NAME))
-                // TODO specialities & grades
                 .build();
     }
 }

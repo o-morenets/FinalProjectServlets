@@ -31,7 +31,7 @@
 <%--                    <c:otherwise>--%>
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${principal.id}${Paths.GRADES}">
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${principal.id}${Paths.PROFILE}">
                                 <fmt:message key="menu.user.profile"/>
                             </a>
                         </li>

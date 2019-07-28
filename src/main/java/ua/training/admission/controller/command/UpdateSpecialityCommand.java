@@ -2,7 +2,6 @@ package ua.training.admission.controller.command;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.model.service.UserService;
-import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
 

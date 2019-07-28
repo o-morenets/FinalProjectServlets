@@ -17,12 +17,13 @@ public class SecurityUtils {
 	private static final Map<String, Integer> uri_id_map = new HashMap<>();
 	private static final Logger log = Logger.getLogger(SecurityUtils.class);
 
-	// Store user info in Session.
-	public static void storeLoggedUser(HttpSession session, User principal) {
+	// Store user info in Session
+	public static void storeLoggedUser(HttpSession session, User user) {
 		// On the JSP can access via ${Attributes.PRINCIPAL}
-		session.setAttribute(Attributes.PRINCIPAL, principal);
+		session.setAttribute(Attributes.PRINCIPAL, user);
 	}
 
+	// Get user info from Session
 	public static User getLoggedUser(HttpSession session) {
 		return (User) session.getAttribute(Attributes.PRINCIPAL);
 	}
@@ -49,32 +50,30 @@ public class SecurityUtils {
 	public static boolean isSecurityPage(HttpServletRequest request) {
 		String urlPattern = getUrlPattern(request);
 		log.debug("# isSecurityPage # - urlPattern: " + urlPattern);
-		Set<User.Role> roles = SecurityConfig.getAllAppRoles();
 
-		for (User.Role role : roles) {
-			List<String> urlPatterns = SecurityConfig.getUrlPatternsForRole(role);
-			log.debug("# isSecurityPage # - getUrlPatternsForRole: " + Arrays.toString(urlPatterns.toArray()));
-
-			if (urlPatterns != null && urlPatterns.contains(urlPattern)) {
-				return true;
-			}
-		}
-
-		return false;
+		return SecurityConfig.getAllAppRoles().values().stream()
+				.flatMap(Collection::stream)
+				.distinct()
+				.anyMatch(urlPattern::equals);
 	}
 
 	// Check if this 'request' has a 'valid role'?
 	public static boolean hasPermission(HttpServletRequest request) {
 		String urlPattern = getUrlPattern(request);
+		log.debug("$ hasPermission $ - urlPattern: " + urlPattern);
 
-		Set<User.Role> allRoles = SecurityConfig.getAllAppRoles();
+		Set<User.Role> allAppRoles = SecurityConfig.getAllAppRoles().keySet();
 
-		for (User.Role role : allRoles) {
+		for (User.Role role : allAppRoles) {
 			if (!request.isUserInRole(role.name())) {
+				log.debug("$ hasPermission $ - check request.isUserInRole(): " + role.name());
 				continue;
 			}
 
-			List<String> urlPatterns = SecurityConfig.getUrlPatternsForRole(role);
+			log.debug("$ hasPermission $ - User In Role !");
+
+			List<String> urlPatterns = SecurityConfig.getAllAppRoles().get(role);
+			log.debug("$ hasPermission $ - urlPatterns: " + urlPatterns);
 			if (urlPatterns != null && urlPatterns.contains(urlPattern)) {
 				return true;
 			}
@@ -83,50 +82,15 @@ public class SecurityUtils {
 		return false;
 	}
 
-	private static boolean hasUrlPattern(ServletContext servletContext, String urlPattern) {
-		Map<String, ? extends ServletRegistration> map = servletContext.getServletRegistrations();
-
-		for (String servletName : map.keySet()) {
-			ServletRegistration sr = map.get(servletName);
-
-			Collection<String> mappings = sr.getMappings();
-			if (mappings.contains(urlPattern)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// servletPath:
-	// ==> /spath
-	// ==> /spath/*
-	// ==> *.ext
-	// ==> /
+	// pathInfo:
+	// /users ==> /users
+	// /users/31 ==> /users
+	// /users/31/grades ==> /users/grades
 	private static String getUrlPattern(HttpServletRequest request) {
-		ServletContext servletContext = request.getServletContext();
-		String servletPath = request.getServletPath();
-		String pathInfo = request.getPathInfo();
+		log.debug("getPathInfo: " + request.getPathInfo());
 
-		String urlPattern = null;
-		if (pathInfo != null) {
-			urlPattern = servletPath + "/*";
-			return urlPattern;
-		}
-		urlPattern = servletPath;
-
-		boolean has = hasUrlPattern(servletContext, urlPattern);
-		if (has) {
-			return urlPattern;
-		}
-		int i = servletPath.lastIndexOf('.');
-		if (i != -1) {
-			String ext = servletPath.substring(i + 1);
-			urlPattern = "*." + ext;
-			has = hasUrlPattern(servletContext, urlPattern);
-
-			if (has) {
-				return urlPattern;
-			}
+		if (request.getPathInfo() != null) {
+			return request.getPathInfo().replaceAll("/\\d+", "");
 		}
 
 		return "/";

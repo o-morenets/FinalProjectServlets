@@ -66,7 +66,7 @@ public class MainController extends HttpServlet {
      */
     private String getCommandKey(HttpServletRequest request) {
         String method = request.getMethod().toUpperCase();
-        String path = request.getPathInfo().replaceAll("\\d.*", "");
+        String path = request.getPathInfo().replaceAll("/\\d+", "");
 
         return method + TextConstants.COLON + path;
     }

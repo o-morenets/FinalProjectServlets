@@ -20,7 +20,7 @@ public class PageSpecialityCommand extends CommandWrapper {
 
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long userId = Long.valueOf((String) request.getAttribute(Attributes.USER_ID));
+        Long userId = Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
         userService.findById(userId).ifPresent(usr -> {
             request.setAttribute(Attributes.USER, usr);
             request.setAttribute(Attributes.SPECIALITIES, specialityService.findAll());

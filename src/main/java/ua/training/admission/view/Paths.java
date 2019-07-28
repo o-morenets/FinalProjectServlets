@@ -20,8 +20,12 @@ public final class Paths {
     public static final String SIGNUP ="/signup";
     public static final String USERS = "/users";
     public static final String USERS_ = USERS + "/";
+    public static final String PROFILE = "/profile";
+    public static final String USER_PROFILE = USERS + PROFILE;
     public static final String GRADES = "/grades";
+    public static final String USER_GRADES = USERS + GRADES;
     public static final String SPECIALITY = "/speciality";
+    public static final String USER_SPECIALITY =  USERS + SPECIALITY;
 
     // POST
     public static final String USERS_UPDATE_SPEC = USERS + "/updateSpec";
@@ -30,7 +34,6 @@ public final class Paths {
     /* ERRORS */
     public static final String LOGIN_ERROR = LOGIN + "?error=true";
     public static final String LOGIN_LOGOUT = LOGIN + "?logout=true";
-    public static final String LOGIN_AUTHORIZED = LOGIN + "?authorized=true"; // TODO --
 
     /* JSP */
     private static final String PREFIX = "/WEB-INF/view";

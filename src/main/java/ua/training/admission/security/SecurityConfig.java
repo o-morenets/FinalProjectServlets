@@ -14,30 +14,19 @@ public class SecurityConfig {
     }
 
     private static void init() {
-        securedPages.put(User.Role.GUEST, Arrays.asList(
-                Paths.HOME,
-                Paths.LOGIN,
-                Paths.SIGNUP
-        ));
-        securedPages.put(User.Role.USER, Arrays.asList(
-                Paths.SPECIALITY,
-                Paths.USERS_,
-                Paths.GRADES // FIXME
-//                Paths.USERS_UPDATE_SPEC
-        ));
-
         securedPages.put(User.Role.ADMIN, Arrays.asList(
                 Paths.USERS,
-                Paths.GRADES // FIXME
-//                Paths.USERS_UPDATE_GRADES
+                Paths.USER_GRADES
+        ));
+
+        securedPages.put(User.Role.USER, Arrays.asList(
+                Paths.USER_PROFILE,
+                Paths.USER_SPECIALITY,
+                Paths.USER_GRADES
         ));
     }
 
-    static Set<User.Role> getAllAppRoles() {
-        return securedPages.keySet();
-    }
-
-    static List<String> getUrlPatternsForRole(User.Role role) {
-        return securedPages.get(role);
+    static Map<User.Role, List<String>> getAllAppRoles() {
+        return securedPages;
     }
 }
