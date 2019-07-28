@@ -1,5 +1,6 @@
 package ua.training.admission.controller.command;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Attributes;
@@ -16,6 +17,7 @@ import java.io.IOException;
  */
 public class UserListCommand extends CommandWrapper {
 
+    private static final Logger log = Logger.getLogger(UserListCommand.class);
     private UserService userService = UserService.getInstance();
 
     @Override
@@ -23,7 +25,23 @@ public class UserListCommand extends CommandWrapper {
             throws ServletException, IOException {
 
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_HOME);
-        request.setAttribute(Attributes.USERS, userService.findAllByRole(User.Role.USER));
+
+        String paramCurrentPage = request.getParameter("currentPage");
+        String paramRecordsPerPage = request.getParameter("recordsPerPage");
+        log.debug(paramCurrentPage + " & " + paramRecordsPerPage);
+        int currentPage = Integer.parseInt(paramCurrentPage);
+        int recordsPerPage = Integer.parseInt(paramRecordsPerPage);
+
+        int rows = userService.getNumberOfRowsByRole();
+        int nOfPages = rows / recordsPerPage;
+        if (nOfPages % recordsPerPage > 0) {
+            nOfPages++;
+        }
+
+        request.setAttribute(Attributes.USERS, userService.findAllByRole(User.Role.USER, currentPage, recordsPerPage));
+        request.setAttribute("noOfPages", nOfPages);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("recordsPerPage", recordsPerPage);
 
         return Paths.USERLIST_JSP;
     }

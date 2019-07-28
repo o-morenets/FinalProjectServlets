@@ -117,17 +117,38 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public List<User> findAllByRole(User.Role role) {
+    public List<User> findAllByRole(User.Role role, int currentPage, int recordsPerPage) {
         List<User> result = new ArrayList<>();
+        int start = currentPage * recordsPerPage - recordsPerPage;
 
         try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USERS_BY_ROLE)) {
             stmt.setString(1, role.name());
+            stmt.setInt(2, start);
+            stmt.setInt(3, recordsPerPage);
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
                 User user = getEntityFromResultSet(resultSet);
                 setSpeciality(user, resultSet);
                 result.add(user);
+            }
+
+        } catch (SQLException e) {
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
+        }
+
+        return result;
+    }
+
+    @Override
+    public int getNumberOfRowsUsers() {
+        int result = 0;
+
+        try (Statement stmt = connection.createStatement()) {
+            ResultSet resultSet = stmt.executeQuery(SQL.SELECT_COUNT_USERS);
+            if (resultSet.next()) {
+                result = resultSet.getInt("COUNT(*)");
             }
 
         } catch (SQLException e) {

@@ -25,9 +25,9 @@ public class UserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {
+
         static final UserService INSTANCE = new UserService();
     }
-
     public static UserService getInstance() {
         return Holder.INSTANCE;
     }
@@ -70,11 +70,19 @@ public class UserService {
         }
     }
 
-    public List<User> findAllByRole(User.Role role) {
+    public List<User> findAllByRole(User.Role role, int currentPage, int recordsPerPage) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.findAllByRole(role);
+            return userDao.findAllByRole(role, currentPage, recordsPerPage);
+        }
+    }
+
+    public int getNumberOfRowsByRole() {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+
+            return userDao.getNumberOfRowsUsers();
         }
     }
 

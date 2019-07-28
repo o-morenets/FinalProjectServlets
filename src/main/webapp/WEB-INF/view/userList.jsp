@@ -39,6 +39,65 @@
                     </c:forEach>
                     </tbody>
                 </table>
+
+                <nav aria-label="Navigation for users">
+                    <ul class="pagination">
+                        <c:if test="${currentPage != 1}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}">
+                                    Previous
+                                </a>
+                            </li>
+                        </c:if>
+
+                        <c:forEach begin="1" end="${noOfPages}" var="i">
+                            <c:choose>
+                                <c:when test="${currentPage eq i}">
+                                    <li class="page-item active">
+                                        <a class="page-link">${i} <span class="sr-only">(current)</span></a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${i}">
+                                                ${i}
+                                        </a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+
+                        <c:if test="${currentPage lt noOfPages}">
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}">
+                                    Next
+                                </a>
+                            </li>
+                        </c:if>
+                        <li>
+                            <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage}">
+                                <input type="hidden" name="currentPage" value="1">
+                                <div class="form-row align-items-center">
+                                    <div class="col-auto">
+                                        <label class="ml-2" for="records">Records per page:</label>
+                                        <select class="my-1 mr-2" id="records" name="recordsPerPage">
+                                            <option value="5">5</option>
+                                            <option value="10" selected>10</option>
+                                            <option value="15">15</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary">Refresh</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+
             </div>
         </div>
     </div>

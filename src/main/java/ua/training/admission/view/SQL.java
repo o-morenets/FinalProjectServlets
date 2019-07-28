@@ -71,7 +71,8 @@ public interface SQL {
             " FROM " + TABLE_USER +
             " LEFT JOIN " + TABLE_SPECIALITY +
             " ON " + USER_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " WHERE " + USER_ROLE + " = ?";
+            " WHERE " + USER_ROLE + " = ?" +
+            " LIMIT ?, ?";
     String UPDATE_USER =
             "UPDATE " + TABLE_USER + " SET " + USER_SPECIALITY_ID + " = ? WHERE " + USER_ID + " = ?";
 
@@ -103,4 +104,7 @@ public interface SQL {
             "DELETE FROM subject_grade WHERE subject_grade.user_id = ?";
     String INSERT_INTO_SUBJECT_GRADE =
             "INSERT INTO subject_grade (user_id, subject_id, grade) VALUES (?, ?, ?)";
+    String SELECT_COUNT_USERS = "SELECT COUNT(*)\n" +
+            "    FROM usr\n" +
+            "    WHERE usr.role = 'USER'";
 }

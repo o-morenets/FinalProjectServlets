@@ -23,7 +23,7 @@
 <%--                    <c:when test="${isAdmin}">--%>
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}">
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=10&currentPage=1">
                                 <fmt:message key="menu.admin.grades"/>
                             </a>
                         </li>

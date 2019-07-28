@@ -6,4 +6,5 @@
         </h2>
     </div>
 </div>
+
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>
