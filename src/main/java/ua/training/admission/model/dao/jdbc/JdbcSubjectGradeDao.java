@@ -52,12 +52,43 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void update(SubjectGrade subjectGrade) {
-        throw new UnsupportedOperationException();
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.UPDATE_SUBJECT_GRADE)) {
+            stmt.setInt(1, subjectGrade.getGrade());
+            stmt.setLong(2, subjectGrade.getUser().getId());
+            stmt.setLong(3, subjectGrade.getSubject().getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
+        }
     }
 
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Optional<SubjectGrade> findByUserIdAndSubjectId(Long userId, Long subjectId) {
+        Optional<SubjectGrade> result = Optional.empty();
+        try (PreparedStatement stmt =
+                     connection.prepareStatement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)) {
+            stmt.setLong(1, userId);
+            stmt.setLong(2, subjectId);
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
+                result = Optional.of(subjectGrade);
+            }
+
+        } catch (SQLException e) {
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
+        }
+
+        return result;
     }
 
     @Override
@@ -70,6 +101,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
             while (resultSet.next()) {
                 SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
+                setSubject(subjectGrade, resultSet);
                 result.add(subjectGrade);
             }
 
@@ -82,11 +114,11 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     }
 
     @Override
-    public void deleteByUserId(long userId) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID)) {
+    public void deleteByUserIdAndSubjectId(Long userId, Long subjectId) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)) {
             stmt.setLong(1, userId);
+            stmt.setLong(2, subjectId);
             int rowsDeleted = stmt.executeUpdate();
-            log.debug("rowsDeleted: " + rowsDeleted);
 
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
@@ -101,11 +133,14 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
         }
 
         return SubjectGrade.builder()
-                .subject(Subject.builder()
-                        .id(rs.getLong(SQL.SUBJECT_ID))
-                        .name(rs.getString(SQL.SUBJECT_NAME))
-                        .build())
                 .grade(grade)
                 .build();
+    }
+
+    private void setSubject(SubjectGrade subjectGrade, ResultSet resultSet) throws SQLException {
+        subjectGrade.setSubject(Subject.builder()
+                .id(resultSet.getLong(SQL.SUBJECT_ID))
+                .name(resultSet.getString(SQL.SUBJECT_NAME))
+                .build());
     }
 }

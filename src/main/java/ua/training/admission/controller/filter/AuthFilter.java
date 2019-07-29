@@ -6,6 +6,7 @@ import ua.training.admission.security.SecurityUtils;
 import ua.training.admission.security.UserRoleRequestWrapper;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.I18n;
+import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
 
 import javax.servlet.*;
@@ -72,12 +73,13 @@ public class AuthFilter implements Filter {
                 String requestUri = request.getRequestURI();
 
                 // Store the current page to redirect to after successful login.
-                log.debug("***** Store the current page to redirect to after successful login...");
+                log.debug("***** Store the current page to redirect to after successful login... " + requestUri);
                 int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
 
                 log.debug("***** sendRedirect -> login?redirectId=" + redirectId);
                 response.sendRedirect(wrapRequest.getContextPath() + wrapRequest.getServletPath() +
-                        "/login?redirectId=" + redirectId); // FIXME
+                        Paths.LOGIN + "?" + Parameters.REDIRECT_ID + "=" + redirectId);
+
                 return;
             }
 
@@ -85,10 +87,8 @@ public class AuthFilter implements Filter {
             if (!SecurityUtils.hasPermission(wrapRequest)) {
                 log.warn("***** user has not valid role! - forward to 403 page...");
                 request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
-                RequestDispatcher dispatcher =
-                        request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP);
+                request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP).forward(request, response);
 
-                dispatcher.forward(request, response);
                 return;
             }
         }

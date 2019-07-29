@@ -46,7 +46,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}">
-                                    Previous
+                                    <fmt:message key="pagination.previous"/>
                                 </a>
                             </li>
                         </c:if>
@@ -73,7 +73,7 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}">
-                                    Next
+                                    <fmt:message key="pagination.next"/>
                                 </a>
                             </li>
                         </c:if>
@@ -82,7 +82,7 @@
                                 <input type="hidden" name="currentPage" value="1">
                                 <div class="form-row align-items-center">
                                     <div class="col-auto">
-                                        <label class="ml-2" for="records">Records per page:</label>
+                                        <label class="ml-2" for="records"><fmt:message key="pagination.recordsPerPage"/></label>
                                         <select class="my-1 mr-2" id="records" name="recordsPerPage">
                                             <option value="5">5</option>
                                             <option value="10" selected>10</option>
@@ -90,7 +90,7 @@
                                         </select>
                                     </div>
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary">Refresh</button>
+                                        <button type="submit" class="btn btn-primary"><fmt:message key="button.refresh"/></button>
                                     </div>
                                 </div>
                             </form>

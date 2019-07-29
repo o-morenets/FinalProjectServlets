@@ -16,4 +16,5 @@ public class Parameters {
     public static final String LASTNAME = "lastName";
     public static final String USER_ID = "userId";
     public static final String SPEC_RADIOS = "specRadios";
+    public static final String REDIRECT_ID = "redirectId";
 }

@@ -2,7 +2,8 @@
 <%@include file="security.jsp" %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.HOME}">
+    <a class="navbar-brand"
+       href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.HOME}">
         <img alt="" src="${pageContext.request.contextPath}/img/book.png">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -19,24 +20,24 @@
                 </a>
             </li>
             <c:if test="${!empty principal}">
-<%--                <c:choose>--%>
-<%--                    <c:when test="${isAdmin}">--%>
+                <c:choose>
+                    <c:when test="${isAdmin}">
                         <li class="nav-item">
                             <a class="nav-link"
-                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=10&currentPage=1">
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}">
                                 <fmt:message key="menu.admin.grades"/>
                             </a>
                         </li>
-<%--                    </c:when>--%>
-<%--                    <c:otherwise>--%>
+                    </c:when>
+                    <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link"
                                href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${principal.id}${Paths.PROFILE}">
                                 <fmt:message key="menu.user.profile"/>
                             </a>
                         </li>
-<%--                    </c:otherwise>--%>
-<%--                </c:choose>--%>
+                    </c:otherwise>
+                </c:choose>
             </c:if>
         </ul>
 

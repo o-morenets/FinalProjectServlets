@@ -9,6 +9,7 @@ public interface TextConstants {
     String POST = "POST:";
 
     String UTF_8 = "UTF-8";
-    String GUEST = "Guest";
+    String ROLE_ADMIN = "ADMIN";
+    String ROLE_USER = "USER";
     String PREFIX_SUBJECT = "subject_";
 }

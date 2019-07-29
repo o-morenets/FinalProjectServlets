@@ -46,7 +46,7 @@
                     <fmt:message key="msg.noSubjects"/>
                 </c:otherwise>
             </c:choose>
-            <input type="hidden" name="userId" value="${user.id}"/>
+            <input type="hidden" name="${Parameters.USER_ID}" value="${user.id}"/>
         </form>
     </c:when>
     <c:otherwise>

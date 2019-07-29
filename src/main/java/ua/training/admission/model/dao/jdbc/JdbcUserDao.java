@@ -142,13 +142,14 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public int getNumberOfRowsUsers() {
+    public int getNumberOfRowsByRole(User.Role role) {
         int result = 0;
 
-        try (Statement stmt = connection.createStatement()) {
-            ResultSet resultSet = stmt.executeQuery(SQL.SELECT_COUNT_USERS);
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_COUNT_USERS_BY_ROLE)) {
+            stmt.setString(1, role.name());
+            ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
-                result = resultSet.getInt("COUNT(*)");
+                result = resultSet.getInt(SQL.COUNT_ALL);
             }
 
         } catch (SQLException e) {
@@ -172,7 +173,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     private void setSpeciality(User user, ResultSet resultSet) throws SQLException {
-        long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
+        Long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
         if (!resultSet.wasNull()) {
             user.setSpeciality(Speciality.builder()
                     .id(specialityId)

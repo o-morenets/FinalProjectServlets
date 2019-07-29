@@ -4,8 +4,6 @@ import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Attributes;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRegistration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -83,16 +81,18 @@ public class SecurityUtils {
 	}
 
 	// pathInfo:
+	// null ==> /
 	// /users ==> /users
 	// /users/31 ==> /users
 	// /users/31/grades ==> /users/grades
 	private static String getUrlPattern(HttpServletRequest request) {
 		log.debug("getPathInfo: " + request.getPathInfo());
+		String urlPath = "/";
 
 		if (request.getPathInfo() != null) {
-			return request.getPathInfo().replaceAll("/\\d+", "");
+			urlPath = request.getPathInfo().replaceAll("/\\d+", "");
 		}
 
-		return "/";
+		return urlPath;
 	}
 }

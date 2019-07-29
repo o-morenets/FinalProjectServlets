@@ -1,5 +1,5 @@
 package ua.training.admission.view;
-// TODO - make separate files
+
 public interface SQL {
 
     /* SQL 'not unique' constraint code */
@@ -27,6 +27,7 @@ public interface SQL {
     String USER_FIRST_NAME = TABLE_USER + "." + "first_name";
     String USER_SPECIALITY_ID = TABLE_USER + "." + "speciality_id";
     String USER_ROLE = TABLE_USER + "." + "role";
+    String COUNT_ALL = "COUNT(*)";
 
     // Speciality
     String SPECIALITY_ID = TABLE_SPECIALITY + "." + ID;
@@ -100,11 +101,19 @@ public interface SQL {
             " LEFT JOIN " + TABLE_SUBJECT_GRADE +
             " ON " + SUBJECT_GRADE_SUBJECT_ID + " = " + SUBJECT_ID + " AND " + SUBJECT_GRADE_USER_ID + " = " + USER_ID +
             " WHERE " + USER_ID + " = ?";
-    String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID =
-            "DELETE FROM subject_grade WHERE subject_grade.user_id = ?";
+    String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID =
+            "DELETE FROM " + TABLE_SUBJECT_GRADE +
+            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
     String INSERT_INTO_SUBJECT_GRADE =
-            "INSERT INTO subject_grade (user_id, subject_id, grade) VALUES (?, ?, ?)";
-    String SELECT_COUNT_USERS = "SELECT COUNT(*)\n" +
-            "    FROM usr\n" +
-            "    WHERE usr.role = 'USER'";
+            "INSERT INTO " + TABLE_SUBJECT_GRADE +
+            " (" + SUBJECT_GRADE_USER_ID + ", " + SUBJECT_GRADE_SUBJECT_ID + ", " + SUBJECT_GRADE_GRADE + ")" +
+            " VALUES (?, ?, ?)";
+    String SELECT_COUNT_USERS_BY_ROLE =
+            "SELECT " + COUNT_ALL + " FROM " + TABLE_USER + " WHERE " + USER_ROLE + " = ?";
+    String SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID =
+            "SELECT * FROM " + TABLE_SUBJECT_GRADE +
+            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
+    String UPDATE_SUBJECT_GRADE =
+            "UPDATE " + TABLE_SUBJECT_GRADE + " SET " + SUBJECT_GRADE_GRADE + " = ?" +
+            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
 }

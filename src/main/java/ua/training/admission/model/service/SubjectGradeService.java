@@ -8,6 +8,7 @@ import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
+import ua.training.admission.view.Messages;
 import ua.training.admission.view.TextConstants;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,8 +46,6 @@ public class SubjectGradeService {
                 Enumeration<String> parameterNames = request.getParameterNames();
 
                 connection.beginTransaction();
-                subjectGradeDao.deleteByUserId(usr.getId());
-
                 while (parameterNames.hasMoreElements()) {
                     String elementName = parameterNames.nextElement();
 
@@ -55,25 +54,42 @@ public class SubjectGradeService {
                             long subjectId = Long.parseLong(elementName.replaceAll("\\D+", ""));
                             try {
                                 int grade = Integer.parseInt(request.getParameter(elementName));
-                                subjectGradeDao.create(SubjectGrade.builder()
-                                        .user(User.builder()
-                                                .id(usr.getId())
-                                                .build())
-                                        .subject(Subject.builder()
-                                                .id(subjectId)
-                                                .build())
-                                        .grade(grade)
-                                        .build());
+                                saveOrUpdate(usr.getId(), subjectId, grade);
 
-                            } catch (NumberFormatException ignored) {
+                            } catch (NumberFormatException e) {
+                                log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
+                                subjectGradeDao.deleteByUserIdAndSubjectId(usr.getId(), subjectId);
                             }
 
-                        } catch (NumberFormatException ignored) {
+                        } catch (NumberFormatException e) {
+                            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
                         }
                     }
                 }
                 connection.commit();
             });
+        }
+    }
+
+    private void saveOrUpdate(Long userId, Long subjectId, int grade) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
+
+            SubjectGrade subjectGrade = SubjectGrade.builder()
+                    .user(User.builder()
+                            .id(userId)
+                            .build())
+                    .subject(Subject.builder()
+                            .id(subjectId)
+                            .build())
+                    .grade(grade)
+                    .build();
+
+            if (subjectGradeDao.findByUserIdAndSubjectId(userId, subjectId).isPresent()) {
+                subjectGradeDao.update(subjectGrade);
+            } else {
+                subjectGradeDao.create(subjectGrade);
+            }
         }
     }
 }

@@ -90,6 +90,7 @@
                             </button>
                         </div>
                     </div>
+                    <input type="hidden" name="${Parameters.REDIRECT_ID}" value="${requestScope[Parameters.REDIRECT_ID]}">
                 </form>
             </div>
         </div>

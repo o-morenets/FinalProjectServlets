@@ -49,23 +49,23 @@ public class LoginCommand extends CommandWrapper {
     private void loginSuccessful(HttpServletRequest request, HttpServletResponse response, User user)
             throws IOException {
 
-        String path = request.getContextPath() + request.getServletPath();
-
-        CommandUtils.setUserRole(request, user.getRole(), user.getUsername());
         SecurityUtils.storeLoggedUser(request.getSession(), user);
 
         int redirectId = -1;
         try {
-            redirectId = Integer.parseInt(request.getParameter("redirectId"));
+            redirectId = Integer.parseInt(request.getParameter(Parameters.REDIRECT_ID));
+            log.debug("redirectId = " + redirectId);
         } catch (Exception ignored) {
         }
 
         String requestUri = SecurityUtils.getRedirectAfterLoginUrl(redirectId);
         if (requestUri != null) {
+            log.debug("requestUri = " + requestUri);
+            log.debug("rerirect to requestUri...");
             response.sendRedirect(requestUri);
         } else {
             // Default after successful login
-            response.sendRedirect(path + Paths.HOME);
+            response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.HOME);
         }
     }
 }

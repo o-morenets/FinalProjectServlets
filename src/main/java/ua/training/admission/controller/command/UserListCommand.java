@@ -29,10 +29,20 @@ public class UserListCommand extends CommandWrapper {
         String paramCurrentPage = request.getParameter("currentPage");
         String paramRecordsPerPage = request.getParameter("recordsPerPage");
         log.debug(paramCurrentPage + " & " + paramRecordsPerPage);
-        int currentPage = Integer.parseInt(paramCurrentPage); // FIXME
-        int recordsPerPage = Integer.parseInt(paramRecordsPerPage);
 
-        int rows = userService.getNumberOfRowsByRole();
+        int currentPage = 1;
+        try {
+            currentPage = Integer.parseInt(paramCurrentPage);
+        } catch (NumberFormatException ignored) {
+        }
+
+        int recordsPerPage = 10;
+        try {
+            recordsPerPage = Integer.parseInt(paramRecordsPerPage);
+        } catch (NumberFormatException ignored) {
+        }
+
+        int rows = userService.getNumberOfRowsByRole(User.Role.USER);
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;

@@ -20,7 +20,7 @@ ${user.lastName} - <fmt:message key="selectSpec.selectSpeciality"/>
             </label>
         </div>
     </c:forEach>
-    <input type="hidden" name="userId" value="${user.id}"/>
+    <input type="hidden" name="${Parameters.USER_ID}" value="${user.id}"/>
     <button type="submit"><fmt:message key="button.save"/></button>
 </form>
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

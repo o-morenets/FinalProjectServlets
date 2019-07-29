@@ -93,7 +93,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
     }
 
     private Subject getSubjectFromResultSet(ResultSet rs) throws SQLException {
-        long id = rs.getLong(SQL.SUBJECT_ID);
+        Long id = rs.getLong(SQL.SUBJECT_ID);
         if (rs.wasNull()) {
             return null;
         }

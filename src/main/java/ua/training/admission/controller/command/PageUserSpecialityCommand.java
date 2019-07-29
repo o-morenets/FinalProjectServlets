@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-public class PageSpecialityCommand extends CommandWrapper {
+public class PageUserSpecialityCommand extends CommandWrapper {
 
     private SpecialityService specialityService = SpecialityService.getInstance();
     private UserService userService = UserService.getInstance();

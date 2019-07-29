@@ -78,11 +78,11 @@ public class UserService {
         }
     }
 
-    public int getNumberOfRowsByRole() {
+    public int getNumberOfRowsByRole(User.Role role) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.getNumberOfRowsUsers();
+            return userDao.getNumberOfRowsByRole(role);
         }
     }
 
