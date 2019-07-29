@@ -89,6 +89,8 @@ public class SecurityUtils {
 		log.debug("getPathInfo: " + request.getPathInfo());
 		String urlPath = "/";
 
+		// TODO check for files like '/WEB-INF/view/errorPage/notFound.jsp'
+
 		if (request.getPathInfo() != null) {
 			urlPath = request.getPathInfo().replaceAll("/\\d+", "");
 		}

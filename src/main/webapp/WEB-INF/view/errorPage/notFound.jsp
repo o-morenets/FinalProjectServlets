@@ -4,7 +4,7 @@
 </div>
 <div class="card">
     <div class="card-body">
-        404
+        <fmt:message key="error.404.message"/>
     </div>
 </div>
 <%@ include file="/WEB-INF/view/parts/footer.jsp" %>

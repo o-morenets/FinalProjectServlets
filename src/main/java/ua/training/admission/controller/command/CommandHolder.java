@@ -41,9 +41,9 @@ public class CommandHolder {
 
     public Command getCommand(String key) {
         return commands.getOrDefault(key, (request, response) -> {
-            request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_404);
-            response.sendRedirect(request.getContextPath() + Paths.PAGE_404_JSP);
-            return Paths.REDIRECTED;
+            request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_NOT_FOUND);
+
+            return Paths.PAGE_NOT_FOUND_JSP;
         });
     }
 }

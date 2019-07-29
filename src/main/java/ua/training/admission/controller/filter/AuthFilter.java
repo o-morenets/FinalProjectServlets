@@ -13,7 +13,6 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -30,8 +29,7 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req,
                          ServletResponse resp,
-                         FilterChain filterChain) throws IOException, ServletException
-    {
+                         FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
@@ -86,8 +84,8 @@ public class AuthFilter implements Filter {
             // Check if the user has a valid role?
             if (!SecurityUtils.hasPermission(wrapRequest)) {
                 log.warn("***** user has not valid role! - forward to 403 page...");
-                request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
-                request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP).forward(request, response);
+                request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_FORBIDDEN);
+                request.getServletContext().getRequestDispatcher(Paths.PAGE_FORBIDDEN_JSP).forward(request, response);
 
                 return;
             }
