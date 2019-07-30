@@ -7,6 +7,7 @@ public interface Messages {
     String DAO_FACTORY_EXCEPTION = "Dao Factory Exception";
     String USER_ALREADY_EXISTS = "User already exists";
     String NUMBER_FORMAT_EXCEPTION = "Number Format Exception while parsing a number";
+    String IO_EXCEPTION = "I/O Exception";
 
     /* SQL Exceptions */
     String SQL_EXCEPTION = "SQL Error";

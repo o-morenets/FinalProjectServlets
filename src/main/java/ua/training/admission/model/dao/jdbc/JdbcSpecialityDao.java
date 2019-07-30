@@ -26,7 +26,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
     @Override
     public Optional<Speciality> findById(Long id) {
         Optional<Speciality> result = Optional.empty();
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_SPECIALITY_BY_ID)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_SPECIALITY_BY_ID))) {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -46,7 +46,9 @@ public class JdbcSpecialityDao implements SpecialityDao {
     public List<Speciality> findAll() {
         Map<Long, Speciality> specialityMap = new HashMap<>();
 
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS)) {
+        try (PreparedStatement stmt =
+                     connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS)))
+        {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {

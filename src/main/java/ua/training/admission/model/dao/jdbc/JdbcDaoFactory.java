@@ -3,7 +3,7 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.*;
-import ua.training.admission.view.Config;
+import ua.training.admission.config.AppConfig;
 import ua.training.admission.view.Messages;
 
 import javax.naming.InitialContext;
@@ -25,7 +25,7 @@ public class JdbcDaoFactory extends DaoFactory {
     public JdbcDaoFactory() {
         try {
             InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup(Config.JAVA_COMP_ENV_JDBC);
+            dataSource = (DataSource) ic.lookup(AppConfig.JAVA_COMP_ENV_JDBC);
         } catch (NamingException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.NAMING_EXCEPTION, e);

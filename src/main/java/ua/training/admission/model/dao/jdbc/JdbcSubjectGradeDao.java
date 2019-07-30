@@ -38,7 +38,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void create(SubjectGrade subjectGrade) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.INSERT_INTO_SUBJECT_GRADE)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.INSERT_INTO_SUBJECT_GRADE))) {
             stmt.setLong(1, subjectGrade.getUser().getId());
             stmt.setLong(2, subjectGrade.getSubject().getId());
             stmt.setInt(3, subjectGrade.getGrade());
@@ -52,7 +52,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void update(SubjectGrade subjectGrade) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.UPDATE_SUBJECT_GRADE)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_SUBJECT_GRADE))) {
             stmt.setInt(1, subjectGrade.getGrade());
             stmt.setLong(2, subjectGrade.getUser().getId());
             stmt.setLong(3, subjectGrade.getSubject().getId());
@@ -73,7 +73,8 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     public Optional<SubjectGrade> findByUserIdAndSubjectId(Long userId, Long subjectId) {
         Optional<SubjectGrade> result = Optional.empty();
         try (PreparedStatement stmt =
-                     connection.prepareStatement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)) {
+                     connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)))
+        {
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
             ResultSet resultSet = stmt.executeQuery();
@@ -95,7 +96,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     public List<SubjectGrade> findAllUserSubjectGradeByUser(User user) {
         List<SubjectGrade> result = new ArrayList<>();
 
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USER_SUBJECT_GRADES)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_SUBJECT_GRADES))) {
             stmt.setLong(1, user.getId());
             ResultSet resultSet = stmt.executeQuery();
 
@@ -115,10 +116,12 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void deleteByUserIdAndSubjectId(Long userId, Long subjectId) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)) {
+        try (PreparedStatement stmt =
+                     connection.prepareStatement(SQL.getSqlElement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)))
+        {
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
-            int rowsDeleted = stmt.executeUpdate();
+            stmt.executeUpdate();
 
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);

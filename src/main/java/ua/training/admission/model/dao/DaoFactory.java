@@ -2,7 +2,7 @@ package ua.training.admission.model.dao;
 
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
-import ua.training.admission.view.Config;
+import ua.training.admission.config.AppConfig;
 import ua.training.admission.view.Messages;
 
 import java.io.IOException;
@@ -29,10 +29,10 @@ public abstract class DaoFactory {
             synchronized (DaoFactory.class) {
                 if (instance == null) {
                     try {
-                        InputStream inputStream = DaoFactory.class.getResourceAsStream(Config.DB_FILE);
+                        InputStream inputStream = DaoFactory.class.getResourceAsStream(AppConfig.DB_FILE);
                         Properties dbProps = new Properties();
                         dbProps.load(inputStream);
-                        String factoryClass = dbProps.getProperty(Config.DB_FACTORY_CLASS);
+                        String factoryClass = dbProps.getProperty(AppConfig.DB_FACTORY_CLASS);
                         instance = (DaoFactory) Class.forName(factoryClass).newInstance();
                     } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
                         log.error(Messages.DAO_FACTORY_EXCEPTION, e);

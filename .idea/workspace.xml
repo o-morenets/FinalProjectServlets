@@ -6,56 +6,40 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="fix 404.jsp -&gt; pageNotFound.jsp">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jquery/jquery-3.4.1.slim.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="css, js, jquery">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProjectServlets.eml" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProjectServlets.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProjectServlets.userlibraries" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProjectServlets.userlibraries" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/config/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageHomeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageHomeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageLoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageLoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/EncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/EncodingFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/LocaleFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/LocaleFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/SubjectDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/admission_servlets.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n_config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/i18n_config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/forbidden.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/403.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/notFound.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/404.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/bootstrap.bundle.min.js.map" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +153,7 @@
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/bootstrap/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FinalProjectSpring" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -199,11 +183,14 @@
       <recent name="view.Parameters" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\i18n" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\db" />
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\jquery" />
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF\view\errorPage" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF\ua.training.admission" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ua.training.admission.security" />
@@ -487,14 +474,8 @@
       <workItem from="1564239440221" duration="57104000" />
       <workItem from="1564348391204" duration="28313000" />
       <workItem from="1564416672035" duration="2822000" />
-      <workItem from="1564421825332" duration="4030000" />
-    </task>
-    <task id="LOCAL-00003" summary="Servlet works&#10;FIXED: java.sql.SQLException: No suitable driver found for jdbc:mysql:&#10;jdbc-connector.jar was placed to WEB-INF\lib">
-      <created>1485019008726</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1485019008726</updated>
+      <workItem from="1564421825332" duration="4904000" />
+      <workItem from="1564479685035" duration="10614000" />
     </task>
     <task id="LOCAL-00004" summary="PatientsList&#10;jstl.jar was placed to WEB-INF\lib">
       <created>1485039975177</created>
@@ -832,7 +813,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564407317774</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="css, js, jquery">
+      <created>1564478167867</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1564478167867</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -879,7 +867,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="parameters transfer via request, not session!" />
     <MESSAGE value="Some fixes" />
     <MESSAGE value="+ LOGGER in LoginCommand (debug ContexPath)" />
     <MESSAGE value="+ Everywhere before redirect() added contextPath&#10;+ folder db: .mwb and .sql files to create schema and populate tables with data" />
@@ -904,7 +891,8 @@
     <MESSAGE value="recovered: /users/profile command" />
     <MESSAGE value="SubjectGradeService saveOrUpdate" />
     <MESSAGE value="fix 404.jsp -&gt; pageNotFound.jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 404.jsp -&gt; pageNotFound.jsp" />
+    <MESSAGE value="css, js, jquery" />
+    <option name="LAST_COMMIT_MESSAGE" value="css, js, jquery" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

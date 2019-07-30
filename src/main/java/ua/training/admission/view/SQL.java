@@ -1,120 +1,81 @@
 package ua.training.admission.view;
 
-public interface SQL {
-// TODO -> property
+import org.apache.log4j.Logger;
+import ua.training.admission.controller.exception.AppException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class SQL {
 
     /* SQL 'not unique' constraint code */
-    int SQL_CONSTRAINT_NOT_UNIQUE = 1062;
+    public static final int SQL_CONSTRAINT_NOT_UNIQUE = 1062;
 
+    private static final Logger log = Logger.getLogger(SQL.class);
+    private static Properties sqlProperties = loadSqlProperties();
 
-    /* Table names */
-    String TABLE_USER = "usr";
-    String TABLE_SPECIALITY = "speciality";
-    String TABLE_SUBJECT = "subject";
-    String TABLE_SUBJECT_GRADE = "subject_grade";
-    String TABLE_SPECIALITY_SUBJECT = "speciality_subject";
+    private static Properties loadSqlProperties() {
+        try (InputStream inputStream = SQL.class.getResourceAsStream("/db/sql.properties")) {
+            Properties sqlProperties = new Properties();
+            sqlProperties.load(inputStream);
+            return sqlProperties;
+
+        } catch (IOException e) {
+            log.error(Messages.IO_EXCEPTION, e);
+            throw new AppException(Messages.IO_EXCEPTION, e);
+        }
+    }
+
+    public static String getSqlElement(String key) {
+        return sqlProperties.getProperty(key);
+    }
 
 
     /* Fields */
 
-    String ID = "id";
-
     // User
-    String USER_ID = TABLE_USER + "." + ID;
-    String USER_USERNAME = TABLE_USER + "." + "username";
-    String USER_PASSWORD = TABLE_USER + "." + "password";
-    String USER_EMAIL = TABLE_USER + "." + "email";
-    String USER_LAST_NAME = TABLE_USER + "." + "last_name";
-    String USER_FIRST_NAME = TABLE_USER + "." + "first_name";
-    String USER_SPECIALITY_ID = TABLE_USER + "." + "speciality_id";
-    String USER_ROLE = TABLE_USER + "." + "role";
-    String COUNT_ALL = "COUNT(*)";
+    public static final String USER_ID = "usr.id";
+    public static final String USER_USERNAME = "usr.username";
+    public static final String USER_PASSWORD = "usr.password";
+    public static final String USER_EMAIL = "usr.email";
+    public static final String USER_LAST_NAME = "usr.last_name";
+    public static final String USER_FIRST_NAME = "usr.first_name";
+    public static final String USER_SPECIALITY_ID = "usr.speciality_id";
+    public static final String USER_ROLE = "usr.role";
+    public static final String COUNT_ALL = "COUNT(*)";
 
     // Speciality
-    String SPECIALITY_ID = TABLE_SPECIALITY + "." + ID;
-    String SPECIALITY_NAME = TABLE_SPECIALITY + "." + "name";
+    public static final String SPECIALITY_ID = "speciality.id";
+    public static final String SPECIALITY_NAME = "speciality.name";
 
     // Subject
-    String SUBJECT_ID = TABLE_SUBJECT + "." + ID;
-    String SUBJECT_NAME = TABLE_SUBJECT + "." + "name";
-
-    // SpecialitySubject
-    String SPECIALITY_SUBJECT_SPECIALITY_ID = TABLE_SPECIALITY_SUBJECT + "." + "speciality_id";
-    String SPECIALITY_SUBJECT_SUBJECT_ID = TABLE_SPECIALITY_SUBJECT + "." + "subject_id";
+    public static final String SUBJECT_ID ="subject.id";
+    public static final String SUBJECT_NAME = "subject.name";
 
     // SubjectGrade
-    String SUBJECT_GRADE_USER_ID = TABLE_SUBJECT_GRADE + "." + "user_id";
-    String SUBJECT_GRADE_SUBJECT_ID = TABLE_SUBJECT_GRADE + "." + "subject_id";
-    String SUBJECT_GRADE_GRADE = TABLE_SUBJECT_GRADE + "." + "grade";
+    public static final String SUBJECT_GRADE_USER_ID = "subject_grade.user_id";
+    public static final String SUBJECT_GRADE_SUBJECT_ID = "subject_grade.subject_id";
+    public static final String SUBJECT_GRADE_GRADE = "subject_grade.grade";
 
-
-    /* SQL */
+    /* SQL keys */
 
     // User
-    String SELECT_USER_BY_USERNAME =
-            "SELECT * FROM " + TABLE_USER + " WHERE " + USER_USERNAME + " = ?";
-    String SELECT_USER_BY_ID =
-            "SELECT " + USER_ID +  ", " + USER_USERNAME + ", " + USER_PASSWORD +
-            ", " + USER_EMAIL + ", " + USER_ROLE + ", " + USER_FIRST_NAME +
-            ", " + USER_LAST_NAME + ", " + USER_SPECIALITY_ID + ", " + SPECIALITY_NAME +
-            " FROM " + TABLE_USER +
-            " LEFT JOIN " + TABLE_SPECIALITY +
-            " ON " + USER_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " WHERE " + USER_ID + " = ?";
-    String INSERT_INTO_USER =
-            "INSERT INTO " + TABLE_USER +
-            " (" + USER_USERNAME + ", " + USER_PASSWORD + ", " + USER_EMAIL +
-                    ", " + USER_FIRST_NAME + ", " + USER_LAST_NAME + ", " + USER_ROLE + ")" +
-            " VALUES (?, ?, ?, ?, ?, ?)";
-    String SELECT_USERS_BY_ROLE =
-            "SELECT " + USER_ID +  ", " + USER_USERNAME + ", " + USER_PASSWORD +
-                    ", " + USER_EMAIL + ", " + USER_ROLE + ", " + USER_FIRST_NAME +
-                    ", " + USER_LAST_NAME + ", " + USER_SPECIALITY_ID + ", " + SPECIALITY_NAME +
-            " FROM " + TABLE_USER +
-            " LEFT JOIN " + TABLE_SPECIALITY +
-            " ON " + USER_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " WHERE " + USER_ROLE + " = ?" +
-            " LIMIT ?, ?";
-    String UPDATE_USER =
-            "UPDATE " + TABLE_USER + " SET " + USER_SPECIALITY_ID + " = ? WHERE " + USER_ID + " = ?";
+    public static final String SELECT_USER_BY_USERNAME = "select.user.by.username";
+    public static final String SELECT_USER_BY_ID = "select.user.by.id";
+    public static final String INSERT_INTO_USER = "insert.into.user";
+    public static final String SELECT_USERS_BY_ROLE = "select.users.by.role";
+    public static final String UPDATE_USER = "update.user";
 
     // Speciality
-    String SELECT_SPECIALITIES_WITH_SUBJECTS =
-            "SELECT " + SPECIALITY_ID + ", " + SPECIALITY_NAME + ", " + SUBJECT_ID + ", " + SUBJECT_NAME +
-            " FROM " + TABLE_SPECIALITY +
-            " LEFT JOIN " + TABLE_SPECIALITY_SUBJECT +
-            " ON " + SPECIALITY_SUBJECT_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " LEFT JOIN " + TABLE_SUBJECT +
-            " ON " + SPECIALITY_SUBJECT_SUBJECT_ID + " = " + SUBJECT_ID;
-    String SELECT_SPECIALITY_BY_ID =
-            "SELECT * FROM " + TABLE_SPECIALITY + " WHERE " + SPECIALITY_ID + " = ?";
+    public static final String SELECT_SPECIALITIES_WITH_SUBJECTS = "select.specialities.with.subjects";
+    public static final String SELECT_SPECIALITY_BY_ID = "select.speciality.by.id";
 
     // SubjectGrade
-    String SELECT_USER_SUBJECT_GRADES =
-            "SELECT " + SUBJECT_ID + ", " + SUBJECT_NAME + ", " + SUBJECT_GRADE_GRADE +
-            " FROM " + TABLE_USER +
-            " JOIN " + TABLE_SPECIALITY +
-            " ON " + USER_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " JOIN " + TABLE_SPECIALITY_SUBJECT +
-            " ON " + SPECIALITY_SUBJECT_SPECIALITY_ID + " = " + SPECIALITY_ID +
-            " LEFT JOIN " + TABLE_SUBJECT +
-            " ON " + SPECIALITY_SUBJECT_SUBJECT_ID + " = " + SUBJECT_ID +
-            " LEFT JOIN " + TABLE_SUBJECT_GRADE +
-            " ON " + SUBJECT_GRADE_SUBJECT_ID + " = " + SUBJECT_ID + " AND " + SUBJECT_GRADE_USER_ID + " = " + USER_ID +
-            " WHERE " + USER_ID + " = ?";
-    String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID =
-            "DELETE FROM " + TABLE_SUBJECT_GRADE +
-            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
-    String INSERT_INTO_SUBJECT_GRADE =
-            "INSERT INTO " + TABLE_SUBJECT_GRADE +
-            " (" + SUBJECT_GRADE_USER_ID + ", " + SUBJECT_GRADE_SUBJECT_ID + ", " + SUBJECT_GRADE_GRADE + ")" +
-            " VALUES (?, ?, ?)";
-    String SELECT_COUNT_USERS_BY_ROLE =
-            "SELECT " + COUNT_ALL + " FROM " + TABLE_USER + " WHERE " + USER_ROLE + " = ?";
-    String SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID =
-            "SELECT * FROM " + TABLE_SUBJECT_GRADE +
-            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
-    String UPDATE_SUBJECT_GRADE =
-            "UPDATE " + TABLE_SUBJECT_GRADE + " SET " + SUBJECT_GRADE_GRADE + " = ?" +
-            " WHERE " + SUBJECT_GRADE_USER_ID + " = ? AND " + SUBJECT_GRADE_SUBJECT_ID + " = ?";
+    public static final String SELECT_USER_SUBJECT_GRADES = "select.user.subject.grades";
+    public static final String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID = "delete.from.subject_grade.by.user_id.and.subject_id";
+    public static final String INSERT_INTO_SUBJECT_GRADE = "insert.into.subject_grade";
+    public static final String SELECT_COUNT_USERS_BY_ROLE = "select.count.users.by.role";
+    public static final String SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID = "select.from.subject_grade.by.user_id.and.subject_id";
+    public static final String UPDATE_SUBJECT_GRADE = "update.subject_grade";
 }

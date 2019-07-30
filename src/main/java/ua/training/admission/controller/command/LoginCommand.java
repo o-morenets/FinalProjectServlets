@@ -62,8 +62,6 @@ public class LoginCommand extends CommandWrapper {
 
         String requestUri = SecurityUtils.getRedirectAfterLoginUrl(redirectId);
         if (requestUri != null) {
-            log.debug("requestUri = " + requestUri);
-            log.debug("rerirect to requestUri...");
             response.sendRedirect(requestUri);
         } else {
             response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.HOME);

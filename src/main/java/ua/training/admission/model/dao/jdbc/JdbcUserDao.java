@@ -28,7 +28,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findById(Long id) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USER_BY_ID)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_BY_ID))) {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -53,7 +53,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public void create(User user) {
         try (PreparedStatement stmt = connection.prepareStatement(
-                SQL.INSERT_INTO_USER, Statement.RETURN_GENERATED_KEYS)) {
+                SQL.getSqlElement(SQL.INSERT_INTO_USER), Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPassword());
@@ -76,7 +76,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void update(User user) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.UPDATE_USER)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER))) {
             if (user.getSpeciality() == null) {
                 stmt.setNull(1, Types.BIGINT);
             } else {
@@ -100,7 +100,7 @@ public class JdbcUserDao implements UserDao {
     @Override
     public Optional<User> findByUsername(String username) {
         Optional<User> result = Optional.empty();
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USER_BY_USERNAME)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_BY_USERNAME))) {
             stmt.setString(1, username.toLowerCase());
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -121,7 +121,7 @@ public class JdbcUserDao implements UserDao {
         List<User> result = new ArrayList<>();
         int start = currentPage * recordsPerPage - recordsPerPage;
 
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_USERS_BY_ROLE)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USERS_BY_ROLE))) {
             stmt.setString(1, role.name());
             stmt.setInt(2, start);
             stmt.setInt(3, recordsPerPage);
@@ -145,7 +145,7 @@ public class JdbcUserDao implements UserDao {
     public int getNumberOfRowsByRole(User.Role role) {
         int result = 0;
 
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.SELECT_COUNT_USERS_BY_ROLE)) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_COUNT_USERS_BY_ROLE))) {
             stmt.setString(1, role.name());
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
