@@ -16,8 +16,8 @@ public class PageHomeCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+            throws ServletException, IOException
+    {
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_HOME);
 
         return Paths.HOME_JSP;

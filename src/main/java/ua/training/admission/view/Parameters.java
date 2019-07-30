@@ -8,6 +8,7 @@ public class Parameters {
     public static final String USER_LOCALE = "lang";
     public static final String ENCODING = "encoding";
 
+    // Form parameters
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String PASSWORD_2 = "password2";
@@ -17,4 +18,9 @@ public class Parameters {
     public static final String USER_ID = "userId";
     public static final String SPEC_RADIOS = "specRadios";
     public static final String REDIRECT_ID = "redirectId";
+
+    // Pagination
+    public static final String CURRENT_PAGE = "currentPage";
+    public static final String RECORDS_PER_PAGE = "recordsPerPage";
+    public static final String NUM_PAGES = "noOfPages";
 }

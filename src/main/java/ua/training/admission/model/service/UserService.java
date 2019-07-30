@@ -36,7 +36,8 @@ public class UserService {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.findByUsername(username).filter(user -> password.equals(user.getPassword()));
+            return userDao.findByUsername(username)
+                    .filter(user -> password.equals(user.getPassword()));
         }
     }
 

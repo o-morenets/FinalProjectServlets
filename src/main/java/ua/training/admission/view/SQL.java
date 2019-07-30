@@ -1,6 +1,7 @@
 package ua.training.admission.view;
 
 public interface SQL {
+// TODO -> property
 
     /* SQL 'not unique' constraint code */
     int SQL_CONSTRAINT_NOT_UNIQUE = 1062;

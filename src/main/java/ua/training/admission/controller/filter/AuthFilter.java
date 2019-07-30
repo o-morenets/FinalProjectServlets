@@ -29,14 +29,14 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req,
                          ServletResponse resp,
-                         FilterChain filterChain) throws IOException, ServletException {
+                         FilterChain filterChain) throws IOException, ServletException
+    {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
         String pathInfo = request.getPathInfo();
         log.debug("***** pathInfo: " + pathInfo);
 
-        // User information stored in the Session (after successful login)
         User loggedUser = SecurityUtils.getLoggedUser(request.getSession());
         log.debug("***** loggedUser: " + loggedUser);
 

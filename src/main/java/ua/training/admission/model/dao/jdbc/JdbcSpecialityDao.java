@@ -30,7 +30,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
-                Speciality speciality = getSpecialityFromResultSet(resultSet);
+                Speciality speciality = getEntityFromResultSet(resultSet);
                 result = Optional.of(speciality);
             }
 
@@ -50,15 +50,8 @@ public class JdbcSpecialityDao implements SpecialityDao {
             ResultSet resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
-                Speciality speciality = getSpecialityFromResultSet(resultSet);
-                specialityMap.putIfAbsent(speciality.getId(), speciality);
-                speciality = specialityMap.get(speciality.getId());
-
-                Subject subject = getSubjectFromResultSet(resultSet);
-                if (subject != null) {
-                    speciality.getSubjects().add(subject);
-                    subject.getSpecialities().add(speciality);
-                }
+                Speciality speciality = getEntityFromResultSet(resultSet);
+                setSubject(specialityMap, resultSet, speciality);
             }
 
         } catch (SQLException e) {
@@ -84,7 +77,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
         throw new UnsupportedOperationException();
     }
 
-    private Speciality getSpecialityFromResultSet(ResultSet rs) throws SQLException {
+    private Speciality getEntityFromResultSet(ResultSet rs) throws SQLException {
         return Speciality.builder()
                 .id(rs.getLong(SQL.SPECIALITY_ID))
                 .name(rs.getString(SQL.SPECIALITY_NAME))
@@ -92,16 +85,25 @@ public class JdbcSpecialityDao implements SpecialityDao {
                 .build();
     }
 
-    private Subject getSubjectFromResultSet(ResultSet rs) throws SQLException {
-        Long id = rs.getLong(SQL.SUBJECT_ID);
-        if (rs.wasNull()) {
-            return null;
+    private void setSubject(Map<Long, Speciality> specialityMap, ResultSet resultSet, Speciality speciality)
+            throws SQLException
+    {
+        specialityMap.putIfAbsent(speciality.getId(), speciality);
+        speciality = specialityMap.get(speciality.getId());
+
+        Subject subject = null;
+        Long id = resultSet.getLong(SQL.SUBJECT_ID);
+        if (!resultSet.wasNull()) {
+            subject = Subject.builder()
+                    .id(id)
+                    .name(resultSet.getString(SQL.SUBJECT_NAME))
+                    .specialities(new HashSet<>())
+                    .build();
         }
 
-        return Subject.builder()
-                .id(id)
-                .name(rs.getString(SQL.SUBJECT_NAME))
-                .specialities(new HashSet<>())
-                .build();
+        if (subject != null) {
+            speciality.getSubjects().add(subject);
+            subject.getSpecialities().add(speciality);
+        }
     }
 }

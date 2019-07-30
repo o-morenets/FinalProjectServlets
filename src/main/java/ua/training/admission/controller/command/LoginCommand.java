@@ -5,6 +5,7 @@ import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.security.EncryptPassword;
 import ua.training.admission.security.SecurityUtils;
+import ua.training.admission.view.Messages;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
 
@@ -21,8 +22,8 @@ public class LoginCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+            throws ServletException, IOException
+    {
         String username = request.getParameter(Parameters.USERNAME);
         String password = request.getParameter(Parameters.PASSWORD);
 
@@ -34,8 +35,8 @@ public class LoginCommand extends CommandWrapper {
     }
 
     private void doLogin(HttpServletRequest request, HttpServletResponse response, String username, String password)
-            throws IOException {
-
+            throws IOException
+    {
         Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
         String path = request.getContextPath() + request.getServletPath();
 
@@ -47,15 +48,16 @@ public class LoginCommand extends CommandWrapper {
     }
 
     private void loginSuccessful(HttpServletRequest request, HttpServletResponse response, User user)
-            throws IOException {
-
+            throws IOException
+    {
         SecurityUtils.storeLoggedUser(request.getSession(), user);
 
         int redirectId = -1;
         try {
             redirectId = Integer.parseInt(request.getParameter(Parameters.REDIRECT_ID));
             log.debug("redirectId = " + redirectId);
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
         }
 
         String requestUri = SecurityUtils.getRedirectAfterLoginUrl(redirectId);
@@ -64,7 +66,6 @@ public class LoginCommand extends CommandWrapper {
             log.debug("rerirect to requestUri...");
             response.sendRedirect(requestUri);
         } else {
-            // Default after successful login
             response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.HOME);
         }
     }

@@ -36,18 +36,20 @@ public class MainController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+            throws ServletException, IOException
+    {
         processRequest(request, response);
     }
 
-    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException
+    {
         String commandKey = getCommandKey(request);
         log.debug(commandKey);
         Command command = commandHolder.getCommand(commandKey);

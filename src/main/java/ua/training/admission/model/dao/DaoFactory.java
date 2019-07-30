@@ -27,18 +27,21 @@ public abstract class DaoFactory {
     public static DaoFactory getInstance() {
         if (instance == null) {
             synchronized (DaoFactory.class) {
-                try {
-                    InputStream inputStream = DaoFactory.class.getResourceAsStream(Config.DB_FILE);
-                    Properties dbProps = new Properties();
-                    dbProps.load(inputStream);
-                    String factoryClass = dbProps.getProperty(Config.DB_FACTORY_CLASS);
-                    instance = (DaoFactory) Class.forName(factoryClass).newInstance();
-                } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
-                    log.error(Messages.DAO_FACTORY_EXCEPTION, e);
-                    throw new AppException(Messages.DAO_FACTORY_EXCEPTION, e);
+                if (instance == null) {
+                    try {
+                        InputStream inputStream = DaoFactory.class.getResourceAsStream(Config.DB_FILE);
+                        Properties dbProps = new Properties();
+                        dbProps.load(inputStream);
+                        String factoryClass = dbProps.getProperty(Config.DB_FACTORY_CLASS);
+                        instance = (DaoFactory) Class.forName(factoryClass).newInstance();
+                    } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+                        log.error(Messages.DAO_FACTORY_EXCEPTION, e);
+                        throw new AppException(Messages.DAO_FACTORY_EXCEPTION, e);
+                    }
                 }
             }
         }
+
         return instance;
     }
 }

@@ -50,7 +50,7 @@ public class SubjectGradeService {
                     String elementName = parameterNames.nextElement();
 
                     if (elementName.startsWith(TextConstants.PREFIX_SUBJECT)) {
-                        try {
+                        try { // fixme
                             long subjectId = Long.parseLong(elementName.replaceAll("\\D+", ""));
                             try {
                                 int grade = Integer.parseInt(request.getParameter(elementName));

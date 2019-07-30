@@ -18,7 +18,9 @@ public abstract class CommandWrapper implements Command {
 
     private static final Logger log = Logger.getLogger(CommandWrapper.class);
 
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException
+    {
         try {
             return doExecute(request, response);
         } catch (AppException e) {
