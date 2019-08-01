@@ -1,10 +1,7 @@
 package ua.training.admission.controller.command;
 
-import ua.training.admission.model.entity.User;
 import ua.training.admission.security.SecurityUtils;
-import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
-import ua.training.admission.view.TextConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

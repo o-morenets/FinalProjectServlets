@@ -3,9 +3,8 @@ package ua.training.admission.controller.command;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.I18n;
 import ua.training.admission.view.Paths;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.Constants;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,19 +29,19 @@ public class CommandHolder {
     private void initCommands() {
         commands = new HashMap<String, Command>() {
             {
-                put(TextConstants.GET + Paths.HOME, new PageHomeCommand());
-                put(TextConstants.GET + Paths.LOGIN, new PageLoginCommand());
-                put(TextConstants.GET + Paths.SIGNUP, new PageSignupCommand());
-                put(TextConstants.GET + Paths.USERS, new UserListCommand());
-                put(TextConstants.GET + Paths.USER_SPECIALITY, new PageUserSpecialityCommand());
-                put(TextConstants.GET + Paths.USER_PROFILE, new UserProfileCommand());
-                put(TextConstants.GET + Paths.USER_GRADES, new PageUserGradesCommand());
+                put(Constants.GET + Paths.HOME, new PageHomeCommand());
+                put(Constants.GET + Paths.LOGIN, new PageLoginCommand());
+                put(Constants.GET + Paths.SIGNUP, new PageSignupCommand());
+                put(Constants.GET + Paths.USERS, new UserListCommand());
+                put(Constants.GET + Paths.USER_SPECIALITY, new PageUserSpecialityCommand());
+                put(Constants.GET + Paths.USER_PROFILE, new UserProfileCommand());
+                put(Constants.GET + Paths.USER_GRADES, new PageUserGradesCommand());
 
-                put(TextConstants.POST + Paths.LOGIN, new LoginCommand());
-                put(TextConstants.POST + Paths.LOGOUT, new LogoutCommand());
-                put(TextConstants.POST + Paths.SIGNUP, new SignupCommand());
-                put(TextConstants.POST + Paths.USERS_UPDATE_SPEC, new UpdateSpecialityCommand());
-                put(TextConstants.POST + Paths.USERS_UPDATE_GRADES, new UpdateGradesCommand());
+                put(Constants.POST + Paths.LOGIN, new LoginCommand());
+                put(Constants.POST + Paths.LOGOUT, new LogoutCommand());
+                put(Constants.POST + Paths.SIGNUP, new SignupCommand());
+                put(Constants.POST + Paths.USERS_UPDATE_SPEC, new UpdateSpecialityCommand());
+                put(Constants.POST + Paths.USERS_UPDATE_GRADES, new UpdateGradesCommand());
             }
         };
     }

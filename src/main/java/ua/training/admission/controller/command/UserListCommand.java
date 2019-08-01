@@ -3,6 +3,7 @@ package ua.training.admission.controller.command;
 import org.apache.log4j.Logger;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
+import ua.training.admission.utils.PaginationUtils;
 import ua.training.admission.view.*;
 
 import javax.servlet.ServletException;
@@ -26,22 +27,11 @@ public class UserListCommand extends CommandWrapper {
     {
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_HOME);
 
-        String paramCurrentPage = request.getParameter(Parameters.CURRENT_PAGE);
-        String paramRecordsPerPage = request.getParameter(Parameters.RECORDS_PER_PAGE);
+        int currentPage = PaginationUtils.getParameterValue(request,
+                Parameters.CURRENT_PAGE, Constants.DEFAULT_CURRENT_PAGE);
 
-        int currentPage = 1;
-        try {
-            currentPage = Integer.parseInt(paramCurrentPage);
-        } catch (NumberFormatException e) {
-            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
-        }
-
-        int recordsPerPage = 10; // FIXME
-        try {
-            recordsPerPage = Integer.parseInt(paramRecordsPerPage);
-        } catch (NumberFormatException e) {
-            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
-        }
+        int recordsPerPage = PaginationUtils.getParameterValue(request,
+                Parameters.RECORDS_PER_PAGE, Constants.DEFAULT_RECORDS_PER_PAGE);
 
         int rows = userService.getNumberOfRowsByRole(User.Role.USER);
         int numPages = rows / recordsPerPage;

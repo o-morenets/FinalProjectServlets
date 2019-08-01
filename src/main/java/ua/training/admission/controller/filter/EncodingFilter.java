@@ -1,8 +1,7 @@
 package ua.training.admission.controller.filter;
 
 import ua.training.admission.view.Parameters;
-import ua.training.admission.view.I18n;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.Constants;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -20,7 +19,7 @@ public class EncodingFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         encoding = filterConfig.getInitParameter(Parameters.ENCODING);
         if (encoding == null) {
-            encoding = TextConstants.UTF_8;
+            encoding = Constants.UTF_8;
         }
     }
 

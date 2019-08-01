@@ -9,7 +9,7 @@ import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.Constants;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -51,7 +51,7 @@ public class SubjectGradeService {
                 while (parameterNames.hasMoreElements()) {
                     String elementName = parameterNames.nextElement();
 
-                    if (elementName.startsWith(TextConstants.PREFIX_SUBJECT)) {
+                    if (elementName.startsWith(Constants.PREFIX_SUBJECT)) {
                         try { // fixme
                             long subjectId = Long.parseLong(elementName.replaceAll("\\D+", ""));
                             try {

@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `speciality` ;
 
 CREATE TABLE IF NOT EXISTS `speciality` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS `subject` ;
 
 CREATE TABLE IF NOT EXISTS `subject` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -69,11 +69,15 @@ DROP TABLE IF EXISTS `usr` ;
 
 CREATE TABLE IF NOT EXISTS `usr` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `account_non_expired` BIT(1) NOT NULL DEFAULT true,
+  `account_non_locked` BIT(1) NOT NULL DEFAULT true,
+  `credentials_non_expired` BIT(1) NOT NULL DEFAULT true,
   `email` VARCHAR(255) NULL DEFAULT NULL,
-  `first_name` VARCHAR(255) NULL DEFAULT NULL,
-  `last_name` VARCHAR(255) NULL DEFAULT NULL,
-  `password` VARCHAR(255) NULL DEFAULT NULL,
-  `username` VARCHAR(255) NULL DEFAULT NULL,
+  `enabled` BIT(1) NOT NULL DEFAULT true,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
   `speciality_id` BIGINT(20) NULL DEFAULT NULL,
   `role` ENUM('ADMIN', 'USER', 'GUEST') NOT NULL,
   PRIMARY KEY (`id`),
@@ -116,7 +120,7 @@ DROP TABLE IF EXISTS `user_role` ;
 
 CREATE TABLE IF NOT EXISTS `user_role` (
   `user_id` BIGINT(20) NOT NULL,
-  `role_name` VARCHAR(255) NULL DEFAULT NULL,
+  `role_name` VARCHAR(255) NOT NULL,
   INDEX `FKfpm8swft53ulq2hl11yplpr5` (`user_id` ASC),
   CONSTRAINT `FKfpm8swft53ulq2hl11yplpr5`
     FOREIGN KEY (`user_id`)
@@ -133,6 +137,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `speciality`
 -- -----------------------------------------------------
 START TRANSACTION;
+USE `admission_servlets`;
 INSERT INTO `speciality` (`id`, `name`) VALUES (1, 'Хімік');
 INSERT INTO `speciality` (`id`, `name`) VALUES (2, 'Археолог');
 INSERT INTO `speciality` (`id`, `name`) VALUES (3, 'Слюсар');
@@ -146,6 +151,7 @@ COMMIT;
 -- Data for table `subject`
 -- -----------------------------------------------------
 START TRANSACTION;
+USE `admission_servlets`;
 INSERT INTO `subject` (`id`, `name`) VALUES (1, 'Математика');
 INSERT INTO `subject` (`id`, `name`) VALUES (2, 'Українська мова');
 INSERT INTO `subject` (`id`, `name`) VALUES (3, 'Біологія');
@@ -164,6 +170,7 @@ COMMIT;
 -- Data for table `speciality_subject`
 -- -----------------------------------------------------
 START TRANSACTION;
+USE `admission_servlets`;
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (1, 1);
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (1, 4);
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (1, 7);
@@ -174,6 +181,14 @@ INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (2, 10);
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (3, 1);
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (3, 3);
 INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (3, 5);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (4, 6);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (4, 10);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (4, 4);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (4, 1);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (5, 8);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (5, 7);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (5, 3);
+INSERT INTO `speciality_subject` (`speciality_id`, `subject_id`) VALUES (5, 2);
 
 COMMIT;
 
@@ -182,15 +197,16 @@ COMMIT;
 -- Data for table `usr`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (1,'a@ua', 'a', 'a', '0cc175b9c0f1b6a831c399e269772661', 'a', null, 'ADMIN');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (2,'z@ua', 'z', 'z', 'fbade9e36a3f36d3d676c1b808451dd7', 'z', 2, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (3,'x@ua', 'x', 'x', '9dd4e461268c8034f5c8564e155c67a6', 'x', 3, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (4,'q@ua', 'q', 'q', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 1, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (5,'s@ua', 's', 's', '03c7c0ace395d80182db07ae2c30f034', 's', null, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (6,'w@ua', 'w', 'w', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 4, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (7,'admin@ua', 'Admin', 'ADMIN', '21232f297a57a5a743894a0e4a801fc3', 'admin', null, 'ADMIN');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (8,'user@ua', 'User', 'USER', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', null, 'USER');
-INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (9,'student@ua', 'Student', 'STUDENT', 'cd73502828457d15655bbd7a63fb0bc8', 'student', null, 'USER');
+USE `admission_servlets`;
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (1, true, true, true, 'serhii.bobkov@ua', true, 'Сергій', 'Бобков', '0cc175b9c0f1b6a831c399e269772661', 'a', NULL, 'ADMIN');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (2, true, true, true, 'iryna.zaychenko@ua', true, 'Ірина', 'Зайченко', 'fbade9e36a3f36d3d676c1b808451dd7', 'z', 2, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (3, true, true, true, 'kateryna.osadcha@ua', true, 'Катерина', 'Осадча', '9dd4e461268c8034f5c8564e155c67a6', 'x', 3, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (4, true, true, true, 'alla.shurova@ua', true, 'Алла', 'Шурова', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 1, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (5, true, true, true, 'nataliya.tarasova@ua', true, 'Наталія', 'Тарасова', '03c7c0ace395d80182db07ae2c30f034', 's', NULL, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (6, true, true, true, 'serhii.zhdanov@ua', true, 'Сергій', 'Жданов', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 4, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (7, true, true, true, 'oleksii.morenets@cmail.com', true, 'Олексій', 'Моренець', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL, 'ADMIN');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (8, true, true, true, 'dmytro.gordiychuk@ua', true, 'Дмитро', 'Гордійчук', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', NULL, 'USER');
+INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (9, true, true, true, 'pavlo.polyakov@ua', true, 'Павло', 'Поляков', 'cd73502828457d15655bbd7a63fb0bc8', 'student', NULL, 'USER');
 
 COMMIT;
 
@@ -199,6 +215,7 @@ COMMIT;
 -- Data for table `subject_grade`
 -- -----------------------------------------------------
 START TRANSACTION;
+USE `admission_servlets`;
 INSERT INTO `subject_grade` (`grade`, `subject_id`, `user_id`) VALUES (70, 2, 2);
 INSERT INTO `subject_grade` (`grade`, `subject_id`, `user_id`) VALUES (85, 3, 2);
 INSERT INTO `subject_grade` (`grade`, `subject_id`, `user_id`) VALUES (90, 10, 2);
@@ -212,6 +229,7 @@ COMMIT;
 -- Data for table `user_role`
 -- -----------------------------------------------------
 START TRANSACTION;
+USE `admission_servlets`;
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (1, 'ADMIN');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (2, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (3, 'USER');
@@ -223,4 +241,3 @@ INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (8, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (9, 'USER');
 
 COMMIT;
-

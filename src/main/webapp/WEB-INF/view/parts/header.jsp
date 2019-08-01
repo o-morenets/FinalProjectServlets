@@ -16,4 +16,4 @@
 
 <body>
 <%@ include file="/WEB-INF/view/parts/navbar.jsp"%>
-<div class="container-fluid mt-5">
+<div class="container-fluid my-3">

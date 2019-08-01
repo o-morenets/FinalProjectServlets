@@ -1,6 +1,6 @@
 package ua.training.admission.controller.command;
 
-import ua.training.admission.view.TextConstants;
+import ua.training.admission.view.Constants;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +16,7 @@ public class CommandUtils {
         String method = request.getMethod().toUpperCase();
         String path = request.getPathInfo().replaceAll("/\\d+", "");
 
-        return method + TextConstants.COLON + path;
+        return method + Constants.COLON + path;
     }
 
     /**

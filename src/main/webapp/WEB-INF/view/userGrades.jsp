@@ -83,7 +83,7 @@
                 </div>
             </c:if>
         </div>
-        <c:if test="${!isAdmin}">
+        <c:if test="${!isAdmin && !empty user.speciality}">
             <div class="card-footer text-muted">
                 <fmt:message key="user.averageGrade"/>
             </div>
