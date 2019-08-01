@@ -1,8 +1,10 @@
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row">
     <div class="col-md-12">
-        <div class="card text-center">
-            <div class="card-header"><fmt:message key="userList.panel.title"/></div>
+        <div class="card">
+            <div class="card-header">
+                <fmt:message key="card.userList.title"/>
+            </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
