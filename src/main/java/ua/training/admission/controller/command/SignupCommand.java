@@ -19,7 +19,9 @@ import static ua.training.admission.view.I18n.*;
 
 public class SignupCommand extends CommandWrapper {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(SignupCommand.class);
+
     private UserService userService = UserService.getInstance();
 
     @Override

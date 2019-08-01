@@ -13,7 +13,9 @@ import java.util.Enumeration;
 
 public class UpdateGradesCommand extends CommandWrapper {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(UpdateSpecialityCommand.class);
+
     private SubjectGradeService subjectGradeService = SubjectGradeService.getInstance();
 
     @Override

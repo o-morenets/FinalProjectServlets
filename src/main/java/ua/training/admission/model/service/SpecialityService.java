@@ -10,7 +10,9 @@ import java.util.List;
 
 public class SpecialityService {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(SpecialityService.class);
+
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {

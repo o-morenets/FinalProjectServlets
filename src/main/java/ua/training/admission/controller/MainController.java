@@ -22,7 +22,9 @@ import ua.training.admission.view.*;
 @WebServlet(Paths.SERVLET_PATH + "/*")
 public class MainController extends HttpServlet {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(MainController.class);
+
     private CommandHolder commandHolder;
 
     public MainController() {
@@ -50,7 +52,7 @@ public class MainController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException
     {
-        String commandKey = getCommandKey(request);
+        String commandKey = CommandUtils.getCommandKey(request);
         log.debug(commandKey);
         Command command = commandHolder.getCommand(commandKey);
         String viewPage = command.execute(request, response);
@@ -58,18 +60,5 @@ public class MainController extends HttpServlet {
             log.debug("forward to: " + viewPage);
             request.getRequestDispatcher(viewPage).forward(request, response);
         }
-    }
-
-    /**
-     * Detect GET or POST method and return appropriate command
-     *
-     * @param request http request
-     * @return {GET|POST}:{URI}
-     */
-    private String getCommandKey(HttpServletRequest request) {
-        String method = request.getMethod().toUpperCase();
-        String path = request.getPathInfo().replaceAll("/\\d+", "");
-
-        return method + TextConstants.COLON + path;
     }
 }

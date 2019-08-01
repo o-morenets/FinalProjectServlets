@@ -8,6 +8,7 @@ public interface Messages {
     String USER_ALREADY_EXISTS = "User already exists";
     String NUMBER_FORMAT_EXCEPTION = "Number Format Exception while parsing a number";
     String IO_EXCEPTION = "I/O Exception";
+    String RESOURCE_NOT_FOUND_EXCEPTION = "Resource not found";
 
     /* SQL Exceptions */
     String SQL_EXCEPTION = "SQL Error";

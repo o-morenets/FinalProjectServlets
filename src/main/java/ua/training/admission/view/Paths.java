@@ -8,7 +8,7 @@ public final class Paths {
     /* Redirected flag */
     public static final String REDIRECTED = "REDIRECTED";
 
-    /* api */
+    /* Servlet Path */
     public static final String SERVLET_PATH = "/api";
 
     /* Paths for Commands */
@@ -31,7 +31,7 @@ public final class Paths {
     public static final String USERS_UPDATE_SPEC = USERS + "/updateSpec";
     public static final String USERS_UPDATE_GRADES = USERS + "/updateGrades";
 
-    /* ERRORS */
+    /* Login errors */
     public static final String LOGIN_ERROR = LOGIN + "?error=true";
     public static final String LOGIN_LOGOUT = LOGIN + "?logout=true";
 
@@ -43,6 +43,6 @@ public final class Paths {
     public static final String USERLIST_JSP = PREFIX + "/userList.jsp";
     public static final String USER_SPECIALITY_JSP = PREFIX + "/userSpeciality.jsp";
     public static final String USER_GRADES_JSP = PREFIX + "/userGrades.jsp";
-    public static final String PAGE_FORBIDDEN_JSP = PREFIX + "/errorPage/403.jsp";
-    public static final String PAGE_NOT_FOUND_JSP = PREFIX + "/errorPage/404.jsp";
+    public static final String PAGE_403_JSP = PREFIX + "/errorPage/403.jsp";
+    public static final String PAGE_404_JSP = PREFIX + "/errorPage/404.jsp";
 }

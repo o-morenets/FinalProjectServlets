@@ -1,9 +1,9 @@
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading"><fmt:message key="userList.panel.title"/></div>
-            <div class="panel-body">
+        <div class="card text-center">
+            <div class="card-header"><fmt:message key="userList.panel.title"/></div>
+            <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -39,7 +39,11 @@
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
+        </div>
 
+        <div class="row justify-content-center mt-3">
+            <div class="col-6">
                 <nav aria-label="Navigation for users">
                     <ul class="pagination">
                         <c:if test="${currentPage != 1}">
@@ -82,7 +86,8 @@
                                 <input type="hidden" name="currentPage" value="1">
                                 <div class="form-row align-items-center">
                                     <div class="col-auto">
-                                        <label class="ml-2" for="records"><fmt:message key="pagination.recordsPerPage"/></label>
+                                        <label class="ml-2" for="records"><fmt:message
+                                                key="pagination.recordsPerPage"/></label>
                                         <select class="my-1 mr-2" id="records" name="recordsPerPage">
                                             <option value="5">5</option>
                                             <option value="10" selected>10</option>
@@ -90,14 +95,14 @@
                                         </select>
                                     </div>
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary"><fmt:message key="button.refresh"/></button>
+                                        <button type="submit" class="btn btn-primary"><fmt:message
+                                                key="button.refresh"/></button>
                                     </div>
                                 </div>
                             </form>
                         </li>
                     </ul>
                 </nav>
-
             </div>
         </div>
     </div>

@@ -17,7 +17,10 @@ import java.util.Optional;
 
 public class LoginCommand extends CommandWrapper {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(LoginCommand.class);
+
+    /* Services */
     private UserService userService = UserService.getInstance();
 
     @Override
@@ -27,27 +30,27 @@ public class LoginCommand extends CommandWrapper {
         String username = request.getParameter(Parameters.USERNAME);
         String password = request.getParameter(Parameters.PASSWORD);
 
-        if (username != null && password != null) {
-            doLogin(request, response, username, password);
+        Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
+        String path = request.getContextPath() + request.getServletPath();
+
+        if (user.isPresent()) {
+            redirectAfterLoginSuccessful(request, response, user.get());
+        } else {
+            response.sendRedirect(path + Paths.LOGIN_ERROR);
         }
 
         return Paths.REDIRECTED;
     }
 
-    private void doLogin(HttpServletRequest request, HttpServletResponse response, String username, String password)
-            throws IOException
-    {
-        Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
-        String path = request.getContextPath() + request.getServletPath();
-
-        if (user.isPresent()) {
-            loginSuccessful(request, response, user.get());
-        } else {
-            response.sendRedirect(path + Paths.LOGIN_ERROR);
-        }
-    }
-
-    private void loginSuccessful(HttpServletRequest request, HttpServletResponse response, User user)
+    /**
+     * Perform actions when login is successful
+     *
+     * @param request  http request
+     * @param response http response
+     * @param user     logged user
+     * @throws IOException if error occurs while redirect
+     */
+    private void redirectAfterLoginSuccessful(HttpServletRequest request, HttpServletResponse response, User user)
             throws IOException
     {
         SecurityUtils.storeLoggedUser(request.getSession(), user);
@@ -55,9 +58,8 @@ public class LoginCommand extends CommandWrapper {
         int redirectId = -1;
         try {
             redirectId = Integer.parseInt(request.getParameter(Parameters.REDIRECT_ID));
-            log.debug("redirectId = " + redirectId);
-        } catch (Exception e) {
-            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
+        } catch (NumberFormatException e) {
+            log.warn(Messages.NUMBER_FORMAT_EXCEPTION, e);
         }
 
         String requestUri = SecurityUtils.getRedirectAfterLoginUrl(redirectId);

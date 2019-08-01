@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class EncryptPassword {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(EncryptPassword.class);
 
     private static final String ALGORITHM = "MD5";

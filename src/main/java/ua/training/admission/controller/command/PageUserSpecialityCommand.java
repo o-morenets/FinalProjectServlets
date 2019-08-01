@@ -1,5 +1,6 @@
 package ua.training.admission.controller.command;
 
+import ua.training.admission.controller.exception.ResourceNotFoundException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.SpecialityService;
 import ua.training.admission.model.service.UserService;
@@ -20,11 +21,12 @@ public class PageUserSpecialityCommand extends CommandWrapper {
 
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long userId = Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
-        userService.findById(userId).ifPresent(usr -> {
-            request.setAttribute(Attributes.USER, usr);
-            request.setAttribute(Attributes.SPECIALITIES, specialityService.findAll());
-        });
+        Long userId = CommandUtils.extractUserIdFromPath(request);
+        Optional<User> user = userService.findById(userId);
+        User usr = user.orElseThrow(ResourceNotFoundException::new);
+
+        request.setAttribute(Attributes.USER, usr);
+        request.setAttribute(Attributes.SPECIALITIES, specialityService.findAll());
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_SPECIALITIES);
 
         return Paths.USER_SPECIALITY_JSP;

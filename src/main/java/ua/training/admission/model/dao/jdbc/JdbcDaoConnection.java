@@ -13,6 +13,7 @@ import ua.training.admission.view.Messages;
  */
 public class JdbcDaoConnection implements DaoConnection {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(JdbcDaoConnection.class);
 
     private Connection connection;

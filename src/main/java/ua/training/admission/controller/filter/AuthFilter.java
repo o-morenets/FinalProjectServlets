@@ -20,6 +20,7 @@ import java.util.List;
 @WebFilter("/*")
 public class AuthFilter implements Filter {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(AuthFilter.class);
 
     @Override
@@ -84,8 +85,8 @@ public class AuthFilter implements Filter {
             // Check if the user has a valid role?
             if (!SecurityUtils.hasPermission(wrapRequest)) {
                 log.warn("***** user has not valid role! - forward to 403 page...");
-                request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_FORBIDDEN);
-                request.getServletContext().getRequestDispatcher(Paths.PAGE_FORBIDDEN_JSP).forward(request, response);
+                request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
+                request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP).forward(request, response);
 
                 return;
             }

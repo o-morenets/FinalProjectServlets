@@ -18,7 +18,9 @@ import java.util.Optional;
 
 public class SubjectGradeService {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(SubjectGradeService.class);
+
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
     private static class Holder {

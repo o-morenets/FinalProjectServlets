@@ -5,6 +5,7 @@ import ua.training.admission.view.I18n;
 import ua.training.admission.view.Paths;
 import ua.training.admission.view.TextConstants;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,12 +14,19 @@ import java.util.Map;
  */
 public class CommandHolder {
 
+    /* Command holder map */
     private Map<String, Command> commands;
 
+    /**
+     * Constructs Command Holder
+     */
     public CommandHolder() {
         initCommands();
     }
 
+    /**
+     * Initialize commands
+     */
     private void initCommands() {
         commands = new HashMap<String, Command>() {
             {
@@ -39,11 +47,17 @@ public class CommandHolder {
         };
     }
 
+    /**
+     * Get command from commands holder
+     *
+     * @param key command key
+     * @return command object or default generated command
+     */
     public Command getCommand(String key) {
         return commands.getOrDefault(key, (request, response) -> {
-            request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_NOT_FOUND);
+            request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_404);
 
-            return Paths.PAGE_NOT_FOUND_JSP;
+            return Paths.PAGE_404_JSP;
         });
     }
 }

@@ -18,7 +18,9 @@ import java.util.Optional;
  */
 public class JdbcUserDao implements UserDao {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(JdbcUserDao.class);
+
     private Connection connection;
 
     JdbcUserDao(Connection connection) {

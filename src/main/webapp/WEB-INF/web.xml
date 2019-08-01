@@ -16,7 +16,7 @@
 
     <error-page>
         <exception-type>java.lang.Throwable</exception-type>
-        <location>/WEB-INF/view/errorPage/errorPage.jsp</location>
+        <location>/WEB-INF/view/errorPage/error.jsp</location>
     </error-page>
 
     <listener>

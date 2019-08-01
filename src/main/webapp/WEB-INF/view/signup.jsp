@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-4">
         <div class="row">
             <div class="col">
                 <form class="needs-validation" novalidate method="post"
@@ -119,7 +119,7 @@
                     </div>
                     <div class="form-group-row">
                         <div class="col-sm-offset-2 col-sm-6 mt-2">
-                            <button id="btnSubmit" type="submit" class="btn btn-success">
+                            <button id="btnSubmit" type="submit" class="btn btn-primary">
                                 <fmt:message key="form.control.signup"/>
                             </button>
                         </div>

@@ -19,7 +19,9 @@ import java.util.Optional;
 
 public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(JdbcSubjectGradeDao.class);
+
     private Connection connection;
 
     JdbcSubjectGradeDao(Connection connection) {

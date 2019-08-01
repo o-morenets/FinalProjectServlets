@@ -15,7 +15,9 @@ import java.io.IOException;
  */
 public class UserListCommand extends CommandWrapper {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(UserListCommand.class);
+
     private UserService userService = UserService.getInstance();
 
     @Override

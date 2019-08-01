@@ -8,12 +8,12 @@
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="alert alert-danger" role="alert">
-    <h3><fmt:message key="title.error.throwable"/></h3>
+    <h3><fmt:message key="error.throwable.message"/></h3>
 </div>
 <div class="card">
     <div class="card-body">
         <%
-            pageContext.getException().printStackTrace(new java.io.PrintWriter(out));
+//            pageContext.getException().printStackTrace(new java.io.PrintWriter(out));
         %>
     </div>
 </div>

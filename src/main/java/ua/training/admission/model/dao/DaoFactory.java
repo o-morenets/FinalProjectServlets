@@ -22,6 +22,7 @@ public abstract class DaoFactory {
 
     private static DaoFactory instance;
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(DaoFactory.class);
 
     public static DaoFactory getInstance() {

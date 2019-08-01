@@ -18,6 +18,7 @@ import java.sql.SQLException;
  */
 public class JdbcDaoFactory extends DaoFactory {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(JdbcDaoFactory.class);
 
     private DataSource dataSource;

@@ -16,7 +16,9 @@ import java.util.*;
 
 public class JdbcSpecialityDao implements SpecialityDao {
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(JdbcSpecialityDao.class);
+
     private Connection connection;
 
     JdbcSpecialityDao(Connection connection) {

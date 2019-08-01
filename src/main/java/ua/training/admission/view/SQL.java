@@ -12,7 +12,9 @@ public class SQL {
     /* SQL 'not unique' constraint code */
     public static final int SQL_CONSTRAINT_NOT_UNIQUE = 1062;
 
+    /* Logger */
     private static final Logger log = Logger.getLogger(SQL.class);
+
     private static Properties sqlProperties = loadSqlProperties();
 
     private static Properties loadSqlProperties() {
