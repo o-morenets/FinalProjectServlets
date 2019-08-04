@@ -43,10 +43,20 @@
 
         <c:choose>
             <c:when test="${!empty principal}">
-                <div class="navbar-text mr-3">${principal.username}</div>
+                <div class="navbar-text mr-3">
+                    <b>${principal.lastName} ${principal.firstName}</b> [${principal.username}]
+                </div>
+                <c:choose>
+                    <c:when test="${isAdmin}">
+                        <span class="badge badge-danger"><fmt:message key="menu.role.admin"/></span>
+                    </c:when>
+                    <c:otherwise>
+                        <span class="badge badge-info"><fmt:message key="menu.role.user"/></span>
+                    </c:otherwise>
+                </c:choose>
                 <form method="post"
                       action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGOUT}">
-                    <button class="btn btn-secondary" type="submit">
+                    <button class="btn btn-secondary ml-3" type="submit">
                         <fmt:message key="menu.logout"/>
                     </button>
                 </form>
@@ -60,10 +70,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-primary"
-                           href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGIN}"
-                           role="button"><fmt:message
-                                key="menu.login"/></a>
+                        <a class="btn btn-primary" role="button"
+                           href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.LOGIN}">
+                            <fmt:message key="menu.login"/>
+                        </a>
                     </li>
                 </ul>
             </c:otherwise>

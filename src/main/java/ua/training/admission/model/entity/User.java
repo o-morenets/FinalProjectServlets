@@ -9,157 +9,173 @@ import java.util.List;
  */
 public class User {
 
-	private Long id;
-	private String username;
-	private String password;
-	private String email;
-	private String firstName;
-	private String lastName;
-	private Speciality speciality;
-	private Role role;
+    private Long id;
+    private String username;
+    private String password;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private Speciality speciality;
+    private Role role;
+    private Message message;
 
-	// TODO add multiple roles
-	public List<Role> getRoles() {
-		return Collections.singletonList(role);
-	}
+    // TODO add multiple roles
+    public List<Role> getRoles() {
+        return Collections.singletonList(role);
+    }
 
     public enum Role {
-		ADMIN,
-		USER,
+        ADMIN,
+        USER,
         GUEST
-	}
+    }
 
-	public static class Builder {
+    public static class Builder {
 
-		private Long id;
-		private String username;
-		private String password;
-		private String email;
-		private String firstName;
-		private String lastName;
-		private Speciality speciality;
-		private Role role;
+        private Long id;
+        private String username;
+        private String password;
+        private String email;
+        private String firstName;
+        private String lastName;
+        private Speciality speciality;
+        private Role role;
+        private Message message;
 
-		public Builder id(Long id) {
-			this.id = id;
-			return this;
-		}
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
-		public Builder username(String username) {
-			this.username = username;
-			return this;
-		}
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+        }
 
-		public Builder password(String password) {
-			this.password = password;
-			return this;
-		}
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
 
-		public Builder email(String email) {
-			this.email = email;
-			return this;
-		}
+        public Builder email(String email) {
+            this.email = email;
+            return this;
+        }
 
-		public Builder firstName(String firstName) {
-			this.firstName = firstName;
-			return this;
-		}
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
 
-		public Builder lastName(String lastName) {
-			this.lastName = lastName;
-			return this;
-		}
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
 
-		public Builder speciality(Speciality speciality) {
-			this.speciality = speciality;
-			return this;
-		}
+        public Builder speciality(Speciality speciality) {
+            this.speciality = speciality;
+            return this;
+        }
 
-		public Builder role(Role role) {
-			this.role = role;
-			return this;
-		}
+        public Builder role(Role role) {
+            this.role = role;
+            return this;
+        }
 
-		public User build(){
-			User user = new User();
-			user.setId(id);
-			user.setUsername(username);
-			user.setPassword(password);
-			user.setEmail(email);
-			user.setFirstName(firstName);
-			user.setLastName(lastName);
-			user.setSpeciality(speciality);
-			user.setRole(role);
+        public Builder message(Message message) {
+            this.message = message;
+            return this;
+        }
 
-			return user;
-		}
-	}
+        public User build() {
+            User user = new User();
+            user.setId(id);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setEmail(email);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setSpeciality(speciality);
+            user.setRole(role);
+            user.setMessage(message);
 
-	public static Builder builder() {
-		return new Builder();
-	}
+            return user;
+        }
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public static Builder builder() {
+        return new Builder();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastNname) {
-		this.lastName = lastNname;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public Speciality getSpeciality() {
-		return speciality;
-	}
+    public void setLastName(String lastNname) {
+        this.lastName = lastNname;
+    }
 
-	public void setSpeciality(Speciality speciality) {
-		this.speciality = speciality;
-	}
+    public Speciality getSpeciality() {
+        return speciality;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public void setSpeciality(Speciality speciality) {
+        this.speciality = speciality;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
+
+    public void setMessage(Message message) {
+        this.message = message;
+    }
 }

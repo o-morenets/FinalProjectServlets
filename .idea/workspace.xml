@@ -6,15 +6,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="+ PaginationUtils">
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="UI: card">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signup.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/signup.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userGrades.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userGrades.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,6 +116,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -128,7 +132,7 @@
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FinalProjectSpring" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -137,11 +141,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="ua.training.admission.model.entity" />
       <recent name="ua.training.admission.controller.command" />
       <recent name="ua.training.admission.view" />
       <recent name="ua.training.admission.model.service" />
       <recent name="controller.commands" />
-      <recent name="controller.exception" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\bootstrap\css" />
@@ -150,19 +154,19 @@
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF\view" />
       <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\resources\db" />
     </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.view.Parameters" />
+      <recent name="ua.training.admission.view.SQL" />
+      <recent name="ua.training.admission.view.Paths" />
+      <recent name="ua.training.admission.view.TextConstants" />
+      <recent name="ua.training.admission.view.Attributes" />
+    </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="ua.training.admission.controller.command.CommandUtils" />
       <recent name="ua.training.admission.controller.command.CommandHolder" />
       <recent name="ua.training.admission.view.Errors" />
       <recent name="ua.training.admission.view.TextConstants" />
       <recent name="ua.training.admission.view.GlobalConstants" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\i18n" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\db" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\jquery" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ua.training.admission.config" />
@@ -174,12 +178,12 @@
       <recent name="ua.training.admission.model.dao" />
       <recent name="ua.training.admission.model.entity" />
     </key>
-    <key name="IntroduceConstantDialog.RECENTS_KEY">
-      <recent name="ua.training.admission.view.Parameters" />
-      <recent name="ua.training.admission.view.SQL" />
-      <recent name="ua.training.admission.view.Paths" />
-      <recent name="ua.training.admission.view.TextConstants" />
-      <recent name="ua.training.admission.view.Attributes" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\i18n" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\db" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\jquery" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -452,14 +456,10 @@
       <workItem from="1564421825332" duration="4904000" />
       <workItem from="1564479685035" duration="18533000" />
       <workItem from="1564659639569" duration="7504000" />
-      <workItem from="1564686714345" duration="9838000" />
-    </task>
-    <task id="LOCAL-00007" summary="(cyrillic bad encoding)&#10;ShowPatientInfo: +diagnosisHistory">
-      <created>1485120686688</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1485120686688</updated>
+      <workItem from="1564686714345" duration="9953000" />
+      <workItem from="1564746146022" duration="705000" />
+      <workItem from="1564766332970" duration="605000" />
+      <workItem from="1564938783997" duration="3602000" />
     </task>
     <task id="LOCAL-00008" summary="+ All servlet STUBS&#10;+ All JSP STUBS">
       <created>1485128601336</created>
@@ -797,7 +797,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564668767004</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="UI: card">
+      <created>1564697870921</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1564697870921</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -844,7 +851,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="- setConnection()" />
     <MESSAGE value="navbar: &lt;c:if&gt;" />
     <MESSAGE value="registration form validation" />
     <MESSAGE value="db changed to admission_servlets" />
@@ -869,7 +875,8 @@
     <MESSAGE value="SQL -&gt; properties" />
     <MESSAGE value="UI: userGrades, userList" />
     <MESSAGE value="+ PaginationUtils" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ PaginationUtils" />
+    <MESSAGE value="UI: card" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI: card" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

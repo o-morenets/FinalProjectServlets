@@ -26,14 +26,25 @@
                             <td>${user.username}</td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${!empty user.speciality}">${user.speciality.name}</c:when>
-                                    <c:otherwise>-<fmt:message key="user.speciality.notSelected"/>-</c:otherwise>
+                                    <c:when test="${!empty user.speciality}">
+                                        ${user.speciality.name}
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="badge badge-dark mb-3">
+                                            <fmt:message key="user.speciality.notSelected"/>
+                                        </span>
+                                    </c:otherwise>
                                 </c:choose>
                             </td>
                             <td>
                                 <c:if test="${!empty user.speciality}">
                                     <a href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${user.id}${Paths.GRADES}"
-                                       class="badge badge-warning"><fmt:message key="userList.link.grades"/>
+                                       class="badge
+                                        <c:choose>
+                                            <c:when test="${!empty user.message}">badge-success</c:when>
+                                            <c:otherwise>badge-warning</c:otherwise>
+                                        </c:choose>">
+                                        <fmt:message key="userList.link.grades"/>
                                     </a>
                                 </c:if>
                             </td>
