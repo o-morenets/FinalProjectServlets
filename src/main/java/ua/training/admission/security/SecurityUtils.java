@@ -50,7 +50,6 @@ public class SecurityUtils {
 	// Check whether this 'request' is required to login or not.
 	public static boolean isSecurityPage(HttpServletRequest request) {
 		String urlPattern = getUrlPattern(request);
-		log.debug("# isSecurityPage # - urlPattern: " + urlPattern);
 
 		return SecurityConfig.getAllAppRoles().values().stream()
 				.flatMap(Collection::stream)
@@ -61,20 +60,15 @@ public class SecurityUtils {
 	// Check if this 'request' has a 'valid role'?
 	public static boolean hasPermission(HttpServletRequest request) {
 		String urlPattern = getUrlPattern(request);
-		log.debug("$ hasPermission $ - urlPattern: " + urlPattern);
 
 		Set<Role> allAppRoles = SecurityConfig.getAllAppRoles().keySet();
 
 		for (Role role : allAppRoles) {
 			if (!request.isUserInRole(role.name())) {
-				log.debug("$ hasPermission $ - check request.isUserInRole(): " + role.name());
 				continue;
 			}
 
-			log.debug("$ hasPermission $ - User In Role !");
-
 			List<String> urlPatterns = SecurityConfig.getAllAppRoles().get(role);
-			log.debug("$ hasPermission $ - urlPatterns: " + urlPatterns);
 			if (urlPatterns != null && urlPatterns.contains(urlPattern)) {
 				return true;
 			}
@@ -89,7 +83,6 @@ public class SecurityUtils {
 	// /users/31 ==> /users
 	// /users/31/grades ==> /users/grades
 	private static String getUrlPattern(HttpServletRequest request) {
-		log.debug("getPathInfo: " + request.getPathInfo());
 		String urlPath = "/";
 
 		if (request.getPathInfo() != null) {

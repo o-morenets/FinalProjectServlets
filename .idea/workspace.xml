@@ -6,34 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="UI: userGrades, userList - badges">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcRoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/Mapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/ObjectMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/RoleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/SpecialityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Role.java" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="user_roles implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserListCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/UserRoleRequestWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/UserRoleRequestWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/errorPage/error.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -337,17 +314,7 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@314a340a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@314a340a" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@5f430a5e" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
+          <expand />
           <select />
         </treeState>
       </serviceView>
@@ -489,14 +456,7 @@
       <workItem from="1564746146022" duration="705000" />
       <workItem from="1564766332970" duration="605000" />
       <workItem from="1564938783997" duration="11214000" />
-      <workItem from="1565004356827" duration="9313000" />
-    </task>
-    <task id="LOCAL-00009" summary="+ Connection pool&#10;&#10;XXX Hospital.war:exploded can not be deployed. Server is not connected !!!">
-      <created>1485214746868</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1485214746868</updated>
+      <workItem from="1565004356827" duration="10416000" />
     </task>
     <task id="LOCAL-00010" summary="...After reinstalling windows erc...">
       <created>1485287129448</created>
@@ -834,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564942589302</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="user_roles implemented">
+      <created>1565014282408</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1565014282454</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -881,7 +848,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="registration form validation" />
     <MESSAGE value="db changed to admission_servlets" />
     <MESSAGE value="Registration - password MD5 encryption" />
     <MESSAGE value="db - script for db creation" />
@@ -906,7 +872,8 @@
     <MESSAGE value="+ PaginationUtils" />
     <MESSAGE value="UI: card" />
     <MESSAGE value="UI: userGrades, userList - badges" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI: userGrades, userList - badges" />
+    <MESSAGE value="user_roles implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="user_roles implemented" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

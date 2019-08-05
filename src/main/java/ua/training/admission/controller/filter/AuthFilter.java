@@ -38,14 +38,12 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) resp;
 
         String pathInfo = request.getPathInfo();
-        log.debug("***** pathInfo: " + pathInfo);
 
         User loggedUser = SecurityUtils.getLoggedUser(request.getSession());
-        log.debug("***** loggedUser: " + loggedUser);
 
         if (pathInfo != null && pathInfo.equals(Paths.LOGIN)) {
-            log.debug("***** pathInfo == /login - return");
             filterChain.doFilter(request, response);
+
             return;
         }
 
@@ -54,11 +52,9 @@ public class AuthFilter implements Filter {
         if (loggedUser != null) {
             // username
             String username = loggedUser.getUsername();
-            log.debug("***** loggedUser username: " + username);
 
             // Roles
             List<Role> roles = new ArrayList<>(loggedUser.getRoles());
-            log.debug("***** roles: " + Arrays.toString(roles.toArray()));
 
             // Wrap old request by a new Request with username and Roles information.
             wrapRequest = new UserRoleRequestWrapper(username, roles, request);
@@ -66,18 +62,14 @@ public class AuthFilter implements Filter {
 
         // Pages must be signed in.
         if (SecurityUtils.isSecurityPage(request)) {
-            log.debug("***** SECURITY PAGE!");
             // If the user is not logged in, Redirect to the login page.
             if (loggedUser == null) {
-                log.debug("***** loggedUser == null");
 
                 String requestUri = request.getRequestURI();
 
                 // Store the current page to redirect to after successful login.
-                log.debug("***** Store the current page to redirect to after successful login... " + requestUri);
                 int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
 
-                log.debug("***** sendRedirect -> login?redirectId=" + redirectId);
                 response.sendRedirect(wrapRequest.getContextPath() + wrapRequest.getServletPath() +
                         Paths.LOGIN + "?" + Parameters.REDIRECT_ID + "=" + redirectId);
 
@@ -86,7 +78,6 @@ public class AuthFilter implements Filter {
 
             // Check if the user has a valid role?
             if (!SecurityUtils.hasPermission(wrapRequest)) {
-                log.warn("***** user has not valid role! - forward to 403 page...");
                 request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
                 request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP).forward(request, response);
 

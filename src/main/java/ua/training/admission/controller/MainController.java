@@ -53,11 +53,9 @@ public class MainController extends HttpServlet {
             throws IOException, ServletException
     {
         String commandKey = CommandUtils.getCommandKey(request);
-        log.debug(commandKey);
         Command command = commandHolder.getCommand(commandKey);
         String viewPage = command.execute(request, response);
         if (!viewPage.equals(Paths.REDIRECTED)) {
-            log.debug("forward to: " + viewPage);
             request.getRequestDispatcher(viewPage).forward(request, response);
         }
     }
