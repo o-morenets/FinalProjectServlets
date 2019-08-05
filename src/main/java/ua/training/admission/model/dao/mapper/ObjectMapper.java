@@ -2,8 +2,8 @@ package ua.training.admission.model.dao.mapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class ObjectMapper<T> implements Mapper<T> {
 
@@ -16,5 +16,9 @@ public abstract class ObjectMapper<T> implements Mapper<T> {
         cache.putIfAbsent(itemId, item);
 
         return cache.get(itemId);
+    }
+
+    public List<T> getUniqueList() {
+        return new ArrayList<>(cache.values());
     }
 }

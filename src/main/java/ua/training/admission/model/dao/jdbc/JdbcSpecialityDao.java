@@ -3,6 +3,8 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.SpecialityDao;
+import ua.training.admission.model.dao.mapper.SpecialityMapper;
+import ua.training.admission.model.dao.mapper.SubjectMapper;
 import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.view.Messages;
@@ -31,8 +33,11 @@ public class JdbcSpecialityDao implements SpecialityDao {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_SPECIALITY_BY_ID))) {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
+
+            SpecialityMapper specialityMapper = new SpecialityMapper();
+
             if (resultSet.next()) {
-                Speciality speciality = getEntityFromResultSet(resultSet);
+                Speciality speciality = specialityMapper.extractFromResultSet(resultSet);
                 result = Optional.of(speciality);
             }
 
@@ -46,24 +51,35 @@ public class JdbcSpecialityDao implements SpecialityDao {
 
     @Override
     public List<Speciality> findAll() {
-        Map<Long, Speciality> specialityMap = new HashMap<>();
+        List<Speciality> result;
 
-        try (PreparedStatement stmt =
-                     connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS)))
-        {
+        try (PreparedStatement stmt = connection.prepareStatement(
+                SQL.getSqlElement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS))
+        ) {
             ResultSet resultSet = stmt.executeQuery();
 
+            SpecialityMapper specialityMapper = new SpecialityMapper();
+            SubjectMapper subjectMapper = new SubjectMapper();
+
             while (resultSet.next()) {
-                Speciality speciality = getEntityFromResultSet(resultSet);
-                setSubject(specialityMap, resultSet, speciality);
+                Speciality speciality = specialityMapper.extractFromResultSet(resultSet);
+                Subject subject = subjectMapper.extractFromResultSet(resultSet);
+
+                log.debug("specId: " + speciality.getId());
+                log.debug("subId: " + subject.getId());
+
+                speciality.getSubjects().add(subject);
+                subject.getSpecialities().add(speciality);
             }
+
+            result = specialityMapper.getUniqueList();
 
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
         }
 
-        return new ArrayList<>(specialityMap.values());
+        return result;
     }
 
     @Override
@@ -79,35 +95,5 @@ public class JdbcSpecialityDao implements SpecialityDao {
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException();
-    }
-
-    private Speciality getEntityFromResultSet(ResultSet rs) throws SQLException {
-        return Speciality.builder()
-                .id(rs.getLong(SQL.SPECIALITY_ID))
-                .name(rs.getString(SQL.SPECIALITY_NAME))
-                .subjects(new HashSet<>())
-                .build();
-    }
-
-    private void setSubject(Map<Long, Speciality> specialityMap, ResultSet resultSet, Speciality speciality)
-            throws SQLException
-    {
-        specialityMap.putIfAbsent(speciality.getId(), speciality);
-        speciality = specialityMap.get(speciality.getId());
-
-        Subject subject = null;
-        Long id = resultSet.getLong(SQL.SUBJECT_ID);
-        if (!resultSet.wasNull()) {
-            subject = Subject.builder()
-                    .id(id)
-                    .name(resultSet.getString(SQL.SUBJECT_NAME))
-                    .specialities(new HashSet<>())
-                    .build();
-        }
-
-        if (subject != null) {
-            speciality.getSubjects().add(subject);
-            subject.getSpecialities().add(speciality);
-        }
     }
 }

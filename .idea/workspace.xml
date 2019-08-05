@@ -6,16 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="- log.debug">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="sql optimized">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/SubjectGradeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/SubjectMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Speciality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Speciality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/ObjectMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/ObjectMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/SpecialityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/SpecialityMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/sql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userSpeciality.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,13 +58,6 @@
         <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="admission_servlets: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="admission_servlets: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="usr: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -145,19 +139,12 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="ua.training.admission.model.dao.mapper" />
-      <recent name="ua.training.admission.model.entity" />
-      <recent name="ua.training.admission.controller.command" />
-      <recent name="ua.training.admission.view" />
-      <recent name="ua.training.admission.model.service" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\i18n" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\db" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\jquery" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
-      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.view.Parameters" />
+      <recent name="ua.training.admission.view.SQL" />
+      <recent name="ua.training.admission.view.Paths" />
+      <recent name="ua.training.admission.view.TextConstants" />
+      <recent name="ua.training.admission.view.Attributes" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="ua.training.admission.model.entity" />
@@ -168,6 +155,13 @@
       <recent name="ua.training.admission.view.Errors" />
       <recent name="ua.training.admission.view.TextConstants" />
       <recent name="ua.training.admission.view.GlobalConstants" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\i18n" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\_FINAL\FinalProjectServlets\src\main\resources\db" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\jquery" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp" />
+      <recent name="C:\Users\Oleksii\IdeaProjects\TrainingJavaMay2019\FinalProjectServlets\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ua.training.admission.config" />
@@ -186,12 +180,12 @@
       <recent name="ua.training.admission.controller.exception" />
       <recent name="ua.training.admission.security" />
     </key>
-    <key name="IntroduceConstantDialog.RECENTS_KEY">
-      <recent name="ua.training.admission.view.Parameters" />
-      <recent name="ua.training.admission.view.SQL" />
-      <recent name="ua.training.admission.view.Paths" />
-      <recent name="ua.training.admission.view.TextConstants" />
-      <recent name="ua.training.admission.view.Attributes" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ua.training.admission.model.dao.mapper" />
+      <recent name="ua.training.admission.model.entity" />
+      <recent name="ua.training.admission.controller.command" />
+      <recent name="ua.training.admission.view" />
+      <recent name="ua.training.admission.model.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -469,14 +463,7 @@
       <workItem from="1564766332970" duration="605000" />
       <workItem from="1564938783997" duration="11214000" />
       <workItem from="1565004356827" duration="10416000" />
-      <workItem from="1565023395247" duration="7190000" />
-    </task>
-    <task id="LOCAL-00011" summary="+ Diagnoses">
-      <created>1485356748700</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1485356748700</updated>
+      <workItem from="1565023395247" duration="13098000" />
     </task>
     <task id="LOCAL-00012" summary="+ Diagnoses">
       <created>1485375671005</created>
@@ -814,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565023618138</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="sql optimized">
+      <created>1565033926132</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1565033926132</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -861,7 +855,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Registration - password MD5 encryption" />
     <MESSAGE value="db - script for db creation" />
     <MESSAGE value="UserList without speciality&#10;Refactoring" />
     <MESSAGE value="Refactoring Locale" />
@@ -886,7 +879,8 @@
     <MESSAGE value="UI: userGrades, userList - badges" />
     <MESSAGE value="user_roles implemented" />
     <MESSAGE value="- log.debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="- log.debug" />
+    <MESSAGE value="sql optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql optimized" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

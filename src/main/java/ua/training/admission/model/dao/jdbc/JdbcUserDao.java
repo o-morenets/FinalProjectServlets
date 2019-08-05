@@ -82,19 +82,18 @@ public class JdbcUserDao implements UserDao {
     }
 
     private void setPreparedStatement(PreparedStatement stmt, User user) throws SQLException {
-        stmt.setLong(1, user.getId());
-        stmt.setString(2, user.getUsername());
-        stmt.setString(3, user.getPassword());
-        stmt.setString(4, user.getEmail());
-        stmt.setString(5, user.getFirstName());
-        stmt.setString(6, user.getLastName());
+        stmt.setString(1, user.getUsername());
+        stmt.setString(2, user.getPassword());
+        stmt.setString(3, user.getEmail());
+        stmt.setString(4, user.getFirstName());
+        stmt.setString(5, user.getLastName());
 
         Speciality speciality = user.getSpeciality();
         if (speciality == null) {
-            stmt.setNull(7, Types.BIGINT);
+            stmt.setNull(6, Types.BIGINT);
         } else {
             Long specId = speciality.getId();
-            stmt.setLong(7, specId);
+            stmt.setLong(6, specId);
         }
     }
 
@@ -102,7 +101,7 @@ public class JdbcUserDao implements UserDao {
     public void update(User user) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER))) {
             setPreparedStatement(stmt, user);
-            stmt.setLong(8, user.getId());
+            stmt.setLong(7, user.getId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {

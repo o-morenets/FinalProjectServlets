@@ -5,7 +5,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
-            <div class="card-header">${user.lastName}: <@s.message "card.speciality.title"/></div>
+            <div class="card-header">${user.lastName}: <fmt:message key="card.speciality.title"/></div>
             <div class="card-body">
                 <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_SPEC}"
                       method="post">

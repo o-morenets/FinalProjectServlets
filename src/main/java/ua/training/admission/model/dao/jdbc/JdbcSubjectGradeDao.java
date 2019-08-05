@@ -3,6 +3,8 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.SubjectGradeDao;
+import ua.training.admission.model.dao.mapper.SubjectGradeMapper;
+import ua.training.admission.model.dao.mapper.SubjectMapper;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
@@ -74,15 +76,18 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     @Override
     public Optional<SubjectGrade> findByUserIdAndSubjectId(Long userId, Long subjectId) {
         Optional<SubjectGrade> result = Optional.empty();
-        try (PreparedStatement stmt =
-                     connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)))
-        {
+
+        try (PreparedStatement stmt = connection.prepareStatement(
+                SQL.getSqlElement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))
+        ) {
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
             ResultSet resultSet = stmt.executeQuery();
 
+            SubjectGradeMapper subjectGradeMapper = new SubjectGradeMapper();
+
             if (resultSet.next()) {
-                SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
+                SubjectGrade subjectGrade = subjectGradeMapper.extractFromResultSet(resultSet);
                 result = Optional.of(subjectGrade);
             }
 
@@ -102,9 +107,12 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
             stmt.setLong(1, user.getId());
             ResultSet resultSet = stmt.executeQuery();
 
+            SubjectGradeMapper subjectGradeMapper = new SubjectGradeMapper();
+            SubjectMapper subjectMapper = new SubjectMapper();
+
             while (resultSet.next()) {
-                SubjectGrade subjectGrade = getEntityFromResultSet(resultSet);
-                setSubject(subjectGrade, resultSet);
+                SubjectGrade subjectGrade = subjectGradeMapper.extractFromResultSet(resultSet);
+                subjectGrade.setSubject(subjectMapper.extractFromResultSet(resultSet));
                 result.add(subjectGrade);
             }
 
@@ -118,9 +126,9 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void deleteByUserIdAndSubjectId(Long userId, Long subjectId) {
-        try (PreparedStatement stmt =
-                     connection.prepareStatement(SQL.getSqlElement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID)))
-        {
+        try (PreparedStatement stmt = connection.prepareStatement(
+                SQL.getSqlElement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))
+        ) {
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
             stmt.executeUpdate();
@@ -129,23 +137,5 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
         }
-    }
-
-    private SubjectGrade getEntityFromResultSet(ResultSet rs) throws SQLException {
-        Integer grade = rs.getInt(SQL.SUBJECT_GRADE_GRADE);
-        if (rs.wasNull()) {
-            grade = null;
-        }
-
-        return SubjectGrade.builder()
-                .grade(grade)
-                .build();
-    }
-
-    private void setSubject(SubjectGrade subjectGrade, ResultSet resultSet) throws SQLException {
-        subjectGrade.setSubject(Subject.builder()
-                .id(resultSet.getLong(SQL.SUBJECT_ID))
-                .name(resultSet.getString(SQL.SUBJECT_NAME))
-                .build());
     }
 }
