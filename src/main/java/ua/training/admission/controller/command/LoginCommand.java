@@ -31,12 +31,11 @@ public class LoginCommand extends CommandWrapper {
         String password = request.getParameter(Parameters.PASSWORD);
 
         Optional<User> user = userService.login(username, EncryptPassword.encrypt(password));
-        String path = request.getContextPath() + request.getServletPath();
 
         if (user.isPresent()) {
             redirectAfterLoginSuccessful(request, response, user.get());
         } else {
-            response.sendRedirect(path + Paths.LOGIN_ERROR);
+            response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.LOGIN_ERROR);
         }
 
         return Paths.REDIRECTED;

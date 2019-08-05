@@ -1,7 +1,7 @@
 package ua.training.admission.controller.command;
 
 import org.apache.log4j.Logger;
-import ua.training.admission.model.entity.User;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.utils.PaginationUtils;
 import ua.training.admission.view.*;
@@ -33,13 +33,13 @@ public class UserListCommand extends CommandWrapper {
         int recordsPerPage = PaginationUtils.getParameterValue(request,
                 Parameters.RECORDS_PER_PAGE, Constants.DEFAULT_RECORDS_PER_PAGE);
 
-        int rows = userService.getNumberOfRowsByRole(User.Role.USER);
+        int rows = userService.getNumberOfRowsByRole(Role.USER);
         int numPages = rows / recordsPerPage;
         if (numPages % recordsPerPage > 0) {
             numPages++;
         }
 
-        request.setAttribute(Attributes.USERS, userService.findAllByRole(User.Role.USER, currentPage, recordsPerPage));
+        request.setAttribute(Attributes.USERS, userService.findAllByRole(Role.USER, currentPage, recordsPerPage));
         request.setAttribute(Parameters.NUM_PAGES, numPages);
         request.setAttribute(Parameters.CURRENT_PAGE, currentPage);
         request.setAttribute(Parameters.RECORDS_PER_PAGE, recordsPerPage);

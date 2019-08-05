@@ -69,17 +69,12 @@ DROP TABLE IF EXISTS `usr` ;
 
 CREATE TABLE IF NOT EXISTS `usr` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `account_non_expired` BIT(1) NOT NULL DEFAULT true,
-  `account_non_locked` BIT(1) NOT NULL DEFAULT true,
-  `credentials_non_expired` BIT(1) NOT NULL DEFAULT true,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NULL DEFAULT NULL,
-  `enabled` BIT(1) NOT NULL DEFAULT true,
   `first_name` VARCHAR(255) NOT NULL,
   `last_name` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `username` VARCHAR(255) NOT NULL,
   `speciality_id` BIGINT(20) NULL DEFAULT NULL,
-  `role` ENUM('ADMIN', 'USER', 'GUEST') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UKdfui7gxngrgwn9ewee3ogtgym` (`username` ASC),
   INDEX `FKpxxdan81grbl691clwm0i4ux7` (`speciality_id` ASC),
@@ -89,6 +84,22 @@ CREATE TABLE IF NOT EXISTS `usr` (
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `admission`.`message`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `message` (
+  `average_grade` DOUBLE NOT NULL,
+  `message` VARCHAR(255) NULL DEFAULT NULL,
+  `message_read` BIT(1) NOT NULL,
+  `user_id` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  CONSTRAINT `FK70bv6o4exfe3fbrho7nuotopf`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `usr` (`id`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -198,15 +209,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `admission_servlets`;
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (1, true, true, true, 'serhii.bobkov@ua', true, 'Сергій', 'Бобков', '0cc175b9c0f1b6a831c399e269772661', 'a', NULL, 'ADMIN');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (2, true, true, true, 'iryna.zaychenko@ua', true, 'Ірина', 'Зайченко', 'fbade9e36a3f36d3d676c1b808451dd7', 'z', 2, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (3, true, true, true, 'kateryna.osadcha@ua', true, 'Катерина', 'Осадча', '9dd4e461268c8034f5c8564e155c67a6', 'x', 3, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (4, true, true, true, 'alla.shurova@ua', true, 'Алла', 'Шурова', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 1, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (5, true, true, true, 'nataliya.tarasova@ua', true, 'Наталія', 'Тарасова', '03c7c0ace395d80182db07ae2c30f034', 's', NULL, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (6, true, true, true, 'serhii.zhdanov@ua', true, 'Сергій', 'Жданов', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 4, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (7, true, true, true, 'oleksii.morenets@cmail.com', true, 'Олексій', 'Моренець', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL, 'ADMIN');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (8, true, true, true, 'dmytro.gordiychuk@ua', true, 'Дмитро', 'Гордійчук', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', NULL, 'USER');
-INSERT INTO `usr` (`id`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `email`, `enabled`, `first_name`, `last_name`, `password`, `username`, `speciality_id`, `role`) VALUES (9, true, true, true, 'pavlo.polyakov@ua', true, 'Павло', 'Поляков', 'cd73502828457d15655bbd7a63fb0bc8', 'student', NULL, 'USER');
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (1, 'serhii.bobkov@ua', 'Сергій', 'Бобков', '0cc175b9c0f1b6a831c399e269772661', 'a', NULL);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (2, 'iryna.zaychenko@ua', 'Ірина', 'Зайченко', 'fbade9e36a3f36d3d676c1b808451dd7', 'z', 2);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (3, 'kateryna.osadcha@ua', 'Катерина', 'Осадча', '9dd4e461268c8034f5c8564e155c67a6', 'x', 3);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (4, 'alla.shurova@ua', 'Алла', 'Шурова', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 1);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (5, 'nataliya.tarasova@ua', 'Наталія', 'Тарасова', '03c7c0ace395d80182db07ae2c30f034', 's', NULL);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (6, 'serhii.zhdanov@ua', 'Сергій', 'Жданов', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 4);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (7, 'oleksii.morenets@cmail.com', 'Олексій', 'Моренець', '21232f297a57a5a743894a0e4a801fc3', 'admin', NULL);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (8, 'dmytro.gordiychuk@ua', 'Дмитро', 'Гордійчук', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', NULL);
+INSERT INTO `usr` (`id`, `email`, `first_name`, `last_name`, `password`, `username`, `speciality_id`) VALUES (9, 'pavlo.polyakov@ua', 'Павло', 'Поляков', 'cd73502828457d15655bbd7a63fb0bc8', 'student', NULL);
 
 COMMIT;
 
@@ -236,6 +247,7 @@ INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (3, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (4, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (5, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (6, 'USER');
+INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (7, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (7, 'ADMIN');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (8, 'USER');
 INSERT INTO `user_role` (`user_id`, `role_name`) VALUES (9, 'USER');

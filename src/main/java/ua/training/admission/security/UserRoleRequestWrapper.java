@@ -1,6 +1,6 @@
 package ua.training.admission.security;
 
-import ua.training.admission.model.entity.User;
+import ua.training.admission.model.entity.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
@@ -19,10 +19,10 @@ import java.util.List;
 public class UserRoleRequestWrapper extends HttpServletRequestWrapper {
 
 	private String user;
-	private List<User.Role> roles;
+	private List<Role> roles;
 	private HttpServletRequest realRequest;
 
-	public UserRoleRequestWrapper(String user, List<User.Role> roles, HttpServletRequest request) {
+	public UserRoleRequestWrapper(String user, List<Role> roles, HttpServletRequest request) {
 		super(request);
 		this.user = user;
 		this.roles = roles;
@@ -35,7 +35,7 @@ public class UserRoleRequestWrapper extends HttpServletRequestWrapper {
 			return this.realRequest.isUserInRole(role);
 		}
 
-		return roles.contains(User.Role.valueOf(role));
+		return roles.contains(Role.valueOf(role));
 	}
 
 	@Override

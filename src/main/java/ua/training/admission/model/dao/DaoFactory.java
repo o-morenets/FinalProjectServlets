@@ -17,6 +17,7 @@ public abstract class DaoFactory {
     public abstract DaoConnection getConnection();
 
     public abstract UserDao createUserDao(DaoConnection connection);
+    public abstract RoleDao createRoleDao(DaoConnection connection);
     public abstract SpecialityDao createSpecialityDao(DaoConnection connection);
     public abstract SubjectGradeDao createSubjectGradeDao(DaoConnection connection);
 

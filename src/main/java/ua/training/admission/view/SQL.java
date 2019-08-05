@@ -44,8 +44,10 @@ public class SQL {
     public static final String USER_LAST_NAME = "usr.last_name";
     public static final String USER_FIRST_NAME = "usr.first_name";
     public static final String USER_SPECIALITY_ID = "usr.speciality_id";
-    public static final String USER_ROLE = "usr.role";
     public static final String COUNT_ALL = "COUNT(*)";
+
+    // User Role
+    public static final String USER_ROLE_ROLE_NAME = "user_role.role_name";
 
     // Speciality
     public static final String SPECIALITY_ID = "speciality.id";
@@ -56,8 +58,6 @@ public class SQL {
     public static final String SUBJECT_NAME = "subject.name";
 
     // SubjectGrade
-    public static final String SUBJECT_GRADE_USER_ID = "subject_grade.user_id";
-    public static final String SUBJECT_GRADE_SUBJECT_ID = "subject_grade.subject_id";
     public static final String SUBJECT_GRADE_GRADE = "subject_grade.grade";
 
     /* SQL keys */
@@ -67,7 +67,11 @@ public class SQL {
     public static final String SELECT_USER_BY_ID = "select.user.by.id";
     public static final String INSERT_INTO_USER = "insert.into.user";
     public static final String SELECT_USERS_BY_ROLE = "select.users.by.role";
-    public static final String UPDATE_USER = "update.user";
+    public static final String UPDATE_USER_SPECIALITY = "update.user_speciality";
+    public static final String SELECT_COUNT_USERS_BY_ROLE = "select.count.users.by.role";
+
+    // User_Role
+    public static final String INSERT_INTO_USER_ROLES = "insert.into.user_roles";
 
     // Speciality
     public static final String SELECT_SPECIALITIES_WITH_SUBJECTS = "select.specialities.with.subjects";
@@ -77,7 +81,6 @@ public class SQL {
     public static final String SELECT_USER_SUBJECT_GRADES = "select.user.subject.grades";
     public static final String DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID = "delete.from.subject_grade.by.user_id.and.subject_id";
     public static final String INSERT_INTO_SUBJECT_GRADE = "insert.into.subject_grade";
-    public static final String SELECT_COUNT_USERS_BY_ROLE = "select.count.users.by.role";
     public static final String SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID = "select.from.subject_grade.by.user_id.and.subject_id";
     public static final String UPDATE_SUBJECT_GRADE = "update.subject_grade";
 }

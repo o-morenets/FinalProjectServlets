@@ -1,8 +1,7 @@
 package ua.training.admission.model.entity;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * User
@@ -16,19 +15,8 @@ public class User {
     private String firstName;
     private String lastName;
     private Speciality speciality;
-    private Role role;
+    private Set<Role> roles;
     private Message message;
-
-    // TODO add multiple roles
-    public List<Role> getRoles() {
-        return Collections.singletonList(role);
-    }
-
-    public enum Role {
-        ADMIN,
-        USER,
-        GUEST
-    }
 
     public static class Builder {
 
@@ -39,7 +27,7 @@ public class User {
         private String firstName;
         private String lastName;
         private Speciality speciality;
-        private Role role;
+        private Set<Role> roles;
         private Message message;
 
         public Builder id(Long id) {
@@ -77,8 +65,8 @@ public class User {
             return this;
         }
 
-        public Builder role(Role role) {
-            this.role = role;
+        public Builder roles(Set<Role> roles) {
+            this.roles = roles;
             return this;
         }
 
@@ -96,7 +84,7 @@ public class User {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setSpeciality(speciality);
-            user.setRole(role);
+            user.setRoles(roles);
             user.setMessage(message);
 
             return user;
@@ -163,12 +151,12 @@ public class User {
         this.speciality = speciality;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Message getMessage() {
@@ -177,5 +165,9 @@ public class User {
 
     public void setMessage(Message message) {
         this.message = message;
+    }
+
+    public boolean isAdmin() {
+        return roles.contains(Role.ADMIN);
     }
 }

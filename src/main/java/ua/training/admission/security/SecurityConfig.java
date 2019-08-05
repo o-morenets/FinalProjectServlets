@@ -1,20 +1,20 @@
 package ua.training.admission.security;
 
-import ua.training.admission.model.entity.User;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.view.Paths;
 
 import java.util.*;
 
 class SecurityConfig {
 
-    private static final Map<User.Role, List<String>> securedPages = new HashMap<User.Role, List<String>>() {
+    private static final Map<Role, List<String>> securedPages = new HashMap<Role, List<String>>() {
         {
-            put(User.Role.ADMIN, Arrays.asList(
+            put(Role.ADMIN, Arrays.asList(
                     Paths.USERS,
                     Paths.USER_GRADES
             ));
 
-            put(User.Role.USER, Arrays.asList(
+            put(Role.USER, Arrays.asList(
                     Paths.USER_PROFILE,
                     Paths.USER_SPECIALITY,
                     Paths.USER_GRADES
@@ -22,7 +22,7 @@ class SecurityConfig {
         }
     };
 
-    static Map<User.Role, List<String>> getAllAppRoles() {
+    static Map<Role, List<String>> getAllAppRoles() {
         return securedPages;
     }
 }

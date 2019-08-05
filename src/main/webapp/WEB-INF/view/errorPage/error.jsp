@@ -13,7 +13,7 @@
 <div class="card">
     <div class="card-body">
         <%
-//            pageContext.getException().printStackTrace(new java.io.PrintWriter(out));
+            pageContext.getException().printStackTrace(new java.io.PrintWriter(out));
         %>
     </div>
 </div>

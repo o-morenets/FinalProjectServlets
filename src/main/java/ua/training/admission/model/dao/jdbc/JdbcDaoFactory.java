@@ -52,6 +52,14 @@ public class JdbcDaoFactory extends DaoFactory {
     }
 
     @Override
+    public RoleDao createRoleDao(DaoConnection connection) {
+        JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
+        Connection sqlConnection = jdbcConnection.getConnection();
+
+        return new JdbcRoleDao(sqlConnection);
+    }
+
+    @Override
     public SpecialityDao createSpecialityDao(DaoConnection connection) {
         JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
         Connection sqlConnection = jdbcConnection.getConnection();

@@ -3,7 +3,10 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.UserDao;
-import ua.training.admission.model.entity.Speciality;
+import ua.training.admission.model.dao.mapper.RoleMapper;
+import ua.training.admission.model.dao.mapper.SpecialityMapper;
+import ua.training.admission.model.dao.mapper.UserMapper;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.SQL;
@@ -12,6 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * JdbcUserDao
@@ -29,15 +33,22 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public Optional<User> findById(Long id) {
-        Optional<User> result = Optional.empty();
+        Optional<User> result;
+
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_BY_ID))) {
             stmt.setString(1, String.valueOf(id));
             ResultSet resultSet = stmt.executeQuery();
-            if (resultSet.next()) {
-                User user = getEntityFromResultSet(resultSet);
-                setSpeciality(user, resultSet);
-                result = Optional.of(user);
+
+            User user = null;
+            UserMapper userMapper = new UserMapper();
+            SpecialityMapper specialityMapper = new SpecialityMapper();
+
+            while (resultSet.next()) {
+                user = userMapper.extractFromResultSet(resultSet);
+                user.setSpeciality(specialityMapper.extractFromResultSet(resultSet));
             }
+
+            result = Optional.ofNullable(user);
 
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
@@ -62,7 +73,6 @@ public class JdbcUserDao implements UserDao {
             stmt.setString(3, user.getEmail());
             stmt.setString(4, user.getFirstName());
             stmt.setString(5, user.getLastName());
-            stmt.setString(6, User.Role.USER.name());
             stmt.executeUpdate();
             ResultSet keys = stmt.getGeneratedKeys();
 
@@ -78,7 +88,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void update(User user) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER))) {
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER_SPECIALITY))) {
             if (user.getSpeciality() == null) {
                 stmt.setNull(1, Types.BIGINT);
             } else {
@@ -101,14 +111,21 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public Optional<User> findByUsername(String username) {
-        Optional<User> result = Optional.empty();
+        Optional<User> result;
+
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_BY_USERNAME))) {
             stmt.setString(1, username.toLowerCase());
             ResultSet resultSet = stmt.executeQuery();
-            if (resultSet.next()) {
-                User user = getEntityFromResultSet(resultSet);
-                result = Optional.of(user);
+
+            User user = null;
+            UserMapper userMapper = new UserMapper();
+            RoleMapper roleMapper = new RoleMapper();
+
+            while (resultSet.next()) {
+                user = userMapper.extractFromResultSet(resultSet);
+                user.getRoles().add(roleMapper.extractFromResultSet(resultSet));
             }
+            result = Optional.ofNullable(user);
 
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
@@ -119,7 +136,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public List<User> findAllByRole(User.Role role, int currentPage, int recordsPerPage) {
+    public List<User> findAllByRole(Role role, int currentPage, int recordsPerPage) {
         List<User> result = new ArrayList<>();
         int start = currentPage * recordsPerPage - recordsPerPage;
 
@@ -129,9 +146,12 @@ public class JdbcUserDao implements UserDao {
             stmt.setInt(3, recordsPerPage);
             ResultSet resultSet = stmt.executeQuery();
 
+            UserMapper userMapper = new UserMapper();
+            SpecialityMapper specialityMapper = new SpecialityMapper();
+
             while (resultSet.next()) {
-                User user = getEntityFromResultSet(resultSet);
-                setSpeciality(user, resultSet);
+                User user = userMapper.extractFromResultSet(resultSet);
+                user.setSpeciality(specialityMapper.extractFromResultSet(resultSet));
                 result.add(user);
             }
 
@@ -144,7 +164,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public int getNumberOfRowsByRole(User.Role role) {
+    public int getNumberOfRowsByRole(Role role) {
         int result = 0;
 
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_COUNT_USERS_BY_ROLE))) {
@@ -160,27 +180,5 @@ public class JdbcUserDao implements UserDao {
         }
 
         return result;
-    }
-
-    private User getEntityFromResultSet(ResultSet rs) throws SQLException {
-        return User.builder()
-                .id(rs.getLong(SQL.USER_ID))
-                .username(rs.getString(SQL.USER_USERNAME))
-                .password(rs.getString(SQL.USER_PASSWORD))
-                .email(rs.getString(SQL.USER_EMAIL))
-                .firstName(rs.getString(SQL.USER_FIRST_NAME))
-                .lastName(rs.getString(SQL.USER_LAST_NAME))
-                .role(User.Role.valueOf(rs.getString(SQL.USER_ROLE)))
-                .build();
-    }
-
-    private void setSpeciality(User user, ResultSet resultSet) throws SQLException {
-        Long specialityId = resultSet.getLong(SQL.USER_SPECIALITY_ID);
-        if (!resultSet.wasNull()) {
-            user.setSpeciality(Speciality.builder()
-                    .id(specialityId)
-                    .name(resultSet.getString(SQL.SPECIALITY_NAME))
-                    .build());
-        }
     }
 }

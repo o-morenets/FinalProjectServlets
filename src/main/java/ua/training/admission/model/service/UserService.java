@@ -3,10 +3,8 @@ package ua.training.admission.model.service;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
-import ua.training.admission.model.dao.DaoConnection;
-import ua.training.admission.model.dao.DaoFactory;
-import ua.training.admission.model.dao.SpecialityDao;
-import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.dao.*;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
@@ -54,7 +52,12 @@ public class UserService {
     public void create(User user) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
+            RoleDao roleDao = daoFactory.createRoleDao(connection);
+
+            connection.beginTransaction();
             userDao.create(user);
+            roleDao.createUserRole(user, Role.USER);
+            connection.commit();
 
         } catch (AppException e) {
             int errorCode = 0;
@@ -73,7 +76,7 @@ public class UserService {
         }
     }
 
-    public List<User> findAllByRole(User.Role role, int currentPage, int recordsPerPage) {
+    public List<User> findAllByRole(Role role, int currentPage, int recordsPerPage) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
@@ -81,7 +84,7 @@ public class UserService {
         }
     }
 
-    public int getNumberOfRowsByRole(User.Role role) {
+    public int getNumberOfRowsByRole(Role role) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 

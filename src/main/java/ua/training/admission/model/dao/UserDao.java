@@ -1,5 +1,6 @@
 package ua.training.admission.model.dao;
 
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 
 import java.util.List;
@@ -12,8 +13,8 @@ public interface UserDao extends GenericDao<User> {
 
 	Optional<User> findByUsername(String username);
 
-    List<User> findAllByRole(User.Role role, int currentPage, int recordsPerPage);
+    List<User> findAllByRole(Role role, int currentPage, int recordsPerPage);
 
-    int getNumberOfRowsByRole(User.Role role);
+    int getNumberOfRowsByRole(Role role);
 
 }

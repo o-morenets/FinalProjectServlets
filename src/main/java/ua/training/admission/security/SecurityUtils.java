@@ -1,6 +1,7 @@
 package ua.training.admission.security;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Attributes;
 
@@ -62,9 +63,9 @@ public class SecurityUtils {
 		String urlPattern = getUrlPattern(request);
 		log.debug("$ hasPermission $ - urlPattern: " + urlPattern);
 
-		Set<User.Role> allAppRoles = SecurityConfig.getAllAppRoles().keySet();
+		Set<Role> allAppRoles = SecurityConfig.getAllAppRoles().keySet();
 
-		for (User.Role role : allAppRoles) {
+		for (Role role : allAppRoles) {
 			if (!request.isUserInRole(role.name())) {
 				log.debug("$ hasPermission $ - check request.isUserInRole(): " + role.name());
 				continue;

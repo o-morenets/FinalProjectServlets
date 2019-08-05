@@ -1,6 +1,7 @@
 package ua.training.admission.controller.filter;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.security.SecurityUtils;
 import ua.training.admission.security.UserRoleRequestWrapper;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class AuthFilter implements Filter {
             log.debug("***** loggedUser username: " + username);
 
             // Roles
-            List<User.Role> roles = loggedUser.getRoles();
+            List<Role> roles = new ArrayList<>(loggedUser.getRoles());
             log.debug("***** roles: " + Arrays.toString(roles.toArray()));
 
             // Wrap old request by a new Request with username and Roles information.
