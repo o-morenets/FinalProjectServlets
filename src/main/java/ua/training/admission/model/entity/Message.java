@@ -2,20 +2,20 @@ package ua.training.admission.model.entity;
 
 public class Message {
 
-    private Long id;
+    private User user;
     private double averageGrade;
     private String message;
     private boolean messageRead;
 
     public static class Builder {
 
-        private Long id;
+        private User user;
         private double averageGrade;
         private String message;
         private boolean messageRead;
 
-        public Builder id(Long id) {
-            this.id = id;
+        public Builder user(User user) {
+            this.user = user;
             return this;
         }
 
@@ -36,7 +36,7 @@ public class Message {
 
         public Message build() {
             Message message = new Message();
-            message.setId(id);
+            message.setUser(user);
             message.setAverageGrade(averageGrade);
             message.setMessage(this.message);
             message.setMessageRead(messageRead);
@@ -45,12 +45,16 @@ public class Message {
         }
     }
 
-    public Long getId() {
-        return id;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public double getAverageGrade() {

@@ -50,33 +50,22 @@ public class AuthFilter implements Filter {
         HttpServletRequest wrapRequest = request;
 
         if (loggedUser != null) {
-            // username
             String username = loggedUser.getUsername();
-
-            // Roles
             List<Role> roles = new ArrayList<>(loggedUser.getRoles());
-
-            // Wrap old request by a new Request with username and Roles information.
             wrapRequest = new UserRoleRequestWrapper(username, roles, request);
         }
 
-        // Pages must be signed in.
         if (SecurityUtils.isSecurityPage(request)) {
-            // If the user is not logged in, Redirect to the login page.
+            
             if (loggedUser == null) {
-
                 String requestUri = request.getRequestURI();
-
-                // Store the current page to redirect to after successful login.
                 int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);
-
                 response.sendRedirect(wrapRequest.getContextPath() + wrapRequest.getServletPath() +
                         Paths.LOGIN + "?" + Parameters.REDIRECT_ID + "=" + redirectId);
 
                 return;
             }
 
-            // Check if the user has a valid role?
             if (!SecurityUtils.hasPermission(wrapRequest)) {
                 request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_403);
                 request.getServletContext().getRequestDispatcher(Paths.PAGE_403_JSP).forward(request, response);

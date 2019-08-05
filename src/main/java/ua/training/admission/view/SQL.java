@@ -60,6 +60,7 @@ public class SQL {
     // SubjectGrade
     public static final String SUBJECT_GRADE_GRADE = "subject_grade.grade";
 
+
     /* SQL keys */
 
     // User
@@ -67,7 +68,7 @@ public class SQL {
     public static final String SELECT_USER_BY_ID = "select.user.by.id";
     public static final String INSERT_INTO_USER = "insert.into.user";
     public static final String SELECT_USERS_BY_ROLE = "select.users.by.role";
-    public static final String UPDATE_USER_SPECIALITY = "update.user_speciality";
+    public static final String UPDATE_USER = "update.user";
     public static final String SELECT_COUNT_USERS_BY_ROLE = "select.count.users.by.role";
 
     // User_Role

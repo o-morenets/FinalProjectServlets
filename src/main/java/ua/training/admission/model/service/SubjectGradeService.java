@@ -5,16 +5,16 @@ import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
 import ua.training.admission.model.dao.SubjectGradeDao;
 import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entity.Message;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
-import ua.training.admission.view.Messages;
 import ua.training.admission.view.Constants;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import static java.util.stream.Collectors.partitioningBy;
 
 public class SubjectGradeService {
 
@@ -44,54 +44,105 @@ public class SubjectGradeService {
             UserDao userDao = daoFactory.createUserDao(connection);
             Optional<User> user = userDao.findById(userId);
             user.ifPresent(usr -> {
-                SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
-                Enumeration<String> parameterNames = request.getParameterNames();
+                Map<String, String> form = extractFormParameters(request);
 
                 connection.beginTransaction();
-                while (parameterNames.hasMoreElements()) {
-                    String elementName = parameterNames.nextElement();
-
-                    if (elementName.startsWith(Constants.PREFIX_SUBJECT)) {
-                        try { // fixme
-                            long subjectId = Long.parseLong(elementName.replaceAll("\\D+", ""));
-                            try {
-                                int grade = Integer.parseInt(request.getParameter(elementName));
-                                saveOrUpdate(usr.getId(), subjectId, grade);
-
-                            } catch (NumberFormatException e) {
-                                log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
-                                subjectGradeDao.deleteByUserIdAndSubjectId(usr.getId(), subjectId);
-                            }
-
-                        } catch (NumberFormatException e) {
-                            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
-                        }
-                    }
-                }
+                updateAndDelete(usr, partitionSubjectGrades(usr, form));
                 connection.commit();
             });
         }
     }
 
-    private void saveOrUpdate(Long userId, Long subjectId, int grade) {
+    private Map<String, String> extractFormParameters(HttpServletRequest request) {
+        Map<String, String> form = new HashMap<>();
+        Enumeration<String> parameterNames = request.getParameterNames();
+
+        while (parameterNames.hasMoreElements()) {
+            String elementName = parameterNames.nextElement();
+
+            if (elementName.startsWith(Constants.PREFIX_SUBJECT)) {
+                String paramGrade = request.getParameter(elementName);
+                form.put(elementName, paramGrade);
+            }
+        }
+
+        return form;
+    }
+
+    private void updateAndDelete(User user, Map<Boolean, List<SubjectGrade>> subjectGradeMap) {
+        List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(true);
+        subjectGradesToUpdate.forEach(this::save);
+
+        List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(false);
+        subjectGradesToDelete.forEach(this::delete);
+
+        updateUserMessage(user, subjectGradesToUpdate, subjectGradesToDelete);
+    }
+
+    private Map<Boolean, List<SubjectGrade>> partitionSubjectGrades(User user, Map<String, String> form) {
+        return form.entrySet().stream()
+                .filter(entry -> entry.getKey().startsWith("subject_"))
+                .map(entry -> SubjectGrade.builder()
+                        .user(User.builder()
+                                .id(user.getId())
+                                .build())
+                        .subject(Subject.builder()
+                                .id(Long.valueOf(entry.getKey().replaceAll("\\D+", "")))
+                                .build())
+                        .grade(entry.getValue().isEmpty() ? null : Integer.parseInt(entry.getValue()))
+                        .build())
+                .collect(partitioningBy(subjectGrade -> subjectGrade.getGrade() != null));
+    }
+
+    private void save(SubjectGrade subjectGrade) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
 
-            SubjectGrade subjectGrade = SubjectGrade.builder()
-                    .user(User.builder()
-                            .id(userId)
-                            .build())
-                    .subject(Subject.builder()
-                            .id(subjectId)
-                            .build())
-                    .grade(grade)
-                    .build();
-
-            if (subjectGradeDao.findByUserIdAndSubjectId(userId, subjectId).isPresent()) {
+            if (subjectGradeDao.findByUserIdAndSubjectId(
+                    subjectGrade.getUser().getId(), subjectGrade.getSubject().getId()).isPresent()) {
                 subjectGradeDao.update(subjectGrade);
             } else {
                 subjectGradeDao.create(subjectGrade);
             }
         }
+    }
+
+    private void delete(SubjectGrade subjectGrade) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
+            subjectGradeDao.deleteByUserIdAndSubjectId(subjectGrade.getUser().getId(), subjectGrade.getSubject().getId());
+        }
+    }
+
+    private void updateUserMessage(User user,
+                                   List<SubjectGrade> subjectGradesToUpdate,
+                                   List<SubjectGrade> subjectGradesToDelete) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+
+            Message message = user.getMessage();
+            if (message == null) {
+                message = Message.builder()
+                        .user(user)
+                        .build();
+            }
+
+            boolean isAllGradesProvided = subjectGradesToDelete.isEmpty();
+            if (isAllGradesProvided) {
+                message.setAverageGrade(countAverageGrade(subjectGradesToUpdate));
+            } else {
+                message = null;
+            }
+
+            user.setMessage(message);
+            userDao.update(user);
+        }
+    }
+
+    private double countAverageGrade(List<SubjectGrade> subjectGradesFinal) {
+        return subjectGradesFinal.stream()
+                .mapToDouble(SubjectGrade::getGrade)
+                .average()
+                .orElse(-1); // TODO maybe orElseThrow and then catch ???
     }
 }

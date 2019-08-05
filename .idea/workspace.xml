@@ -6,11 +6,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="user_roles implemented">
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="- log.debug">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Speciality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Speciality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +57,13 @@
         <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="admission_servlets: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="admission_servlets@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="admission_servlets: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="usr: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -457,13 +469,7 @@
       <workItem from="1564766332970" duration="605000" />
       <workItem from="1564938783997" duration="11214000" />
       <workItem from="1565004356827" duration="10416000" />
-    </task>
-    <task id="LOCAL-00010" summary="...After reinstalling windows erc...">
-      <created>1485287129448</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1485287129448</updated>
+      <workItem from="1565023395247" duration="7190000" />
     </task>
     <task id="LOCAL-00011" summary="+ Diagnoses">
       <created>1485356748700</created>
@@ -801,7 +807,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565014282454</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="- log.debug">
+      <created>1565023618138</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1565023618138</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -848,7 +861,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="db changed to admission_servlets" />
     <MESSAGE value="Registration - password MD5 encryption" />
     <MESSAGE value="db - script for db creation" />
     <MESSAGE value="UserList without speciality&#10;Refactoring" />
@@ -873,7 +885,8 @@
     <MESSAGE value="UI: card" />
     <MESSAGE value="UI: userGrades, userList - badges" />
     <MESSAGE value="user_roles implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="user_roles implemented" />
+    <MESSAGE value="- log.debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="- log.debug" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

@@ -7,6 +7,7 @@ import ua.training.admission.model.dao.mapper.RoleMapper;
 import ua.training.admission.model.dao.mapper.SpecialityMapper;
 import ua.training.admission.model.dao.mapper.UserMapper;
 import ua.training.admission.model.entity.Role;
+import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.SQL;
@@ -15,7 +16,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * JdbcUserDao
@@ -67,12 +67,7 @@ public class JdbcUserDao implements UserDao {
     public void create(User user) {
         try (PreparedStatement stmt = connection.prepareStatement(
                 SQL.getSqlElement(SQL.INSERT_INTO_USER), Statement.RETURN_GENERATED_KEYS)) {
-
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getPassword());
-            stmt.setString(3, user.getEmail());
-            stmt.setString(4, user.getFirstName());
-            stmt.setString(5, user.getLastName());
+            setPreparedStatement(stmt, user);
             stmt.executeUpdate();
             ResultSet keys = stmt.getGeneratedKeys();
 
@@ -86,16 +81,28 @@ public class JdbcUserDao implements UserDao {
         }
     }
 
+    private void setPreparedStatement(PreparedStatement stmt, User user) throws SQLException {
+        stmt.setLong(1, user.getId());
+        stmt.setString(2, user.getUsername());
+        stmt.setString(3, user.getPassword());
+        stmt.setString(4, user.getEmail());
+        stmt.setString(5, user.getFirstName());
+        stmt.setString(6, user.getLastName());
+
+        Speciality speciality = user.getSpeciality();
+        if (speciality == null) {
+            stmt.setNull(7, Types.BIGINT);
+        } else {
+            Long specId = speciality.getId();
+            stmt.setLong(7, specId);
+        }
+    }
+
     @Override
     public void update(User user) {
-        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER_SPECIALITY))) {
-            if (user.getSpeciality() == null) {
-                stmt.setNull(1, Types.BIGINT);
-            } else {
-                Long specId = user.getSpeciality().getId();
-                stmt.setLong(1, specId);
-            }
-            stmt.setLong(2, user.getId());
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_USER))) {
+            setPreparedStatement(stmt, user);
+            stmt.setLong(8, user.getId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {

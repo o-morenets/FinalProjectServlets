@@ -39,7 +39,7 @@ public class Speciality {
         }
     }
 
-    public static Speciality.Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
