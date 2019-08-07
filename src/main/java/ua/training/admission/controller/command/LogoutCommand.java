@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Logout Command
+ *
+ * @author Oleksii Morenets
+ */
 public class LogoutCommand extends CommandWrapper {
 
     @Override

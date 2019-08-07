@@ -8,6 +8,8 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * EncryptPassword
+ *
+ * @author Oleksii Morenets
  */
 public class EncryptPassword {
 
@@ -26,7 +28,7 @@ public class EncryptPassword {
      * @return encrypted password
      */
     public static String encrypt(String passwordToHash) {
-        String generatedPassword;
+        String encryptedPassword;
         try {
             // Create MessageDigest instance for MD5
             MessageDigest md = MessageDigest.getInstance(ALGORITHM);
@@ -36,13 +38,13 @@ public class EncryptPassword {
             for (byte aByte : bytes) {
                 sb.append(Integer.toString((aByte & SUFFIX) + PREFIX, RADIX).substring(1));
             }
-            generatedPassword = sb.toString();
+            encryptedPassword = sb.toString();
 
         } catch (NoSuchAlgorithmException e) {
             log.error(Messages.ERROR_ENCRYPT_ALGORITHM);
             throw new RuntimeException(e);
         }
 
-        return generatedPassword;
+        return encryptedPassword;
     }
 }

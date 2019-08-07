@@ -14,6 +14,8 @@ import java.io.IOException;
 
 /**
  * CommandWrapper for exception handling
+ *
+ * @author Oleksii Morenets
  */
 public abstract class CommandWrapper implements Command {
 
@@ -21,8 +23,8 @@ public abstract class CommandWrapper implements Command {
     private static final Logger log = Logger.getLogger(CommandWrapper.class);
 
     public String execute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
+
         try {
             return doExecute(request, response);
         } catch (ResourceNotFoundException rnfEx) {
@@ -43,7 +45,7 @@ public abstract class CommandWrapper implements Command {
      * @param response nested http response
      * @return nested command result
      * @throws ServletException when exception is thrown in nested method
-     * @throws IOException when exception is thrown in nested method
+     * @throws IOException      when exception is thrown in nested method
      */
     abstract String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException;

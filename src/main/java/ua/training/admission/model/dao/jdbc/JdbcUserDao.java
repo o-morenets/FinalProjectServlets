@@ -21,6 +21,8 @@ import java.util.Optional;
 
 /**
  * JdbcUserDao
+ *
+ * @author Oleksii Morenets
  */
 public class JdbcUserDao implements UserDao {
 
@@ -75,6 +77,7 @@ public class JdbcUserDao implements UserDao {
     public void create(User user) {
         try (PreparedStatement stmt = connection.prepareStatement(
                 SQL.getSqlElement(SQL.INSERT_INTO_USER), Statement.RETURN_GENERATED_KEYS)) {
+
             setPreparedStatement(stmt, user);
             stmt.executeUpdate();
             ResultSet keys = stmt.getGeneratedKeys();

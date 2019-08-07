@@ -5,8 +5,16 @@ import ua.training.admission.view.Paths;
 
 import java.util.*;
 
+/**
+ * Config for application security
+ *
+ * @author Oleksii Morenets
+ */
 class SecurityConfig {
 
+    /**
+     * Storage for Secure Paths
+     */
     private static final Map<Role, List<String>> securedPages = new HashMap<Role, List<String>>() {
         {
             put(Role.ADMIN, Arrays.asList(

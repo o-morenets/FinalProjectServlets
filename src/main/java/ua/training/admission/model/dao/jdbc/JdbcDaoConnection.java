@@ -10,6 +10,8 @@ import ua.training.admission.view.Messages;
 
 /**
  * JdbcDaoConnection
+ *
+ * @author Oleksii Morenets
  */
 public class JdbcDaoConnection implements DaoConnection {
 

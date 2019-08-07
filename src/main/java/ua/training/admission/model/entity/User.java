@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * User
+ * Represents an User Entity
+ *
+ * @author Oleksii Morenets
  */
 public class User {
 
@@ -94,6 +96,8 @@ public class User {
     public static Builder builder() {
         return new Builder();
     }
+
+    // Gettesr & Setters
 
     public Long getId() {
         return id;

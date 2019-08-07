@@ -2,6 +2,11 @@ package ua.training.admission.model.entity;
 
 import java.util.Set;
 
+/**
+ * Represents a Speciality Entity
+ *
+ * @author Oleksii Morenets
+ */
 public class Speciality {
 
     private Long id;
@@ -42,6 +47,8 @@ public class Speciality {
     public static Builder builder() {
         return new Builder();
     }
+
+    // Getters & Setters
 
     public Long getId() {
         return id;

@@ -19,6 +19,8 @@ import java.util.Optional;
 
 /**
  * JdbcRoleDao
+ *
+ * @author Oleksii Morenets
  */
 public class JdbcRoleDao implements RoleDao {
 

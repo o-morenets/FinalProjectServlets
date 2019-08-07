@@ -6,6 +6,11 @@ import ua.training.admission.view.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Role Mapper
+ *
+ * @author Oleksii Morenets
+ */
 public class RoleMapper extends ObjectMapper<Role> {
 
     @Override

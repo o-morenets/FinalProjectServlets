@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * UserProfile Command
+ *
+ * @author Oleksii Morenets
+ */
 public class UserProfileCommand extends CommandWrapper {
 
     private UserService userService = UserService.getInstance();

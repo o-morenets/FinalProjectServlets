@@ -4,6 +4,8 @@ import java.util.Locale;
 
 /**
  * SupportedLocale
+ *
+ * @author Oleksii Morenets
  */
 public enum SupportedLocale {
     UA ("ua", new Locale("uk", "UA")),

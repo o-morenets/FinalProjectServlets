@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
 
+/**
+ * UpdateGrades Command
+ *
+ * @author Oleksii Morenets
+ */
 public class UpdateGradesCommand extends CommandWrapper {
 
     /* Logger */

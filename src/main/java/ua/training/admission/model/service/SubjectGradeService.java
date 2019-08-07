@@ -13,6 +13,11 @@ import java.util.*;
 
 import static java.util.stream.Collectors.partitioningBy;
 
+/**
+ * SubjectGrade Service
+ *
+ * @author Oleksii Morenets
+ */
 public class SubjectGradeService {
 
     /* Logger */
@@ -20,6 +25,9 @@ public class SubjectGradeService {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
+    /**
+     * Lazy holder for service instance
+     */
     private static class Holder {
         static final SubjectGradeService INSTANCE = new SubjectGradeService();
     }
@@ -28,6 +36,12 @@ public class SubjectGradeService {
         return SubjectGradeService.Holder.INSTANCE;
     }
 
+    /**
+     * Returns SubjectGrade list for specified user
+     *
+     * @param user User entity
+     * @return SubjectGrade list
+     */
     public List<SubjectGrade> getUserSubjectGradeList(User user) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
@@ -36,20 +50,36 @@ public class SubjectGradeService {
         }
     }
 
+    /**
+     * Updates user grades
+     *
+     * @param userId  user id
+     * @param request http request
+     */
     public void updateGrades(Long userId, HttpServletRequest request) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
-            Optional<User> user = userDao.findById(userId);
-            user.ifPresent(usr -> {
+            userDao.findById(userId).ifPresent(user -> {
                 Map<String, String> form = extractFormParameters(request);
 
                 connection.beginTransaction();
-                updateAndDelete(usr, partitionSubjectGrades(usr, form));
+                Map<Boolean, List<SubjectGrade>> subjectGradeMap = partitionSubjectGrades(user, form);
+                updateAndDelete(user, subjectGradeMap);
+                List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(true);
+                List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(false);
+                updateUserMessage(user, subjectGradesToUpdate, subjectGradesToDelete);
                 connection.commit();
             });
         }
     }
 
+    /**
+     * Helper method
+     * Extracts form parameters from http request
+     *
+     * @param request http request
+     * @return Map of subject-grade parameters
+     */
     private Map<String, String> extractFormParameters(HttpServletRequest request) {
         Map<String, String> form = new HashMap<>();
         Enumeration<String> parameterNames = request.getParameterNames();
@@ -66,19 +96,30 @@ public class SubjectGradeService {
         return form;
     }
 
+    /**
+     * Updates and deletes user-grade records
+     *
+     * @param user            User entity
+     * @param subjectGradeMap subject-grade map
+     */
     private void updateAndDelete(User user, Map<Boolean, List<SubjectGrade>> subjectGradeMap) {
         List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(true);
         subjectGradesToUpdate.forEach(this::save);
 
         List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(false);
         subjectGradesToDelete.forEach(this::delete);
-
-        updateUserMessage(user, subjectGradesToUpdate, subjectGradesToDelete);
     }
 
+    /**
+     * Partition SubjectGrade List in two parts - List for delete and List for create/update
+     *
+     * @param user User entity
+     * @param form subject-grade form parameters
+     * @return two lists of SubjectGrade entity
+     */
     private Map<Boolean, List<SubjectGrade>> partitionSubjectGrades(User user, Map<String, String> form) {
         return form.entrySet().stream()
-                .filter(entry -> entry.getKey().startsWith("subject_"))
+                .filter(entry -> entry.getKey().startsWith(Constants.PREFIX_SUBJECT))
                 .map(entry -> SubjectGrade.builder()
                         .user(User.builder()
                                 .id(user.getId())
@@ -91,12 +132,19 @@ public class SubjectGradeService {
                 .collect(partitioningBy(subjectGrade -> subjectGrade.getGrade() != null));
     }
 
+    /**
+     * Creates or updates subjectGrade Entity
+     *
+     * @param subjectGrade SubjectGrade Entity
+     */
     private void save(SubjectGrade subjectGrade) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
 
             if (subjectGradeDao.findByUserIdAndSubjectId(
-                    subjectGrade.getUser().getId(), subjectGrade.getSubject().getId()).isPresent()) {
+                    subjectGrade.getUser().getId(), subjectGrade.getSubject().getId()
+            ).isPresent()) {
+
                 subjectGradeDao.update(subjectGrade);
             } else {
                 subjectGradeDao.create(subjectGrade);
@@ -104,6 +152,11 @@ public class SubjectGradeService {
         }
     }
 
+    /**
+     * Deletes SubjectGrade Entity
+     *
+     * @param subjectGrade SubjectGrade Entity
+     */
     private void delete(SubjectGrade subjectGrade) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
@@ -111,10 +164,17 @@ public class SubjectGradeService {
         }
     }
 
+    /**
+     * Updates user message if ALL grades are present
+     *
+     * @param user                  User entity
+     * @param subjectGradesToUpdate List for create/update SubjectGrade
+     * @param subjectGradesToDelete list for delete SubjectGrade
+     */
     private void updateUserMessage(User user,
                                    List<SubjectGrade> subjectGradesToUpdate,
-                                   List<SubjectGrade> subjectGradesToDelete
-    ) {
+                                   List<SubjectGrade> subjectGradesToDelete) {
+
         try (DaoConnection connection = daoFactory.getConnection()) {
             MessageDao messageDao = daoFactory.createMessageDao(connection);
 
@@ -140,6 +200,12 @@ public class SubjectGradeService {
         }
     }
 
+    /**
+     * Counts average grade for ALL user subjects
+     *
+     * @param subjectGradesFinal filled list of SubjectGrades
+     * @return an average value for all user subjects
+     */
     private double countAverageGrade(List<SubjectGrade> subjectGradesFinal) {
         return subjectGradesFinal.stream()
                 .mapToDouble(SubjectGrade::getGrade)

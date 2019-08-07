@@ -6,6 +6,11 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.HashSet;
 
+/**
+ * Session listener
+ *
+ * @author Oleksii Morenets
+ */
 public class SessionListener implements HttpSessionListener {
 
     @Override

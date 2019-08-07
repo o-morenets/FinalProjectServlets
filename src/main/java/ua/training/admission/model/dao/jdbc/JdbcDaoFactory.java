@@ -14,7 +14,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * JdbcDaoConnection
+ * JdbcDaoFactory
+ *
+ * @author Oleksii Morenets
  */
 public class JdbcDaoFactory extends DaoFactory {
 

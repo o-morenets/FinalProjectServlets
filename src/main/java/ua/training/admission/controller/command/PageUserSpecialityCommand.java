@@ -14,6 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * PageUserSpeciality Command
+ *
+ * @author Oleksii Morenets
+ */
 public class PageUserSpecialityCommand extends CommandWrapper {
 
     private SpecialityService specialityService = SpecialityService.getInstance();

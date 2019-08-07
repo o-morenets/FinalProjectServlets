@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * JdbcSubjectGradeDao
+ *
+ * @author Oleksii Morenets
+ */
 public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     /* Logger */

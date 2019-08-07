@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
+/**
+ * Subject Mapper
+ *
+ * @author Oleksii Morenets
+ */
 public class SubjectMapper extends ObjectMapper<Subject> {
 
     @Override

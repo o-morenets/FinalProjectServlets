@@ -2,6 +2,8 @@ package ua.training.admission.view;
 
 /**
  * Attributes
+ *
+ * @author Oleksii Morenets
  */
 public class Attributes {
 
@@ -14,9 +16,9 @@ public class Attributes {
     public static final String USER = "user";
     public static final String USERS = "users";
     public static final String SPECIALITIES = "specialities";
+    public static final String USER_SUBJECT_GRADE_LIST = "userSubjectGradeList";
     public static final String LOGGED_USERS = "loggedUsers";
     public static final String USER_NAME = "userName";
-    public static final String USER_SUBJECT_GRADE_LIST = "userSubjectGradeList";
 
     public static final String USERNAME_ERROR = "usernameError";
     public static final String PASSWORD_ERROR = "passwordError";

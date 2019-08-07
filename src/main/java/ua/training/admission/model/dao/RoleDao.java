@@ -4,7 +4,9 @@ import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 
 /**
- * interface RoleDao
+ * Role DAO
+ *
+ * @author Oleksii Morenets
  */
 public interface RoleDao extends GenericDao<Role> {
 

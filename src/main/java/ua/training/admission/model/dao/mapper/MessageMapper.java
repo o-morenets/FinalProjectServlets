@@ -6,6 +6,11 @@ import ua.training.admission.view.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Message Mapper
+ *
+ * @author Oleksii Morenets
+ */
 public class MessageMapper extends ObjectMapper<Message> {
 
     @Override

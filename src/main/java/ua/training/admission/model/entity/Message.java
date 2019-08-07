@@ -1,5 +1,10 @@
 package ua.training.admission.model.entity;
 
+/**
+ * Represents a Message Entity
+ *
+ * @author Oleksii Morenets
+ */
 public class Message {
 
     private User user;
@@ -48,6 +53,8 @@ public class Message {
     public static Builder builder() {
         return new Builder();
     }
+
+    // Getters & Setters
 
     public User getUser() {
         return user;

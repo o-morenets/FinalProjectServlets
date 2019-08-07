@@ -11,14 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * PageLoginCommand
+ * PageLogin Command
+ *
+ * @author Oleksii Morenets
  */
 public class PageLoginCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
+
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_FORM_LOGIN);
         String paramRedirectId = request.getParameter(Parameters.REDIRECT_ID);
         request.setAttribute(Parameters.REDIRECT_ID, paramRedirectId);

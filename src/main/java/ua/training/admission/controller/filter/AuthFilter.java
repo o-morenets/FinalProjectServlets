@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Authorization filter
+ *
+ * @author Oleksii Morenets
+ */
 @WebFilter("/*")
 public class AuthFilter implements Filter {
 
@@ -32,8 +37,8 @@ public class AuthFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req,
                          ServletResponse resp,
-                         FilterChain filterChain) throws IOException, ServletException
-    {
+                         FilterChain filterChain) throws IOException, ServletException {
+
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
@@ -56,7 +61,6 @@ public class AuthFilter implements Filter {
         }
 
         if (SecurityUtils.isSecurityPage(request)) {
-            
             if (loggedUser == null) {
                 String requestUri = request.getRequestURI();
                 int redirectId = SecurityUtils.storeRedirectAfterLoginUrl(request.getSession(), requestUri);

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * PageHomeCommand
+ * UserList Command
+ *
+ * @author Oleksii Morenets
  */
 public class UserListCommand extends CommandWrapper {
 
@@ -23,8 +25,8 @@ public class UserListCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
+
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_HOME);
 
         int currentPage = PaginationUtils.getParameterValue(request,

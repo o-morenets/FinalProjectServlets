@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * PageUserGrades Command
+ *
+ * @author Oleksii Morenets
+ */
 public class PageUserGradesCommand extends CommandWrapper {
 
     /* Logger */

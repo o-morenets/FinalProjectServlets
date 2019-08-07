@@ -4,6 +4,11 @@ import ua.training.admission.view.Constants;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Helper class for command processing
+ *
+ * @author Oleksii Morenets
+ */
 public class CommandUtils {
 
     /**

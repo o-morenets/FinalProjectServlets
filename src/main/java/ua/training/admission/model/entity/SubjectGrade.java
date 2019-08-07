@@ -1,5 +1,10 @@
 package ua.training.admission.model.entity;
 
+/**
+ * Represents a SubjectGrade Entity
+ *
+ * @author Oleksii Morenets
+ */
 public class SubjectGrade {
 
     private User user;
@@ -40,6 +45,8 @@ public class SubjectGrade {
     public static Builder builder() {
         return new Builder();
     }
+
+    // Getters & Setters
 
     public User getUser() {
         return user;

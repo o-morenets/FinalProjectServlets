@@ -1,7 +1,9 @@
 package ua.training.admission.controller.exception;
 
 /**
- * AppException
+ * AppException - for any unhandled Exception
+ *
+ * @author Oleksii Morenets
  */
 public class AppException extends RuntimeException {
 

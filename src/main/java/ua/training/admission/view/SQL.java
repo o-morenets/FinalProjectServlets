@@ -1,12 +1,18 @@
 package ua.training.admission.view;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.config.AppConfig;
 import ua.training.admission.controller.exception.AppException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * SQL holder for field names and sql queries
+ *
+ * @author Oleksii Morenets
+ */
 public interface SQL {
 
     /* SQL 'not unique' constraint code */
@@ -16,8 +22,14 @@ public interface SQL {
     Logger log = Logger.getLogger(SQL.class);
 
     Properties sqlProperties = loadSqlProperties();
+
+    /**
+     * Load SQL queries from property file
+     *
+     * @return Properties object for SQL queries
+     */
     static Properties loadSqlProperties() {
-        try (InputStream inputStream = SQL.class.getResourceAsStream("/db/sql.properties")) {
+        try (InputStream inputStream = SQL.class.getResourceAsStream(AppConfig.SQL_PROPERTIES)) {
             Properties sqlProperties = new Properties();
             sqlProperties.load(inputStream);
             return sqlProperties;
@@ -31,10 +43,6 @@ public interface SQL {
     static String getSqlElement(String key) {
         return sqlProperties.getProperty(key);
     }
-
-
-
-
 
 
     /* Fields */

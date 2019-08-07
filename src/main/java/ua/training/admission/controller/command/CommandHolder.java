@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * CommandHolder
+ * CommandHolder - storage for commands
+ *
+ * @author Oleksii Morenets
  */
 public class CommandHolder {
 

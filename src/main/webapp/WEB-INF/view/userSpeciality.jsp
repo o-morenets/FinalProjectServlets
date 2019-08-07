@@ -1,5 +1,6 @@
 <%@ page import="ua.training.admission.view.Paths" %>
 <%@ page import="ua.training.admission.view.Attributes" %>
+<%@ page import="ua.training.admission.view.Parameters" %>
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
@@ -7,8 +8,8 @@
         <div class="card">
             <div class="card-header">${user.lastName}: <fmt:message key="card.speciality.title"/></div>
             <div class="card-body">
-                <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_SPEC}"
-                      method="post">
+                <form method="post"
+                      action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_SPEC}">
 
                     <div class="accordion" id="accordionSpecialities">
                         <div class="card">
@@ -18,7 +19,7 @@
                                             data-target="#collapseNone"
                                             aria-expanded="false" aria-controls="collapseNone">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="specRadios"
+                                            <input class="form-check-input" type="radio" name="${Parameters.SPEC_RADIOS}"
                                                    value="-1"
                                                    id="spec_none"
                                                    checked>
@@ -42,7 +43,7 @@
                                                 data-target="#collapse_${speciality.id}" aria-expanded="false"
                                                 aria-controls="collapse_${speciality.id}">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="specRadios"
+                                                <input class="form-check-input" type="radio" name="${Parameters.SPEC_RADIOS}"
                                                        value="${speciality.id}"
                                                        id="spec_${speciality.id}">
                                                 <label class="form-check-label" for="spec_${speciality.id}">

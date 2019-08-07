@@ -1,7 +1,9 @@
 package ua.training.admission.view;
 
 /**
- * Paths
+ * Command Paths
+ *
+ * @author Oleksii Morenets
  */
 public final class Paths {
 

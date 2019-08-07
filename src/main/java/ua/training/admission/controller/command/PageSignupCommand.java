@@ -9,12 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * PageSignup Command
+ *
+ * @author Oleksii Morenets
+ */
 public class PageSignupCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
+
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_FORM_SIGNUP);
 
         return Paths.SIGNUP_JSP;

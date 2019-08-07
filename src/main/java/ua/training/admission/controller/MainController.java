@@ -18,6 +18,8 @@ import ua.training.admission.view.*;
 
 /**
  * Servlet implementation class MainController
+ *
+ * @author Oleksii Morenets
  */
 @WebServlet(Paths.SERVLET_PATH + "/*")
 public class MainController extends HttpServlet {
@@ -37,21 +39,28 @@ public class MainController extends HttpServlet {
         config.getServletContext().setAttribute(Attributes.LOGGED_USERS, new HashSet<User>());
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Request handler
+     *
+     * @param request  http request
+     * @param response http response
+     * @throws IOException if any i/o exception occurs
+     * @throws ServletException if ServletException occurs
+     */
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException
-    {
+            throws IOException, ServletException {
         String commandKey = CommandUtils.getCommandKey(request);
         Command command = commandHolder.getCommand(commandKey);
         String viewPage = command.execute(request, response);

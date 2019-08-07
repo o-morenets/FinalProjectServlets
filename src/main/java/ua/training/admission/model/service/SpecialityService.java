@@ -8,6 +8,11 @@ import ua.training.admission.model.entity.Speciality;
 
 import java.util.List;
 
+/**
+ * Speciality Service
+ *
+ * @author Oleksii Morenets
+ */
 public class SpecialityService {
 
     /* Logger */
@@ -15,6 +20,7 @@ public class SpecialityService {
 
     private DaoFactory daoFactory = DaoFactory.getInstance();
 
+    /** Lazy holder for service instance */
     private static class Holder {
         static final SpecialityService INSTANCE = new SpecialityService();
     }
@@ -23,6 +29,11 @@ public class SpecialityService {
         return SpecialityService.Holder.INSTANCE;
     }
 
+    /**
+     * Find all Specialities
+     *
+     * @return all specialities
+     */
     public List<Speciality> findAll() {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SpecialityDao userDao = daoFactory.createSpecialityDao(connection);

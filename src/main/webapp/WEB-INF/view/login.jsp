@@ -52,7 +52,7 @@
                                            placeholder="<fmt:message key="user.username"/>"
                                            required
                                            autofocus
-                                           name="username">
+                                           name="${Parameters.USERNAME}">
                                 </div>
                             </div>
                             <div class="form-group-row">
@@ -67,7 +67,7 @@
                                            id="inputPassword"
                                            placeholder="<fmt:message key="user.password"/>"
                                            required
-                                           name="password">
+                                           name="${Parameters.PASSWORD}">
                                 </div>
                             </div>
                             <div class="form-group-row">
@@ -75,7 +75,7 @@
                                     <div class="row justify-content-between">
                                         <div class="col-8 mt-2 checkbox">
                                             <label>
-                                                <input type="checkbox" name='remember-me'>
+                                                <input type="checkbox" name='${Parameters.REMEMBER_ME}'>
                                                 <fmt:message key="form.control.rememberMe"/>
                                             </label>
                                         </div>

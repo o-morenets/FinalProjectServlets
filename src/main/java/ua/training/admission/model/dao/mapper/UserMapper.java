@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
+/**
+ * User Mapper
+ *
+ * @author Oleksii Morenets
+ */
 public class UserMapper extends ObjectMapper<User> {
 
     @Override

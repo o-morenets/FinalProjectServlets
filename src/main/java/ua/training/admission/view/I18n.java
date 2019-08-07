@@ -1,7 +1,9 @@
 package ua.training.admission.view;
 
 /**
- * TextConstants
+ * TextConstants for i18n
+ *
+ * @author Oleksii Morenets
  */
 public interface I18n {
 

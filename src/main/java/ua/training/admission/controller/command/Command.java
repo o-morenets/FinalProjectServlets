@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Interface Command
+ *
+ * @author Oleksii Morenets
  */
 public interface Command {
 

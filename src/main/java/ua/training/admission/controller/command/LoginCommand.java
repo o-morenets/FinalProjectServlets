@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Login Command
+ *
+ * @author Oleksii Morenets
+ */
 public class LoginCommand extends CommandWrapper {
 
     /* Logger */
@@ -25,8 +30,8 @@ public class LoginCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
+
         String username = request.getParameter(Parameters.USERNAME);
         String password = request.getParameter(Parameters.PASSWORD);
 
@@ -47,11 +52,11 @@ public class LoginCommand extends CommandWrapper {
      * @param request  http request
      * @param response http response
      * @param user     logged user
-     * @throws IOException if error occurs while redirect
+     * @throws IOException if any i/o error occurs while redirect
      */
     private void redirectAfterLoginSuccessful(HttpServletRequest request, HttpServletResponse response, User user)
-            throws IOException
-    {
+            throws IOException {
+
         SecurityUtils.storeLoggedUser(request.getSession(), user);
 
         int redirectId = -1;

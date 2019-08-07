@@ -16,6 +16,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * JdbcSpecialityDao
+ *
+ * @author Oleksii Morenets
+ */
 public class JdbcSpecialityDao implements SpecialityDao {
 
     /* Logger */

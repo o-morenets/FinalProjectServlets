@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * interface UserDao
+ * User DAO
+ *
+ * @author Oleksii Morenets
  */
 public interface UserDao extends GenericDao<User> {
 

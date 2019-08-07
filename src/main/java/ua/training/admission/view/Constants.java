@@ -1,5 +1,10 @@
 package ua.training.admission.view;
 
+/**
+ * Application Constants
+ *
+ * @author Oleksii Morenets
+ */
 public interface Constants {
 
     /* Pagination defaults */
@@ -13,7 +18,5 @@ public interface Constants {
     /* Text constants */
     String COLON = ":";
     String UTF_8 = "UTF-8";
-    String ROLE_ADMIN = "ADMIN";
-    String ROLE_USER = "USER";
     String PREFIX_SUBJECT = "subject_";
 }

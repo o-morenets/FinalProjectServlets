@@ -1,5 +1,10 @@
 package ua.training.admission.view;
 
+/**
+ * Application messages
+ *
+ * @author Oleksii Morenets
+ */
 public interface Messages {
 
     String APPLICATION_EXCEPTION = "Application exception";

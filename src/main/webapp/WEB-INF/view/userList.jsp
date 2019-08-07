@@ -96,12 +96,12 @@
                         </c:if>
                         <li>
                             <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS}?recordsPerPage=${recordsPerPage}&currentPage=${currentPage}">
-                                <input type="hidden" name="currentPage" value="1">
+                                <input type="hidden" name="${Parameters.CURRENT_PAGE}" value="1">
                                 <div class="form-row align-items-center">
                                     <div class="col-auto">
                                         <label class="ml-2" for="records"><fmt:message
                                                 key="pagination.recordsPerPage"/></label>
-                                        <select class="my-1 mr-2" id="records" name="recordsPerPage">
+                                        <select class="my-1 mr-2" id="records" name="${Parameters.RECORDS_PER_PAGE}">
                                             <option value="5">5</option>
                                             <option value="10" selected>10</option>
                                             <option value="15">15</option>

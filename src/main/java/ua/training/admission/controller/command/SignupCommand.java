@@ -17,6 +17,11 @@ import static ua.training.admission.view.Attributes.*;
 import static ua.training.admission.view.Parameters.*;
 import static ua.training.admission.view.I18n.*;
 
+/**
+ * Signup Command
+ *
+ * @author Oleksii Morenets
+ */
 public class SignupCommand extends CommandWrapper {
 
     /* Logger */
@@ -32,8 +37,8 @@ public class SignupCommand extends CommandWrapper {
         String password = request.getParameter(PASSWORD);
         String passwordConfirm = request.getParameter(PASSWORD_2);
         String email = request.getParameter(EMAIL);
-        String firstName = request.getParameter(FIRSTNAME);
-        String lastName = request.getParameter(LASTNAME);
+        String firstName = request.getParameter(FIRST_NAME);
+        String lastName = request.getParameter(LAST_NAME);
 
         boolean isFormValid = true;
 

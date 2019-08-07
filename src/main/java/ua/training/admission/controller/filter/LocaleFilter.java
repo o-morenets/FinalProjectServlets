@@ -14,6 +14,8 @@ import java.util.Locale;
 
 /**
  * LocaleFilter
+ *
+ * @author Oleksii Morenets
  */
 @WebFilter("/*")
 public class LocaleFilter implements Filter {
@@ -24,8 +26,8 @@ public class LocaleFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException
-    {
+            throws IOException, ServletException {
+
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
 
@@ -42,6 +44,11 @@ public class LocaleFilter implements Filter {
         chain.doFilter(request, response);
     }
 
+    /**
+     * Change locale according to request parameter
+     *
+     * @param request http request
+     */
     private void changeUserLocaleByRequestParameter(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String userLocale = request.getParameter(Parameters.USER_LOCALE);
@@ -57,6 +64,11 @@ public class LocaleFilter implements Filter {
         }
     }
 
+    /**
+     * SetUp user locale
+     *
+     * @param request http request
+     */
     private void setupUserLocale(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Locale locale = null;

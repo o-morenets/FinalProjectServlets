@@ -1,4 +1,5 @@
 <%@ page import="ua.training.admission.view.Paths" %>
+<%@ page import="ua.training.admission.view.Parameters" %>
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
@@ -26,7 +27,7 @@
                                            value="<c:if test="${!empty user}">${user.username}</c:if>"
                                            required
                                            autofocus
-                                           name="username">
+                                           name="${Parameters.USERNAME}">
                                     <c:if test="${not empty usernameError}">
                                         <div class="invalid-feedback">
                                             <fmt:message key="${usernameError}"/>
@@ -46,7 +47,7 @@
                                            id="inputPassword"
                                            placeholder="<fmt:message key="user.password"/>"
                                            required
-                                           name="password">
+                                           name="${Parameters.PASSWORD}">
                                     <c:if test="${!empty passwordError}">
                                         <div class="invalid-feedback">
                                             <fmt:message key="${passwordError}"/>
@@ -67,7 +68,7 @@
                                            id="inputPasswordRetype"
                                            placeholder="<fmt:message key="form.control.passwordRetype"/>"
                                            required
-                                           name="password2">
+                                           name="${Parameters.PASSWORD_2}">
                                     <c:if test="${!empty password2Error}">
                                         <div class="invalid-feedback">
                                             <fmt:message key="${password2Error}"/>
@@ -84,7 +85,7 @@
                                        placeholder="<fmt:message key="user.email"/>"
                                        value="<c:if test="${!empty user}">${user.email}</c:if>"
                                        required
-                                       name="email">
+                                       name="${Parameters.EMAIL}">
                                 <c:if test="${!empty emailError}">
                                     <div class="invalid-feedback">
                                         <fmt:message key="${emailError}"/>
@@ -100,7 +101,7 @@
                                        placeholder="<fmt:message key="user.firstName"/>"
                                        value="<c:if test="${!empty user}">${user.firstName}</c:if>"
                                        required
-                                       name="firstName">
+                                       name="${Parameters.FIRST_NAME}">
                                 <c:if test="${!empty firstNameError}">
                                     <div class="invalid-feedback">
                                         <fmt:message key="form.invalid.firstName"/>
@@ -116,7 +117,7 @@
                                        placeholder="<fmt:message key="user.lastName"/>"
                                        value="<c:if test="${!empty user}">${user.lastName}</c:if>"
                                        required
-                                       name="lastName">
+                                       name="${Parameters.LAST_NAME}">
                                 <c:if test="${!empty lastNameError}">
                                     <div class="invalid-feedback">
                                         <fmt:message key="form.invalid.lastName"/>

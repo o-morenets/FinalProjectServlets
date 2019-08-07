@@ -2,6 +2,11 @@ package ua.training.admission.model.entity;
 
 import java.util.Set;
 
+/**
+ * Represents a Subject Entity
+ *
+ * @author Oleksii Morenets
+ */
 public class Subject {
 
     private Long id;
@@ -50,6 +55,8 @@ public class Subject {
     public static Builder builder() {
         return new Builder();
     }
+
+    // Getters & Setters
 
     public Long getId() {
         return id;

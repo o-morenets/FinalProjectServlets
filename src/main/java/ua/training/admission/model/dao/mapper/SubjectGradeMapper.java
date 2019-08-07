@@ -6,6 +6,11 @@ import ua.training.admission.view.SQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * SubjectGrade Mapper
+ *
+ * @author Oleksii Morenets
+ */
 public class SubjectGradeMapper extends ObjectMapper<SubjectGrade> {
 
     @Override
