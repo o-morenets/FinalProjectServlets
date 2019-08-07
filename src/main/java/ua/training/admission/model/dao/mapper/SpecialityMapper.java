@@ -12,7 +12,6 @@ public class SpecialityMapper extends ObjectMapper<Speciality> {
     @Override
     public Speciality extractFromResultSet(ResultSet resultSet) throws SQLException {
         Speciality speciality = null;
-
         Long specialityId = resultSet.getLong(SQL.SPECIALITY_ID);
         if (!resultSet.wasNull()) {
             speciality = Speciality.builder()
@@ -20,7 +19,6 @@ public class SpecialityMapper extends ObjectMapper<Speciality> {
                     .name(resultSet.getString(SQL.SPECIALITY_NAME))
                     .subjects(new HashSet<>())
                     .build();
-
             speciality = makeUnique(speciality, speciality.getId());
         }
 

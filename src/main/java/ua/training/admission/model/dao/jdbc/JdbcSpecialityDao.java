@@ -64,10 +64,6 @@ public class JdbcSpecialityDao implements SpecialityDao {
             while (resultSet.next()) {
                 Speciality speciality = specialityMapper.extractFromResultSet(resultSet);
                 Subject subject = subjectMapper.extractFromResultSet(resultSet);
-
-                log.debug("specId: " + speciality.getId());
-                log.debug("subId: " + subject.getId());
-
                 speciality.getSubjects().add(subject);
                 subject.getSpecialities().add(speciality);
             }
@@ -93,7 +89,7 @@ public class JdbcSpecialityDao implements SpecialityDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 }

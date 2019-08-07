@@ -74,4 +74,12 @@ public class JdbcDaoFactory extends DaoFactory {
 
         return new JdbcSubjectGradeDao(sqlConnection);
     }
+
+    @Override
+    public MessageDao createMessageDao(DaoConnection connection) {
+        JdbcDaoConnection jdbcConnection = (JdbcDaoConnection) connection;
+        Connection sqlConnection = jdbcConnection.getConnection();
+
+        return new JdbcMessageDao(sqlConnection);
+    }
 }

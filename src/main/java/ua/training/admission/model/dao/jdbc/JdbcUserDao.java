@@ -3,9 +3,11 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.dao.mapper.MessageMapper;
 import ua.training.admission.model.dao.mapper.RoleMapper;
 import ua.training.admission.model.dao.mapper.SpecialityMapper;
 import ua.training.admission.model.dao.mapper.UserMapper;
+import ua.training.admission.model.entity.Message;
 import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.Speciality;
 import ua.training.admission.model.entity.User;
@@ -41,10 +43,16 @@ public class JdbcUserDao implements UserDao {
 
             User user = null;
             UserMapper userMapper = new UserMapper();
+            MessageMapper messageMapper = new MessageMapper();
             SpecialityMapper specialityMapper = new SpecialityMapper();
 
             while (resultSet.next()) {
                 user = userMapper.extractFromResultSet(resultSet);
+                Message message = messageMapper.extractFromResultSet(resultSet);
+                if (message != null) {
+                    message.setUser(user);
+                }
+                user.setMessage(message);
                 user.setSpeciality(specialityMapper.extractFromResultSet(resultSet));
             }
 
@@ -111,7 +119,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 
@@ -126,10 +134,16 @@ public class JdbcUserDao implements UserDao {
             User user = null;
             UserMapper userMapper = new UserMapper();
             RoleMapper roleMapper = new RoleMapper();
+            MessageMapper messageMapper = new MessageMapper();
 
             while (resultSet.next()) {
                 user = userMapper.extractFromResultSet(resultSet);
                 user.getRoles().add(roleMapper.extractFromResultSet(resultSet));
+                Message message = messageMapper.extractFromResultSet(resultSet);
+                if (message != null) {
+                    message.setUser(user);
+                }
+                user.setMessage(message);
             }
             result = Optional.ofNullable(user);
 
@@ -154,9 +168,15 @@ public class JdbcUserDao implements UserDao {
 
             UserMapper userMapper = new UserMapper();
             SpecialityMapper specialityMapper = new SpecialityMapper();
+            MessageMapper messageMapper = new MessageMapper();
 
             while (resultSet.next()) {
                 User user = userMapper.extractFromResultSet(resultSet);
+                Message message = messageMapper.extractFromResultSet(resultSet);
+                if (message != null) {
+                    message.setUser(user);
+                }
+                user.setMessage(message);
                 user.setSpeciality(specialityMapper.extractFromResultSet(resultSet));
                 result.add(user);
             }

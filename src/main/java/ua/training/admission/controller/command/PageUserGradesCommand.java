@@ -27,11 +27,10 @@ public class PageUserGradesCommand extends CommandWrapper {
     @Override
     String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long userId = CommandUtils.extractUserIdFromPath(request);
-        Optional<User> user = userService.findById(userId);
-        User usr = user.orElseThrow(ResourceNotFoundException::new);
+        User user = userService.findById(userId).orElseThrow(ResourceNotFoundException::new);
 
-        request.setAttribute(Attributes.USER, usr);
-        request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(usr));
+        request.setAttribute(Attributes.USER, user);
+        request.setAttribute(Attributes.USER_SUBJECT_GRADE_LIST, subjectGradeService.getUserSubjectGradeList(user));
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_GRADES);
 
         return Paths.USER_GRADES_JSP;

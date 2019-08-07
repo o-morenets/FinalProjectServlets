@@ -1,10 +1,7 @@
 package ua.training.admission.model.service;
 
 import org.apache.log4j.Logger;
-import ua.training.admission.model.dao.DaoConnection;
-import ua.training.admission.model.dao.DaoFactory;
-import ua.training.admission.model.dao.SubjectGradeDao;
-import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.dao.*;
 import ua.training.admission.model.entity.Message;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
@@ -116,12 +113,14 @@ public class SubjectGradeService {
 
     private void updateUserMessage(User user,
                                    List<SubjectGrade> subjectGradesToUpdate,
-                                   List<SubjectGrade> subjectGradesToDelete) {
+                                   List<SubjectGrade> subjectGradesToDelete
+    ) {
         try (DaoConnection connection = daoFactory.getConnection()) {
-            UserDao userDao = daoFactory.createUserDao(connection);
+            MessageDao messageDao = daoFactory.createMessageDao(connection);
 
             Message message = user.getMessage();
-            if (message == null) {
+            boolean isMessageSet = message != null;
+            if (!isMessageSet) {
                 message = Message.builder()
                         .user(user)
                         .build();
@@ -130,12 +129,14 @@ public class SubjectGradeService {
             boolean isAllGradesProvided = subjectGradesToDelete.isEmpty();
             if (isAllGradesProvided) {
                 message.setAverageGrade(countAverageGrade(subjectGradesToUpdate));
+                if (isMessageSet) {
+                    messageDao.update(message);
+                } else {
+                    messageDao.create(message);
+                }
             } else {
-                message = null;
+                messageDao.delete(user.getId());
             }
-
-            user.setMessage(message);
-            userDao.update(user);
         }
     }
 

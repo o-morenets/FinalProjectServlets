@@ -69,7 +69,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 

@@ -65,7 +65,7 @@ public class JdbcRoleDao implements RoleDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         throw new UnsupportedOperationException();
     }
 }
