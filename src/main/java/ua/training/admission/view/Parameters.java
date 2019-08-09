@@ -21,6 +21,7 @@ public class Parameters {
     public static final String USER_ID = "userId";
     public static final String SPEC_RADIOS = "specRadios";
     public static final String REDIRECT_ID = "redirectId";
+    public static final String PASS_GRADE = "passGrade";
 
     // Pagination
     public static final String CURRENT_PAGE = "currentPage";

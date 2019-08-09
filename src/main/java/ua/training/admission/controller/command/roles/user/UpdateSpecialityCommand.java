@@ -1,6 +1,7 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.user;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.view.Parameters;
 import ua.training.admission.view.Paths;
@@ -23,7 +24,9 @@ public class UpdateSpecialityCommand extends CommandWrapper {
     private UserService userService = UserService.getInstance();
 
     @Override
-    String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String doExecute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         Long userId = Long.valueOf(request.getParameter(Parameters.USER_ID));
         Long specId = Long.valueOf(request.getParameter(Parameters.SPEC_RADIOS));
         userService.updateSpeciality(userId, specId);

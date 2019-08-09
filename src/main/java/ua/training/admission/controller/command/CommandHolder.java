@@ -1,5 +1,10 @@
 package ua.training.admission.controller.command;
 
+import ua.training.admission.controller.command.roles.admin.*;
+import ua.training.admission.controller.command.roles.all.*;
+import ua.training.admission.controller.command.roles.user.PageUserSpecialityCommand;
+import ua.training.admission.controller.command.roles.user.UpdateSpecialityCommand;
+import ua.training.admission.controller.command.roles.user.UserProfileCommand;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.I18n;
 import ua.training.admission.view.Paths;
@@ -38,12 +43,15 @@ public class CommandHolder {
                 put(Constants.GET + Paths.USER_SPECIALITY, new PageUserSpecialityCommand());
                 put(Constants.GET + Paths.USER_PROFILE, new UserProfileCommand());
                 put(Constants.GET + Paths.USER_GRADES, new PageUserGradesCommand());
+                put(Constants.GET + Paths.USERS_PASS_GRADE, new PagePassGradeCommand());
+                put(Constants.GET + Paths.USERS_RATING_LIST, new RatingListCommand());
 
                 put(Constants.POST + Paths.LOGIN, new LoginCommand());
                 put(Constants.POST + Paths.LOGOUT, new LogoutCommand());
                 put(Constants.POST + Paths.SIGNUP, new SignupCommand());
                 put(Constants.POST + Paths.USERS_UPDATE_SPEC, new UpdateSpecialityCommand());
                 put(Constants.POST + Paths.USERS_UPDATE_GRADES, new UpdateGradesCommand());
+                put(Constants.POST + Paths.USERS_SEND_MESSAGES, new SendMessagesCommand());
             }
         };
     }

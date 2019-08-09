@@ -36,6 +36,15 @@ public class SecurityUtils {
     }
 
     /**
+     * Removes logged user from Session
+     *
+     * @param session user session
+     */
+    public static void removeLoggedUser(HttpSession session) {
+        session.setAttribute(Attributes.PRINCIPAL, null);
+    }
+
+    /**
      * Get user info from Session
      *
      * @param session user session

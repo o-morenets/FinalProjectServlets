@@ -9,14 +9,14 @@ public class Message {
 
     private User user;
     private double averageGrade;
-    private String message;
+    private boolean entered;
     private boolean messageRead;
 
     public static class Builder {
 
         private User user;
         private double averageGrade;
-        private String message;
+        private boolean entered;
         private boolean messageRead;
 
         public Builder user(User user) {
@@ -29,8 +29,8 @@ public class Message {
             return this;
         }
 
-        public Builder message(String message) {
-            this.message = message;
+        public Builder entered(boolean entered) {
+            this.entered = entered;
             return this;
         }
 
@@ -43,7 +43,7 @@ public class Message {
             Message message = new Message();
             message.setUser(user);
             message.setAverageGrade(averageGrade);
-            message.setMessage(this.message);
+            message.setEntered(entered);
             message.setMessageRead(messageRead);
 
             return message;
@@ -72,12 +72,12 @@ public class Message {
         this.averageGrade = averageGrade;
     }
 
-    public String getMessage() {
-        return message;
+    public boolean isEntered() {
+        return entered;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setEntered(boolean entered) {
+        this.entered = entered;
     }
 
     public boolean isMessageRead() {

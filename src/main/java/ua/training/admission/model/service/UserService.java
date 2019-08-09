@@ -30,6 +30,7 @@ public class UserService {
      * Lazy holder for service instance
      */
     private static class Holder {
+
         static final UserService INSTANCE = new UserService();
     }
 
@@ -54,7 +55,7 @@ public class UserService {
     }
 
     /**
-     * Finda a User by its id
+     * Finds a User by its id
      *
      * @param Id user id
      * @return optional User found by its id
@@ -116,7 +117,7 @@ public class UserService {
     }
 
     /**
-     * Returns number of users by role
+     * Returns number of users having specified role
      *
      * @param role user role
      * @return number of rows in user list
@@ -144,6 +145,30 @@ public class UserService {
                 speciality.ifPresent(user::setSpeciality);
                 userDao.update(user);
             });
+        }
+    }
+
+    /**
+     * Sends messages to users with known average grade
+     *
+     * @param passGrade      passing grade
+     * @param currentPage    current page - expecting 1 (very first page)
+     * @param recordsPerPage rows per page - expecting max available
+     */
+    public void sendMessages(Double passGrade, int currentPage, int recordsPerPage) {
+        try (DaoConnection connection = daoFactory.getConnection()) {
+            UserDao userDao = daoFactory.createUserDao(connection);
+            MessageDao messageDao = daoFactory.createMessageDao(connection);
+
+            connection.beginTransaction();
+            List<User> users = userDao.findAllByRole(Role.USER, currentPage, recordsPerPage);
+            users.stream()
+                    .filter(user -> user.getMessage() != null)
+                    .forEach(user -> {
+                        user.getMessage().setEntered(user.getMessage().getAverageGrade() >= passGrade);
+                        messageDao.update(user.getMessage());
+                    });
+            connection.commit();
         }
     }
 }

@@ -27,10 +27,12 @@ public abstract class CommandWrapper implements Command {
 
         try {
             return doExecute(request, response);
+
         } catch (ResourceNotFoundException rnfEx) {
             log.error(Messages.RESOURCE_NOT_FOUND_EXCEPTION, rnfEx);
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_ERROR);
             throw rnfEx;
+
         } catch (AppException appEx) {
             log.error(Messages.APPLICATION_EXCEPTION, appEx);
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_ERROR);
@@ -47,6 +49,6 @@ public abstract class CommandWrapper implements Command {
      * @throws ServletException when exception is thrown in nested method
      * @throws IOException      when exception is thrown in nested method
      */
-    abstract String doExecute(HttpServletRequest request, HttpServletResponse response)
+    protected abstract String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException;
 }

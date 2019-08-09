@@ -3,17 +3,14 @@ package ua.training.admission.model.dao.jdbc;
 import org.apache.log4j.Logger;
 import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.RoleDao;
-import ua.training.admission.model.dao.UserDao;
-import ua.training.admission.model.dao.mapper.RoleMapper;
-import ua.training.admission.model.dao.mapper.SpecialityMapper;
-import ua.training.admission.model.dao.mapper.UserMapper;
 import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.SQL;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,17 +32,17 @@ public class JdbcRoleDao implements RoleDao {
 
     @Override
     public Optional<Role> findById(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public List<Role> findAll() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public void create(Role role) {
-
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
@@ -63,11 +60,11 @@ public class JdbcRoleDao implements RoleDao {
 
     @Override
     public void update(Role role) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 }

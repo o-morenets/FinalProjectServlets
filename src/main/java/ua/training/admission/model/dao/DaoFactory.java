@@ -16,20 +16,54 @@ import java.util.Properties;
  */
 public abstract class DaoFactory {
 
-    /** Returns DAO connection */
+    /**
+     * Returns DAO connection
+     */
     public abstract DaoConnection getConnection();
 
+    /**
+     * Creates User DAO
+     *
+     * @param connection database connection
+     * @return implementation of User DAO
+     */
     public abstract UserDao createUserDao(DaoConnection connection);
 
+    /**
+     * Creates Role DAO
+     *
+     * @param connection database connection
+     * @return implementation of Role DAO
+     */
     public abstract RoleDao createRoleDao(DaoConnection connection);
 
+    /**
+     * Creates Speciality DAO
+     *
+     * @param connection database connection
+     * @return implementation of Speciality DAO
+     */
     public abstract SpecialityDao createSpecialityDao(DaoConnection connection);
 
+    /**
+     * Creates SubjectGrade DAO
+     *
+     * @param connection database connection
+     * @return implementation of SubjectGrade DAO
+     */
     public abstract SubjectGradeDao createSubjectGradeDao(DaoConnection connection);
 
+    /**
+     * Creates Message DAO
+     *
+     * @param connection database connection
+     * @return implementation of Message DAO
+     */
     public abstract MessageDao createMessageDao(DaoConnection connection);
 
-    /** DAO factory instance */
+    /**
+     * DAO factory instance
+     */
     private static DaoFactory instance;
 
     /* Logger */
@@ -50,6 +84,7 @@ public abstract class DaoFactory {
                         dbProps.load(inputStream);
                         String factoryClass = dbProps.getProperty(AppConfig.DB_FACTORY_CLASS);
                         instance = (DaoFactory) Class.forName(factoryClass).newInstance();
+
                     } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
                         log.error(Messages.DAO_FACTORY_EXCEPTION, e);
                         throw new AppException(Messages.DAO_FACTORY_EXCEPTION, e);

@@ -1,6 +1,8 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.all;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.controller.command.CommandUtils;
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.controller.exception.ResourceNotFoundException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.SubjectGradeService;
@@ -30,7 +32,9 @@ public class PageUserGradesCommand extends CommandWrapper {
     private UserService userService = UserService.getInstance();
 
     @Override
-    String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String doExecute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         Long userId = CommandUtils.extractUserIdFromPath(request);
         User user = userService.findById(userId).orElseThrow(ResourceNotFoundException::new);
 

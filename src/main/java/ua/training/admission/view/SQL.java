@@ -72,7 +72,7 @@ public interface SQL {
 
     // Message
     String MESSAGE_AVERAGE_GRADE = "message.average_grade";
-    String MESSAGE_MESSAGE = "message.message";
+    String MESSAGE_ENTERED = "message.entered";
     String MESSAGE_MESSAGE_READ = "message.message_read";
     String MESSAGE_USER_ID = "message.user_id";
 

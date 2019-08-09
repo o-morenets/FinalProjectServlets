@@ -1,5 +1,6 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.all;
 
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.I18n;
 import ua.training.admission.view.Parameters;

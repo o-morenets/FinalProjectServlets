@@ -13,6 +13,9 @@ public interface I18n {
     String TITLE_FORM_SIGNUP = "title.signup";
     String TITLE_SPECIALITIES = "title.userSpeciality";
     String TITLE_GRADES = "title.grades";
+    String TITLE_PASS_GRADE = "title.passGrade";
+    String TITLE_USER_LIST = "title.userList";
+    String TITLE_RATING_LIST = "title.ratingList";
     String TITLE_403 = "title.error.403.Forbidden";
     String TITLE_404 = "title.error.404.NotFound";
     String TITLE_ERROR = "title.error.throwable";

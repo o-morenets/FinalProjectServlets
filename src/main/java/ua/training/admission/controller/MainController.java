@@ -35,11 +35,6 @@ public class MainController extends HttpServlet {
     }
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        config.getServletContext().setAttribute(Attributes.LOGGED_USERS, new HashSet<User>());
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);

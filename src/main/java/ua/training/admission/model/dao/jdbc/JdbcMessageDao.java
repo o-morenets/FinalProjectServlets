@@ -29,19 +29,19 @@ public class JdbcMessageDao implements MessageDao {
 
     @Override
     public Optional<Message> findById(Long id) {
-        return Optional.empty();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public List<Message> findAll() {
-        return null;
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public void create(Message message) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.INSERT_INTO_MESSAGE))) {
             stmt.setDouble(1, message.getAverageGrade());
-            stmt.setString(2, message.getMessage());
+            stmt.setBoolean(2, message.isEntered());
             stmt.setBoolean(3, message.isMessageRead());
             stmt.setLong(4, message.getUser().getId());
             stmt.executeUpdate();
@@ -56,7 +56,7 @@ public class JdbcMessageDao implements MessageDao {
     public void update(Message message) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_MESSAGE))) {
             stmt.setDouble(1, message.getAverageGrade());
-            stmt.setString(2, message.getMessage());
+            stmt.setBoolean(2, message.isEntered());
             stmt.setBoolean(3, message.isMessageRead());
             stmt.setLong(4, message.getUser().getId());
             stmt.setLong(5, message.getUser().getId());

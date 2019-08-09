@@ -1,5 +1,6 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.user;
 
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.security.SecurityUtils;
@@ -20,7 +21,9 @@ public class UserProfileCommand extends CommandWrapper {
     private UserService userService = UserService.getInstance();
 
     @Override
-    String doExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected String doExecute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         User loggedUser = SecurityUtils.getLoggedUser(request.getSession());
 
         return Paths.SERVLET_PATH + Paths.USERS_ + loggedUser.getId() + Paths.GRADES;

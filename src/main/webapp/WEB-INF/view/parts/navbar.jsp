@@ -28,12 +28,21 @@
                                 <fmt:message key="menu.admin.grades"/>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_PASS_GRADE}">
+                                <fmt:message key="menu.admin.rating"/>
+                            </a>
+                        </li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item">
                             <a class="nav-link"
                                href="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_}${principal.id}${Paths.PROFILE}">
                                 <fmt:message key="menu.user.profile"/>
+                                <c:if test="${!empty principal.message && !empty principal.message.entered}">
+                                    <span class="badge badge-pill badge-danger">1</span>
+                                </c:if>
                             </a>
                         </li>
                     </c:otherwise>

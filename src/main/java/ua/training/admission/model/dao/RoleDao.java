@@ -10,6 +10,11 @@ import ua.training.admission.model.entity.User;
  */
 public interface RoleDao extends GenericDao<Role> {
 
+    /**
+     * Creates role for specified user
+     *
+     * @param user User entity
+     * @param role user role
+     */
     void createUserRole(User user, Role role);
-
 }

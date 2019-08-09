@@ -70,7 +70,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public List<User> findAll() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override

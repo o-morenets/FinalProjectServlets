@@ -1,6 +1,7 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.all;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
 import ua.training.admission.security.EncryptPassword;

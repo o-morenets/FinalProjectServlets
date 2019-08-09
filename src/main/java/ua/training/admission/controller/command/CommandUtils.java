@@ -30,7 +30,7 @@ public class CommandUtils {
      * @param request http request
      * @return number that represents user Id
      */
-    static Long extractUserIdFromPath(HttpServletRequest request) {
+    public static Long extractUserIdFromPath(HttpServletRequest request) {
         return Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
     }
 }

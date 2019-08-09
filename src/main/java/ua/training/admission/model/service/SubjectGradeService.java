@@ -1,12 +1,14 @@
 package ua.training.admission.model.service;
 
 import org.apache.log4j.Logger;
+import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.*;
 import ua.training.admission.model.entity.Message;
 import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Constants;
+import ua.training.admission.view.Messages;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -62,11 +64,12 @@ public class SubjectGradeService {
             userDao.findById(userId).ifPresent(user -> {
                 Map<String, String> form = extractFormParameters(request);
 
-                connection.beginTransaction();
                 Map<Boolean, List<SubjectGrade>> subjectGradeMap = partitionSubjectGrades(user, form);
-                updateAndDelete(user, subjectGradeMap);
-                List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(true);
-                List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(false);
+                List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(Boolean.TRUE);
+                List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(Boolean.FALSE);
+
+                connection.beginTransaction();
+                updateAndDelete(subjectGradesToUpdate, subjectGradesToDelete);
                 updateUserMessage(user, subjectGradesToUpdate, subjectGradesToDelete);
                 connection.commit();
             });
@@ -99,14 +102,11 @@ public class SubjectGradeService {
     /**
      * Updates and deletes user-grade records
      *
-     * @param user            User entity
-     * @param subjectGradeMap subject-grade map
+     * @param subjectGradesToUpdate subject-grade list for update
+     * @param subjectGradesToDelete subject-grade list for delete
      */
-    private void updateAndDelete(User user, Map<Boolean, List<SubjectGrade>> subjectGradeMap) {
-        List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(true);
+    private void updateAndDelete(List<SubjectGrade> subjectGradesToUpdate, List<SubjectGrade> subjectGradesToDelete) {
         subjectGradesToUpdate.forEach(this::save);
-
-        List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(false);
         subjectGradesToDelete.forEach(this::delete);
     }
 
@@ -133,7 +133,7 @@ public class SubjectGradeService {
     }
 
     /**
-     * Creates or updates subjectGrade Entity
+     * Creates or updates (if already exists) subjectGrade Entity
      *
      * @param subjectGrade SubjectGrade Entity
      */
@@ -144,7 +144,6 @@ public class SubjectGradeService {
             if (subjectGradeDao.findByUserIdAndSubjectId(
                     subjectGrade.getUser().getId(), subjectGrade.getSubject().getId()
             ).isPresent()) {
-
                 subjectGradeDao.update(subjectGrade);
             } else {
                 subjectGradeDao.create(subjectGrade);
@@ -160,7 +159,10 @@ public class SubjectGradeService {
     private void delete(SubjectGrade subjectGrade) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
-            subjectGradeDao.deleteByUserIdAndSubjectId(subjectGrade.getUser().getId(), subjectGrade.getSubject().getId());
+            subjectGradeDao.deleteByUserIdAndSubjectId(
+                    subjectGrade.getUser().getId(),
+                    subjectGrade.getSubject().getId()
+            );
         }
     }
 
@@ -210,6 +212,6 @@ public class SubjectGradeService {
         return subjectGradesFinal.stream()
                 .mapToDouble(SubjectGrade::getGrade)
                 .average()
-                .orElse(-1); // TODO maybe orElseThrow and then catch ???
+                .orElseThrow(() -> new RuntimeException(Messages.COUNT_AVERAGE_GRADE_EXCEPTION));
     }
 }

@@ -1,5 +1,6 @@
-package ua.training.admission.controller.command;
+package ua.training.admission.controller.command.roles.all;
 
+import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.Paths;
 import ua.training.admission.view.I18n;
@@ -10,18 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * PageSignup Command
+ * PageHome Command
  *
  * @author Oleksii Morenets
  */
-public class PageSignupCommand extends CommandWrapper {
+public class PageHomeCommand extends CommandWrapper {
 
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_FORM_SIGNUP);
+        request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_HOME);
 
-        return Paths.SIGNUP_JSP;
+        return Paths.HOME_JSP;
     }
 }

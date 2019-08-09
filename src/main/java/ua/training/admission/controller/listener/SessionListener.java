@@ -1,5 +1,6 @@
 package ua.training.admission.controller.listener;
 
+import ua.training.admission.security.SecurityUtils;
 import ua.training.admission.view.Attributes;
 
 import javax.servlet.http.HttpSessionEvent;
@@ -15,15 +16,11 @@ public class SessionListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
+        httpSessionEvent.getSession().setMaxInactiveInterval(30 * 60);
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-        HashSet<String> loggedUsers = (HashSet<String>) httpSessionEvent
-                .getSession().getServletContext()
-                .getAttribute(Attributes.LOGGED_USERS);
-        String userName = (String) httpSessionEvent.getSession().getAttribute(Attributes.USER_NAME);
-        loggedUsers.remove(userName);
-        httpSessionEvent.getSession().setAttribute(Attributes.LOGGED_USERS, loggedUsers);
+        SecurityUtils.removeLoggedUser(httpSessionEvent.getSession());
     }
 }

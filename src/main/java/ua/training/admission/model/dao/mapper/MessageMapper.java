@@ -20,7 +20,7 @@ public class MessageMapper extends ObjectMapper<Message> {
         if (!resultSet.wasNull()) {
             message = Message.builder()
                     .averageGrade(resultSet.getDouble(SQL.MESSAGE_AVERAGE_GRADE))
-                    .message(resultSet.getString(SQL.MESSAGE_MESSAGE))
+                    .entered(resultSet.getBoolean(SQL.MESSAGE_ENTERED))
                     .messageRead(resultSet.getBoolean(SQL.MESSAGE_MESSAGE_READ))
                     .build();
             message = makeUnique(message, userId);

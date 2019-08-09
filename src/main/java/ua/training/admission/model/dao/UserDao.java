@@ -13,10 +13,29 @@ import java.util.Optional;
  */
 public interface UserDao extends GenericDao<User> {
 
+    /**
+     * Finds user by its username
+     *
+     * @param username user's username
+     * @return optional user with given username
+     */
 	Optional<User> findByUsername(String username);
 
+    /**
+     * Finds all users by specified role
+     *
+     * @param role           user role
+     * @param currentPage    current page for pageable list
+     * @param recordsPerPage records per page for pageable list
+     * @return all users with specified role
+     */
     List<User> findAllByRole(Role role, int currentPage, int recordsPerPage);
 
+    /**
+     * Fetches number of rows for all users with specified role
+     *
+     * @param role user role
+     * @return number of all users with specified role
+     */
     int getNumberOfRowsByRole(Role role);
-
 }

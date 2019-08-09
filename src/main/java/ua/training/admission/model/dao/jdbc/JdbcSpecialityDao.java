@@ -14,7 +14,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * JdbcSpecialityDao
@@ -59,8 +60,8 @@ public class JdbcSpecialityDao implements SpecialityDao {
         List<Speciality> result;
 
         try (PreparedStatement stmt = connection.prepareStatement(
-                SQL.getSqlElement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS))
-        ) {
+                SQL.getSqlElement(SQL.SELECT_SPECIALITIES_WITH_SUBJECTS))) {
+
             ResultSet resultSet = stmt.executeQuery();
 
             SpecialityMapper specialityMapper = new SpecialityMapper();
@@ -85,16 +86,16 @@ public class JdbcSpecialityDao implements SpecialityDao {
 
     @Override
     public void create(Speciality speciality) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public void update(Speciality speciality) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 }

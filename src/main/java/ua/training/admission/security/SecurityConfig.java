@@ -19,7 +19,9 @@ class SecurityConfig {
         {
             put(Role.ADMIN, Arrays.asList(
                     Paths.USERS,
-                    Paths.USER_GRADES
+                    Paths.USER_GRADES,
+                    Paths.USERS_PASS_GRADE,
+                    Paths.USERS_RATING_LIST
             ));
 
             put(Role.USER, Arrays.asList(

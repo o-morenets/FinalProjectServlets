@@ -5,7 +5,6 @@ import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.SubjectGradeDao;
 import ua.training.admission.model.dao.mapper.SubjectGradeMapper;
 import ua.training.admission.model.dao.mapper.SubjectMapper;
-import ua.training.admission.model.entity.Subject;
 import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.view.Messages;
@@ -37,12 +36,12 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public Optional<SubjectGrade> findById(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
     public List<SubjectGrade> findAll() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
@@ -75,7 +74,7 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
     }
 
     @Override
@@ -83,8 +82,8 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
         Optional<SubjectGrade> result = Optional.empty();
 
         try (PreparedStatement stmt = connection.prepareStatement(
-                SQL.getSqlElement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))
-        ) {
+                SQL.getSqlElement(SQL.SELECT_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))) {
+
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
             ResultSet resultSet = stmt.executeQuery();
@@ -132,8 +131,8 @@ public class JdbcSubjectGradeDao implements SubjectGradeDao {
     @Override
     public void deleteByUserIdAndSubjectId(Long userId, Long subjectId) {
         try (PreparedStatement stmt = connection.prepareStatement(
-                SQL.getSqlElement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))
-        ) {
+                SQL.getSqlElement(SQL.DELETE_FROM_SUBJECT_GRADE_BY_USER_ID_AND_SUBJECT_ID))) {
+
             stmt.setLong(1, userId);
             stmt.setLong(2, subjectId);
             stmt.executeUpdate();

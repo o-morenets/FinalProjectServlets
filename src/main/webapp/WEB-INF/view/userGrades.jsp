@@ -104,6 +104,20 @@
                             </div>
                         </c:if>
                     </div>
+                    <c:if test="${!isAdmin && !empty user.message}">
+                        <c:choose>
+                            <c:when test="${user.message.entered}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message key="user.message.entered"/>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message key="user.message.notEntered"/>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
                 </div>
             </div>
         </div>
