@@ -55,15 +55,13 @@ public class SubjectGradeService {
     /**
      * Updates user grades
      *
-     * @param userId  user id
-     * @param request http request
+     * @param userId user id
+     * @param form   form parameters from http request
      */
-    public void updateGrades(Long userId, HttpServletRequest request) {
+    public void updateGrades(Long userId, Map<String, String> form) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
             userDao.findById(userId).ifPresent(user -> {
-                Map<String, String> form = extractFormParameters(request);
-
                 Map<Boolean, List<SubjectGrade>> subjectGradeMap = partitionSubjectGrades(user, form);
                 List<SubjectGrade> subjectGradesToUpdate = subjectGradeMap.get(Boolean.TRUE);
                 List<SubjectGrade> subjectGradesToDelete = subjectGradeMap.get(Boolean.FALSE);
@@ -74,40 +72,6 @@ public class SubjectGradeService {
                 connection.commit();
             });
         }
-    }
-
-    /**
-     * Helper method
-     * Extracts form parameters from http request
-     *
-     * @param request http request
-     * @return Map of subject-grade parameters
-     */
-    private Map<String, String> extractFormParameters(HttpServletRequest request) {
-        Map<String, String> form = new HashMap<>();
-        Enumeration<String> parameterNames = request.getParameterNames();
-
-        while (parameterNames.hasMoreElements()) {
-            String elementName = parameterNames.nextElement();
-
-            if (elementName.startsWith(Constants.PREFIX_SUBJECT)) {
-                String paramGrade = request.getParameter(elementName);
-                form.put(elementName, paramGrade);
-            }
-        }
-
-        return form;
-    }
-
-    /**
-     * Updates and deletes user-grade records
-     *
-     * @param subjectGradesToUpdate subject-grade list for update
-     * @param subjectGradesToDelete subject-grade list for delete
-     */
-    private void updateAndDelete(List<SubjectGrade> subjectGradesToUpdate, List<SubjectGrade> subjectGradesToDelete) {
-        subjectGradesToUpdate.forEach(this::save);
-        subjectGradesToDelete.forEach(this::delete);
     }
 
     /**
@@ -130,6 +94,17 @@ public class SubjectGradeService {
                         .grade(entry.getValue().isEmpty() ? null : Integer.parseInt(entry.getValue()))
                         .build())
                 .collect(partitioningBy(subjectGrade -> subjectGrade.getGrade() != null));
+    }
+
+    /**
+     * Updates and deletes user-grade records
+     *
+     * @param subjectGradesToUpdate subject-grade list for update
+     * @param subjectGradesToDelete subject-grade list for delete
+     */
+    private void updateAndDelete(List<SubjectGrade> subjectGradesToUpdate, List<SubjectGrade> subjectGradesToDelete) {
+        subjectGradesToUpdate.forEach(this::save);
+        subjectGradesToDelete.forEach(this::delete);
     }
 
     /**

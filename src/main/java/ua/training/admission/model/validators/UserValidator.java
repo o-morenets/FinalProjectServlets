@@ -2,8 +2,6 @@ package ua.training.admission.model.validators;
 
 import ua.training.admission.model.entity.User;
 
-import java.util.regex.Pattern;
-
 import static ua.training.admission.view.Attributes.*;
 import static ua.training.admission.view.I18n.*;
 
@@ -24,9 +22,7 @@ public class UserValidator extends EntityValidator<User> {
             addError(EMAIL_ERROR, FORM_INVALID_EMAIL_EMPTY);
         }
 
-        if (!Pattern.compile(REGEX_EMAIL).matcher(email).matches()) {
-            addError(EMAIL_ERROR, FORM_INVALID_EMAIL_INCORRECT);
-        }
+        validateWithRegex(email, REGEX_EMAIL, EMAIL_ERROR, FORM_INVALID_EMAIL_INCORRECT);
 
         if (user.getFirstName().trim().isEmpty()) {
             addError(FIRST_NAME_ERROR, FORM_INVALID_FIRST_NAME);

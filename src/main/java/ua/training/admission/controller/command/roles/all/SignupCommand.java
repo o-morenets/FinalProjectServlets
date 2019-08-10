@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 import static ua.training.admission.view.Attributes.*;
 import static ua.training.admission.view.Parameters.*;
@@ -49,7 +48,6 @@ public class SignupCommand extends CommandWrapper {
         userValidator.validate(user);
 
         String passwordConfirm = request.getParameter(PASSWORD_2);
-
         boolean isConfirmEmpty = passwordConfirm.trim().isEmpty();
         if (isConfirmEmpty) {
             userValidator.addError(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_RETYPE_EMPTY);
@@ -62,7 +60,8 @@ public class SignupCommand extends CommandWrapper {
         }
 
         if (isConfirmEmpty || passwordsDifferent || userValidator.hasErrors()) {
-            setErrorAttributes(request, user, userValidator.getErrors());
+            setAttributes(request, user);
+            userValidator.setErrorAttributes(request);
 
             return Paths.SIGNUP_JSP;
         }
@@ -76,7 +75,8 @@ public class SignupCommand extends CommandWrapper {
             log.warn(Messages.USER_ALREADY_EXISTS);
 
             userValidator.addError(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
-            setErrorAttributes(request, user, userValidator.getErrors());
+            setAttributes(request, user);
+            userValidator.setErrorAttributes(request);
 
             return Paths.SIGNUP_JSP;
         }
@@ -84,8 +84,13 @@ public class SignupCommand extends CommandWrapper {
         return Paths.REDIRECTED;
     }
 
-    private void setErrorAttributes(HttpServletRequest request, User user, Map<String, String> errors) {
-        errors.forEach(request::setAttribute);
+    /**
+     * Set attributes for jsp
+     *
+     * @param request http request
+     * @param user    User Entity
+     */
+    private void setAttributes(HttpServletRequest request, User user) {
         request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
         request.setAttribute(USER, user);
     }

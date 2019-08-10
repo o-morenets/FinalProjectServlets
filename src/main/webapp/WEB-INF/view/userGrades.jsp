@@ -1,5 +1,6 @@
 <%@ page import="ua.training.admission.view.Paths" %>
 <%@ page import="ua.training.admission.view.Attributes" %>
+<%@ page import="ua.training.admission.view.Constants" %>
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
@@ -47,7 +48,7 @@
                             <c:if test="${!empty user.speciality}">
                                 <div class="row">
                                     <form action="${pageContext.request.contextPath}${requestScope[Attributes.SERVLET_PATH_API]}${Paths.USERS_UPDATE_GRADES}"
-                                          method="post">
+                                          method="post" novalidate>
                                         <c:choose>
                                             <c:when test="${!empty requestScope[Attributes.USER_SUBJECT_GRADE_LIST]}">
                                                 <table>
@@ -61,20 +62,32 @@
                                                     <c:forEach
                                                             items="${requestScope[Attributes.USER_SUBJECT_GRADE_LIST]}"
                                                             var="userSubjectGrade">
+                                                        <c:set var="errorVar">subject_${userSubjectGrade.subject.id}Error</c:set>
                                                         <tr>
-                                                            <td>
-                                                                <label for="subject_${userSubjectGrade.subject.id}">
-                                                                        ${userSubjectGrade.subject.name}
-                                                                </label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="number"
-                                                                       id="subject_${userSubjectGrade.subject.id}"
-                                                                       name="subject_${userSubjectGrade.subject.id}"
-                                                                       value="<c:if test="${!empty userSubjectGrade.grade}">${userSubjectGrade.grade}</c:if>"
-                                                                       <c:if test="${!isAdmin}">disabled</c:if>
-                                                                >
-                                                            </td>
+                                                            <div class="form-group-row">
+                                                                <td>
+                                                                    <label class="control-label"
+                                                                           for="subject_${userSubjectGrade.subject.id}">
+                                                                            ${userSubjectGrade.subject.name}
+                                                                    </label>
+                                                                </td>
+                                                                <td>
+                                                                    <input class="form-control <c:if test="${not empty requestScope[errorVar]}">is-invalid</c:if>"
+                                                                           type="number"
+                                                                           min="${Constants.GRADE_MIN}"
+                                                                           max="${Constants.GRADE_MAX}"
+                                                                           id="subject_${userSubjectGrade.subject.id}"
+                                                                           name="subject_${userSubjectGrade.subject.id}"
+                                                                           value="<c:if test="${!empty userSubjectGrade.grade}">${userSubjectGrade.grade}</c:if>"
+                                                                           <c:if test="${!isAdmin}">disabled</c:if>
+                                                                    >
+                                                                    <c:if test="${not empty requestScope[errorVar]}">
+                                                                        <div class="invalid-feedback">
+                                                                            <fmt:message key="${requestScope[errorVar]}"/>
+                                                                        </div>
+                                                                    </c:if>
+                                                                </td>
+                                                            </div>
                                                         </tr>
                                                     </c:forEach>
                                                     </tbody>

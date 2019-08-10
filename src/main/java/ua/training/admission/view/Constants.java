@@ -5,18 +5,23 @@ package ua.training.admission.view;
  *
  * @author Oleksii Morenets
  */
-public interface Constants {
-
-    /* Pagination defaults */
-    int DEFAULT_CURRENT_PAGE = 1;
-    int DEFAULT_RECORDS_PER_PAGE = 10;
+public class Constants {
 
     /* Command methods */
-    String GET = "GET:";
-    String POST = "POST:";
+    public static final String GET = "GET:";
+    public static final String POST = "POST:";
 
     /* Text constants */
-    String COLON = ":";
-    String UTF_8 = "UTF-8";
-    String PREFIX_SUBJECT = "subject_";
+    public static final String COLON = ":";
+    public static final String UTF_8 = "UTF-8";
+    public static final String PREFIX_SUBJECT = "subject_";
+    public static final String SUFFIX_ERROR = "Error";
+
+    /* Grades range */
+    public static final int GRADE_MIN = 0;
+    public static final int GRADE_MAX = 100;
+
+    /* Pagination defaults */
+    public static final int DEFAULT_CURRENT_PAGE = 1;
+    public static final int DEFAULT_RECORDS_PER_PAGE = 10;
 }

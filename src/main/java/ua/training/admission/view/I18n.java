@@ -30,4 +30,5 @@ public interface I18n {
     String FORM_INVALID_EMAIL_INCORRECT = "form.invalid.email.incorrect";
     String FORM_INVALID_FIRST_NAME = "form.invalid.firstName";
     String FORM_INVALID_LAST_NAME = "form.invalid.lastName";
+    String FORM_INVALID_INTEGER = "form.invalid.integer";
 }
