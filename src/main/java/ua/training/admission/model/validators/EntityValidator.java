@@ -16,7 +16,7 @@ public abstract class EntityValidator<T> implements Validator<T> {
     /**
      * Error map
      */
-    Map<String, String> errors = new HashMap<>();
+    private Map<String, String> errors = new HashMap<>();
 
     @Override
     public boolean hasErrors() {

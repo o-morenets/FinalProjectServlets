@@ -72,7 +72,7 @@ public class SignupCommand extends CommandWrapper {
             response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.LOGIN);
 
         } catch (NotUniqueUsernameException e) {
-            log.warn(Messages.USER_ALREADY_EXISTS);
+            log.warn(Messages.USER_ALREADY_EXISTS, e);
 
             userValidator.addError(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
             setAttributes(request, user);

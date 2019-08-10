@@ -31,6 +31,6 @@ public class CommandUtils {
      * @return number that represents user Id
      */
     public static Long extractUserIdFromPath(HttpServletRequest request) {
-        return Long.valueOf(request.getPathInfo().replaceAll("\\D+", ""));
+        return Long.parseLong(request.getPathInfo().replaceAll("\\D+", ""));
     }
 }

@@ -89,7 +89,7 @@ public class SubjectGradeService {
                                 .id(user.getId())
                                 .build())
                         .subject(Subject.builder()
-                                .id(Long.valueOf(entry.getKey().replaceAll("\\D+", "")))
+                                .id(Long.parseLong(entry.getKey().replaceAll("\\D+", "")))
                                 .build())
                         .grade(entry.getValue().isEmpty() ? null : Integer.parseInt(entry.getValue()))
                         .build())

@@ -6,6 +6,7 @@ import ua.training.admission.controller.exception.ResourceNotFoundException;
 import ua.training.admission.view.Attributes;
 import ua.training.admission.view.I18n;
 import ua.training.admission.view.Messages;
+import ua.training.admission.view.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -31,11 +32,13 @@ public abstract class CommandWrapper implements Command {
         } catch (ResourceNotFoundException rnfEx) {
             log.error(Messages.RESOURCE_NOT_FOUND_EXCEPTION, rnfEx);
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_ERROR);
-            throw rnfEx;
+
+            return Paths.PAGE_404_JSP;
 
         } catch (AppException appEx) {
             log.error(Messages.APPLICATION_EXCEPTION, appEx);
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_ERROR);
+
             throw appEx;
         }
     }

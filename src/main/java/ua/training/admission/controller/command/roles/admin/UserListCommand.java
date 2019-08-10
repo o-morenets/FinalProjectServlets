@@ -24,21 +24,22 @@ public class UserListCommand extends CommandWrapper {
 
     private UserService userService = UserService.getInstance();
 
+    private static int currentPage = Constants.DEFAULT_CURRENT_PAGE;
+    private static int recordsPerPage = Constants.DEFAULT_RECORDS_PER_PAGE;
+
     @Override
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_USER_LIST);
 
-        int currentPage = PaginationUtils.getParameterValue(request,
-                Parameters.CURRENT_PAGE, Constants.DEFAULT_CURRENT_PAGE);
+        currentPage = PaginationUtils.getParameterValue(request, Parameters.CURRENT_PAGE, currentPage);
 
-        int recordsPerPage = PaginationUtils.getParameterValue(request,
-                Parameters.RECORDS_PER_PAGE, Constants.DEFAULT_RECORDS_PER_PAGE);
+        recordsPerPage = PaginationUtils.getParameterValue(request, Parameters.RECORDS_PER_PAGE, recordsPerPage);
 
         int rows = userService.getNumberOfRowsByRole(Role.USER);
         int numPages = rows / recordsPerPage;
-        if (numPages % recordsPerPage > 0) {
+        if (rows % recordsPerPage > 0) {
             numPages++;
         }
 

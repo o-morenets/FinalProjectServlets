@@ -27,8 +27,8 @@ public class UpdateSpecialityCommand extends CommandWrapper {
     protected String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Long userId = Long.valueOf(request.getParameter(Parameters.USER_ID));
-        Long specId = Long.valueOf(request.getParameter(Parameters.SPEC_RADIOS));
+        Long userId = Long.parseLong(request.getParameter(Parameters.USER_ID));
+        Long specId = Long.parseLong(request.getParameter(Parameters.SPEC_RADIOS));
         userService.updateSpeciality(userId, specId);
         response.sendRedirect(request.getContextPath() + request.getServletPath() +
                 Paths.USERS_ + userId + Paths.GRADES);

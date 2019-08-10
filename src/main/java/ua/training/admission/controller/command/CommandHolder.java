@@ -1,14 +1,12 @@
 package ua.training.admission.controller.command;
 
+import org.apache.log4j.Logger;
 import ua.training.admission.controller.command.roles.admin.*;
 import ua.training.admission.controller.command.roles.all.*;
 import ua.training.admission.controller.command.roles.user.PageUserSpecialityCommand;
 import ua.training.admission.controller.command.roles.user.UpdateSpecialityCommand;
 import ua.training.admission.controller.command.roles.user.UserProfileCommand;
-import ua.training.admission.view.Attributes;
-import ua.training.admission.view.I18n;
-import ua.training.admission.view.Paths;
-import ua.training.admission.view.Constants;
+import ua.training.admission.view.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +17,9 @@ import java.util.Map;
  * @author Oleksii Morenets
  */
 public class CommandHolder {
+
+    /* Logger */
+    private static final Logger log = Logger.getLogger(CommandHolder.class);
 
     /* Command holder map */
     private Map<String, Command> commands;
@@ -45,6 +46,7 @@ public class CommandHolder {
                 put(Constants.GET + Paths.USER_GRADES, new PageUserGradesCommand());
                 put(Constants.GET + Paths.USERS_PASS_GRADE, new PagePassGradeCommand());
                 put(Constants.GET + Paths.USERS_RATING_LIST, new RatingListCommand());
+                put(Constants.GET + Paths.USERS_SEND_MESSAGES, new PagePassGradeCommand());
 
                 put(Constants.POST + Paths.LOGIN, new LoginCommand());
                 put(Constants.POST + Paths.LOGOUT, new LogoutCommand());
@@ -65,6 +67,7 @@ public class CommandHolder {
     public Command getCommand(String key) {
         return commands.getOrDefault(key, (request, response) -> {
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_404);
+            log.warn(Messages.REQUESTED_PAGE_NOT_FOUND + key);
 
             return Paths.PAGE_404_JSP;
         });

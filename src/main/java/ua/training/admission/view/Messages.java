@@ -12,7 +12,6 @@ public interface Messages {
     String NAMING_EXCEPTION = "Naming Exception";
     String DAO_FACTORY_EXCEPTION = "Dao Factory Exception";
     String USER_ALREADY_EXISTS = "User already exists";
-    String NUMBER_FORMAT_EXCEPTION = "Number Format Exception while parsing a number";
     String IO_EXCEPTION = "I/O Exception";
     String RESOURCE_NOT_FOUND_EXCEPTION = "Resource not found";
     String UNSUPPORTED_OPERATION_EXCEPTION = "Not implemented yet";
@@ -27,4 +26,7 @@ public interface Messages {
 
     /* Encrypt algorithm exception message */
     String ERROR_ENCRYPT_ALGORITHM = "No such algorithm for encrypt";
+
+    /* Message for default 404 page */
+    String REQUESTED_PAGE_NOT_FOUND = "Requested page not found: ";
 }

@@ -63,8 +63,7 @@ public class LoginCommand extends CommandWrapper {
         int redirectId = -1;
         try {
             redirectId = Integer.parseInt(request.getParameter(Parameters.REDIRECT_ID));
-        } catch (NumberFormatException e) {
-            log.warn(Messages.NUMBER_FORMAT_EXCEPTION, e);
+        } catch (NumberFormatException ignored) {
         }
 
         String requestUri = SecurityUtils.getRedirectAfterLoginUrl(redirectId);

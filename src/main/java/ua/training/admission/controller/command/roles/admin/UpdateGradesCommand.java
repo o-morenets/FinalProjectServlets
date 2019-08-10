@@ -38,7 +38,7 @@ public class UpdateGradesCommand extends CommandWrapper {
     protected String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Long userId = Long.valueOf(request.getParameter(Parameters.USER_ID));
+        Long userId = Long.parseLong(request.getParameter(Parameters.USER_ID));
         User user = userService.findById(userId).orElseThrow(ResourceNotFoundException::new);
 
         SubjectGradeValidator subjectGradeValidator = new SubjectGradeValidator();

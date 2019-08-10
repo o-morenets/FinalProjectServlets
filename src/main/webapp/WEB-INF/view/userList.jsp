@@ -56,7 +56,7 @@
         </div>
 
         <div class="row justify-content-center mt-3">
-            <div class="col-6">
+            <div class="col-12">
                 <nav aria-label="Navigation for users">
                     <ul class="pagination">
                         <c:if test="${currentPage != 1}">
@@ -101,11 +101,9 @@
                                     <div class="col-auto">
                                         <label class="ml-2" for="records"><fmt:message
                                                 key="pagination.recordsPerPage"/></label>
-                                        <select class="my-1 mr-2" id="records" name="${Parameters.RECORDS_PER_PAGE}">
-                                            <option value="5">5</option>
-                                            <option value="10" selected>10</option>
-                                            <option value="15">15</option>
-                                        </select>
+                                        <input type="number" min="1" max="100" class="my-1 mr-2" id="records"
+                                               value="${requestScope[Parameters.RECORDS_PER_PAGE]}"
+                                               name="${Parameters.RECORDS_PER_PAGE}">
                                     </div>
                                     <div class="col-auto">
                                         <button type="submit" class="btn btn-primary"><fmt:message

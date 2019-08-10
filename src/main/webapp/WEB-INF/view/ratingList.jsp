@@ -1,3 +1,5 @@
+<%@ page import="ua.training.admission.view.Constants" %>
+
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row">
     <div class="col-md-12">
@@ -44,7 +46,7 @@
                                         </c:choose>
                                              role="progressbar"
                                              style="width: ${user.message.averageGrade}%;"
-                                             aria-valuemin="0" aria-valuemax="100"
+                                             aria-valuemin="${Constants.GRADE_MIN}" aria-valuemax="${Constants.GRADE_MAX}"
                                              aria-valuenow="${user.message.averageGrade}">
                                                 ${user.message.averageGrade}
                                         </div>
@@ -59,7 +61,7 @@
         </div>
 
         <div class="row justify-content-center mt-3">
-            <div class="col-6">
+            <div class="col-12">
                 <nav aria-label="Navigation for users">
                     <ul class="pagination">
                         <c:if test="${currentPage != 1}">
@@ -102,13 +104,12 @@
                                 <input type="hidden" name="${Parameters.CURRENT_PAGE}" value="1">
                                 <div class="form-row align-items-center">
                                     <div class="col-auto">
-                                        <label class="ml-2" for="records"><fmt:message
-                                                key="pagination.recordsPerPage"/></label>
-                                        <select class="my-1 mr-2" id="records" name="${Parameters.RECORDS_PER_PAGE}">
-                                            <option value="5">5</option>
-                                            <option value="10" selected>10</option>
-                                            <option value="15">15</option>
-                                        </select>
+                                        <label class="ml-2" for="records">
+                                            <fmt:message key="pagination.recordsPerPage"/>
+                                        </label>
+                                        <input type="number" min="1" max="100" class="my-1 mr-2" id="records"
+                                               value="${requestScope[Parameters.RECORDS_PER_PAGE]}"
+                                               name="${Parameters.RECORDS_PER_PAGE}">
                                     </div>
                                     <div class="col-auto">
                                         <button type="submit" class="btn btn-primary"><fmt:message

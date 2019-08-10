@@ -28,8 +28,7 @@ public class PaginationUtils {
         int parameterValue = defaultValue;
         try {
             parameterValue = Integer.parseInt(parameter);
-        } catch (NumberFormatException e) {
-            log.error(Messages.NUMBER_FORMAT_EXCEPTION, e);
+        } catch (NumberFormatException ignored) {
         }
 
         return parameterValue;
