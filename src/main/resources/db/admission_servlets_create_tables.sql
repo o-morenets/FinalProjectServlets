@@ -92,9 +92,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `message` (
   `average_grade` DOUBLE NOT NULL,
-  `message_read` BIT(1) NOT NULL,
+  `message_read` BIT(1) NULL,
   `user_id` BIGINT(20) NOT NULL,
-  `entered` BIT(1) NOT NULL,
+  `entered` BIT(1) NULL,
   PRIMARY KEY (`user_id`),
   CONSTRAINT `FK70bv6o4exfe3fbrho7nuotopf`
     FOREIGN KEY (`user_id`)

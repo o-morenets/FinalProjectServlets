@@ -41,8 +41,19 @@ public class JdbcMessageDao implements MessageDao {
     public void create(Message message) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.INSERT_INTO_MESSAGE))) {
             stmt.setDouble(1, message.getAverageGrade());
-            stmt.setBoolean(2, message.isEntered());
-            stmt.setBoolean(3, message.isMessageRead());
+
+            if (message.getEntered() == null) {
+                stmt.setNull(2, Types.BOOLEAN);
+            } else {
+                stmt.setBoolean(2, message.getEntered());
+            }
+
+            if (message.getMessageRead() == null) {
+                stmt.setNull(3, Types.BOOLEAN);
+            } else {
+                stmt.setBoolean(3, message.getMessageRead());
+            }
+
             stmt.setLong(4, message.getUser().getId());
             stmt.executeUpdate();
 
@@ -56,8 +67,19 @@ public class JdbcMessageDao implements MessageDao {
     public void update(Message message) {
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.UPDATE_MESSAGE))) {
             stmt.setDouble(1, message.getAverageGrade());
-            stmt.setBoolean(2, message.isEntered());
-            stmt.setBoolean(3, message.isMessageRead());
+
+            if (message.getEntered() == null) {
+                stmt.setNull(2, Types.BOOLEAN);
+            } else {
+                stmt.setBoolean(2, message.getEntered());
+            }
+
+            if (message.getMessageRead() == null) {
+                stmt.setNull(3, Types.BOOLEAN);
+            } else {
+                stmt.setBoolean(3, message.getMessageRead());
+            }
+
             stmt.setLong(4, message.getUser().getId());
             stmt.setLong(5, message.getUser().getId());
             stmt.executeUpdate();

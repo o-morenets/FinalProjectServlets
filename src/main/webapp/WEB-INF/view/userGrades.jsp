@@ -104,7 +104,7 @@
                             </div>
                         </c:if>
                     </div>
-                    <c:if test="${!isAdmin && !empty user.message}">
+                    <c:if test="${!isAdmin && !empty user.message.entered}">
                         <c:choose>
                             <c:when test="${user.message.entered}">
                                 <div class="alert alert-success" role="alert">

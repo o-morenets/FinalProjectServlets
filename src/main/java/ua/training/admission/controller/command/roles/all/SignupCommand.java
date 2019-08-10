@@ -5,6 +5,7 @@ import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
+import ua.training.admission.model.validators.UserValidator;
 import ua.training.admission.security.EncryptPassword;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.Paths;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 import static ua.training.admission.view.Attributes.*;
 import static ua.training.admission.view.Parameters.*;
@@ -34,80 +36,57 @@ public class SignupCommand extends CommandWrapper {
     public String doExecute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter(USERNAME);
-        String password = request.getParameter(PASSWORD);
-        String passwordConfirm = request.getParameter(PASSWORD_2);
-        String email = request.getParameter(EMAIL);
-        String firstName = request.getParameter(FIRST_NAME);
-        String lastName = request.getParameter(LAST_NAME);
-
-        boolean isFormValid = true;
-
-        if (username.trim().isEmpty()) {
-            request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EMPTY);
-            isFormValid = false;
-        }
-
-        if (password.trim().isEmpty()) {
-            request.setAttribute(PASSWORD_ERROR, FORM_INVALID_PASSWORD_EMPTY);
-            isFormValid = false;
-        }
-
-        if (passwordConfirm.trim().isEmpty()) {
-            request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_RETYPE_EMPTY);
-            isFormValid = false;
-        }
-
-        if (!password.equals(passwordConfirm)) {
-            request.setAttribute(PASSWORD_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
-            request.setAttribute(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
-            isFormValid = false;
-        }
-
-        if (email.trim().isEmpty()) {
-            request.setAttribute(EMAIL_ERROR, FORM_INVALID_EMAIL_EMPTY);
-            isFormValid = false;
-        }
-
-        // TODO @Email validation with RegEx
-
-        if (firstName.trim().isEmpty()) {
-            request.setAttribute(FIRST_NAME_ERROR, FORM_INVALID_FIRST_NAME);
-            isFormValid = false;
-        }
-
-        if (lastName.trim().isEmpty()) {
-            request.setAttribute(LAST_NAME_ERROR, FORM_INVALID_LAST_NAME);
-            isFormValid = false;
-        }
+        UserValidator userValidator = new UserValidator();
 
         User user = User.builder()
-                .username(username)
-                .password(EncryptPassword.encrypt(password))
-                .email(email)
-                .firstName(firstName)
-                .lastName(lastName)
+                .username(request.getParameter(USERNAME))
+                .password(request.getParameter(PASSWORD))
+                .email(request.getParameter(EMAIL))
+                .firstName(request.getParameter(FIRST_NAME))
+                .lastName(request.getParameter(LAST_NAME))
                 .build();
 
-        if (!isFormValid) {
-            request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
-            request.setAttribute(USER, user);
+        userValidator.validate(user);
+
+        String passwordConfirm = request.getParameter(PASSWORD_2);
+
+        boolean isConfirmEmpty = passwordConfirm.trim().isEmpty();
+        if (isConfirmEmpty) {
+            userValidator.addError(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_RETYPE_EMPTY);
+        }
+
+        boolean passwordsDifferent = user.getPassword() != null && !user.getPassword().equals(passwordConfirm);
+        if (passwordsDifferent) {
+            userValidator.addError(PASSWORD_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
+            userValidator.addError(PASSWORD_2_ERROR, FORM_INVALID_PASSWORD_DIFFERENT);
+        }
+
+        if (isConfirmEmpty || passwordsDifferent || userValidator.hasErrors()) {
+            setErrorAttributes(request, user, userValidator.getErrors());
+
             return Paths.SIGNUP_JSP;
         }
 
         try {
+            user.setPassword(EncryptPassword.encrypt(user.getPassword()));
             userService.create(user);
             response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.LOGIN);
 
         } catch (NotUniqueUsernameException e) {
             log.warn(Messages.USER_ALREADY_EXISTS);
-            request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
-            request.setAttribute(USER, user);
-            request.setAttribute(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
+
+            userValidator.addError(USERNAME_ERROR, FORM_INVALID_USERNAME_EXISTS);
+            setErrorAttributes(request, user, userValidator.getErrors());
 
             return Paths.SIGNUP_JSP;
         }
 
         return Paths.REDIRECTED;
+    }
+
+    private void setErrorAttributes(HttpServletRequest request, User user, Map<String, String> errors) {
+        errors.forEach(request::setAttribute);
+        request.setAttribute(PAGE_TITLE, TITLE_FORM_SIGNUP);
+        request.setAttribute(USER, user);
     }
 }

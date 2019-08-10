@@ -6,63 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="+ javaDoc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/admin/PagePassGradeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/admin/RatingListCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/admin/SendMessagesCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_fill_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/passGrade.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/ratingList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e530987e-59f1-4ed6-b39d-842a7d4e19bd.xml" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="ratings">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validators/EntityValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validators/UserValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validators/Validator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/CommandWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/LoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/LogoutCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/LogoutCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageHomeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/PageHomeCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageLoginCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/PageLoginCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageSignupCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/PageSignupCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageUserGradesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/PageUserGradesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/PageUserSpecialityCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/user/PageUserSpecialityCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/SignupCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/SignupCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UpdateGradesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/admin/UpdateGradesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UpdateSpecialityCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/user/UpdateSpecialityCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/admin/UserListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/UserProfileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/user/UserProfileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/listener/SessionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/listener/SessionListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/DaoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/RoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/RoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/SubjectGradeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/SubjectGradeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/SignupCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/controller/command/roles/all/SignupCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcMessageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcMessageDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcRoleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcRoleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSpecialityDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcSubjectGradeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/mapper/MessageMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/SubjectGradeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/security/SecurityUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Attributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Attributes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/I18n.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/I18n.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/Paths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/admission_servlets.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets.mwb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_create_tables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/admission_servlets_create_tables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/wrapper.tag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/homePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/navbar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/parts/security.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userGrades.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/userGrades.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -116,9 +70,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -178,7 +132,7 @@
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Notebook_v2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -187,11 +141,11 @@
   </component>
   <component name="RecentsManager">
     <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="ua.training.admission.model.validators.Validator" />
       <recent name="ua.training.admission.config.AppConfig" />
       <recent name="ua.training.admission.view.Constants" />
       <recent name="ua.training.admission.view.Parameters" />
       <recent name="ua.training.admission.view.SQL" />
-      <recent name="ua.training.admission.view.Paths" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="ua.training.admission.model.entity" />
@@ -228,11 +182,11 @@
       <recent name="ua.training.admission.controller.exception" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="ua.training.admission.model.validators" />
       <recent name="ua.training.admission.model.dao" />
       <recent name="ua.training.admission.model.dao.mapper" />
       <recent name="ua.training.admission.model.entity" />
       <recent name="ua.training.admission.controller.command" />
-      <recent name="ua.training.admission.view" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -514,14 +468,7 @@
       <workItem from="1565104336989" duration="23777000" />
       <workItem from="1565256901313" duration="1164000" />
       <workItem from="1565278598396" duration="588000" />
-      <workItem from="1565367182223" duration="15315000" />
-    </task>
-    <task id="LOCAL-00015" summary="+ Main functionality">
-      <created>1485467587241</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1485467587241</updated>
+      <workItem from="1565367182223" duration="26876000" />
     </task>
     <task id="LOCAL-00016" summary="... ResourceBundle started">
       <created>1485472864784</created>
@@ -859,7 +806,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565216265768</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="ratings">
+      <created>1565386308458</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1565386308458</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -906,7 +860,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Command for UserGrades &amp; SelectSpeciality" />
     <MESSAGE value="fix: Paths (/api)" />
     <MESSAGE value="UpdateSpeciality" />
     <MESSAGE value="TextConstants -&gt; I18n" />
@@ -931,7 +884,8 @@
     <MESSAGE value="Mapper for all" />
     <MESSAGE value="Message: averageGrade" />
     <MESSAGE value="+ javaDoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ javaDoc" />
+    <MESSAGE value="ratings" />
+    <option name="LAST_COMMIT_MESSAGE" value="ratings" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

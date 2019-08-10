@@ -9,15 +9,15 @@ public class Message {
 
     private User user;
     private double averageGrade;
-    private boolean entered;
-    private boolean messageRead;
+    private Boolean entered;
+    private Boolean messageRead;
 
     public static class Builder {
 
         private User user;
         private double averageGrade;
-        private boolean entered;
-        private boolean messageRead;
+        private Boolean entered;
+        private Boolean messageRead;
 
         public Builder user(User user) {
             this.user = user;
@@ -29,12 +29,12 @@ public class Message {
             return this;
         }
 
-        public Builder entered(boolean entered) {
+        public Builder entered(Boolean entered) {
             this.entered = entered;
             return this;
         }
 
-        public Builder messageRead(boolean messageRead) {
+        public Builder messageRead(Boolean messageRead) {
             this.messageRead = messageRead;
             return this;
         }
@@ -72,19 +72,19 @@ public class Message {
         this.averageGrade = averageGrade;
     }
 
-    public boolean isEntered() {
+    public Boolean getEntered() {
         return entered;
     }
 
-    public void setEntered(boolean entered) {
+    public void setEntered(Boolean entered) {
         this.entered = entered;
     }
 
-    public boolean isMessageRead() {
+    public Boolean getMessageRead() {
         return messageRead;
     }
 
-    public void setMessageRead(boolean messageRead) {
+    public void setMessageRead(Boolean messageRead) {
         this.messageRead = messageRead;
     }
 }
