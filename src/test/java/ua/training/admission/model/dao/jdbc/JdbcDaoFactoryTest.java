@@ -1,23 +1,18 @@
 package ua.training.admission.model.dao.jdbc;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ua.training.admission.model.dao.DaoConnection;
-import ua.training.admission.model.dao.DaoFactory;
+import ua.training.admission.model.dao.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class JdbcDaoFactoryTest {
 
-    private DaoFactory daoFactory = DaoFactory.getInstance();
+    private DaoFactory daoFactory;
 
     @Before
     public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
+        daoFactory = DaoFactory.getInstance();
     }
 
     @Test
@@ -27,22 +22,37 @@ public class JdbcDaoFactoryTest {
     }
 
     @Test
-    public void createUserDao() {
+    public void testCreateUserDao() {
+        DaoConnection connection = daoFactory.getConnection();
+        UserDao userDao = daoFactory.createUserDao(connection);
+        assertNotNull(userDao);
     }
 
     @Test
-    public void createRoleDao() {
+    public void testCreateRoleDao() {
+        DaoConnection connection = daoFactory.getConnection();
+        RoleDao roleDao = daoFactory.createRoleDao(connection);
+        assertNotNull(roleDao);
     }
 
     @Test
-    public void createSpecialityDao() {
+    public void testCreateSpecialityDao() {
+        DaoConnection connection = daoFactory.getConnection();
+        SpecialityDao specialityDao = daoFactory.createSpecialityDao(connection);
+        assertNotNull(specialityDao);
     }
 
     @Test
-    public void createSubjectGradeDao() {
+    public void testCreateSubjectGradeDao() {
+        DaoConnection connection = daoFactory.getConnection();
+        SubjectGradeDao subjectGradeDao = daoFactory.createSubjectGradeDao(connection);
+        assertNotNull(subjectGradeDao);
     }
 
     @Test
-    public void createMessageDao() {
+    public void testCreateMessageDao() {
+        DaoConnection connection = daoFactory.getConnection();
+        MessageDao messageDao = daoFactory.createMessageDao(connection);
+        assertNotNull(messageDao);
     }
 }

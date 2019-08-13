@@ -1,23 +1,52 @@
 package ua.training.admission.model.dao.jdbc;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import entityData.UsersData;
+import org.junit.*;
+import ua.training.admission.model.dao.DaoConnection;
+import ua.training.admission.model.dao.DaoFactory;
+import ua.training.admission.model.dao.UserDao;
+import ua.training.admission.model.entity.User;
 
-import static org.junit.Assert.*;
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
 
 public class JdbcUserDaoTest {
 
+    private Map<String, User> testUsers = new HashMap<>();
+
+    {
+        for (UsersData usersData : UsersData.values()) {
+            testUsers.put(usersData.user.getUsername(), usersData.user);
+        }
+    }
+
+    private DaoConnection connection;
+    private UserDao userDao;
+
+    @BeforeClass
+    public static void initTestDataBase() throws Exception {
+//        new TestDatabaseInitializer().initTestJdbcDB();
+    }
+
     @Before
     public void setUp() throws Exception {
+        DaoFactory daoFactory = DaoFactory.getInstance();
+        connection = daoFactory.getConnection();
+        userDao = daoFactory.createUserDao(connection);
+        connection.beginTransaction();
     }
 
     @After
     public void tearDown() throws Exception {
+        connection.commit();
     }
 
     @Test
-    public void findById() {
+    public void testFindById() {
+        User testUser = testUsers.get("user");
+        Optional<User> user = userDao.findById(testUser.getId());
+        assertEquals(testUser, user.get());
     }
 
     @Test
