@@ -1,4 +1,4 @@
-package ua.training.admission.model.validators;
+package ua.training.admission.model.validator;
 
 import ua.training.admission.model.entity.dto.SubjectGradeDto;
 import ua.training.admission.view.Constants;

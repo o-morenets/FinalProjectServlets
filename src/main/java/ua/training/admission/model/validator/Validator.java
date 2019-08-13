@@ -1,4 +1,4 @@
-package ua.training.admission.model.validators;
+package ua.training.admission.model.validator;
 
 public interface Validator<T> {
 

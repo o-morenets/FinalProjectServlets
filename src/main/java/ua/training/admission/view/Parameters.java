@@ -11,8 +11,8 @@ public class Parameters {
     public static final String ENCODING = "encoding";
 
     // Form parameters
-    public static final String USERNAME = "username";
-    public static final String PASSWORD = "password";
+    public static final String USERNAME = "jbdc.username";
+    public static final String PASSWORD = "jbdc.password";
     public static final String PASSWORD_2 = "password2";
     public static final String EMAIL = "email";
     public static final String FIRST_NAME = "firstName";

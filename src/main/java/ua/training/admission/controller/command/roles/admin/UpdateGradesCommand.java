@@ -4,12 +4,11 @@ import org.apache.log4j.Logger;
 import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.controller.command.roles.user.UpdateSpecialityCommand;
 import ua.training.admission.controller.exception.ResourceNotFoundException;
-import ua.training.admission.model.entity.SubjectGrade;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.entity.dto.SubjectGradeDto;
 import ua.training.admission.model.service.SubjectGradeService;
 import ua.training.admission.model.service.UserService;
-import ua.training.admission.model.validators.SubjectGradeValidator;
+import ua.training.admission.model.validator.SubjectGradeValidator;
 import ua.training.admission.view.*;
 
 import javax.servlet.ServletException;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * UpdateGrades Command
@@ -52,7 +50,6 @@ public class UpdateGradesCommand extends CommandWrapper {
             request.setAttribute(Attributes.PAGE_TITLE, I18n.TITLE_GRADES);
 
             return Paths.USER_GRADES_JSP;
-
         } else {
             subjectGradeService.updateGrades(userId, form);
             response.sendRedirect(request.getContextPath() + request.getServletPath() + Paths.USERS);

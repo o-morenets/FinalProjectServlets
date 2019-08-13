@@ -1,15 +1,9 @@
-package ua.training.admission.model.validators;
-
-import ua.training.admission.model.entity.User;
+package ua.training.admission.model.validator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-
-import static ua.training.admission.view.Attributes.PAGE_TITLE;
-import static ua.training.admission.view.Attributes.USER;
-import static ua.training.admission.view.I18n.TITLE_FORM_SIGNUP;
 
 public abstract class EntityValidator<T> implements Validator<T> {
 

@@ -4,7 +4,7 @@
 
 <%@ include file="/WEB-INF/view/parts/header.jsp" %>
 <div class="row justify-content-center">
-    <div>
+    <div class="col-3">
         <c:if test="${isAdmin}">
             <div class="row">
                 <div class="col">

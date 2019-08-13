@@ -9,8 +9,8 @@ public interface Messages {
 
     /* Exception messages */
     String APPLICATION_EXCEPTION = "Application exception";
-    String NAMING_EXCEPTION = "Naming Exception";
     String DAO_FACTORY_EXCEPTION = "Dao Factory Exception";
+    String CONNECTION_POOL_EXCEPTION = "Connection Pool Exception";
     String USER_ALREADY_EXISTS = "User already exists";
     String IO_EXCEPTION = "I/O Exception";
     String RESOURCE_NOT_FOUND_EXCEPTION = "Resource not found";

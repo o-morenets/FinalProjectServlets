@@ -5,7 +5,7 @@ import ua.training.admission.controller.command.CommandWrapper;
 import ua.training.admission.controller.exception.NotUniqueUsernameException;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.model.service.UserService;
-import ua.training.admission.model.validators.UserValidator;
+import ua.training.admission.model.validator.UserValidator;
 import ua.training.admission.security.EncryptPassword;
 import ua.training.admission.view.Messages;
 import ua.training.admission.view.Paths;

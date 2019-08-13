@@ -23,22 +23,16 @@ public class JdbcDaoFactory extends DaoFactory {
     /* Logger */
     private static final Logger log = Logger.getLogger(JdbcDaoFactory.class);
 
-    private DataSource dataSource;
-
-    public JdbcDaoFactory() {
-        try {
-            InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup(AppConfig.JAVA_COMP_ENV_JDBC);
-        } catch (NamingException e) {
-            log.error(Messages.SQL_EXCEPTION, e);
-            throw new AppException(Messages.NAMING_EXCEPTION, e);
-        }
-    }
+    /**
+     * Pooled Data Source
+     */
+    private DataSource dataSource = ConnectionPoolHolder.getDataSource();
 
     @Override
     public DaoConnection getConnection() {
         try {
             return new JdbcDaoConnection(dataSource.getConnection());
+
         } catch (SQLException e) {
             log.error(Messages.SQL_EXCEPTION, e);
             throw new AppException(Messages.SQL_EXCEPTION, e);
