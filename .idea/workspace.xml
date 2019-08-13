@@ -6,15 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="refactor: Connection Pool -&gt; in class, not in context.xml">
-      <change afterPath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: UserDao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/DaoFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/DaoFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcDaoFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/db/test_admission_servlets_create_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/db/test_admission_servlets_create_db.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JdbcUserDaoTest">
+  <component name="RunManager" selected="JUnit.JdbcUserDaoTest.testCreate">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -226,53 +223,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DaoFactoryTest.getInstance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in FinalProjectServlets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FinalProjectServlets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.training.admission.model.dao.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.DaoFactoryTest" />
-      <option name="METHOD_NAME" value="getInstance" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JdbcDaoFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FinalProjectServlets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcDaoFactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JdbcDaoFactoryTest.getConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FinalProjectServlets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcDaoFactoryTest" />
-      <option name="METHOD_NAME" value="getConnection" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -296,7 +250,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JdbcUserDaoTest.testFindById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="JdbcUserDaoTest.getNumberOfRowsByRole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FinalProjectServlets" />
       <extension name="coverage">
         <pattern>
@@ -306,7 +260,43 @@
       </extension>
       <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
       <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
-      <option name="METHOD_NAME" value="testFindById" />
+      <option name="METHOD_NAME" value="getNumberOfRowsByRole" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JdbcUserDaoTest.testCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FinalProjectServlets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
+      <option name="METHOD_NAME" value="testCreate" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JdbcUserDaoTest.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FinalProjectServlets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
+      <option name="METHOD_NAME" value="testUpdate" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -416,11 +406,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.JdbcUserDaoTest.testCreate" />
+        <item itemvalue="JUnit.JdbcUserDaoTest.testUpdate" />
         <item itemvalue="JUnit.JdbcUserDaoTest" />
-        <item itemvalue="JUnit.JdbcUserDaoTest.testFindById" />
-        <item itemvalue="JUnit.JdbcDaoFactoryTest" />
-        <item itemvalue="JUnit.JdbcDaoFactoryTest.getConnection" />
-        <item itemvalue="JUnit.DaoFactoryTest.getInstance" />
+        <item itemvalue="JUnit.All in FinalProjectServlets" />
+        <item itemvalue="JUnit.JdbcUserDaoTest.getNumberOfRowsByRole" />
       </list>
     </recent_temporary>
   </component>
@@ -582,14 +572,7 @@
       <workItem from="1565472586401" duration="377000" />
       <workItem from="1565557648590" duration="2329000" />
       <workItem from="1565560698507" duration="1139000" />
-      <workItem from="1565633800268" duration="20281000" />
-    </task>
-    <task id="LOCAL-00020" summary="+ errorPage">
-      <created>1485706048010</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1485706048010</updated>
+      <workItem from="1565633800268" duration="25753000" />
     </task>
     <task id="LOCAL-00021" summary="+ CommandWrapper">
       <created>1485711006019</created>
@@ -927,7 +910,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565720516506</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="tests: UserDao">
+      <created>1565727843479</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1565727843479</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -974,7 +964,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fix: DaoFactory -&gt; synchronized" />
     <MESSAGE value="AuthFilter - before removing /api from paths" />
     <MESSAGE value="fix Paths - removed /api from paths" />
     <MESSAGE value="UpdateSubjectGrades" />
@@ -999,7 +988,8 @@
     <MESSAGE value="+ SubjectGradeValidator" />
     <MESSAGE value="fix: pagination parameters&#10;+ PassGrade validation&#10;- log for NFE&#10;+ GET Command for SendMessagesCommand&#10;fix: valueOf() -&gt; parseXXX()&#10;fix: ResourceNotFoundException -&gt; send to 404.jsp" />
     <MESSAGE value="refactor: Connection Pool -&gt; in class, not in context.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: Connection Pool -&gt; in class, not in context.xml" />
+    <MESSAGE value="tests: UserDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests: UserDao" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

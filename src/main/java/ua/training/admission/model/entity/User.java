@@ -181,26 +181,16 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id.equals(user.id);
+        return id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password) &&
+                email.equals(user.email) &&
+                firstName.equals(user.firstName) &&
+                lastName.equals(user.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", speciality=" + speciality +
-                ", roles=" + roles +
-                ", message=" + message +
-                '}';
+        return Objects.hash(id, username, password, email, firstName, lastName);
     }
 }

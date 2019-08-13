@@ -33,7 +33,7 @@ class TestDatabaseInitializer {
         dbProps.load(inputStream);
 
         File script = new File(
-                this.getClass()
+                getClass()
                         .getClassLoader()
                         .getResource(ddlCreateDbSql)
                         .getFile());
@@ -41,11 +41,11 @@ class TestDatabaseInitializer {
         String multiQuery = FileUtils.readFileToString(script, "UTF-8");
 
         Class.forName(dbProps.getProperty(JDBC_DRIVER));
-        try (Connection con = DriverManager.getConnection(
+        try (Connection connection = DriverManager.getConnection(
                 dbProps.getProperty(JDBC_URL),
                 dbProps.getProperty(JDBC_USER),
                 dbProps.getProperty(JDBC_PASSWORD));
-             Statement st = con.createStatement()) {
+             Statement st = connection.createStatement()) {
 
             st.execute(multiQuery);
         }
