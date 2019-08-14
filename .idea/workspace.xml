@@ -6,14 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: UserDao">
-      <change afterPath="$PROJECT_DIR$/src/test/java/entityData/SpecialityData.java" afterDir="false" />
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: UserService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/entityData/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validator/NumberValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validator/NumberValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/validator/NumberValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/validator/NumberValidatorTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +206,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="JUnit.NumberValidatorTest">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -221,16 +217,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in FinalProjectServlets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FinalProjectServlets" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -270,17 +256,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JdbcUserDaoTest.testUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NumberValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FinalProjectServlets" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
+          <option name="PATTERN" value="ua.training.admission.model.validator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
-      <option name="METHOD_NAME" value="testUpdate" />
+      <option name="PACKAGE_NAME" value="ua.training.admission.model.validator" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.validator.NumberValidatorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberValidatorTest.testIsValidDouble_Valid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FinalProjectServlets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.training.admission.model.validator.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.training.admission.model.validator" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.validator.NumberValidatorTest" />
+      <option name="METHOD_NAME" value="testIsValidDouble_Valid" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -407,11 +410,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NumberValidatorTest" />
+        <item itemvalue="JUnit.NumberValidatorTest.testIsValidDouble_Valid" />
         <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.JdbcUserDaoTest" />
         <item itemvalue="JUnit.JdbcUserDaoTest.testCreate" />
-        <item itemvalue="JUnit.JdbcUserDaoTest.testUpdate" />
-        <item itemvalue="JUnit.All in FinalProjectServlets" />
       </list>
     </recent_temporary>
   </component>
@@ -573,14 +576,7 @@
       <workItem from="1565472586401" duration="377000" />
       <workItem from="1565557648590" duration="2329000" />
       <workItem from="1565560698507" duration="1139000" />
-      <workItem from="1565633800268" duration="32140000" />
-    </task>
-    <task id="LOCAL-00022" summary="commit">
-      <created>1485729873399</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1485729873399</updated>
+      <workItem from="1565633800268" duration="32934000" />
     </task>
     <task id="LOCAL-00023" summary="+ 404&#10;Languages fixed, but:&#10;якщо змінювати мови 2+ разів, то не враховується параметер lang=... , який вже є&#10; &#10; Треба переробити обробку сервлетом команд REST.">
       <created>1485779898830</created>
@@ -918,7 +914,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565734642462</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="tests: UserService">
+      <created>1565787497316</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1565787497316</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -965,7 +968,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="AuthFilter - before removing /api from paths" />
     <MESSAGE value="fix Paths - removed /api from paths" />
     <MESSAGE value="UpdateSubjectGrades" />
     <MESSAGE value="Pagination" />
@@ -990,7 +992,8 @@
     <MESSAGE value="fix: pagination parameters&#10;+ PassGrade validation&#10;- log for NFE&#10;+ GET Command for SendMessagesCommand&#10;fix: valueOf() -&gt; parseXXX()&#10;fix: ResourceNotFoundException -&gt; send to 404.jsp" />
     <MESSAGE value="refactor: Connection Pool -&gt; in class, not in context.xml" />
     <MESSAGE value="tests: UserDao" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests: UserDao" />
+    <MESSAGE value="tests: UserService" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests: UserService" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

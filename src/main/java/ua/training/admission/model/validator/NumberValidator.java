@@ -1,5 +1,7 @@
 package ua.training.admission.model.validator;
 
+import ua.training.admission.view.Constants;
+
 public class NumberValidator {
 
     /**
@@ -12,7 +14,7 @@ public class NumberValidator {
         try {
             double passGrade = Double.parseDouble(paramPassGrade);
 
-            return passGrade >= 0.0 && passGrade <= 100.0;
+            return passGrade >= Constants.GRADE_MIN && passGrade <= Constants.GRADE_MAX;
 
         } catch (NumberFormatException e) {
             return false;
