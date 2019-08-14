@@ -1,6 +1,6 @@
 package ua.training.admission.model.dao.jdbc;
 
-import entityData.UsersData;
+import entityData.UserData;
 import org.junit.*;
 import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
@@ -12,20 +12,18 @@ import ua.training.admission.security.EncryptPassword;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class JdbcUserDaoTest {
 
     private Map<String, User> testUsers = new HashMap<>();
 
     {
-        for (UsersData usersData : UsersData.values()) {
-            testUsers.put(usersData.user.getUsername(), usersData.user);
+        for (UserData userData : UserData.values()) {
+            testUsers.put(userData.user.getUsername(), userData.user);
         }
     }
 
-    private DaoConnection connection;
     private UserDao userDao;
 
     @BeforeClass
@@ -36,18 +34,16 @@ public class JdbcUserDaoTest {
     @Before
     public void setUp() throws Exception {
         DaoFactory daoFactory = DaoFactory.getInstance();
-        connection = daoFactory.getConnection();
+        DaoConnection connection = daoFactory.getConnection();
         userDao = daoFactory.createUserDao(connection);
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 
     @Test
     public void testFindById() {
         User expectedUser = testUsers.get("user");
         Optional<User> user = userDao.findById(expectedUser.getId());
+
+        assertTrue(user.isPresent());
         assertEquals(expectedUser, user.get());
     }
 
@@ -72,7 +68,10 @@ public class JdbcUserDaoTest {
                 .lastName(newLastName)
                 .build();
         userDao.create(newUser);
-        assertEquals(newUser, userDao.findByUsername(newUsername).get());
+        Optional<User> user = userDao.findByUsername(newUsername);
+
+        assertTrue(user.isPresent());
+        assertEquals(newUser, user.get());
     }
 
     @Test
@@ -90,39 +89,48 @@ public class JdbcUserDaoTest {
         expectedUser.setFirstName(newFirstName);
         expectedUser.setLastName(newLastName);
 
-        User student = userDao.findByUsername(username).get();
+        Optional<User> user = userDao.findByUsername(username);
+
+        assertTrue(user.isPresent());
+
+        User student = user.get();
         student.setPassword(EncryptPassword.encrypt(newPassword));
         student.setEmail(newEmail);
         student.setFirstName(newFirstName);
         student.setLastName(newLastName);
 
         userDao.update(student);
-        assertEquals(expectedUser, userDao.findByUsername(username).get());
+
+        assertEquals(expectedUser, user.get());
     }
 
     @Test
     public void testFindByUsername() {
         User expectedUser = testUsers.get("user");
         Optional<User> user = userDao.findByUsername(expectedUser.getUsername());
+
+        assertTrue(user.isPresent());
         assertEquals(expectedUser, user.get());
     }
 
     @Test
     public void testFindAllByRole() {
-        List<User> expectedUserList = Arrays.stream(UsersData.values())
-                .filter(usersData -> usersData.user.getRoles().contains(Role.USER))
-                .map(usersData -> usersData.user)
+        List<User> expectedUserList = Arrays.stream(UserData.values())
+                .filter(userData -> userData.user.getRoles().contains(Role.USER))
+                .map(userData -> userData.user)
                 .collect(Collectors.toList());
         List<User> userList = userDao.findAllByRole(Role.USER, 1, 100500);
+
         assertEquals(expectedUserList, userList);
     }
 
     @Test
     public void getNumberOfRowsByRole() {
-        long expectedNumberOfRowsByRole = Arrays.stream(UsersData.values())
-                .filter(usersData -> usersData.user.getRoles().contains(Role.USER))
+        long expectedNumberOfRowsByRole = Arrays.stream(UserData.values())
+                .filter(userData -> userData.user.getRoles().contains(Role.USER))
                 .count();
         int numberOfRowsByRole = userDao.getNumberOfRowsByRole(Role.USER);
+
         assertEquals(expectedNumberOfRowsByRole, numberOfRowsByRole);
     }
 }

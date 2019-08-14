@@ -57,14 +57,14 @@ public class UserService {
     /**
      * Finds a User by its id
      *
-     * @param Id user id
+     * @param id user id
      * @return optional User found by its id
      */
-    public Optional<User> findById(Long Id) {
+    public Optional<User> findById(Long id) {
         try (DaoConnection connection = daoFactory.getConnection()) {
             UserDao userDao = daoFactory.createUserDao(connection);
 
-            return userDao.findById(Id);
+            return userDao.findById(id);
         }
     }
 

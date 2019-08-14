@@ -10,6 +10,9 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * This class should restore test database to its initial state
+ */
 class TestDatabaseInitializer {
     private static final String DDL_CREATE_DB_SQL = "db/test_admission_servlets_create_db.sql";
     private static final String JDBC_DRIVER = "jdbc.driverClassName";

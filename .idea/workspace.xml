@@ -7,11 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: UserDao">
+      <change afterPath="$PROJECT_DIR$/src/test/java/entityData/SpecialityData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/entityData/UsersData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/entityData/UserData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +210,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JdbcUserDaoTest.testCreate">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -250,24 +252,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JdbcUserDaoTest.getNumberOfRowsByRole" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FinalProjectServlets" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.training.admission.model.dao.jdbc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ua.training.admission.model.dao.jdbc" />
-      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
-      <option name="METHOD_NAME" value="getNumberOfRowsByRole" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="JdbcUserDaoTest.testCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FinalProjectServlets" />
       <extension name="coverage">
@@ -298,6 +282,23 @@
       <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.dao.jdbc.JdbcUserDaoTest" />
       <option name="METHOD_NAME" value="testUpdate" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FinalProjectServlets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.training.admission.model.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ua.training.admission.model.service" />
+      <option name="MAIN_CLASS_NAME" value="ua.training.admission.model.service.UserServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -406,11 +407,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.JdbcUserDaoTest" />
         <item itemvalue="JUnit.JdbcUserDaoTest.testCreate" />
         <item itemvalue="JUnit.JdbcUserDaoTest.testUpdate" />
-        <item itemvalue="JUnit.JdbcUserDaoTest" />
         <item itemvalue="JUnit.All in FinalProjectServlets" />
-        <item itemvalue="JUnit.JdbcUserDaoTest.getNumberOfRowsByRole" />
       </list>
     </recent_temporary>
   </component>
@@ -572,14 +573,7 @@
       <workItem from="1565472586401" duration="377000" />
       <workItem from="1565557648590" duration="2329000" />
       <workItem from="1565560698507" duration="1139000" />
-      <workItem from="1565633800268" duration="25753000" />
-    </task>
-    <task id="LOCAL-00021" summary="+ CommandWrapper">
-      <created>1485711006019</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1485711006019</updated>
+      <workItem from="1565633800268" duration="32140000" />
     </task>
     <task id="LOCAL-00022" summary="commit">
       <created>1485729873399</created>
@@ -917,7 +911,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565727843479</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="tests: UserDao">
+      <created>1565734642462</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1565734642462</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
