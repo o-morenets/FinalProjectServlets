@@ -28,7 +28,7 @@ public class UserValidator extends EntityValidator<User> {
             addError(FIRST_NAME_ERROR, FORM_INVALID_FIRST_NAME);
         }
 
-        if (user.getFirstName().trim().isEmpty()) {
+        if (user.getLastName().trim().isEmpty()) {
             addError(LAST_NAME_ERROR, FORM_INVALID_LAST_NAME);
         }
     }

@@ -66,10 +66,6 @@ public class UserServiceTest {
     }
 
     @Test
-    public void create() {
-    }
-
-    @Test
     public void testFindAllByRole() {
         List<User> expectedUserList = Arrays.stream(UserData.values())
                 .filter(userData -> userData.user.getRoles().contains(Role.USER))
@@ -98,12 +94,8 @@ public class UserServiceTest {
 
         userService.updateSpeciality(expectedUser.getId(), expectedUser.getSpeciality().getId());
         Optional<User> user = userService.findById(expectedUser.getId());
+
         assertTrue(user.isPresent());
         assertEquals(expectedUser, user.get());
-    }
-
-    @Test
-    public void testSendMessages() {
-        // TODO
     }
 }

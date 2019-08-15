@@ -131,7 +131,7 @@ public class JdbcUserDao implements UserDao {
         Optional<User> result;
 
         try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.SELECT_USER_BY_USERNAME))) {
-            stmt.setString(1, username.toLowerCase());
+            stmt.setString(1, username);
             ResultSet resultSet = stmt.executeQuery();
 
             User user = null;

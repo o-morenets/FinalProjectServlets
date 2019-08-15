@@ -2,6 +2,7 @@ package ua.training.admission.model.dao.jdbc;
 
 import entityData.UserData;
 import org.junit.*;
+import ua.training.admission.controller.exception.AppException;
 import ua.training.admission.model.dao.DaoConnection;
 import ua.training.admission.model.dao.DaoFactory;
 import ua.training.admission.model.dao.UserDao;
@@ -68,10 +69,26 @@ public class JdbcUserDaoTest {
                 .lastName(newLastName)
                 .build();
         userDao.create(newUser);
-        Optional<User> user = userDao.findByUsername(newUsername);
 
-        assertTrue(user.isPresent());
-        assertEquals(newUser, user.get());
+        assertNotNull(newUser.getId());
+    }
+
+    @Test(expected = AppException.class)
+    public void testCreateDuplicate() {
+        String duplicateUsername = "user";
+        String newPassword = "newPassword";
+        String newEmail = "newEmail";
+        String newFirstName = "newFirstName";
+        String newLastName = "newLastName";
+
+        User newUser = User.builder()
+                .username(duplicateUsername)
+                .password(EncryptPassword.encrypt(newPassword))
+                .email(newEmail)
+                .firstName(newFirstName)
+                .lastName(newLastName)
+                .build();
+        userDao.create(newUser);
     }
 
     @Test
