@@ -9,7 +9,10 @@ import ua.training.admission.model.dao.UserDao;
 import ua.training.admission.model.entity.Role;
 import ua.training.admission.model.entity.User;
 import ua.training.admission.security.EncryptPassword;
+import ua.training.admission.view.SQL;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,11 +29,6 @@ public class JdbcUserDaoTest {
     }
 
     private UserDao userDao;
-
-    @BeforeClass
-    public static void initTestDataBase() throws Exception {
-//        new TestDatabaseInitializer().initTestJdbcDB();
-    }
 
     @Before
     public void setUp() throws Exception {
@@ -71,6 +69,8 @@ public class JdbcUserDaoTest {
         userDao.create(newUser);
 
         assertNotNull(newUser.getId());
+
+        userDao.delete(newUser.getId());
     }
 
     @Test(expected = AppException.class)
@@ -101,6 +101,15 @@ public class JdbcUserDaoTest {
         String newLastName = "newLastName";
 
         User expectedUser = testUsers.get(username);
+        User oldUser = User.builder()
+                .id(expectedUser.getId())
+                .username(expectedUser.getUsername())
+                .password(expectedUser.getPassword())
+                .email(expectedUser.getEmail())
+                .firstName(expectedUser.getFirstName())
+                .lastName(expectedUser.getLastName())
+                .build();
+
         expectedUser.setPassword(EncryptPassword.encrypt(newPassword));
         expectedUser.setEmail(newEmail);
         expectedUser.setFirstName(newFirstName);
@@ -119,6 +128,8 @@ public class JdbcUserDaoTest {
         userDao.update(student);
 
         assertEquals(expectedUser, user.get());
+
+        userDao.update(oldUser);
     }
 
     @Test

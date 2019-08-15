@@ -123,7 +123,14 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException(Messages.UNSUPPORTED_OPERATION_EXCEPTION);
+        try (PreparedStatement stmt = connection.prepareStatement(SQL.getSqlElement(SQL.DELETE_USER))) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            log.error(Messages.SQL_EXCEPTION, e);
+            throw new AppException(Messages.SQL_EXCEPTION, e);
+        }
     }
 
     @Override

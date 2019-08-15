@@ -22,7 +22,6 @@ public interface SQL {
     Logger log = Logger.getLogger(SQL.class);
 
     Properties sqlProperties = loadSqlProperties();
-
     /**
      * Load SQL queries from property file
      *
@@ -86,6 +85,7 @@ public interface SQL {
     String SELECT_USERS_BY_ROLE = "select.users.by.role";
     String UPDATE_USER = "update.user";
     String SELECT_COUNT_USERS_BY_ROLE = "select.count.users.by.role";
+    String DELETE_USER = "delete.user";
 
     // UserRole
     String INSERT_INTO_USER_ROLES = "insert.into.user_roles";

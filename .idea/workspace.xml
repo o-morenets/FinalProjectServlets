@@ -6,19 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: NumberValidator">
+    <list default="true" id="c47b92ed-70d5-45d7-9bae-9cd63b900fa7" name="Default" comment="tests: UserValidator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/dao/jdbc/JdbcUserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/model/validator/UserValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/i18n/messages_uk.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ua/training/admission/view/SQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/sql.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/sql.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/JdbcUserDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/SpecialityServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/SubjectGradeServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/validator/SubjectGradeValidatorTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/validator/UserValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/validator/UserValidatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ua/training/admission/model/dao/jdbc/TestDatabaseInitializer.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -215,7 +209,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="JUnit.JdbcUserDaoTest">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -419,8 +413,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.JdbcUserDaoTest" />
+        <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.JdbcUserDaoTest.testCreate" />
         <item itemvalue="JUnit.JdbcUserDaoTest.testCreateDuplicate" />
         <item itemvalue="JUnit.UserValidatorTest" />
@@ -585,14 +579,8 @@
       <workItem from="1565472586401" duration="377000" />
       <workItem from="1565557648590" duration="2329000" />
       <workItem from="1565560698507" duration="1139000" />
-      <workItem from="1565633800268" duration="38811000" />
-    </task>
-    <task id="LOCAL-00024" summary="html">
-      <created>1485811138847</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1485811138847</updated>
+      <workItem from="1565633800268" duration="38946000" />
+      <workItem from="1565879221718" duration="2553000" />
     </task>
     <task id="LOCAL-00025" summary="parameters transfer via request, not session!">
       <created>1485985153840</created>
@@ -930,7 +918,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565788495685</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="tests: UserValidator">
+      <created>1565878315051</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1565878315051</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -977,7 +972,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="UpdateSubjectGrades" />
     <MESSAGE value="Pagination" />
     <MESSAGE value="recovered: /users/profile command" />
     <MESSAGE value="SubjectGradeService saveOrUpdate" />
@@ -1002,7 +996,8 @@
     <MESSAGE value="tests: UserDao" />
     <MESSAGE value="tests: UserService" />
     <MESSAGE value="tests: NumberValidator" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests: NumberValidator" />
+    <MESSAGE value="tests: UserValidator" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests: UserValidator" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
