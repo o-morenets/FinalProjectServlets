@@ -26,7 +26,7 @@ public class JdbcDaoFactory extends DaoFactory {
     /**
      * Pooled Data Source
      */
-    private DataSource dataSource = ConnectionPoolHolder.getDataSource();
+    private final DataSource dataSource = ConnectionPoolHolder.getDataSource();
 
     @Override
     public DaoConnection getConnection() {

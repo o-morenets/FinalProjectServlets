@@ -7,6 +7,7 @@ import ua.training.admission.view.Messages;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 /**
@@ -83,9 +84,10 @@ public abstract class DaoFactory {
                         Properties dbProps = new Properties();
                         dbProps.load(inputStream);
                         String factoryClass = dbProps.getProperty(AppConfig.DB_FACTORY_CLASS);
-                        instance = (DaoFactory) Class.forName(factoryClass).newInstance();
+                        instance = (DaoFactory) Class.forName(factoryClass).getDeclaredConstructor().newInstance();
 
-                    } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
+                    } catch (IOException | IllegalAccessException | InstantiationException | ClassNotFoundException |
+							 NoSuchMethodException | InvocationTargetException e) {
                         log.error(Messages.DAO_FACTORY_EXCEPTION, e);
                         throw new AppException(Messages.DAO_FACTORY_EXCEPTION, e);
                     }
