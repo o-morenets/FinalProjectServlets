@@ -12,7 +12,7 @@ DROP SCHEMA IF EXISTS `admission_servlets` ;
 -- -----------------------------------------------------
 -- Schema admission_servlets
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `admission_servlets` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `admission_servlets` DEFAULT CHARACTER SET utfmb4 ;
 USE `admission_servlets` ;
 
 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `speciality` (
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `name` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `speciality_subject` (
     FOREIGN KEY (`speciality_id`)
     REFERENCES `speciality` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `usr` (
     ON DELETE CASCADE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `message` (
     FOREIGN KEY (`user_id`)
     REFERENCES `usr` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `subject_grade` (
     FOREIGN KEY (`user_id`)
     REFERENCES `usr` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
 
 
 -- -----------------------------------------------------
@@ -137,4 +137,4 @@ CREATE TABLE IF NOT EXISTS `user_role` (
     FOREIGN KEY (`user_id`)
     REFERENCES `usr` (`id`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utfmb4;
